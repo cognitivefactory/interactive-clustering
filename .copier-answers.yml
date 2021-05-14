@@ -1,0 +1,19 @@
+# Changes here will be overwritten by Copier
+_commit: 0.3.1
+_src_path: https://github.com/pawamoy/copier-poetry.git
+author_email: erwan.schild@e-i.com
+author_fullname: Erwan Schild
+author_username: erwanschild
+copyright_date: '2021'
+copyright_holder: Erwan Schild
+copyright_holder_email: erwan.schild@e-i.com
+copyright_license: CeCILL-C License v1.0
+project_description: Python package used to apply NLP interactive clustering methods.
+project_name: Interactive Clustering
+python_package_command_line_name: interactive-clustering
+python_package_distribution_name: cognitivefactory-interactive-clustering
+python_package_import_name: cognitivefactory.interactive-clustering
+repository_name: interactive-clustering
+repository_namespace: cognitivefactory
+repository_provider: github.com
+use_precommit: false
