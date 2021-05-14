@@ -101,17 +101,13 @@ def preprocess(
     )
 
     # Load vectorizer (spacy language model).
-    # TODO: Use fr_core_news_sm or spacy
-    # path_to_model: str = os.path.dirname(os.path.realpath(__file__)) + "/" + "fr_core_news_sm-2.3.0/"
-    # spacy_nlp = spacy.load(
-    #     name=path_to_model,
-    #     disable=[
-    #         # "tagger", # Needed for lemmatization.
-    #         # "parser", # Needed for filtering on dependency parsing.
-    #         "ner",  # Not needed
-    #     ],
-    # )
-    spacy_nlp = fr_core_news_sm.load()
+    spacy_nlp = fr_core_news_sm.load(
+        disable=[
+            # "tagger", # Needed for lemmatization.
+            # "parser", # Needed for filtering on dependency parsing.
+            "ner",  # Not needed
+        ],
+    )
 
     # Initialize stemmer.
     ####stemmer = SnowballStemmer(language="french")
