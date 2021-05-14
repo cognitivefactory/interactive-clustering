@@ -65,11 +65,6 @@ mkdocs-macros-plugin = "^0.5.0"
 mkdocs-material = "^6.2.7"
 mkdocstrings = "^0.15.0"
 
-[[tool.poetry.source]]
-name = "all-pypi-dev"
-url = "https://repo-si.cm-cic.fr/artifactory/api/pypi/all-pypi-dev/simple/"
-default = true
-
 [tool.black]
 line-length = 120
 exclude = "tests/fixtures"
