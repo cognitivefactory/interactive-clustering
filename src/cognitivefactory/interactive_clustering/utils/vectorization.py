@@ -13,14 +13,15 @@
 # ==============================================================================
 
 # Import path management dependencies.
-import os
 
 # Python code typing (mypy).
 from typing import Dict, Union
 
+# import spacy
+import fr_core_news_sm
+
 # Dependencies needed to handle float and matrix.
 import numpy as np
-import spacy
 from numpy import ndarray
 from scipy.sparse import csr_matrix
 
@@ -91,15 +92,17 @@ def vectorize(
     if vectorizer_type == "spacy":
 
         # Load vectorizer (spaCy language model).
-        path_to_model: str = os.path.dirname(os.path.realpath(__file__)) + "/" + "fr_core_news_sm-2.3.0/"
-        spacy_nlp = spacy.load(
-            name=path_to_model,
-            disable=[
-                "tagger",  # Not needed
-                "parser",  # Not needed
-                "ner",  # Not needed
-            ],
-        )
+        # TODO: Use fr_core_news_sm or spacy
+        # path_to_model: str = os.path.dirname(os.path.realpath(__file__)) + "/" + "fr_core_news_sm-2.3.0/"
+        # spacy_nlp = spacy.load(
+        #     name=path_to_model,
+        #     disable=[
+        #         "tagger", # Needed for lemmatization.
+        #         "parser", # Needed for filtering on dependency parsing.
+        #         "ner",  # Not needed
+        #     ],
+        # )
+        spacy_nlp = fr_core_news_sm.load()
 
         # Apply vectorization.
         dict_of_vectors = {

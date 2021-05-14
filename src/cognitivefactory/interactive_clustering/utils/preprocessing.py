@@ -13,7 +13,6 @@
 # ==============================================================================
 
 # Import path management dependencies.
-import os
 
 # Import preprocessing dependencies.
 import unicodedata
@@ -21,7 +20,8 @@ import unicodedata
 # Python code typing (mypy).
 from typing import Dict
 
-import spacy
+# import spacy
+import fr_core_news_sm
 
 # from nltk.stem.snowball import SnowballStemmer
 
@@ -101,15 +101,17 @@ def preprocess(
     )
 
     # Load vectorizer (spacy language model).
-    path_to_model: str = os.path.dirname(os.path.realpath(__file__)) + "/" + "fr_core_news_sm-2.3.0/"
-    spacy_nlp = spacy.load(
-        name=path_to_model,
-        disable=[
-            # "tagger", # Needed for lemmatization.
-            # "parser", # Needed for filtering on dependency parsing.
-            "ner",  # Not needed
-        ],
-    )
+    # TODO: Use fr_core_news_sm or spacy
+    # path_to_model: str = os.path.dirname(os.path.realpath(__file__)) + "/" + "fr_core_news_sm-2.3.0/"
+    # spacy_nlp = spacy.load(
+    #     name=path_to_model,
+    #     disable=[
+    #         # "tagger", # Needed for lemmatization.
+    #         # "parser", # Needed for filtering on dependency parsing.
+    #         "ner",  # Not needed
+    #     ],
+    # )
+    spacy_nlp = fr_core_news_sm.load()
 
     # Initialize stemmer.
     ####stemmer = SnowballStemmer(language="french")
