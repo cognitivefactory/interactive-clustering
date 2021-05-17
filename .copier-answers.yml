@@ -12,7 +12,7 @@ project_description: Python package used to apply NLP interactive clustering met
 project_name: Interactive Clustering
 python_package_command_line_name: interactive-clustering
 python_package_distribution_name: cognitivefactory-interactive-clustering
-python_package_import_name: cognitivefactory.interactive-clustering
+python_package_import_name: cognitivefactory.interactive_clustering
 repository_name: interactive-clustering
 repository_namespace: cognitivefactory
 repository_provider: github.com
