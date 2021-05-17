@@ -12,14 +12,10 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Needed library to apply tests.
 import pytest
-
-# Dependencies needed to handle matrix.
 from numpy import ndarray
 from scipy.sparse import csr_matrix
 
-# Modules/Classes/Methods to test.
 from cognitivefactory.interactive_clustering.utils.vectorization import vectorize
 
 

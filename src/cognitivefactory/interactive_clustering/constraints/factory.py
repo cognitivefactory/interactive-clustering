@@ -12,14 +12,14 @@
 # IMPORTS :
 # =============================================================================
 
-# Python code typing (mypy).
-from typing import List
+from typing import List  # To type Python code (mypy).
 
-# The needed clustering abstract class and utils methods.
-from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
-
-# Dependencies needed to constraints managing implementation.
-from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
+from cognitivefactory.interactive_clustering.constraints.abstract import (  # To use abstract interface.
+    AbstractConstraintsManager,
+)
+from cognitivefactory.interactive_clustering.constraints.binary import (  # To use binary constraints manager implementation.
+    BinaryConstraintsManager,
+)
 
 
 # ==============================================================================
@@ -39,6 +39,18 @@ def managing_factory(list_of_data_IDs: List[str], manager: str = "binary", **kar
 
     Returns:
         AbstractConstraintsManager : An instance of constraints manager.
+
+    Examples:
+        ```python
+        # Import.
+        from cognitivefactory.interactive_clustering.constraints.factory import managing_factory
+
+        # Create an instance of binary constraints manager.
+        constraints_manager = managing_factory(
+            list_of_data_IDs=["0", "1", "2", "3", "4"],
+            manager="binary",
+        )
+        ```
     """
 
     # Check that the requested algorithm is implemented.

@@ -12,18 +12,17 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# The needed sampling abstract class methods.
-from cognitivefactory.interactive_clustering.sampling.abstract import AbstractConstraintsSampling
-from cognitivefactory.interactive_clustering.sampling.closest_in_different_clusters import (
+from cognitivefactory.interactive_clustering.sampling.abstract import (  # To use abstract interface.
+    AbstractConstraintsSampling,
+)
+from cognitivefactory.interactive_clustering.sampling.closest_in_different_clusters import (  # To use closest in different clusters sampling.
     ClosestInDifferentClustersConstraintsSampling,
 )
-from cognitivefactory.interactive_clustering.sampling.farhest_in_same_cluster import (
+from cognitivefactory.interactive_clustering.sampling.farhest_in_same_cluster import (  # To use farhest in same cluster sampling.
     FarhestInSameClusterConstraintsSampling,
 )
-
-# Dependencies needed to constraints sampling implementation.
-from cognitivefactory.interactive_clustering.sampling.random import RandomConstraintsSampling
-from cognitivefactory.interactive_clustering.sampling.random_in_same_cluster import (
+from cognitivefactory.interactive_clustering.sampling.random import RandomConstraintsSampling  # To use random sampling.
+from cognitivefactory.interactive_clustering.sampling.random_in_same_cluster import (  # To use farhest in same cluster sampling.
     RandomInSameClusterConstraintsSampling,
 )
 
@@ -44,6 +43,17 @@ def sampling_factory(algorithm: str, **kargs) -> "AbstractConstraintsSampling":
 
     Returns:
         AbstractConstraintsSampling: An instance of constraints sampling model.
+
+    Examples:
+        ```python
+        # Import.
+        from cognitivefactory.interactive_clustering.sampling.factory import sampling_factory
+
+        # Create an instance of random sampler.
+        sampler = sampling_factory(
+            algorithm="random",
+        )
+        ```
     """
 
     # Check that the requested algorithm is implemented.

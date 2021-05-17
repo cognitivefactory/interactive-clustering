@@ -14,10 +14,8 @@
 
 import math
 
-# Needed library to apply tests.
 import pytest
 
-# Modules/Classes/Methods to test.
 from cognitivefactory.interactive_clustering.utils.graph import compute_lovasz_theta_number
 
 

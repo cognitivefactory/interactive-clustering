@@ -12,17 +12,18 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Python code typing (mypy).
-from typing import Dict, List, Optional, Union
+from typing import Dict, List, Optional, Union  # To type Python code (mypy).
 
-# Dependencies needed to handle matrix.
-import numpy as np
-from numpy import ndarray
-from scipy.sparse import csr_matrix
+import numpy as np  # To handle float.
+from numpy import ndarray  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix  # To handle matrix and vectors.
 
-# Dependency needed to manage constraints.
-from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
-from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
+from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
+    AbstractConstraintsManager,
+)
+from cognitivefactory.interactive_clustering.constraints.binary import (  # To manage constraints.
+    BinaryConstraintsManager,
+)
 
 
 # ==============================================================================

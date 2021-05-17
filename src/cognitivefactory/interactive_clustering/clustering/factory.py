@@ -12,13 +12,18 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# The needed clustering abstract class methods.
-from cognitivefactory.interactive_clustering.clustering.abstract import AbstractConstrainedClustering
-
-# Dependencies needed to constrained clustering implementation.
-from cognitivefactory.interactive_clustering.clustering.hierarchical import HierarchicalConstrainedClustering
-from cognitivefactory.interactive_clustering.clustering.kmeans import KMeansConstrainedClustering
-from cognitivefactory.interactive_clustering.clustering.spectral import SpectralConstrainedClustering
+from cognitivefactory.interactive_clustering.clustering.abstract import (  # To use abstract interface.
+    AbstractConstrainedClustering,
+)
+from cognitivefactory.interactive_clustering.clustering.hierarchical import (  # To use hierarchical constrained clustering implementation.
+    HierarchicalConstrainedClustering,
+)
+from cognitivefactory.interactive_clustering.clustering.kmeans import (  # To use kmeans constrained clustering implementation.
+    KMeansConstrainedClustering,
+)
+from cognitivefactory.interactive_clustering.clustering.spectral import (  # To use spectral constrained clustering implementation.
+    SpectralConstrainedClustering,
+)
 
 
 # ==============================================================================
@@ -37,6 +42,19 @@ def clustering_factory(algorithm: str = "kmeans", **kargs) -> "AbstractConstrain
 
     Returns:
         AbstractConstraintsClustering: An instance of constrained clustering model.
+
+    Examples:
+        ```python
+        # Import.
+        from cognitivefactory.interactive_clustering.clustering.factory import clustering_factory
+
+        # Create an instance of kmeans.
+        clustering_model = clustering_factory(
+            algorithm="kmeans",
+            model="COP",
+            random_seed=42,
+        )
+        ```
     """
 
     # Check that the requested algorithm is implemented.

@@ -12,9 +12,6 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Dependencies needed to handle matrix.
-
-# Modules/Classes/Methods to test.
 from cognitivefactory.interactive_clustering.utils.frequency import compute_clusters_frequency
 
 

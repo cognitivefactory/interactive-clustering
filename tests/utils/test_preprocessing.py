@@ -12,7 +12,6 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Modules/Classes/Methods to test.
 from cognitivefactory.interactive_clustering.utils.preprocessing import preprocess
 
 

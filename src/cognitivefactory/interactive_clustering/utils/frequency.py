@@ -12,8 +12,7 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Python code typing (mypy).
-from typing import Dict, List
+from typing import Dict, List  # To type Python code (mypy).
 
 
 # ==============================================================================

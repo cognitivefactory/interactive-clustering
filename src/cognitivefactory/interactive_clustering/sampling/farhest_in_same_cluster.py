@@ -12,26 +12,21 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Dependency needed to shuffle data and set random seed.
-import random
+import random  # To shuffle data and set random seed.
+from typing import Dict, List, Optional, Tuple, Union  # To type Python code (mypy).
 
-# Python code typing (mypy).
-from typing import Dict, List, Optional, Tuple, Union
+import numpy as np  # To handle float.
+from numpy import ndarray  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix  # To handle matrix and vectors.
+from sklearn.metrics import pairwise_distances  # To compute distance.
 
-# Dependencies needed to handle matrix.
-import numpy as np
-from numpy import ndarray
-from scipy.sparse import csr_matrix
-
-# Dependency needed to compute distance between two data points.
-from sklearn.metrics import pairwise_distances
-
-# Dependency needed to manage constraints.
-from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
-
-# The needed clustering abstract class and utilities methods.
-from cognitivefactory.interactive_clustering.sampling.abstract import AbstractConstraintsSampling
-from cognitivefactory.interactive_clustering.utils import checking
+from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
+    AbstractConstraintsManager,
+)
+from cognitivefactory.interactive_clustering.sampling.abstract import (  # To use abstract interface.
+    AbstractConstraintsSampling,
+)
+from cognitivefactory.interactive_clustering.utils import checking  # To check parameters.
 
 
 # ==============================================================================
@@ -41,6 +36,47 @@ class FarhestInSameClusterConstraintsSampling(AbstractConstraintsSampling):
     """
     This class implements the selection of sampling of farhest data IDs from same cluster.
     It inherits from `AbstractConstraintsSampling`.
+
+    Examples:
+        ```python
+        # Import.
+        from scipy.sparse import csr_matrix
+        from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
+        from cognitivefactory.interactive_clustering.sampling.farhest import FarhestInSameClusterConstraintsSampling
+
+        # Create an instance of farhest in same cluster sampling.
+        sampler = FarhestInSameClusterConstraintsSampling(random_seed=1)
+
+        # Define list of data IDs.
+        list_of_data_IDs = ["bonjour", "salut", "coucou", "au revoir", "a bientôt",]
+        clustering_result = {"bonjour": 0, "salut": 0, "coucou": 0, "au revoir": 1, "a bientôt": 1,}
+        vectors = {
+            "bonjour": csr_matrix([1.0, 0.0]),
+            "salut": csr_matrix([1.0, 0.0]),
+            "coucou": csr_matrix([0.8, 0.0]),
+            "au revoir": csr_matrix([0.0, 1.0]),
+            "a bientôt": csr_matrix([0.0, 0.9]),
+        }
+
+        # Define constraints manager (set it to None for no constraints).
+        constraints_manager = BinaryConstraintsManager(
+            list_of_data_IDs=list_of_data_IDs,
+        )
+        constraints_manager.add_constraint(data_ID1="bonjour", data_ID2="salut", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="au revoir", data_ID2="a bientôt", constraint_type="MUST_LINK")
+
+        # Run sampling.
+        selection = sampler.sample(
+            list_of_data_IDs=list_of_data_IDs,
+            nb_to_select=3,
+            clustering_result=clustering_result,
+            vectors=vectors,
+        )
+
+        # Print results.
+        print("Expected results", ";", [("coucou", "salut"), ("bonjour", "coucou"),])  # Not enought possibilities to select.
+        print("Computed results", ":", selection)
+        ```
     """
 
     # ==============================================================================

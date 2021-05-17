@@ -12,18 +12,15 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Dependency needed to define an abstract class.
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod  # To define an abstract class.
+from typing import Dict, List, Optional, Tuple, Union  # To type Python code (mypy).
 
-# Python code typing (mypy).
-from typing import Dict, List, Optional, Tuple, Union
+from numpy import ndarray  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix  # To handle matrix and vectors.
 
-# Dependencies needed to handle matrix.
-from numpy import ndarray
-from scipy.sparse import csr_matrix
-
-# Dependency needed to manage constraints.
-from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
+from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
+    AbstractConstraintsManager,
+)
 
 
 # ==============================================================================

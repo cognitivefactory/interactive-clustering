@@ -12,42 +12,22 @@
 # IMPORTS PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Dependency needed to shuffle data and set random seed.
+from typing import Dict, List, Optional, Union  # To type Python code (mypy).
 
-# Python code typing (mypy).
-from typing import Dict, List, Optional, Union
+import numpy as np  # To handle float.
+from numpy import ndarray  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix  # To handle matrix and vectors.
+from sklearn.cluster import SpectralClustering  # To use classical spectral clustering.
+from sklearn.metrics import pairwise_kernels  # To compute similary.
 
-# Dependencies needed handle float and matrix.
-import numpy as np
-from numpy import ndarray
-from scipy.sparse import csr_matrix
-
-# Dependencies needed to use classical clustering algorithms.
-from sklearn.cluster import SpectralClustering
-
-# Dependencies needed to compute similary matrix.
-from sklearn.metrics import pairwise_kernels
-
-# The needed clustering abstract class and utilities methods.
-from cognitivefactory.interactive_clustering.clustering.abstract import (
+from cognitivefactory.interactive_clustering.clustering.abstract import (  # To use abstract interface.; To sort clusters after computation.
     AbstractConstrainedClustering,
     rename_clusters_by_order,
 )
-
-# Dependency needed to manage constraints.
-from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
-from cognitivefactory.interactive_clustering.utils import checking
-
-##from scipy.linalg import sqrtm
-
-# Dependencies needed to solve semidefine programming.
-##import cvxpy as cp #TODO Replace by cvxopt
-
-# Dependencies needed to solve eigen value computation.
-##from scipy.sparse.csgraph import laplacian as csgraph_laplacian
-##from scipy.sparse.linalg import eigsh
-
-##from sklearn.cluster import KMeans
+from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
+    AbstractConstraintsManager,
+)
+from cognitivefactory.interactive_clustering.utils import checking  # To check parameters.
 
 
 # ==============================================================================
@@ -61,6 +41,55 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
     References:
         - Spectral Clustering: `Ng, A. Y., M. I. Jordan, et Y.Weiss (2002). On Spectral Clustering: Analysis and an algorithm. In T. G. Dietterich, S. Becker, et Z. Ghahramani (Eds.), Advances in Neural Information Processing Systems 14. MIT Press.`
         - Constrained _'SPEC'_ Spectral Clustering: `Kamvar, S. D., D. Klein, et C. D. Manning (2003). Spectral Learning. Proceedings of the international joint conference on artificial intelligence, 561–566.`
+
+    Examples:
+        ```python
+        # Import.
+        from scipy.sparse import csr_matrix
+        from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
+        from cognitivefactory.interactive_clustering.clustering.spectral import SpectralConstrainedClustering
+
+        # Create an instance of spectral clustering.
+        clustering_model = SpectralConstrainedClustering(
+            model="SPEC",
+            random_seed=1,
+        )
+
+        # Define vectors.
+        # NB : use cognitivefactory.interactive_clustering.utils to preprocess and vectorize texts.
+        vectors = {
+            "0": csr_matrix([1.00, 0.00, 0.00, 0.00]),
+            "1": csr_matrix([0.95, 0.02, 0.02, 0.01]),
+            "2": csr_matrix([0.98, 0.00, 0.02, 0.00]),
+            "3": csr_matrix([0.99, 0.00, 0.01, 0.00]),
+            "4": csr_matrix([0.60, 0.17, 0.16, 0.07]),
+            "5": csr_matrix([0.60, 0.16, 0.17, 0.07]),
+            "6": csr_matrix([0.01, 0.01, 0.01, 0.97]),
+            "7": csr_matrix([0.00, 0.01, 0.00, 0.99]),
+            "8": csr_matrix([0.00, 0.00, 0.00, 1.00]),
+        }
+
+        # Define constraints manager (set it to None for no constraints).
+        constraints_manager = BinaryConstraintsManager(list_of_data_IDs=["0", "1", "2", "3", "4", "5", "6", "7", "8"])
+        constraints_manager.add_constraint(data_ID1="0", data_ID2="1", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="2", data_ID2="3", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="4", data_ID2="5", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="7", data_ID2="8", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="0", data_ID2="4", constraint_type="CANNOT_LINK")
+        constraints_manager.add_constraint(data_ID1="2", data_ID2="4", constraint_type="CANNOT_LINK")
+        constraints_manager.add_constraint(data_ID1="4", data_ID2="7", constraint_type="CANNOT_LINK")
+
+        # Run clustering.
+        dict_of_predicted_clusters = clustering_model(
+            vectors=vectors
+            nb_clusters=3
+            constraints_manager=constraints_manager
+        )
+
+        # Print results.
+        print("Expected results", ";", {"0": 0, "1": 0, "2": 0, "3": 0, "4": 1, "5": 1, "6": 2, "7": 2, "8": 2,})
+        print("Computed results", ":", dict_of_predicted_clusters)
+        ```
     """
 
     # ==============================================================================

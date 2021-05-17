@@ -12,29 +12,22 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Dependency needed to print verbose output.
-from datetime import datetime
+from datetime import datetime  # To use date in verbose output.
+from typing import Any, Dict, List, Optional, Tuple, Union  # To type Python code (mypy).
 
-# Python code typing (mypy).
-from typing import Any, Dict, List, Optional, Tuple, Union
+import numpy as np  # To handle float.
+from numpy import ndarray  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix  # To handle matrix and vectors.
+from sklearn.metrics import pairwise_distances  # To compute distance.
 
-# Dependencies needed to handle float and matrix.
-import numpy as np
-from numpy import ndarray
-from scipy.sparse import csr_matrix
-
-# Dependency needed to compute distance between two data points.
-from sklearn.metrics import pairwise_distances
-
-# The needed clustering abstract class and utilities methods.
-from cognitivefactory.interactive_clustering.clustering.abstract import (
+from cognitivefactory.interactive_clustering.clustering.abstract import (  # To use abstract interface.; To sort clusters after computation.
     AbstractConstrainedClustering,
     rename_clusters_by_order,
 )
-
-# Dependency needed to manage constraints.
-from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
-from cognitivefactory.interactive_clustering.utils import checking
+from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
+    AbstractConstraintsManager,
+)
+from cognitivefactory.interactive_clustering.utils import checking  # To check parameters.
 
 
 # ==============================================================================
@@ -48,6 +41,48 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
     References:
         - Hierarchical Clustering: `Murtagh, F. et P. Contreras (2012). Algorithms for hierarchical clustering : An overview. Wiley Interdisc. Rew.: Data Mining and Knowledge Discovery 2, 86–97.`
         - Constrained Hierarchical Clustering: `Davidson, I. et S. S. Ravi (2005). Agglomerative Hierarchical Clustering with Constraints : Theoretical and Empirical Results. Springer, Berlin, Heidelberg 3721, 12.`
+
+    Examples:
+        ```python
+        # Import.
+        from scipy.sparse import csr_matrix
+        from cognitivefactory.interactive_clustering.clustering.hierarchical import HierarchicalConstrainedClustering
+
+        # Create an instance of hierarchical clustering.
+        clustering_model = HierarchicalConstrainedClustering(
+            linkage="ward",
+            random_seed=2,
+        )
+
+        # Define vectors.
+        # NB : use cognitivefactory.interactive_clustering.utils to preprocess and vectorize texts.
+        vectors = {
+            "0": csr_matrix([1.00, 0.00, 0.00]),
+            "1": csr_matrix([0.95, 0.02, 0.01]),
+            "2": csr_matrix([0.98, 0.00, 0.00]),
+            "3": csr_matrix([0.99, 0.00, 0.00]),
+            "4": csr_matrix([0.01, 0.99, 0.07]),
+            "5": csr_matrix([0.02, 0.99, 0.07]),
+            "6": csr_matrix([0.01, 0.99, 0.02]),
+            "7": csr_matrix([0.01, 0.01, 0.97]),
+            "8": csr_matrix([0.00, 0.01, 0.99]),
+            "9": csr_matrix([0.00, 0.00, 1.00]),
+        }
+
+        # Define constraints manager (set it to None for no constraints).
+        constraints_manager = None
+
+        # Run clustering.
+        dict_of_predicted_clusters = clustering_model(
+            vectors=vectors
+            nb_clusters=3
+            constraints_manager=constraints_manager
+        )
+
+        # Print results.
+        print("Expected results", ";", {"0": 0, "1": 0, "2": 0, "3": 0, "4": 1, "5": 1, "6": 1, "7": 2, "8": 2, "9": 2,})
+        print("Computed results", ":", dict_of_predicted_clusters)
+        ```
     """
 
     # ==============================================================================

@@ -14,17 +14,11 @@
 
 import math
 
-# Dependencies needed to handle matrix.
 import numpy as np
-
-# Needed library to apply tests.
 import pytest
 from scipy.sparse import csr_matrix
 
-# Modules/Classes/Methods to test.
 from cognitivefactory.interactive_clustering.clustering.kmeans import KMeansConstrainedClustering
-
-# Dependency needed to manage constraints.
 from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
 
 

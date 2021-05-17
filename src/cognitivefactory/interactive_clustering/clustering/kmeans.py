@@ -12,29 +12,22 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Dependency needed to shuffle data and set random seed.
-import random
+import random  # To shuffle data and set random seed.
+from typing import Dict, List, Optional, Union  # To type Python code (mypy).
 
-# Python code typing (mypy).
-from typing import Dict, List, Optional, Union
+import numpy as np  # To handle float.
+from numpy import ndarray  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix  # To handle matrix and vectors.
+from sklearn.metrics import pairwise_distances  # To compute distance.
 
-# Dependencies needed to handle float and matrix.
-import numpy as np
-from numpy import ndarray
-from scipy.sparse import csr_matrix
-
-# Dependency needed to compute distance between two data points.
-from sklearn.metrics import pairwise_distances
-
-# The needed clustering abstract class and utilities methods.
-from cognitivefactory.interactive_clustering.clustering.abstract import (
+from cognitivefactory.interactive_clustering.clustering.abstract import (  # To use abstract interface.; To sort clusters after computation.
     AbstractConstrainedClustering,
     rename_clusters_by_order,
 )
-
-# Dependency needed to manage constraints.
-from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
-from cognitivefactory.interactive_clustering.utils import checking
+from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
+    AbstractConstraintsManager,
+)
+from cognitivefactory.interactive_clustering.utils import checking  # To check parameters.
 
 
 # ==============================================================================
@@ -48,6 +41,55 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
     References:
         - KMeans Clustering: `MacQueen, J. (1967). Some methods for classification and analysis of multivariate observations. Proceedings of the fifth Berkeley symposium on mathematical statistics and probability 1(14), 281–297.`
         - Constrained _'COP'_ KMeans Clustering: `Wagstaff, K., C. Cardie, S. Rogers, et S. Schroedl (2001). Constrained K-means Clustering with Background Knowledge. International Conference on Machine Learning`
+
+
+    Examples:
+        ```python
+        # Import.
+        from scipy.sparse import csr_matrix
+        from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
+        from cognitivefactory.interactive_clustering.clustering.kmeans import KMeansConstrainedClustering
+
+        # Create an instance of kmeans clustering.
+        clustering_model = KMeansConstrainedClustering(
+            model="COP",
+            random_seed=2,
+        )
+
+        # Define vectors.
+        # NB : use cognitivefactory.interactive_clustering.utils to preprocess and vectorize texts.
+        vectors = {
+            "0": csr_matrix([1.00, 0.00, 0.00, 0.00]),
+            "1": csr_matrix([0.95, 0.02, 0.02, 0.01]),
+            "2": csr_matrix([0.98, 0.00, 0.02, 0.00]),
+            "3": csr_matrix([0.99, 0.00, 0.01, 0.00]),
+            "4": csr_matrix([0.50, 0.22, 0.21, 0.07]),
+            "5": csr_matrix([0.50, 0.21, 0.22, 0.07]),
+            "6": csr_matrix([0.01, 0.01, 0.01, 0.97]),
+            "7": csr_matrix([0.00, 0.01, 0.00, 0.99]),
+            "8": csr_matrix([0.00, 0.00, 0.00, 1.00]),
+        }
+
+        # Define constraints manager (set it to None for no constraints).
+        constraints_manager = BinaryConstraintsManager(list_of_data_IDs=["0", "1", "2", "3", "4", "5", "6", "7", "8"])
+        constraints_manager.add_constraint(data_ID1="0", data_ID2="1", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="0", data_ID2="7", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="0", data_ID2="8", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="4", data_ID2="5", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="0", data_ID2="4", constraint_type="CANNOT_LINK")
+        constraints_manager.add_constraint(data_ID1="2", data_ID2="4", constraint_type="CANNOT_LINK")
+
+        # Run clustering.
+        dict_of_predicted_clusters = clustering_model(
+            vectors=vectors
+            nb_clusters=3
+            constraints_manager=constraints_manager
+        )
+
+        # Print results.
+        print("Expected results", ";", {"0": 0, "1": 0, "2": 1, "3": 1, "4": 2, "5": 2, "6": 0, "7": 0, "8": 0,})
+        print("Computed results", ":", dict_of_predicted_clusters)
+        ```
     """
 
     # ==============================================================================

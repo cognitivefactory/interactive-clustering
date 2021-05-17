@@ -12,10 +12,8 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Needed library to apply tests.
 import pytest
 
-# Modules/Classes/Methods to test.
 from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
 
 

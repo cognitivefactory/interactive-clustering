@@ -12,21 +12,13 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Import path management dependencies.
+from typing import Dict, Union  # To type Python code (mypy).
 
-# Python code typing (mypy).
-from typing import Dict, Union
-
-# import spacy
-import fr_core_news_sm
-
-# Dependencies needed to handle float and matrix.
-import numpy as np
-from numpy import ndarray
-from scipy.sparse import csr_matrix
-
-# Dependencies for vectorization.
-from sklearn.feature_extraction.text import TfidfVectorizer
+import fr_core_news_sm  # To apply spacy language model.
+import numpy as np  # To handle float.
+from numpy import ndarray  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix  # To handle matrix and vectors.
+from sklearn.feature_extraction.text import TfidfVectorizer  # To apply TF-IDF vectorisation.
 
 
 # ==============================================================================
@@ -56,6 +48,28 @@ def vectorize(
 
     Returns:
         Dict[str, Union[ndarray,csr_matrix]]: A dictionary that contains the computed vectors.
+
+    Examples:
+        ```python
+        # Import.
+        from cognitivefactory.interactive_clustering.utils.vectorization import vectorize
+
+        # Define data.
+        dict_of_texts={
+            "0": "comment signaler une perte de carte de paiement",
+            "1": "quelle est la procedure pour chercher une carte de credit avalee",
+            "2": "ma carte visa a un plafond de paiment trop bas puis je l augmenter",
+        }
+
+        # Apply vectorization.
+        dict_of_vectors = vectorize(
+            dict_of_texts=dict_of_texts
+            vectorizer_type="spacy",
+        )
+
+        # Print results.
+        print("Computed results", ":", dict_of_vectors)
+        ```
     """
 
     # Initialize dictionary of vectors.

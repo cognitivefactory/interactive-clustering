@@ -12,11 +12,9 @@
 # IMPORTS :
 # =============================================================================
 
-# Python code typing (mypy).
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Tuple  # To type Python code (mypy).
 
-# Dependencies needed to solve semidefine programming.
-import cvxopt
+import cvxopt  # To solve semidefine programming.
 
 
 # ==============================================================================

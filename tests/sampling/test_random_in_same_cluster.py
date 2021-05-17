@@ -12,13 +12,9 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Needed library to apply tests.
 import pytest
 
-# Dependency needed to manage constraints.
 from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
-
-# Modules/Classes/Methods to test.
 from cognitivefactory.interactive_clustering.sampling.random_in_same_cluster import (
     RandomInSameClusterConstraintsSampling,
 )

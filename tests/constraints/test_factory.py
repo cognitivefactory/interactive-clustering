@@ -12,12 +12,9 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Needed library to apply tests.
 import pytest
 
 from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
-
-# Modules/Classes/Methods to test.
 from cognitivefactory.interactive_clustering.constraints.factory import managing_factory
 
 

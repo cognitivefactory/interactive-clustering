@@ -12,11 +12,8 @@
 # IMPORTS :
 # ==============================================================================
 
-# Dependency needed to define an abstract class.
-from abc import ABC, abstractmethod
-
-# Python code typing (mypy).
-from typing import List, Optional, Tuple
+from abc import ABC, abstractmethod  # To define an abstract class.
+from typing import List, Optional, Tuple  # To type Python code (mypy).
 
 
 # ==============================================================================

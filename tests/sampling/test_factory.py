@@ -12,14 +12,11 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Needed library to apply tests.
 import pytest
 
 from cognitivefactory.interactive_clustering.sampling.closest_in_different_clusters import (
     ClosestInDifferentClustersConstraintsSampling,
 )
-
-# Modules/Classes/Methods to test.
 from cognitivefactory.interactive_clustering.sampling.factory import sampling_factory
 from cognitivefactory.interactive_clustering.sampling.farhest_in_same_cluster import (
     FarhestInSameClusterConstraintsSampling,

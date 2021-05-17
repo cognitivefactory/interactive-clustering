@@ -12,18 +12,12 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Dependencies needed to handle matrix.
 import numpy as np
-
-# Needed library to apply tests.
 import pytest
 from scipy.sparse import csr_matrix
 
-# Dependency needed to manage constraints.
 from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
 from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
-
-# Modules/Classes/Methods to test.
 from cognitivefactory.interactive_clustering.utils.checking import (
     check_clustering_result,
     check_constraints_manager,

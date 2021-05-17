@@ -12,22 +12,19 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Dependency needed to shuffle data and set random seed.
-import random
+import random  # To shuffle data and set random seed.
+from typing import Dict, List, Optional, Tuple, Union  # To type Python code (mypy).
 
-# Python code typing (mypy).
-from typing import Dict, List, Optional, Tuple, Union
+from numpy import ndarray  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix  # To handle matrix and vectors.
 
-# Dependencies needed to handle matrix.
-from numpy import ndarray
-from scipy.sparse import csr_matrix
-
-# Dependency needed to manage constraints.
-from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
-
-# The needed clustering abstract class and utilities methods.
-from cognitivefactory.interactive_clustering.sampling.abstract import AbstractConstraintsSampling
-from cognitivefactory.interactive_clustering.utils import checking
+from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
+    AbstractConstraintsManager,
+)
+from cognitivefactory.interactive_clustering.sampling.abstract import (  # To use abstract interface.
+    AbstractConstraintsSampling,
+)
+from cognitivefactory.interactive_clustering.utils import checking  # To check parameters.
 
 
 # ==============================================================================
@@ -37,6 +34,35 @@ class RandomConstraintsSampling(AbstractConstraintsSampling):
     """
     This class implements the selection of sampling of random data IDs.
     It inherits from `AbstractConstraintsSampling`.
+
+    Examples:
+        ```python
+        # Import.
+        from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
+        from cognitivefactory.interactive_clustering.sampling.random import RandomConstraintsSampling
+
+        # Create an instance of random sampling.
+        sampler = RandomConstraintsSampling(random_seed=1)
+
+        # Define list of data IDs.
+        list_of_data_IDs = ["bonjour", "salut", "coucou", "au revoir", "a bientôt",]
+
+        # Define constraints manager (set it to None for no constraints).
+        constraints_manager = BinaryConstraintsManager(
+            list_of_data_IDs=list_of_data_IDs,
+        )
+        constraints_manager.add_constraint(data_ID1="bonjour", data_ID2="salut", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="au revoir", data_ID2="a bientôt", constraint_type="MUST_LINK")
+
+        # Run sampling.
+        selection = sampler.sample(
+            list_of_data_IDs=list_of_data_IDs,
+            nb_to_select=3,
+        )
+
+        # Print results.
+        print("Expected results", ";", [("au revoir", "bonjour"), ("bonjour", "coucou"), ("a bientôt", "coucou"),])
+        prin
     """
 
     # ==============================================================================

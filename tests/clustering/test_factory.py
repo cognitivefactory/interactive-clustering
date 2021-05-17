@@ -14,10 +14,8 @@
 
 import math
 
-# Needed library to apply tests.
 import pytest
 
-# Modules/Classes/Methods to test.
 from cognitivefactory.interactive_clustering.clustering.factory import clustering_factory
 from cognitivefactory.interactive_clustering.clustering.hierarchical import HierarchicalConstrainedClustering
 from cognitivefactory.interactive_clustering.clustering.kmeans import KMeansConstrainedClustering

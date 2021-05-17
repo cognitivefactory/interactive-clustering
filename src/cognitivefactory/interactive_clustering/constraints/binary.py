@@ -12,12 +12,12 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Python code typing (mypy).
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple  # To type Python code (mypy).
 
-# The needed clustering abstract class and utilities methods.
-from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
-from cognitivefactory.interactive_clustering.utils import graph
+from cognitivefactory.interactive_clustering.constraints.abstract import (  # To use abstract interface.
+    AbstractConstraintsManager,
+)
+from cognitivefactory.interactive_clustering.utils import graph  # To use utilities methods on graph
 
 
 # ==============================================================================
@@ -30,6 +30,38 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
 
     References:
         - Binary constraints in clustering: `Wagstaff, K. et C. Cardie (2000). Clustering with Instance-level Constraints. Proceedings of the Seventeenth International Conference on Machine Learning, 1103–1110.`
+
+    Examples:
+        ```python
+        # Import.
+        from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
+
+        # Create an instance of binary constraints manager.
+        constraints_manager = BinaryConstraintsManager(list_of_data_IDs=["0", "1", "2", "3", "4"])
+
+        # Add new data ID.
+        constraints_manager.add_data_ID(data_ID="99")
+
+        # Get list of data IDs.
+        constraints_manager.get_list_of_managed_data_IDs()
+
+        # Delete an existing data ID.
+        constraints_manager.delete_data_ID(data_ID="99")
+
+        # Add constraints.
+        constraints_manager.add_constraint(data_ID1="0", data_ID2="1", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="1", data_ID2="2", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="2, data_ID2="3", constraint_type="CANNOT_LINK")
+
+        # Get added constraint.
+        constraints_manager.get_added_constraint(data_ID1="0", data_ID2="1")  # expected ("MUST_LINK", 1.0)
+        constraints_manager.get_added_constraint(data_ID1="0", data_ID2="2")  # expected None
+
+        # Get inferred constraint.
+        constraints_manager.get_inferred_constraint(data_ID1="0", data_ID2="2")  # expected "MUST_LINK"
+        constraints_manager.get_inferred_constraint(data_ID1="0", data_ID2="3")  # expected "CANNOT_LINK"
+        constraints_manager.get_inferred_constraint(data_ID1="0", data_ID2="4")  # expected None
+        ```
     """
 
     # ==============================================================================

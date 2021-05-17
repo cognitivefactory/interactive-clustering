@@ -12,18 +12,12 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# Import path management dependencies.
+import unicodedata  # To handle accents.
+from typing import Dict  # To type Python code (mypy).
 
-# Import preprocessing dependencies.
-import unicodedata
+import fr_core_news_sm  # To apply spacy language model.
 
-# Python code typing (mypy).
-from typing import Dict
-
-# import spacy
-import fr_core_news_sm
-
-# from nltk.stem.snowball import SnowballStemmer
+# from nltk.stem.snowball import SnowballStemmer  # To stemm texts.
 
 
 # ==============================================================================
@@ -55,6 +49,31 @@ def preprocess(
 
     Returns:
         Dict[str,str]: A dictionary that contains the preprocessed texts.
+
+    Examples:
+        ```python
+        # Import.
+        from cognitivefactory.interactive_clustering.utils.preprocessing import preprocess
+
+        # Define data.
+        dict_of_texts={
+            "0": "Comment signaler une perte de carte de paiement ?",
+            "1": "Quelle est la procédure pour chercher une carte de crédit avalée ?",
+            "2": "Ma carte Visa a un plafond de paiment trop bas, puis-je l'augmenter ?",
+        }
+
+        # Apply preprocessing.
+        dict_of_preprocessed_texts = preprocess(
+            dict_of_texts=dict_of_texts
+            apply_stopwords_deletion=True,
+            apply_parsing_filter=False,
+            apply_lemmatization=False,
+        )
+
+        # Print results.
+        print("Expected results", ";", {"0": "signaler perte carte paiement", "1": "procedure chercher carte credit avalee", "2": "carte visa plafond paiment l augmenter",})
+        print("Computed results", ":", dict_of_preprocessed_texts)
+        ```
     """
 
     # Initialize dictionary of preprocessed texts.
