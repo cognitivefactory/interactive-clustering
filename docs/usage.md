@@ -81,9 +81,9 @@ if is_finish:
 
 Sampling constraints to annotate.
 ```python
-# Create an instance of sampler of closest data in different clusters.
+# Create an instance of random sampler.
 sampler = sampling_factory(
-    algorithm="closest_in_different_clusters",
+    algorithm="random",
     random_seed=None,
 )  # Other algorithms are available.
 
@@ -91,8 +91,8 @@ sampler = sampling_factory(
 selection = sampler.sample(
     list_of_data_IDs=sorted(dict_of_texts.keys()),
     nb_to_select=3,
-    clustering_result=clustering_result,  # Results from iteration `N-1`.
-    vectors=dict_of_vectors,
+    #clustering_result=clustering_result,  # Results from iteration `N-1`.
+    #vectors=dict_of_vectors,
 )
 ```
 
