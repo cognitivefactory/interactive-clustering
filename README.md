@@ -12,20 +12,29 @@ Python package used to apply NLP interactive clustering methods.
 _Interactive clustering_ is a method intended to assist in the design of a training data set.
 
 This iterative process begins with an unlabeled dataset, and it uses a sequence of two substeps :
+
 1. the user defines constraints on the data ;
+
 2. the machine performs data partitioning using a constrained clustering algorithm.
 
 Thus, at each step of the process :
+
 - the user corrects the clustering of the previous steps using constraints, and
+
 - the machine offers a corrected and more relevant data partitioning for the next step.
 
 The process use severals objects :
+
 - a _constraints manager_ : its role is to manage the constraints annotated by the user and to feed back the information deduced (such as the transitivity between constraints or the situation of inconsistency) ;
+
 - a _constraints sampler_ : its role is to select the most relevant data during the annotation of constraints by the user ;
+
 - a _constrained clustering algorithm_ : its role is to partition the data while respecting the constraints provided by the user.
 
 _NB_ :
+
 - This python library does not contain integration into a graphic interface.
+
 - For more details, read the articles in the [References](#references) section.
 
 ## Requirements

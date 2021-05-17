@@ -8,6 +8,7 @@ site_dir: "site"
 nav:
 - Home:
   - Overview: index.md
+  - Usage: usage.md
   - Changelog: changelog.md
   - Credits: credits.md
   - License: license.md
