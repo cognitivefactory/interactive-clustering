@@ -21,6 +21,7 @@ python = "^3.6"
 numpy = "^1.19.4"
 scipy = "^1.5.3"
 scikit-learn = "^0.24.1"
+spacy = "2.3.2"
 fr-core-news-sm = { url = "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-2.3.0/fr_core_news_sm-2.3.0.tar.gz" }  # spacy = "^2.3.2"
 cvxopt = "^1.2"
 
@@ -64,6 +65,11 @@ mkdocs-coverage = "^0.2.1"
 mkdocs-macros-plugin = "^0.5.0"
 mkdocs-material = "^6.2.7"
 mkdocstrings = "^0.15.0"
+
+[[tool.poetry.source]]
+name = "all-pypi-dev"
+url = "https://repo-si.cm-cic.fr/artifactory/api/pypi/all-pypi-dev/simple/"
+default = true
 
 [tool.black]
 line-length = 120

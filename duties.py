@@ -12,7 +12,7 @@ from duty import duty
 from git_changelog.build import Changelog, Version
 from jinja2.sandbox import SandboxedEnvironment
 
-PY_SRC_PATHS = (Path(_) for _ in ("src", "tests", "duties.py", "docs/macros.py"))
+PY_SRC_PATHS = (Path(_) for _ in ("src/cognitivefactory", "tests", "duties.py", "docs/macros.py"))
 PY_SRC_LIST = tuple(str(_) for _ in PY_SRC_PATHS)
 PY_SRC = " ".join(PY_SRC_LIST)
 TESTING = os.environ.get("TESTING", "0") in {"1", "true"}
@@ -210,7 +210,7 @@ def check_types(ctx):
     Arguments:
         ctx: The context instance (passed automatically).
     """
-    ctx.run(f"mypy --config-file config/mypy.ini {PY_SRC}", title="Type-checking", pty=PTY)
+    ctx.run("mypy --config-file config/mypy.ini src/cognitivefactory", title="Type-checking", pty=PTY)
 
 
 @duty(silent=True)
