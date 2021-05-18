@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [0.1.1](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.1.1) - 2021-05-18
+
+<small>[Compare with 0.1.0](https://github.com/cognitivefactory/interactive-clustering/compare/0.1.0...0.1.1)</small>
+
+
 ## [0.1.0](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.1.0) - 2021-05-17
 
 <small>[Compare with first commit](https://github.com/cognitivefactory/interactive-clustering/compare/8e0d8b45342caf2850a9238ddba48c9b7f1d7f44...0.1.0)</small>

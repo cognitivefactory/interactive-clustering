@@ -2,8 +2,7 @@
 
 [![ci](https://github.com/cognitivefactory/interactive-clustering/workflows/ci/badge.svg)](https://github.com/cognitivefactory/interactive-clustering/actions?query=workflow%3Aci)
 [![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://cognitivefactory.github.io/interactive-clustering/)
-[![pypi version](https://img.shields.io/pypi/v/interactive-clustering.svg)](https://pypi.org/project/interactive-clustering/)
-[![gitter](https://badges.gitter.im/join%20chat.svg)](https://gitter.im/interactive-clustering/community)
+[![pypi version](https://img.shields.io/pypi/v/cognitivefactory-interactive-clustering.svg)](https://pypi.org/project/cognitivefactory-interactive-clustering/)
 
 Python package used to apply NLP interactive clustering methods.
 
