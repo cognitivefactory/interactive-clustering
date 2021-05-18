@@ -761,6 +761,14 @@ def test_HierarchicalConstrainedClustering_cluster_with_verbose_output():
     )
     assert clustering_model.dict_of_predicted_clusters
 
+    # Run clustering without verbose output.
+    clustering_model.cluster(
+        vectors=vectors,
+        nb_clusters=5,
+        constraints_manager=constraints_manager,
+        verbose=False,
+    )
+    assert clustering_model.dict_of_predicted_clusters
 
 # ==============================================================================
 # test_HierarchicalConstrainedClustering_cluster_with_verbose_end_cases_with_too_many_clusters
@@ -808,6 +816,14 @@ def test_HierarchicalConstrainedClustering_cluster_with_verbose_end_cases_with_t
         "7": 7,
         "8": 8,
     }
+
+    # Run clustering without verbose output.
+    dict_of_predicted_clusters = clustering_model.cluster(
+        vectors=vectors,
+        nb_clusters=99,
+        constraints_manager=constraints_manager,
+        verbose=False,
+    )
 
 
 # ==============================================================================

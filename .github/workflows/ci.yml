@@ -100,3 +100,6 @@ jobs:
 
     - name: Run the test suite
       run: poetry run duty test
+
+    - name: Compute tests coverage
+      run: poetry run duty coverage
