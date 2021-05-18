@@ -690,11 +690,11 @@ def test_HierarchicalConstrainedClustering_compute_predicted_clusters_travelling
 
 
 # ==============================================================================
-# test_HierarchicalConstrainedClustering_cluster_with_verbose_output
+# test_HierarchicalConstrainedClustering_cluster_with_break_loop
 # ==============================================================================
-def test_HierarchicalConstrainedClustering_cluster_with_verbose_output():
+def test_HierarchicalConstrainedClustering_cluster_with_break_loop():
     """
-    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering works with option `verbose`.
+    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering can break clustering loop.
     """
 
     # Define `vectors` and `constraints_manager`
@@ -752,30 +752,32 @@ def test_HierarchicalConstrainedClustering_cluster_with_verbose_output():
         linkage="average",
     )
 
-    # Run clustering with verbose output.
+    # Run clustering.
     clustering_model.cluster(
         vectors=vectors,
         nb_clusters=5,
         constraints_manager=constraints_manager,
-        verbose=True,
     )
     assert clustering_model.dict_of_predicted_clusters
+    assert clustering_model.dict_of_predicted_clusters == {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+    }
 
-    # Run clustering without verbose output.
-    clustering_model.cluster(
-        vectors=vectors,
-        nb_clusters=5,
-        constraints_manager=constraints_manager,
-        verbose=False,
-    )
-    assert clustering_model.dict_of_predicted_clusters
 
 # ==============================================================================
-# test_HierarchicalConstrainedClustering_cluster_with_verbose_end_cases_with_too_many_clusters
+# test_HierarchicalConstrainedClustering_cluster_end_cases_with_too_many_clusters
 # ==============================================================================
-def test_HierarchicalConstrainedClustering_cluster_with_verbose_end_cases_with_too_many_clusters():
+def test_HierarchicalConstrainedClustering_cluster_end_cases_with_too_many_clusters():
     """
-    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering works with option `verbose` and too many clusters.
+    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering works with too many clusters.
     """
 
     # Define `vectors` and `constraints_manager`
@@ -797,12 +799,11 @@ def test_HierarchicalConstrainedClustering_cluster_with_verbose_end_cases_with_t
         linkage="average",
     )
 
-    # Run clustering with verbose output.
+    # Run clustering.
     dict_of_predicted_clusters = clustering_model.cluster(
         vectors=vectors,
         nb_clusters=99,
         constraints_manager=constraints_manager,
-        verbose=True,
     )
     assert clustering_model.dict_of_predicted_clusters
     assert dict_of_predicted_clusters == {
@@ -816,14 +817,6 @@ def test_HierarchicalConstrainedClustering_cluster_with_verbose_end_cases_with_t
         "7": 7,
         "8": 8,
     }
-
-    # Run clustering without verbose output.
-    dict_of_predicted_clusters = clustering_model.cluster(
-        vectors=vectors,
-        nb_clusters=99,
-        constraints_manager=constraints_manager,
-        verbose=False,
-    )
 
 
 # ==============================================================================

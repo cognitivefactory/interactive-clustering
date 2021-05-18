@@ -372,7 +372,7 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
         eigen_values = eigen_values[1:]
         eigen_vectors = eigen_vectors.T[1:]
 
-        if verbose:
+        if verbose:  # pragma: no cover
             print("EIGENVALUES / EIGENVECTORS")
 
             for k in range(len(eigen_values)):
@@ -463,7 +463,7 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
 
         # Solve the SDP problem.
         self.SDP_problem.solve(solver="MOSEK")
-        if verbose:
+        if verbose:  # pragma: no cover
             print("SEMIDEFINITE PROBLEM")
             print("    ", "STATUS", ":", self.SDP_problem.status)
             print("    ", "COST FUNCTION VALUE", ":", self.SDP_problem.value)

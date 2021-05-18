@@ -191,12 +191,13 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         ###
 
         # Verbose
-        if verbose:
+        if verbose:  # pragma: no cover
 
             # Verbose - Print progression status.
             TIME_start: datetime = datetime.now()
             print(
-                "    CLUSTERING_ITERATION=" + "INITIALIZATION",
+                "    ",
+                "CLUSTERING_ITERATION=" + "INITIALIZATION",
                 "(current_time = " + str(TIME_start - TIME_start).split(".")[0] + ")",
             )
 
@@ -246,12 +247,13 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         while len(self.current_clusters) > 1:
 
             # Verbose
-            if verbose:
+            if verbose:  # pragma: no cover
 
                 # Verbose - Print progression status.
                 TIME_current: datetime = datetime.now()
                 print(
-                    "    CLUSTERING_ITERATION="
+                    "    ",
+                    "CLUSTERING_ITERATION="
                     + str(self.clustering_iteration).zfill(6)
                     + "/"
                     + str(max_clustering_iteration).zfill(6),
@@ -264,17 +266,6 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
             # If no clusters to merge, then stop iterations.
             if clostest_clusters is None:
-
-                # Verbose - Print progression breaking.
-                if verbose:
-                    print(
-                        "    CLUSTERING_ITERATION="
-                        + str(self.clustering_iteration).zfill(6)
-                        + "/"
-                        + str(max_clustering_iteration).zfill(6),
-                        "-",
-                        "Break : no more data to merge.",
-                    )
                 break
 
             # Merge clusters the two closest clusters and add the merged cluster to the storage.
@@ -304,16 +295,28 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         ###
 
         # Verbose
-        if verbose:
+        if verbose:  # pragma: no cover
 
             # Verbose - Print progression status.
             TIME_current = datetime.now()
-            print(
-                "    CLUSTERING_ITERATION=" + str(self.clustering_iteration).zfill(5),
-                "-",
-                "End : Full clustering done",
-                "(current_time = " + str(TIME_current - TIME_start).split(".")[0] + ")",
-            )
+
+            # Case of clustering not completed.
+            if len(self.current_clusters) > 1:
+                print(
+                    "    ",
+                    "CLUSTERING_ITERATION=" + str(self.clustering_iteration).zfill(5),
+                    "-",
+                    "End : No more cluster to merge",
+                    "(current_time = " + str(TIME_current - TIME_start).split(".")[0] + ")",
+                )
+            else:
+                print(
+                    "    ",
+                    "CLUSTERING_ITERATION=" + str(self.clustering_iteration).zfill(5),
+                    "-",
+                    "End : Full clustering done",
+                    "(current_time = " + str(TIME_current - TIME_start).split(".")[0] + ")",
+                )
 
         # If several clusters remains, then merge them in a cluster root.
         if len(self.current_clusters) > 1:
@@ -656,18 +659,18 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
                 # i.e. it's the cluster that was last merged.
                 cluster_to_split = max(list_of_clusters, key=lambda c: c.clustering_iteration)
 
-            # If the chosen cluster is a node, split it and get its children.
-            if cluster_to_split.children:
+            # If the chosen cluster is a leaf : break the `HierarchicalConstrainedClustering` exploration.
+            if cluster_to_split.children == []:  # noqa: WPS520
+                break
+
+            # Otherwise: The chosen cluster is a node, so split it and get its children.
+            else:
                 # ... remove the cluster obtained ...
                 list_of_clusters.remove(cluster_to_split)
 
                 # ... and add all its children.
                 for child in cluster_to_split.children:
                     list_of_clusters.append(child)
-
-            # Otherwise: the chosen cluster is a leaf. Break the `HierarchicalConstrainedClustering` exploration.
-            else:
-                break
 
         ###
         ### GET PREDICTED CLUSTERS

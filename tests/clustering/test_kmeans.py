@@ -367,11 +367,11 @@ def test_KMeansConstrainedClustering_cluster_with_full_constraints():
 
 
 # ==============================================================================
-# test_KMeansConstrainedClustering_cluster_with_verbose_output_1
+# test_KMeansConstrainedClustering_cluster_with_no_possible_cluster
 # ==============================================================================
-def test_KMeansConstrainedClustering_cluster_with_verbose_output_1():
+def test_KMeansConstrainedClustering_cluster_with_no_possible_cluster():
     """
-    Test that the `clustering.kmeans.KMeansConstrainedClustering` clustering works with option `verbose`.
+    Test that the `clustering.kmeans.KMeansConstrainedClustering` clustering works with no possible cluster.
     """
 
     # Define `vectors` and `constraints_manager`
@@ -429,12 +429,11 @@ def test_KMeansConstrainedClustering_cluster_with_verbose_output_1():
         random_seed=3,
     )
 
-    # Run clustering with verbose output.
+    # Run clustering.
     dict_of_predicted_clusters = clustering_model.cluster(
         vectors=vectors,
         nb_clusters=5,
         constraints_manager=constraints_manager,
-        verbose=True,
     )
     assert clustering_model.dict_of_predicted_clusters
     assert dict_of_predicted_clusters == {
@@ -448,101 +447,6 @@ def test_KMeansConstrainedClustering_cluster_with_verbose_output_1():
         "7": 7,
         "8": 8,
     }
-
-
-# ==============================================================================
-# test_KMeansConstrainedClustering_cluster_with_verbose_output_2
-# ==============================================================================
-def test_KMeansConstrainedClustering_cluster_with_verbose_output_2():
-    """
-    Test that the `clustering.kmeans.KMeansConstrainedClustering` clustering works with option `verbose`.
-    """
-
-    # Define `vectors` and `constraints_manager`
-    vectors = {
-        "00": csr_matrix([1.00, 0.00, 0.45]),
-        "01": csr_matrix([0.80, 0.99, 0.01]),
-        "02": csr_matrix([1.00, 0.00, 0.15]),
-        "03": csr_matrix([1.00, 0.86, 0.00]),
-        "04": csr_matrix([0.95, 0.28, 0.01]),
-        "05": csr_matrix([0.81, 0.02, 0.01]),
-        "06": csr_matrix([0.95, 0.04, 0.01]),
-        "07": csr_matrix([0.95, 0.02, 0.05]),
-        "08": csr_matrix([0.80, 1.00, 0.52]),
-        "09": csr_matrix([0.98, 0.10, 0.54]),
-        "10": csr_matrix([0.98, 0.15, 0.10]),
-        "11": csr_matrix([0.90, 0.00, 0.00]),
-        "12": csr_matrix([0.99, 0.01, 0.28]),
-        "13": csr_matrix([0.50, 0.22, 0.07]),
-        "14": csr_matrix([0.49, 0.21, 0.15]),
-        "15": csr_matrix([0.49, 0.35, 0.35]),
-        "16": csr_matrix([0.49, 0.20, 0.36]),
-        "17": csr_matrix([0.50, 0.40, 0.75]),
-        "18": csr_matrix([0.99, 0.28, 0.99]),
-        "19": csr_matrix([0.99, 0.28, 1.01]),
-        "20": csr_matrix([1.00, 0.99, 1.00]),
-        "21": csr_matrix([0.70, 0.28, 0.85]),
-        "22": csr_matrix([0.99, 0.28, 0.99]),
-        "23": csr_matrix([0.99, 0.35, 0.99]),
-        "24": csr_matrix([0.51, 0.28, 0.12]),
-        "25": csr_matrix([0.99, 0.01, 0.97]),
-        "26": csr_matrix([0.01, 0.10, 0.97]),
-        "27": csr_matrix([0.15, 0.86, 0.99]),
-        "28": csr_matrix([0.80, 0.01, 0.99]),
-        "29": csr_matrix([0.25, 0.02, 0.98]),
-        "30": csr_matrix([0.37, 0.99, 0.98]),
-        "31": csr_matrix([0.22, 0.01, 0.99]),
-        "32": csr_matrix([0.45, 0.00, 1.00]),
-        "33": csr_matrix([1.00, 0.00, 0.00]),
-        "34": csr_matrix([1.00, 0.89, 0.49]),
-        "35": csr_matrix([0.35, 0.51, 0.00]),
-        "36": csr_matrix([0.35, 0.52, 0.00]),
-        "37": csr_matrix([0.96, 0.72, 0.03]),
-        "38": csr_matrix([0.25, 0.58, 0.00]),
-        "39": csr_matrix([0.54, 0.28, 0.00]),
-        "40": csr_matrix([0.40, 0.37, 0.00]),
-        "41": csr_matrix([1.00, 1.00, 0.64]),
-        "42": csr_matrix([1.00, 0.73, 1.00]),
-        "43": csr_matrix([0.55, 0.00, 0.00]),
-        "44": csr_matrix([1.00, 0.75, 0.22]),
-        "45": csr_matrix([0.56, 0.83, 0.33]),
-        "46": csr_matrix([0.36, 0.65, 0.63]),
-        "47": csr_matrix([1.00, 0.88, 0.00]),
-        "48": csr_matrix([1.00, 0.00, 0.00]),
-        "49": csr_matrix([0.00, 1.00, 0.66]),
-        "50": csr_matrix([1.00, 0.34, 0.15]),
-        "51": csr_matrix([1.00, 1.00, 0.51]),
-        "52": csr_matrix([0.78, 0.04, 1.00]),
-        "53": csr_matrix([0.76, 1.00, 0.95]),
-        "54": csr_matrix([0.12, 1.00, 1.00]),
-        "55": csr_matrix([1.00, 0.46, 1.00]),
-        "56": csr_matrix([0.20, 0.00, 1.00]),
-        "57": csr_matrix([0.82, 0.74, 0.08]),
-        "58": csr_matrix([0.44, 0.00, 0.61]),
-        "59": csr_matrix([0.10, 0.00, 1.00]),
-        "60": csr_matrix([0.99, 1.00, 0.12]),
-        "61": csr_matrix([1.00, 0.75, 0.99]),
-        "62": csr_matrix([1.00, 0.65, 0.87]),
-        "63": csr_matrix([0.35, 1.00, 0.40]),
-        "64": csr_matrix([0.61, 0.87, 0.09]),
-        "65": csr_matrix([0.79, 0.00, 0.65]),
-    }
-    constraints_manager = None
-
-    # Initialize a `KMeansConstrainedClustering` instance.
-    clustering_model = KMeansConstrainedClustering(
-        random_seed=3,
-    )
-
-    # Run clustering with verbose output.
-    dict_of_predicted_clusters = clustering_model.cluster(
-        vectors=vectors,
-        nb_clusters=12,
-        constraints_manager=constraints_manager,
-        verbose=True,
-    )
-    assert clustering_model.dict_of_predicted_clusters
-    assert dict_of_predicted_clusters
 
 
 # ==============================================================================
@@ -572,12 +476,11 @@ def test_KMeansConstrainedClustering_cluster_with_max_iteration_ending():
         max_iteration=1,
     )
 
-    # Run clustering with verbose output.
+    # Run clustering.
     dict_of_predicted_clusters = clustering_model.cluster(
         vectors=vectors,
         nb_clusters=2,
         constraints_manager=constraints_manager,
-        verbose=True,
     )
     assert clustering_model.dict_of_predicted_clusters
     assert dict_of_predicted_clusters

@@ -379,12 +379,12 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
             self.centroids = new_centroids.copy()
 
             # Verbose.
-            if verbose and (current_iteration % 5 == 0):
+            if verbose and (current_iteration % 5 == 0):  # pragma: no cover
                 # Verbose - Print progression status.
                 print("    CLUSTERING_ITERATION=" + str(current_iteration), ",", "shift=" + str(shift))
 
         # Verbose.
-        if verbose:
+        if verbose:  # pragma: no cover
             # Verbose - Print progression status.
             print("    CLUSTERING_ITERATION=" + str(current_iteration), ",", "converged=" + str(converged))
 
