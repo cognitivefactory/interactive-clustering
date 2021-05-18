@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "cognitivefactory-interactive-clustering"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python package used to apply NLP interactive clustering methods."
 authors = ["Erwan Schild <erwan.schild@e-i.com>"]
 license = "CeCILL-C License v1.0"
