@@ -81,7 +81,7 @@ With [`pipx`](https://github.com/pipxproject/pipx):
 python3 -m pip install --user pipx
 
 # install package
-pipx install --python python3.6 cognitivefactory-interactive-clustering
+pipx install --python python3 cognitivefactory-interactive-clustering
 
 # install spacy language model dependencies (the one you want, with version "^2.3")
 python3 -m spacy download fr_core_news_sm-2.3.0 --direct
@@ -99,7 +99,7 @@ To work on this project or contribute to it, please read
 Get the code and prepare the environment:
 
 ```bash
-git clone https://github.com/cognitivefactory/interactive-clustering
+git clone https://github.com/cognitivefactory/interactive-clustering/
 cd interactive-clustering
 make setup
 ```
