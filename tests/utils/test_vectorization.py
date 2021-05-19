@@ -103,6 +103,7 @@ def test_vectorize_for_installed_spacy_language_model():
             "1": "hello how old are you",
             "2": "hello where do you live",
         },
+        vectorizer_type="spacy",
         spacy_language_model="en_core_web_sm",
     )
 

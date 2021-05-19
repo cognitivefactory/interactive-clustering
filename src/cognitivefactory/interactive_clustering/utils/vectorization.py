@@ -14,8 +14,8 @@
 
 from typing import Dict, Union  # To type Python code (mypy).
 
-import spacy  # To apply spacy language models.
 import numpy as np  # To handle float.
+import spacy  # To apply spacy language models.
 from numpy import ndarray  # To handle matrix and vectors.
 from scipy.sparse import csr_matrix  # To handle matrix and vectors.
 from sklearn.feature_extraction.text import TfidfVectorizer  # To apply TF-IDF vectorisation.
@@ -112,13 +112,15 @@ def vectorize(
             spacy_nlp = spacy.load(
                 name=spacy_language_model,
                 disable=[
-                "tagger",  # Not needed
-                "parser",  # Not needed
-                "ner",  # Not needed
+                    "tagger",  # Not needed
+                    "parser",  # Not needed
+                    "ner",  # Not needed
                 ],
             )
         except OSError as err:  # `spacy_language_model` is not installed.
-            raise ValueError("The `spacy_language_model` '" + str(spacy_language_model) + "' is not installed.") from err
+            raise ValueError(
+                "The `spacy_language_model` '" + str(spacy_language_model) + "' is not installed."
+            ) from err
 
         # Apply vectorization.
         dict_of_vectors = {

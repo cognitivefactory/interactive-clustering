@@ -13,6 +13,7 @@
 # ==============================================================================
 
 import pytest
+
 from cognitivefactory.interactive_clustering.utils.preprocessing import preprocess
 
 
