@@ -113,8 +113,8 @@ make help  # or just make
 ## <a name="References"></a> References
 
 - **Interactive Clustering**:
-    - Theory and Implementation: `Erwan Schild, Gautier Durantin, Jean-Charles Lamirel, Florian Miconi. Conception itérative et semi-supervisée d'assistants conversationnels par regroupement interactif des questions. EGC 2021 - 21èmes Journées Francophones Extraction et Gestion des Connaissances, Association EGC, Jan 2021, Montpellier / Virtual, France. ⟨hal-03133007⟩`
-    - Methodological instructions: `Erwan Schild, Gautier Durantin, Jean-Charles Lamirel. Concevoir un assistant conversationnel de manière itérative et semi-supervisée avec le clustering interactif. Atelier - Fouille de Textes - Text Mine 2021 - En conjonction avec EGC 2021, Association EGC, Jan 2021, Montpellier / Virtual, France. ⟨hal-03133060⟩`
+    - Theory and Implementation: `Schild, E., Durantin, G., Lamirel, J.C., & Miconi, F. (2021). Conception itérative et semi-supervisée d'assistants conversationnels par regroupement interactif des questions. In EGC 2021 - 21èmes Journées Francophones Extraction et Gestion des Connaissances. Edition RNTI. ⟨hal-03133007⟩`
+    - Methodological instructions: `Schild, E., Durantin, G., & Lamirel, J.C. (2021). Concevoir un assistant conversationnel de manière itérative et semi-supervisée avec le clustering interactif. In Atelier - Fouille de Textes - Text Mine 2021 - En conjonction avec EGC 2021. ⟨hal-03133060⟩`
 
 - **Constraints and Constrained Clustering**:
     - Constraints in clustering: `Wagstaff, K. et C. Cardie (2000). Clustering with Instance-level Constraints. Proceedings of the Seventeenth International Conference on Machine Learning, 1103–1110.`
