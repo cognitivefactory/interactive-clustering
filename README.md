@@ -6,7 +6,7 @@
 
 Python package used to apply NLP interactive clustering methods.
 
-## Quick description
+## <a name="Description"></a> Quick description
 
 _Interactive clustering_ is a method intended to assist in the design of a training data set.
 
@@ -34,9 +34,13 @@ _NB_ :
 
 - This python library does not contain integration into a graphic interface.
 
-- For more details, read the articles in the [References](#references) section.
+- For more details, read the [Documentation](#Documentation) and the articles in the [References](#References) section.
 
-## Requirements
+## <a name="Documentation"></a> Documentation
+
+- [Main documentation](https://cognitivefactory.github.io/interactive-clustering/)
+
+## <a name="Requirements"></a> Requirements
 
 Interactive Clustering requires Python 3.6 or above.
 
@@ -60,21 +64,53 @@ pyenv global system 3.6.12
 ```
 </details>
 
-## Installation
+## <a name="Installation"></a> Installation
 
 With `pip`:
 ```bash
-python3.6 -m pip install cognitivefactory-interactive-clustering
+# install package
+python3 -m pip install cognitivefactory-interactive-clustering
+
+# install spacy language model dependencies (the one you want, with version "^2.3")
+python3 -m spacy download fr_core_news_sm-2.3.0 --direct
 ```
 
 With [`pipx`](https://github.com/pipxproject/pipx):
 ```bash
-python3.6 -m pip install --user pipx
+# install pipx
+python3 -m pip install --user pipx
 
+# install package
 pipx install --python python3.6 cognitivefactory-interactive-clustering
+
+# install spacy language model dependencies (the one you want, with version "^2.3")
+python3 -m spacy download fr_core_news_sm-2.3.0 --direct
 ```
 
-## References
+_NB_ : Other spaCy language models can be downloaded here : [spaCy - Models & Languages](https://spacy.io/usage/models). Use spacy version `"^2.3"`.
+
+## <a name="Development"></a> Development
+
+To work on this project or contribute to it, please read
+[the Copier Poetry documentation](https://pawamoy.github.io/copier-poetry/).
+
+### Quick setup and help
+
+Get the code and prepare the environment:
+
+```bash
+git clone https://github.com/cognitivefactory/interactive-clustering
+cd interactive-clustering
+make setup
+```
+
+Show the help:
+
+```bash
+make help  # or just make
+```
+
+## <a name="References"></a> References
 
 - **Interactive Clustering**:
     - Theory and Implementation: `Erwan Schild, Gautier Durantin, Jean-Charles Lamirel, Florian Miconi. Conception itérative et semi-supervisée d'assistants conversationnels par regroupement interactif des questions. EGC 2021 - 21èmes Journées Francophones Extraction et Gestion des Connaissances, Association EGC, Jan 2021, Montpellier / Virtual, France. ⟨hal-03133007⟩`
@@ -95,8 +131,8 @@ pipx install --python python3.6 cognitivefactory-interactive-clustering
 
 - **Preprocessing and Vectorization**:
     - _spaCy_: `Honnibal, M. et I. Montani (2017). spaCy 2 : Natural language understanding with Bloom embeddings, convolutional neural networks and incremental parsing.`
-    - _spaCy_ language model `fr_core_news_sm`: `https://spacy.io/usage/models`
+        - _spaCy_ language models: `https://spacy.io/usage/models`
     - _NLTK_: `Bird, Steven, Edward Loper and Ewan Klein (2009), Natural Language Processing with Python. O’Reilly Media Inc.`
-    - _NLTK_ _'SnowballStemmer'_: `https://www.nltk.org/api/nltk.stem.html#module-nltk.stem.snowball`
+        - _NLTK_ _'SnowballStemmer'_: `https://www.nltk.org/api/nltk.stem.html#module-nltk.stem.snowball`
     - _Scikit-learn_: `Pedregosa, F., G. Varoquaux, A. Gramfort, V. Michel, B. Thirion, O. Grisel, M. Blondel, P. Prettenhofer, R.Weiss, V. Dubourg, J. Vanderplas, A. Passos, D. Cournapeau, M. Brucher, M. Perrot, et E. Duchesnay (2011). Scikit-learn : Machine Learning in Python. Journal of Machine Learning Research 12, 2825–2830.`
-    - _Scikit-learn_ _'TfidfVectorizer'_: `https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html`
+        - _Scikit-learn_ _'TfidfVectorizer'_: `https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html`

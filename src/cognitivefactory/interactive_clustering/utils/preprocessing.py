@@ -15,7 +15,7 @@
 import unicodedata  # To handle accents.
 from typing import Dict  # To type Python code (mypy).
 
-import fr_core_news_sm  # To apply spacy language model.
+import spacy  # To apply spacy language models.
 
 # from nltk.stem.snowball import SnowballStemmer  # To stemm texts.
 
@@ -28,7 +28,7 @@ def preprocess(
     apply_stopwords_deletion: bool = False,
     apply_parsing_filter: bool = False,
     apply_lemmatization: bool = False,
-    # TODO language (str, optional) : #TODO. Defaults to `"fr"`.
+    spacy_language_model: str = "fr_core_news_sm",
 ) -> Dict[str, str]:
     """
     A method used to preprocess texts.
@@ -37,7 +37,7 @@ def preprocess(
 
     References:
         - _spaCy_: `Honnibal, M. et I. Montani (2017). spaCy 2 : Natural language understanding with Bloom embeddings, convolutional neural networks and incremental parsing.`
-        - _spaCy_ language model `fr_core_news_sm`: `https://spacy.io/usage/models`
+        - _spaCy_ language models: `https://spacy.io/usage/models`
         - _NLTK_: `Bird, Steven, Edward Loper and Ewan Klein (2009), Natural Language Processing with Python. O’Reilly Media Inc.`
         - _NLTK_ _'SnowballStemmer'_: `https://www.nltk.org/api/nltk.stem.html#module-nltk.stem.snowball`
 
@@ -46,6 +46,10 @@ def preprocess(
         apply_stopwords_deletion (bool, optional): The option to delete stopwords. Defaults to `False`.
         apply_parsing_filter (bool, optional): The option to filter tokens based on dependency parsing results. If set, it only keeps `"ROOT"` tokens and their direct children. Defaults to `False`.
         apply_lemmatization (bool, optional): The option to lemmatize tokens. Defaults to `False`.
+        spacy_language_model (str, optional): The spaCy language model to use if vectorizer is spacy. The model has to be installed. Defaults to `"fr_core_news_sm"`.
+
+    Raises:
+        ValueError: Raises error if the `spacy_language_model` is not installed.
 
     Returns:
         Dict[str,str]: A dictionary that contains the preprocessed texts.
@@ -68,6 +72,7 @@ def preprocess(
             apply_stopwords_deletion=True,
             apply_parsing_filter=False,
             apply_lemmatization=False,
+            spacy_language_model="fr_core_news_sm",
         )
 
         # Print results.
@@ -120,13 +125,17 @@ def preprocess(
     )
 
     # Load vectorizer (spacy language model).
-    spacy_nlp = fr_core_news_sm.load(
-        disable=[
-            # "tagger", # Needed for lemmatization.
-            # "parser", # Needed for filtering on dependency parsing.
-            "ner",  # Not needed
-        ],
-    )
+    try:
+        spacy_nlp = spacy.load(
+            name=spacy_language_model,
+            disable=[
+                # "tagger", # Needed for lemmatization.
+                # "parser", # Needed for filtering on dependency parsing.
+                "ner",  # Not needed
+            ],
+        )
+    except OSError as err:  # `spacy_language_model` is not installed.
+        raise ValueError("The `spacy_language_model` '" + str(spacy_language_model) + "' is not installed.") from err
 
     # Initialize stemmer.
     ####stemmer = SnowballStemmer(language="french")
@@ -134,8 +143,11 @@ def preprocess(
     # For each text...
     for key, text in dict_of_texts.items():
 
+        # Force string type.
+        preprocessed_text: str = str(text)
+
         # Apply lowercasing.
-        preprocessed_text: str = text.lower()
+        preprocessed_text = text.lower()
 
         # Apply punctuation deletion (before tokenization).
         preprocessed_text = preprocessed_text.translate(punctuation_translator)

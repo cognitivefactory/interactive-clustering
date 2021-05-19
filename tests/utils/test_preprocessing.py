@@ -12,7 +12,51 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
+import pytest
 from cognitivefactory.interactive_clustering.utils.preprocessing import preprocess
+
+
+# ==============================================================================
+# test_preprocess_for_uninstalled_spacy_language_model
+# ==============================================================================
+def test_preprocess_for_uninstalled_spacy_language_model():
+    """
+    Test that the `utils.preprocessing.preprocess` raises `ValueError` for uninstalled spacy language model.
+    """
+
+    # Check a unimplemented vectorizer.
+    with pytest.raises(ValueError, match="`spacy_language_model`"):
+
+        preprocess(
+            dict_of_texts={
+                "0": "Comment signaler une perte de carte de paiement ?",
+                "1": "Quelle est la procédure pour chercher une carte de crédit avalée ?",
+                "2": "Ma carte Visa a un plafond de paiment trop bas, puis-je l'augmenter ?",
+            },
+            spacy_language_model="uninstalled",
+        )
+
+
+# ==============================================================================
+# test_preprocess_for_installed_spacy_language_model
+# ==============================================================================
+def test_preprocess_for_installed_spacy_language_model():
+    """
+    Test that the `utils.preprocessing.preprocess` works for an installed spacy language model.
+    """
+
+    # Check simple preprocessing.
+    dict_of_preprocessed_texts = preprocess(
+        dict_of_texts={
+            "0": "Hello. How are you ??",
+            "1": "Hello, how old are you ?",
+            "2": "Hello ! Where do you live ?",
+        },
+        spacy_language_model="en_core_web_sm",
+    )
+
+    # Assertions
+    assert dict_of_preprocessed_texts
 
 
 # ==============================================================================

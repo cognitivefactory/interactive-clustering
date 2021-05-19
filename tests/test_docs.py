@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-* Name:         interactive-clustering/tests/tests_docs_usage.py
-* Description:  Unittests for the `utils` module.
+* Name:         interactive-clustering/tests/tests_docs.py
+* Description:  Unittests for the documentation.
 * Author:       Erwan Schild
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
@@ -50,7 +50,8 @@ def test_docs_usage():
     # Preprocess data.
     dict_of_preprocess_texts = preprocess(
         dict_of_texts=dict_of_texts,
-    )  # Apply simple preprocessing. Other parameters are available.
+        spacy_language_model="fr_core_news_sm",
+    )  # Apply simple preprocessing. Spacy language model has to be installed. Other parameters are available.
 
     # Vectorize data.
     dict_of_vectors = vectorize(

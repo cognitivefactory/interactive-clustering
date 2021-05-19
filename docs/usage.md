@@ -29,7 +29,8 @@ Preprocess data.
 # Preprocess data.
 dict_of_preprocess_texts = preprocess(
     dict_of_texts=dict_of_texts,
-)  # Apply simple preprocessing. Other parameters are available.
+    spacy_language_model="fr_core_news_sm",
+)  # Apply simple preprocessing. Spacy language model has to be installed. Other parameters are available.
 ```
 
 Vectorize data.

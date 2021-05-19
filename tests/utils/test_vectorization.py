@@ -67,6 +67,50 @@ def test_vectorize_for_tfidf_vectorizer():
 
 
 # ==============================================================================
+# test_vectorize_for_uninstalled_spacy_language_model
+# ==============================================================================
+def test_vectorize_for_uninstalled_spacy_language_model():
+    """
+    Test that the `utils.vectorization.vectorize` raises `ValueError` for uninstalled spacy language model.
+    """
+
+    # Check a unimplemented vectorizer.
+    with pytest.raises(ValueError, match="`spacy_language_model`"):
+
+        vectorize(
+            dict_of_texts={
+                "0": "comment signaler une perte de carte de paiement",
+                "1": "quelle est la procedure pour chercher une carte de credit avalee",
+                "2": "ma carte visa a un plafond de paiment trop bas puis je l augmenter",
+            },
+            vectorizer_type="spacy",
+            spacy_language_model="uninstalled",
+        )
+
+
+# ==============================================================================
+# test_vectorize_for_installed_spacy_language_model
+# ==============================================================================
+def test_vectorize_for_installed_spacy_language_model():
+    """
+    Test that the `utils.vectorization.vectorize` works for an installed spacy language model.
+    """
+
+    # Check a SPACY vectorizer.
+    dict_of_vectors = vectorize(
+        dict_of_texts={
+            "0": "hello how are you",
+            "1": "hello how old are you",
+            "2": "hello where do you live",
+        },
+        spacy_language_model="en_core_web_sm",
+    )
+
+    # Assertions
+    assert dict_of_vectors
+
+
+# ==============================================================================
 # test_vectorize_for_spacy_vectorizer
 # ==============================================================================
 def test_vectorize_for_spacy_vectorizer():
