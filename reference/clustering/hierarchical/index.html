@@ -1,0 +1,2164 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Python package used to apply NLP interactive clustering methods.">
+      
+      
+      
+      
+        <link rel="canonical" href="https://cognitivefactory.github.io/interactive-clustering/reference/clustering/hierarchical/">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>clustering.hierarchical - Interactive Clustering</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../css/mkdocstrings.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="purple">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://cognitivefactory.github.io/interactive-clustering" title="Interactive Clustering" class="md-header-nav__button md-logo" aria-label="Interactive Clustering">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Interactive Clustering
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              clustering.hierarchical
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/cognitivefactory/interactive-clustering/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cognitivefactory/interactive-clustering
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../constraints/abstract/" class="md-tabs__link md-tabs__link--active">
+        Code Reference
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../contributing/" class="md-tabs__link">
+        Development
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://cognitivefactory.github.io/interactive-clustering" title="Interactive Clustering" class="md-nav__button md-logo" aria-label="Interactive Clustering">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Interactive Clustering
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/cognitivefactory/interactive-clustering/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cognitivefactory/interactive-clustering
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" >
+      
+      <label class="md-nav__link" for="nav-1">
+        Home
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="nav-1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../credits/" class="md-nav__link">
+        Credits
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      
+      <label class="md-nav__link" for="nav-2">
+        Code Reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Code Reference" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Code Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+      
+      <label class="md-nav__link" for="nav-2-1">
+        Constraints Managing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Constraints Managing" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-1">
+          <span class="md-nav__icon md-icon"></span>
+          Constraints Managing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../constraints/abstract/" class="md-nav__link">
+        constraints.abstract
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../constraints/factory/" class="md-nav__link">
+        constraints.factory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../constraints/binary/" class="md-nav__link">
+        constraints.binary
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2" >
+      
+      <label class="md-nav__link" for="nav-2-2">
+        Constraints Sampling
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Constraints Sampling" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-2">
+          <span class="md-nav__icon md-icon"></span>
+          Constraints Sampling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sampling/abstract/" class="md-nav__link">
+        sampling.abstract
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sampling/factory/" class="md-nav__link">
+        sampling.factory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sampling/random/" class="md-nav__link">
+        sampling.random
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sampling/random_in_same_cluster/" class="md-nav__link">
+        sampling.random_in_same_cluster
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sampling/closest_in_different_clusters/" class="md-nav__link">
+        sampling.closest_in_different_clusters
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sampling/farhest_in_same_cluster/" class="md-nav__link">
+        sampling.farhest_in_same_cluster
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3" checked>
+      
+      <label class="md-nav__link" for="nav-2-3">
+        Constrained Clustering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Constrained Clustering" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-3">
+          <span class="md-nav__icon md-icon"></span>
+          Constrained Clustering
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abstract/" class="md-nav__link">
+        clustering.abstract
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../factory/" class="md-nav__link">
+        clustering.factory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kmeans/" class="md-nav__link">
+        clustering.kmeans
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          clustering.hierarchical
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        clustering.hierarchical
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical" class="md-nav__link">
+    cognitivefactory.interactive_clustering.clustering.hierarchical
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster" class="md-nav__link">
+    Cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.add_new_children" class="md-nav__link">
+    add_new_children()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.to_dict" class="md-nav__link">
+    to_dict()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.update_centroid" class="md-nav__link">
+    update_centroid()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering" class="md-nav__link">
+    HierarchicalConstrainedClustering
+  </a>
+  
+    <nav class="md-nav" aria-label="HierarchicalConstrainedClustering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering.cluster" class="md-nav__link">
+    cluster()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering.compute_predicted_clusters" class="md-nav__link">
+    compute_predicted_clusters()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spectral/" class="md-nav__link">
+        clustering.spectral
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4" >
+      
+      <label class="md-nav__link" for="nav-2-4">
+        Utility methods
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Utility methods" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-4">
+          <span class="md-nav__icon md-icon"></span>
+          Utility methods
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/checking/" class="md-nav__link">
+        utils.checking
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/preprocessing/" class="md-nav__link">
+        utils.preprocessing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/vectorization/" class="md-nav__link">
+        utils.vectorization
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/graph/" class="md-nav__link">
+        utils.graph
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/frequency/" class="md-nav__link">
+        utils.frequency
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        Development
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../code_of_conduct/" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../coverage/" class="md-nav__link">
+        Coverage report
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical" class="md-nav__link">
+    cognitivefactory.interactive_clustering.clustering.hierarchical
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster" class="md-nav__link">
+    Cluster
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.add_new_children" class="md-nav__link">
+    add_new_children()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.to_dict" class="md-nav__link">
+    to_dict()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.update_centroid" class="md-nav__link">
+    update_centroid()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering" class="md-nav__link">
+    HierarchicalConstrainedClustering
+  </a>
+  
+    <nav class="md-nav" aria-label="HierarchicalConstrainedClustering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering.cluster" class="md-nav__link">
+    cluster()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering.compute_predicted_clusters" class="md-nav__link">
+    compute_predicted_clusters()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/cognitivefactory/interactive-clustering/edit/master/docs/reference/clustering/hierarchical.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>clustering.hierarchical</h1>
+                
+                <div class="doc doc-object doc-module">
+
+<a id="cognitivefactory.interactive_clustering.clustering.hierarchical"></a>
+    <div class="doc doc-contents first">
+
+      <ul>
+<li>Name:         cognitivefactory.interactive_clustering.clustering.hierarchical</li>
+<li>Description:  Implementation of constrained hierarchical clustering algorithms.</li>
+<li>Author:       Erwan Schild</li>
+<li>Created:      17/03/2021</li>
+<li>Licence:      CeCILL-C License v1.0 (<a href="https://cecill.info/licences.fr.html">https://cecill.info/licences.fr.html</a>)</li>
+</ul>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster" class="doc doc-heading">
+        <code>Cluster</code>
+
+
+
+<a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster" class="headerlink" title="Permanent link">�</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>This class represents a cluster as a node of the hierarchical clustering tree.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">cluster_ID</span><span class="p">,</span> <span class="n">clustering_iteration</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">members</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+<a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.__init__" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>The constructor for Cluster class.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>vectors</code></td>
+        <td><code>Dict[str, Union[numpy.ndarray, scipy.sparse.csr.csr_matrix]]</code></td>
+        <td><p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code> (if <code>constraints_manager</code> is set). The value of the dictionary represent the vector of each data. Vectors can be dense (<code>numpy.ndarray</code>) or sparse (<code>scipy.sparse.csr_matrix</code>).</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>cluster_ID</code></td>
+        <td><code>int</code></td>
+        <td><p>The cluster ID that is defined during <code>HierarchicalConstrainedClustering.cluster</code> running.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>clustering_iteration</code></td>
+        <td><code>int</code></td>
+        <td><p>The cluster iteration that is defined during <code>HierarchicalConstrainedClustering.cluster</code> running.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>children</code></td>
+        <td><code>Optional[List[Cluster]]</code></td>
+        <td><p>A list of clusters children to initialize cluster. Incompatible with <code>members</code> parameter. Defaults to <code>None</code>.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>members</code></td>
+        <td><code>Optional[List[str]]</code></td>
+        <td><p>A list of data ID to initialize cluster. Incompatible with <code>children</code> parameter. Defaults to <code>None</code>.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if <code>children</code> and <code>members</code> are both set or both unset.</p></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\clustering\hierarchical.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]],</span>
+    <span class="n">cluster_ID</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">clustering_iteration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">children</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;Cluster&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">members</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The constructor for Cluster class.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager` (if `constraints_manager` is set). The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).</span>
+<span class="sd">        cluster_ID (int): The cluster ID that is defined during `HierarchicalConstrainedClustering.cluster` running.</span>
+<span class="sd">        clustering_iteration (int): The cluster iteration that is defined during `HierarchicalConstrainedClustering.cluster` running.</span>
+<span class="sd">        children (Optional[List[&quot;Cluster&quot;]], optional): A list of clusters children to initialize cluster. Incompatible with `members` parameter. Defaults to `None`.</span>
+<span class="sd">        members (Optional[List[str]], optional): A list of data ID to initialize cluster. Incompatible with `children` parameter. Defaults to `None`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `children` and `members` are both set or both unset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Store links to `vectors`.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]]</span> <span class="o">=</span> <span class="n">vectors</span>
+
+    <span class="c1"># Cluster ID and Clustering iteration.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cluster_ID</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">cluster_ID</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">clustering_iteration</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">clustering_iteration</span>
+
+    <span class="c1"># Check children and members.</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">children</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">members</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">))</span> <span class="ow">or</span> <span class="p">((</span><span class="n">children</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">members</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Cluster initialization must be by `children` setting or by `members` setting, but not by both or none of them.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Add children (empty or not).</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;Cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">children</span> <span class="k">if</span> <span class="p">(</span><span class="n">children</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="p">[]</span>
+
+    <span class="c1"># Cluster inverse depth.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cluster_inverse_depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="nb">max</span><span class="p">([</span><span class="n">child</span><span class="o">.</span><span class="n">cluster_inverse_depth</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Add members (empty or not).</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">members</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="nb">sorted</span><span class="p">(</span><span class="n">members</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">members</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">else</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">data_ID</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">members</span><span class="p">])</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Cluster size.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cluster_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">members</span><span class="p">)</span>
+
+    <span class="c1"># Update centroids</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">update_centroid</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.add_new_children" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_new_children</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_children</span><span class="p">,</span> <span class="n">new_clustering_iteration</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.add_new_children" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Add new children to the cluster.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>new_children</code></td>
+        <td><code>List[Cluster]</code></td>
+        <td><p>The lit of new clusters children to add.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>new_clustering_iteration</code></td>
+        <td><code>int</code></td>
+        <td><p>The new cluster iteration that is defined during HierarchicalConstrainedClustering.clusterize running.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\clustering\hierarchical.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_new_children</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">new_children</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;Cluster&quot;</span><span class="p">],</span>
+    <span class="n">new_clustering_iteration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Add new children to the cluster.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        new_children (List[&quot;Cluster&quot;]): The lit of new clusters children to add.</span>
+<span class="sd">        new_clustering_iteration (int): The new cluster iteration that is defined during HierarchicalConstrainedClustering.clusterize running.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Update clustering iteration.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">clustering_iteration</span> <span class="o">=</span> <span class="n">new_clustering_iteration</span>
+
+    <span class="c1"># Update children.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">+=</span> <span class="p">[</span><span class="n">new_child</span> <span class="k">for</span> <span class="n">new_child</span> <span class="ow">in</span> <span class="n">new_children</span> <span class="k">if</span> <span class="n">new_child</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">]</span>
+
+    <span class="c1"># Update cluster inverse depth.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cluster_inverse_depth</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">child</span><span class="o">.</span><span class="n">cluster_inverse_depth</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># Update members.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">members</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">data_ID</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">members</span><span class="p">])</span>
+
+    <span class="c1"># Update cluster size.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cluster_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">members</span><span class="p">)</span>
+
+    <span class="c1"># Update centroids.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">update_centroid</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.to_dict" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.to_dict" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Transform the Cluster object into a dictionary. It can be used before serialize this object in JSON.</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Dict[str, Any]</code></td>
+      <td><p>Dict[str, Any]: A dictionary that represents the Cluster object.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\clustering\hierarchical.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Transform the Cluster object into a dictionary. It can be used before serialize this object in JSON.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Dict[str, Any]: A dictionary that represents the Cluster object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Define the result dictionary.</span>
+    <span class="n">results</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Add clustering information.</span>
+    <span class="n">results</span><span class="p">[</span><span class="s2">&quot;cluster_ID&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cluster_ID</span>
+    <span class="n">results</span><span class="p">[</span><span class="s2">&quot;clustering_iteration&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clustering_iteration</span>
+
+    <span class="c1"># Add children information.</span>
+    <span class="n">results</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">child</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">]</span>
+    <span class="n">results</span><span class="p">[</span><span class="s2">&quot;cluster_inverse_depth&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cluster_inverse_depth</span>
+
+    <span class="c1"># Add members information.</span>
+    <span class="n">results</span><span class="p">[</span><span class="s2">&quot;members&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">members</span>
+    <span class="n">results</span><span class="p">[</span><span class="s2">&quot;cluster_size&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cluster_size</span>
+
+    <span class="k">return</span> <span class="n">results</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.update_centroid" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">update_centroid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster.update_centroid" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Update centroid of the cluster.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\clustering\hierarchical.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_centroid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update centroid of the cluster.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Update centroids.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">centroid</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">[</span><span class="n">data_ID</span><span class="p">]</span> <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">members</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">cluster_size</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering" class="doc doc-heading">
+        <code>HierarchicalConstrainedClustering</code>
+
+
+
+<a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering" class="headerlink" title="Permanent link">�</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>This class implements the hierarchical constrained clustering.
+It inherits from <code>AbstractConstrainedClustering</code>.</p>
+<div class="admonition references">
+<p class="admonition-title">References</p>
+<ul>
+<li>Hierarchical Clustering: <code>Murtagh, F. et P. Contreras (2012). Algorithms for hierarchical clustering : An overview. Wiley Interdisc. Rew.: Data Mining and Knowledge Discovery 2, 86–97.</code></li>
+<li>Constrained Hierarchical Clustering: <code>Davidson, I. et S. S. Ravi (2005). Agglomerative Hierarchical Clustering with Constraints : Theoretical and Empirical Results. Springer, Berlin, Heidelberg 3721, 12.</code></li>
+</ul>
+</div>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="c1"># Import.</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
+<span class="kn">from</span> <span class="nn">cognitivefactory.interactive_clustering.clustering.hierarchical</span> <span class="kn">import</span> <span class="n">HierarchicalConstrainedClustering</span>
+
+<span class="c1"># Create an instance of hierarchical clustering.</span>
+<span class="n">clustering_model</span> <span class="o">=</span> <span class="n">HierarchicalConstrainedClustering</span><span class="p">(</span>
+    <span class="n">linkage</span><span class="o">=</span><span class="s2">&quot;ward&quot;</span><span class="p">,</span>
+    <span class="n">random_seed</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Define vectors.</span>
+<span class="c1"># NB : use cognitivefactory.interactive_clustering.utils to preprocess and vectorize texts.</span>
+<span class="n">vectors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="n">csr_matrix</span><span class="p">([</span><span class="mf">1.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">]),</span>
+    <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="n">csr_matrix</span><span class="p">([</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]),</span>
+    <span class="s2">&quot;2&quot;</span><span class="p">:</span> <span class="n">csr_matrix</span><span class="p">([</span><span class="mf">0.98</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">]),</span>
+    <span class="s2">&quot;3&quot;</span><span class="p">:</span> <span class="n">csr_matrix</span><span class="p">([</span><span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">]),</span>
+    <span class="s2">&quot;4&quot;</span><span class="p">:</span> <span class="n">csr_matrix</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.07</span><span class="p">]),</span>
+    <span class="s2">&quot;5&quot;</span><span class="p">:</span> <span class="n">csr_matrix</span><span class="p">([</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.07</span><span class="p">]),</span>
+    <span class="s2">&quot;6&quot;</span><span class="p">:</span> <span class="n">csr_matrix</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">]),</span>
+    <span class="s2">&quot;7&quot;</span><span class="p">:</span> <span class="n">csr_matrix</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.97</span><span class="p">]),</span>
+    <span class="s2">&quot;8&quot;</span><span class="p">:</span> <span class="n">csr_matrix</span><span class="p">([</span><span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">]),</span>
+    <span class="s2">&quot;9&quot;</span><span class="p">:</span> <span class="n">csr_matrix</span><span class="p">([</span><span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">]),</span>
+<span class="p">}</span>
+
+<span class="c1"># Define constraints manager (set it to None for no constraints).</span>
+<span class="n">constraints_manager</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Run clustering.</span>
+<span class="n">dict_of_predicted_clusters</span> <span class="o">=</span> <span class="n">clustering_model</span><span class="p">(</span>
+    <span class="n">vectors</span><span class="o">=</span><span class="n">vectors</span>
+    <span class="n">nb_clusters</span><span class="o">=</span><span class="mi">3</span>
+    <span class="n">constraints_manager</span><span class="o">=</span><span class="n">constraints_manager</span>
+<span class="p">)</span>
+
+<span class="c1"># Print results.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected results&quot;</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;8&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;9&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Computed results&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">dict_of_predicted_clusters</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+<a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering.__init__" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>The constructor for Hierarchical Constrainted Clustering class.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>linkage</code></td>
+        <td><code>str</code></td>
+        <td><p>The metric used to merge clusters. Several type are implemented :
+- <code>"ward"</code>: Merge the two clusters for which the merged cluster from these clusters have the lowest intra-class distance.
+- <code>"average"</code>: Merge the two clusters that have the closest barycenters.
+- <code>"complete"</code>: Merge the two clusters for which the maximum distance between two data of these clusters is the lowest.
+- <code>"single"</code>: Merge the two clusters for which the minimum distance between two data of these clusters is the lowest.
+Defaults to <code>"ward"</code>.</p></td>
+        <td><code>&#39;ward&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>random_seed</code></td>
+        <td><code>Optional[int]</code></td>
+        <td><p>The random seed to use to redo the same clustering. Defaults to <code>None</code>.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>**kargs</code></td>
+        <td><code>dict</code></td>
+        <td><p>Other parameters that can be used in the instantiation.</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if some parameters are incorrectly set.</p></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\clustering\hierarchical.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linkage</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ward&quot;</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The constructor for Hierarchical Constrainted Clustering class.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        linkage (str, optional): The metric used to merge clusters. Several type are implemented :</span>
+<span class="sd">            - `&quot;ward&quot;`: Merge the two clusters for which the merged cluster from these clusters have the lowest intra-class distance.</span>
+<span class="sd">            - `&quot;average&quot;`: Merge the two clusters that have the closest barycenters.</span>
+<span class="sd">            - `&quot;complete&quot;`: Merge the two clusters for which the maximum distance between two data of these clusters is the lowest.</span>
+<span class="sd">            - `&quot;single&quot;`: Merge the two clusters for which the minimum distance between two data of these clusters is the lowest.</span>
+<span class="sd">            Defaults to `&quot;ward&quot;`.</span>
+<span class="sd">        random_seed (Optional[int], optional): The random seed to use to redo the same clustering. Defaults to `None`.</span>
+<span class="sd">        **kargs (dict): Other parameters that can be used in the instantiation.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if some parameters are incorrectly set.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Store `self.linkage`.</span>
+    <span class="k">if</span> <span class="n">linkage</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;ward&quot;</span><span class="p">,</span> <span class="s2">&quot;average&quot;</span><span class="p">,</span> <span class="s2">&quot;complete&quot;</span><span class="p">,</span> <span class="s2">&quot;single&quot;</span><span class="p">}:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `linkage` &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">linkage</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39; is not implemented.&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">linkage</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">linkage</span>
+
+    <span class="c1"># Store `self.random_seed`</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_seed</span>
+
+    <span class="c1"># Store `self.kargs` for hierarchical clustering.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">kargs</span> <span class="o">=</span> <span class="n">kargs</span>
+
+    <span class="c1"># Initialize `self.clustering_root` and `self.dict_of_predicted_clusters`.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">clustering_root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Cluster</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_predicted_clusters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering.cluster" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">cluster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">nb_clusters</span><span class="p">,</span> <span class="n">constraints_manager</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering.cluster" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>The main method used to cluster data with the Hierarchical model.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>vectors</code></td>
+        <td><code>Dict[str, Union[numpy.ndarray, scipy.sparse.csr.csr_matrix]]</code></td>
+        <td><p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code> (if <code>constraints_manager</code> is set). The value of the dictionary represent the vector of each data. Vectors can be dense (<code>numpy.ndarray</code>) or sparse (<code>scipy.sparse.csr_matrix</code>).</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>nb_clusters</code></td>
+        <td><code>int</code></td>
+        <td><p>The number of clusters to compute. #TODO Set defaults to None with elbow method or other method ?</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>constraints_manager</code></td>
+        <td><code>Optional[cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager]</code></td>
+        <td><p>A constraints manager over data IDs that will force clustering to respect some conditions during computation. The list of data IDs managed by <code>constraints_manager</code> has to refer to <code>vectors</code> keys. If <code>None</code>, no constraint are used during the clustering. Defaults to <code>None</code>.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>verbose</code></td>
+        <td><code>bool</code></td>
+        <td><p>Enable verbose output. Defaults to <code>False</code>.</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>**kargs</code></td>
+        <td><code>dict</code></td>
+        <td><p>Other parameters that can be used in the clustering.</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if <code>vectors</code> and <code>constraints_manager</code> are incompatible, or if some parameters are incorrectly set.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Dict[str, int]</code></td>
+      <td><p>Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\clustering\hierarchical.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]],</span>
+    <span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">constraints_manager</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">AbstractConstraintsManager</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kargs</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The main method used to cluster data with the Hierarchical model.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager` (if `constraints_manager` is set). The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).</span>
+<span class="sd">        nb_clusters (int): The number of clusters to compute. #TODO Set defaults to None with elbow method or other method ?</span>
+<span class="sd">        constraints_manager (Optional[AbstractConstraintsManager], optional): A constraints manager over data IDs that will force clustering to respect some conditions during computation. The list of data IDs managed by `constraints_manager` has to refer to `vectors` keys. If `None`, no constraint are used during the clustering. Defaults to `None`.</span>
+<span class="sd">        verbose (bool, optional): Enable verbose output. Defaults to `False`.</span>
+<span class="sd">        **kargs (dict): Other parameters that can be used in the clustering.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `vectors` and `constraints_manager` are incompatible, or if some parameters are incorrectly set.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">###</span>
+    <span class="c1">### GET PARAMETERS</span>
+    <span class="c1">###</span>
+
+    <span class="c1"># Get `list_of_data_IDs`.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vectors</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `vectors` parameter has to be a `dict` type.&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">vectors</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="c1"># Check `constraints_manager`.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">constraints_manager</span><span class="p">:</span> <span class="n">AbstractConstraintsManager</span> <span class="o">=</span> <span class="n">checking</span><span class="o">.</span><span class="n">check_constraints_manager</span><span class="p">(</span>
+        <span class="n">list_of_data_IDs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span><span class="p">,</span>
+        <span class="n">constraints_manager</span><span class="o">=</span><span class="n">constraints_manager</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Check `vectors`.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]]</span> <span class="o">=</span> <span class="n">checking</span><span class="o">.</span><span class="n">check_vectors</span><span class="p">(</span>
+        <span class="n">list_of_data_IDs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span><span class="p">,</span>
+        <span class="n">vectors</span><span class="o">=</span><span class="n">vectors</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Store `self.nb_clusters`.</span>
+    <span class="k">if</span> <span class="n">nb_clusters</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `nb_clusters` &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nb_clusters</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39; must be greater than or equal to 2.&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">nb_clusters</span>
+
+    <span class="c1"># Store `self.pairwise_distances_matrix`.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pairwise_distances_matrix</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">data_ID1</span><span class="p">:</span> <span class="p">{</span>
+            <span class="n">data_ID2</span><span class="p">:</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">[</span><span class="n">data_ID1</span><span class="p">],</span> <span class="n">Y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">[</span><span class="n">data_ID2</span><span class="p">],</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,)[</span>
+                <span class="mi">0</span>
+            <span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">data_ID2</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">data_ID1</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span>
+    <span class="p">}</span>  <span class="c1"># TODO need ?</span>
+
+    <span class="c1">###</span>
+    <span class="c1">### INITIALIZE HIERARCHICAL CONSTRAINED CLUSTERING</span>
+    <span class="c1">###</span>
+
+    <span class="c1"># Verbose</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+
+        <span class="c1"># Verbose - Print progression status.</span>
+        <span class="n">TIME_start</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="s2">&quot;    &quot;</span><span class="p">,</span>
+            <span class="s2">&quot;CLUSTERING_ITERATION=&quot;</span> <span class="o">+</span> <span class="s2">&quot;INITIALIZATION&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;(current_time = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">TIME_start</span> <span class="o">-</span> <span class="n">TIME_start</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Initialize `self.clustering_root` and `self.dict_of_predicted_clusters`.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">clustering_root</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_predicted_clusters</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># Initialize iteration counter.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">clustering_iteration</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Initialize `current_clusters` and `self.clusters_storage`.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">clusters_storage</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Cluster</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Get the list of possibles lists of MUST_LINK data for initialization.</span>
+    <span class="n">list_of_possible_lists_of_MUST_LINK_data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_manager</span><span class="o">.</span><span class="n">get_connected_components</span><span class="p">()</span>
+
+    <span class="c1"># Estimation of max number of iteration.</span>
+    <span class="n">max_clustering_iteration</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_possible_lists_of_MUST_LINK_data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="c1"># For each list of same data (MUST_LINK constraints).</span>
+    <span class="k">for</span> <span class="n">MUST_LINK_data</span> <span class="ow">in</span> <span class="n">list_of_possible_lists_of_MUST_LINK_data</span><span class="p">:</span>
+
+        <span class="c1"># Create a initial cluster with data that MUST be LINKed.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_new_cluster_by_setting_members</span><span class="p">(</span>
+            <span class="n">members</span><span class="o">=</span><span class="n">MUST_LINK_data</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Initialize distance between clusters.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">clusters_distance</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">cluster_IDi</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">cluster_IDj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cluster_IDi</span> <span class="o">&lt;</span> <span class="n">cluster_IDj</span><span class="p">:</span>
+                <span class="c1"># Compute distance between cluster i and cluster j.</span>
+                <span class="n">distance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_distance</span><span class="p">(</span><span class="n">cluster_IDi</span><span class="o">=</span><span class="n">cluster_IDi</span><span class="p">,</span> <span class="n">cluster_IDj</span><span class="o">=</span><span class="n">cluster_IDj</span><span class="p">)</span>
+                <span class="c1"># Store distance between cluster i and cluster j.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_set_distance</span><span class="p">(</span><span class="n">cluster_IDi</span><span class="o">=</span><span class="n">cluster_IDi</span><span class="p">,</span> <span class="n">cluster_IDj</span><span class="o">=</span><span class="n">cluster_IDj</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">distance</span><span class="p">)</span>
+
+    <span class="c1"># Initialize iterations at first iteration.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">clustering_iteration</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1">###</span>
+    <span class="c1">### RUN ITERATIONS OF HIERARCHICAL CONSTRAINED CLUSTERING UNTIL CONVERGENCE</span>
+    <span class="c1">###</span>
+
+    <span class="c1"># Iter until convergence of clustering.</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+
+        <span class="c1"># Verbose</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+
+            <span class="c1"># Verbose - Print progression status.</span>
+            <span class="n">TIME_current</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="s2">&quot;    &quot;</span><span class="p">,</span>
+                <span class="s2">&quot;CLUSTERING_ITERATION=&quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clustering_iteration</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+                <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">max_clustering_iteration</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+                <span class="s2">&quot;(current_time = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">TIME_current</span> <span class="o">-</span> <span class="n">TIME_start</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">,</span>
+                <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Get clostest clusters to merge</span>
+        <span class="n">clostest_clusters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_the_two_clostest_clusters</span><span class="p">()</span>
+
+        <span class="c1"># If no clusters to merge, then stop iterations.</span>
+        <span class="k">if</span> <span class="n">clostest_clusters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="c1"># Merge clusters the two closest clusters and add the merged cluster to the storage.</span>
+        <span class="c1"># If merge one cluster &quot;node&quot; with a cluster &quot;leaf&quot; : add the cluster &quot;leaf&quot; to the children of the cluster &quot;node&quot;.</span>
+        <span class="c1"># If merge two clusters &quot;nodes&quot; or two clusters &quot;leaves&quot; : create a new cluster &quot;node&quot;.</span>
+        <span class="n">merged_cluster_ID</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_new_cluster_by_merging_clusters</span><span class="p">(</span>
+            <span class="n">children</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">clostest_clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">clostest_clusters</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Update distances</span>
+        <span class="k">for</span> <span class="n">cluster_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">cluster_ID</span> <span class="o">!=</span> <span class="n">merged_cluster_ID</span><span class="p">:</span>
+                <span class="c1"># Compute distance between cluster and merged cluster.</span>
+                <span class="n">distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_distance</span><span class="p">(</span><span class="n">cluster_IDi</span><span class="o">=</span><span class="n">cluster_ID</span><span class="p">,</span> <span class="n">cluster_IDj</span><span class="o">=</span><span class="n">merged_cluster_ID</span><span class="p">)</span>
+                <span class="c1"># Store distance between cluster and merged cluster.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_set_distance</span><span class="p">(</span><span class="n">cluster_IDi</span><span class="o">=</span><span class="n">cluster_ID</span><span class="p">,</span> <span class="n">cluster_IDj</span><span class="o">=</span><span class="n">merged_cluster_ID</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">distance</span><span class="p">)</span>
+
+        <span class="c1"># Update self.clustering_iteration.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clustering_iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1">###</span>
+    <span class="c1">### END HIERARCHICAL CONSTRAINED CLUSTERING</span>
+    <span class="c1">###</span>
+
+    <span class="c1"># Verbose</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+
+        <span class="c1"># Verbose - Print progression status.</span>
+        <span class="n">TIME_current</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+        <span class="c1"># Case of clustering not completed.</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="s2">&quot;    &quot;</span><span class="p">,</span>
+                <span class="s2">&quot;CLUSTERING_ITERATION=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clustering_iteration</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+                <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;End : No more cluster to merge&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;(current_time = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">TIME_current</span> <span class="o">-</span> <span class="n">TIME_start</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="s2">&quot;    &quot;</span><span class="p">,</span>
+                <span class="s2">&quot;CLUSTERING_ITERATION=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clustering_iteration</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+                <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;End : Full clustering done&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;(current_time = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">TIME_current</span> <span class="o">-</span> <span class="n">TIME_start</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="c1"># If several clusters remains, then merge them in a cluster root.</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+
+        <span class="c1"># Merge all remaining clusters.</span>
+        <span class="c1"># If merge one cluster &quot;node&quot; with many cluster &quot;leaves&quot; : add clusters &quot;leaves&quot; to the children of the cluster &quot;node&quot;.</span>
+        <span class="c1"># If merge many clusters &quot;nodes&quot; and/or many clusters &quot;leaves&quot; : create a new cluster &quot;node&quot;.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_new_cluster_by_merging_clusters</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+    <span class="c1"># Get clustering root.</span>
+    <span class="n">root_ID</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">clustering_root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clusters_storage</span><span class="p">[</span><span class="n">root_ID</span><span class="p">]</span>
+
+    <span class="c1">###</span>
+    <span class="c1">### GET PREDICTED CLUSTERS</span>
+    <span class="c1">###</span>
+
+    <span class="c1"># Compute predicted clusters.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_predicted_clusters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_predicted_clusters</span><span class="p">(</span>
+        <span class="n">nb_clusters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_predicted_clusters</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering.compute_predicted_clusters" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">compute_predicted_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nb_clusters</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;size&#39;</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.clustering.hierarchical.HierarchicalConstrainedClustering.compute_predicted_clusters" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Compute the predicted clusters based on clustering tree and estimation of number of clusters.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>nb_clusters</code></td>
+        <td><code>int</code></td>
+        <td><p>The number of clusters to compute.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>by</code></td>
+        <td><code>str</code></td>
+        <td><p>A string to identifies the criteria used to explore <code>HierarchicalConstrainedClustering</code> tree. Can be <code>"size"</code> or <code>"iteration"</code>. Defaults to <code>"size"</code>.</p></td>
+        <td><code>&#39;size&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if <code>clustering_root</code> was not set.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Dict[str, int]</code></td>
+      <td><p>Dict[str,int] : A dictionary that contains the predicted cluster for each data ID.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\clustering\hierarchical.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_predicted_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">by</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;size&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the predicted clusters based on clustering tree and estimation of number of clusters.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nb_clusters (int): The number of clusters to compute.</span>
+<span class="sd">        by (str, optional): A string to identifies the criteria used to explore `HierarchicalConstrainedClustering` tree. Can be `&quot;size&quot;` or `&quot;iteration&quot;`. Defaults to `&quot;size&quot;`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `clustering_root` was not set.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Dict[str,int] : A dictionary that contains the predicted cluster for each data ID.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Check that the clustering has been made.</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">clustering_root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `clustering_root` is not set, probably because clustering was not run.&quot;</span><span class="p">)</span>
+
+    <span class="c1">###</span>
+    <span class="c1">### EXPLORE CLUSTER TREE</span>
+    <span class="c1">###</span>
+
+    <span class="c1"># Define the resulted list of children as the children of `HierarchicalConstrainedClustering` root.</span>
+    <span class="n">list_of_clusters</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Cluster</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">clustering_root</span><span class="p">]</span>
+
+    <span class="c1"># Explore `HierarchicalConstrainedClustering` children until dict_of_predicted_clusters has the right number of children.</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_clusters</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">nb_clusters</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">by</span> <span class="o">==</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span>
+            <span class="c1"># Get the biggest cluster in current children from `HierarchicalConstrainedClustering` exploration.</span>
+            <span class="c1"># i.e. it&#39;s the cluster that has the more data to split.</span>
+            <span class="n">cluster_to_split</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">list_of_clusters</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">members</span><span class="p">))</span>
+
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># if by == &quot;iteration&quot;:</span>
+            <span class="c1"># Get the most recent cluster in current children from `HierarchicalConstrainedClustering` exploration.</span>
+            <span class="c1"># i.e. it&#39;s the cluster that was last merged.</span>
+            <span class="n">cluster_to_split</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">list_of_clusters</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">clustering_iteration</span><span class="p">)</span>
+
+        <span class="c1"># If the chosen cluster is a leaf : break the `HierarchicalConstrainedClustering` exploration.</span>
+        <span class="k">if</span> <span class="n">cluster_to_split</span><span class="o">.</span><span class="n">children</span> <span class="o">==</span> <span class="p">[]:</span>  <span class="c1"># noqa: WPS520</span>
+            <span class="k">break</span>
+
+        <span class="c1"># Otherwise: The chosen cluster is a node, so split it and get its children.</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># ... remove the cluster obtained ...</span>
+            <span class="n">list_of_clusters</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">cluster_to_split</span><span class="p">)</span>
+
+            <span class="c1"># ... and add all its children.</span>
+            <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">cluster_to_split</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+                <span class="n">list_of_clusters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+
+    <span class="c1">###</span>
+    <span class="c1">### GET PREDICTED CLUSTERS</span>
+    <span class="c1">###</span>
+
+    <span class="c1"># Initialize the dictionary of predicted clusters.</span>
+    <span class="n">predicted_clusters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">data_ID</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span><span class="p">}</span>
+
+    <span class="c1"># For all cluster...</span>
+    <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">list_of_clusters</span><span class="p">:</span>
+
+        <span class="c1"># ... and for all member in each cluster...</span>
+        <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="n">cluster</span><span class="o">.</span><span class="n">members</span><span class="p">:</span>
+
+            <span class="c1"># ... affect the predicted cluster (cluster ID) to the data.</span>
+            <span class="n">predicted_clusters</span><span class="p">[</span><span class="n">data_ID</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">cluster_ID</span>
+
+    <span class="c1"># Rename cluster IDs by order.</span>
+    <span class="n">predicted_clusters</span> <span class="o">=</span> <span class="n">rename_clusters_by_order</span><span class="p">(</span><span class="n">clusters</span><span class="o">=</span><span class="n">predicted_clusters</span><span class="p">)</span>
+
+    <span class="c1"># Return predicted clusters</span>
+    <span class="k">return</span> <span class="n">predicted_clusters</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../kmeans/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                clustering.kmeans
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../spectral/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                clustering.spectral
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2157 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Python package used to apply NLP interactive clustering methods.">
+      
+      
+      
+      
+        <link rel="canonical" href="https://cognitivefactory.github.io/interactive-clustering/reference/constraints/abstract/">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>constraints.abstract - Interactive Clustering</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../css/mkdocstrings.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="purple">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cognitivefactory.interactive_clustering.constraints.abstract" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://cognitivefactory.github.io/interactive-clustering" title="Interactive Clustering" class="md-header-nav__button md-logo" aria-label="Interactive Clustering">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Interactive Clustering
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              constraints.abstract
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/cognitivefactory/interactive-clustering/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cognitivefactory/interactive-clustering
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Code Reference
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../contributing/" class="md-tabs__link">
+        Development
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://cognitivefactory.github.io/interactive-clustering" title="Interactive Clustering" class="md-nav__button md-logo" aria-label="Interactive Clustering">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Interactive Clustering
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/cognitivefactory/interactive-clustering/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cognitivefactory/interactive-clustering
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" >
+      
+      <label class="md-nav__link" for="nav-1">
+        Home
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="nav-1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../credits/" class="md-nav__link">
+        Credits
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      
+      <label class="md-nav__link" for="nav-2">
+        Code Reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Code Reference" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Code Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
+      
+      <label class="md-nav__link" for="nav-2-1">
+        Constraints Managing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Constraints Managing" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-1">
+          <span class="md-nav__icon md-icon"></span>
+          Constraints Managing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          constraints.abstract
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        constraints.abstract
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract" class="md-nav__link">
+    cognitivefactory.interactive_clustering.constraints.abstract
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" class="md-nav__link">
+    AbstractConstraintsManager
+  </a>
+  
+    <nav class="md-nav" aria-label="AbstractConstraintsManager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.add_constraint" class="md-nav__link">
+    add_constraint()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.add_data_ID" class="md-nav__link">
+    add_data_ID()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.check_completude_of_constraints" class="md-nav__link">
+    check_completude_of_constraints()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.delete_constraint" class="md-nav__link">
+    delete_constraint()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.delete_data_ID" class="md-nav__link">
+    delete_data_ID()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_added_constraint" class="md-nav__link">
+    get_added_constraint()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_connected_components" class="md-nav__link">
+    get_connected_components()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_inferred_constraint" class="md-nav__link">
+    get_inferred_constraint()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_list_of_managed_data_IDs" class="md-nav__link">
+    get_list_of_managed_data_IDs()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_min_and_max_number_of_clusters" class="md-nav__link">
+    get_min_and_max_number_of_clusters()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../factory/" class="md-nav__link">
+        constraints.factory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../binary/" class="md-nav__link">
+        constraints.binary
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2" >
+      
+      <label class="md-nav__link" for="nav-2-2">
+        Constraints Sampling
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Constraints Sampling" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-2">
+          <span class="md-nav__icon md-icon"></span>
+          Constraints Sampling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sampling/abstract/" class="md-nav__link">
+        sampling.abstract
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sampling/factory/" class="md-nav__link">
+        sampling.factory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sampling/random/" class="md-nav__link">
+        sampling.random
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sampling/random_in_same_cluster/" class="md-nav__link">
+        sampling.random_in_same_cluster
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sampling/closest_in_different_clusters/" class="md-nav__link">
+        sampling.closest_in_different_clusters
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sampling/farhest_in_same_cluster/" class="md-nav__link">
+        sampling.farhest_in_same_cluster
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3" >
+      
+      <label class="md-nav__link" for="nav-2-3">
+        Constrained Clustering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Constrained Clustering" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-3">
+          <span class="md-nav__icon md-icon"></span>
+          Constrained Clustering
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clustering/abstract/" class="md-nav__link">
+        clustering.abstract
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clustering/factory/" class="md-nav__link">
+        clustering.factory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clustering/kmeans/" class="md-nav__link">
+        clustering.kmeans
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clustering/hierarchical/" class="md-nav__link">
+        clustering.hierarchical
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clustering/spectral/" class="md-nav__link">
+        clustering.spectral
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4" >
+      
+      <label class="md-nav__link" for="nav-2-4">
+        Utility methods
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Utility methods" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-4">
+          <span class="md-nav__icon md-icon"></span>
+          Utility methods
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/checking/" class="md-nav__link">
+        utils.checking
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/preprocessing/" class="md-nav__link">
+        utils.preprocessing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/vectorization/" class="md-nav__link">
+        utils.vectorization
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/graph/" class="md-nav__link">
+        utils.graph
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/frequency/" class="md-nav__link">
+        utils.frequency
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        Development
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../code_of_conduct/" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../coverage/" class="md-nav__link">
+        Coverage report
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract" class="md-nav__link">
+    cognitivefactory.interactive_clustering.constraints.abstract
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" class="md-nav__link">
+    AbstractConstraintsManager
+  </a>
+  
+    <nav class="md-nav" aria-label="AbstractConstraintsManager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.add_constraint" class="md-nav__link">
+    add_constraint()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.add_data_ID" class="md-nav__link">
+    add_data_ID()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.check_completude_of_constraints" class="md-nav__link">
+    check_completude_of_constraints()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.delete_constraint" class="md-nav__link">
+    delete_constraint()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.delete_data_ID" class="md-nav__link">
+    delete_data_ID()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_added_constraint" class="md-nav__link">
+    get_added_constraint()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_connected_components" class="md-nav__link">
+    get_connected_components()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_inferred_constraint" class="md-nav__link">
+    get_inferred_constraint()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_list_of_managed_data_IDs" class="md-nav__link">
+    get_list_of_managed_data_IDs()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_min_and_max_number_of_clusters" class="md-nav__link">
+    get_min_and_max_number_of_clusters()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/cognitivefactory/interactive-clustering/edit/master/docs/reference/constraints/abstract.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>constraints.abstract</h1>
+                
+                <div class="doc doc-object doc-module">
+
+<a id="cognitivefactory.interactive_clustering.constraints.abstract"></a>
+    <div class="doc doc-contents first">
+
+      <ul>
+<li>Name:         cognitivefactory.interactive_clustering.constraints.abstract</li>
+<li>Description:  The abstract class used to define constraints managing algorithms.</li>
+<li>Author:       Erwan Schild</li>
+<li>Created:      17/03/2021</li>
+<li>Licence:      CeCILL-C License v1.0 (<a href="https://cecill.info/licences.fr.html">https://cecill.info/licences.fr.html</a>)</li>
+</ul>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" class="doc doc-heading">
+        <code>AbstractConstraintsManager</code>
+
+
+
+<a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" class="headerlink" title="Permanent link">�</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract class that is used to define constraints manager.
+The main inherited methods are about data IDs management, constraints management and constraints exploration.</p>
+<div class="admonition references">
+<p class="admonition-title">References</p>
+<ul>
+<li>Constraints in clustering: <code>Wagstaff, K. et C. Cardie (2000). Clustering with Instance-level Constraints. Proceedings of the Seventeenth International Conference on Machine Learning, 1103–1110.</code></li>
+</ul>
+</div>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.add_constraint" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">constraint_type</span><span class="p">,</span> <span class="n">constraint_value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.add_constraint" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>(ABSTRACT METHOD)
+An abstract method that represents the main method used to add a constraint between two data IDs.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data_ID1</code></td>
+        <td><code>str</code></td>
+        <td><p>The first data ID that is concerned for this constraint addition.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>data_ID2</code></td>
+        <td><code>str</code></td>
+        <td><p>The second data ID that is concerned for this constraint addition.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>constraint_type</code></td>
+        <td><code>str</code></td>
+        <td><p>The type of the constraint to add. The type have to be <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>constraint_value</code></td>
+        <td><code>float</code></td>
+        <td><p>The value of the constraint to add. The value have to be in range <code>[0.0, 1.0]</code>. Defaults to 1.0.</p></td>
+        <td><code>1.0</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if <code>data_ID1</code>, <code>data_ID2</code>, <code>constraint_type</code> or <code>constraint_value</code> are not managed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>bool</code></td>
+      <td><p>bool: <code>True</code> if the addition is done, <code>False</code> is the constraint can't be added.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\constraints\abstract.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">add_constraint</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">data_ID1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">data_ID2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">constraint_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">constraint_value</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    (ABSTRACT METHOD)</span>
+<span class="sd">    An abstract method that represents the main method used to add a constraint between two data IDs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data_ID1 (str): The first data ID that is concerned for this constraint addition.</span>
+<span class="sd">        data_ID2 (str): The second data ID that is concerned for this constraint addition.</span>
+<span class="sd">        constraint_type (str): The type of the constraint to add. The type have to be `&quot;MUST_LINK&quot;` or `&quot;CANNOT_LINK&quot;`.</span>
+<span class="sd">        constraint_value (float, optional): The value of the constraint to add. The value have to be in range `[0.0, 1.0]`. Defaults to 1.0.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `data_ID1`, `data_ID2`, `constraint_type` or `constraint_value` are not managed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: `True` if the addition is done, `False` is the constraint can&#39;t be added.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.add_data_ID" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_data_ID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_ID</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.add_data_ID" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>(ABSTRACT METHOD)
+An abstract method that represents the main method used to add a new data ID to manage.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data_ID</code></td>
+        <td><code>str</code></td>
+        <td><p>The data ID to manage.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if <code>data_ID</code> is already managed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>bool</code></td>
+      <td><p>bool: <code>True</code> if the addition is done.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\constraints\abstract.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">add_data_ID</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">data_ID</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    (ABSTRACT METHOD)</span>
+<span class="sd">    An abstract method that represents the main method used to add a new data ID to manage.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data_ID (str): The data ID to manage.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `data_ID` is already managed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: `True` if the addition is done.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.check_completude_of_constraints" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">check_completude_of_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.check_completude_of_constraints" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>(ABSTRACT METHOD)
+An abstract method that represents the main method used to check if all possible constraints are known (not necessarily annotated because of the transitivity).
+The transitivity is taken into account, and the <code>threshold</code> parameter is used to evaluate the impact of constraints transitivity.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>threshold</code></td>
+        <td><code>float</code></td>
+        <td><p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p></td>
+        <td><code>1.0</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if <code>threshold</code> is not managed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>bool</code></td>
+      <td><p>bool: Return <code>True</code> if all constraints are known, <code>False</code> otherwise.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\constraints\abstract.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">check_completude_of_constraints</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    (ABSTRACT METHOD)</span>
+<span class="sd">    An abstract method that represents the main method used to check if all possible constraints are known (not necessarily annotated because of the transitivity).</span>
+<span class="sd">    The transitivity is taken into account, and the `threshold` parameter is used to evaluate the impact of constraints transitivity.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        threshold (float, optional): The threshold used to evaluate the impact of constraints transitivity link. Defaults to `1.0`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `threshold` is not managed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: Return `True` if all constraints are known, `False` otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.delete_constraint" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">delete_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.delete_constraint" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>(ABSTRACT METHOD)
+An abstract method that represents the main method used to delete the constraint between two data IDs.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data_ID1</code></td>
+        <td><code>str</code></td>
+        <td><p>The first data ID that is concerned for this constraint deletion.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>data_ID2</code></td>
+        <td><code>str</code></td>
+        <td><p>The second data ID that is concerned for this constraint deletion.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if <code>data_ID1</code> or <code>data_ID2</code> are not managed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>bool</code></td>
+      <td><p>bool: <code>True</code> if the deletion is done.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\constraints\abstract.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">delete_constraint</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">data_ID1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">data_ID2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    (ABSTRACT METHOD)</span>
+<span class="sd">    An abstract method that represents the main method used to delete the constraint between two data IDs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data_ID1 (str): The first data ID that is concerned for this constraint deletion.</span>
+<span class="sd">        data_ID2 (str): The second data ID that is concerned for this constraint deletion.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `data_ID1` or `data_ID2` are not managed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: `True` if the deletion is done.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.delete_data_ID" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">delete_data_ID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_ID</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.delete_data_ID" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>(ABSTRACT METHOD)
+An abstract method that represents the main method used to delete a data ID to no longer manage.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data_ID</code></td>
+        <td><code>str</code></td>
+        <td><p>The data ID to no longer manage.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if <code>data_ID</code> is not managed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>bool</code></td>
+      <td><p>bool: <code>True</code> if the deletion is done.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\constraints\abstract.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">delete_data_ID</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">data_ID</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    (ABSTRACT METHOD)</span>
+<span class="sd">    An abstract method that represents the main method used to delete a data ID to no longer manage.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data_ID (str): The data ID to no longer manage.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `data_ID` is not managed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: `True` if the deletion is done.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_added_constraint" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_added_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_added_constraint" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>(ABSTRACT METHOD)
+An abstract method that represents the main method used to get the constraint added between the two data IDs.
+Do not take into account the constraints transitivity, just look at constraints that are explicitly added.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data_ID1</code></td>
+        <td><code>str</code></td>
+        <td><p>The first data ID that is concerned for this constraint.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>data_ID2</code></td>
+        <td><code>str</code></td>
+        <td><p>The second data ID that is concerned for this constraint.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if <code>data_ID1</code> or <code>data_ID2</code> are not managed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Optional[Tuple[str, float]]</code></td>
+      <td><p>Optional[Tuple[str, float]]: <code>None</code> if no constraint, <code>(constraint_type, constraint_value)</code> otherwise.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\constraints\abstract.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_added_constraint</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">data_ID1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">data_ID2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    (ABSTRACT METHOD)</span>
+<span class="sd">    An abstract method that represents the main method used to get the constraint added between the two data IDs.</span>
+<span class="sd">    Do not take into account the constraints transitivity, just look at constraints that are explicitly added.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data_ID1 (str): The first data ID that is concerned for this constraint.</span>
+<span class="sd">        data_ID2 (str): The second data ID that is concerned for this constraint.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `data_ID1` or `data_ID2` are not managed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[Tuple[str, float]]: `None` if no constraint, `(constraint_type, constraint_value)` otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_connected_components" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_connected_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_connected_components" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>(ABSTRACT METHOD)
+An abstract method that represents the main method used to get the possible lists of data IDs that are connected by a <code>"MUST_LINK"</code> constraints.
+Each list forms a component of the constraints transitivity graph, and it forms a partition of the managed data IDs.
+The transitivity is taken into account, and the <code>threshold</code> parameter is used to evaluate the impact of constraints transitivity.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>threshold</code></td>
+        <td><code>float</code></td>
+        <td><p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p></td>
+        <td><code>1.0</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if <code>threshold</code> is not managed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>List[List[str]]</code></td>
+      <td><p>List[List[int]]: The list of lists of data IDs that represent a component of the constraints transitivity graph.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\constraints\abstract.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_connected_components</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    (ABSTRACT METHOD)</span>
+<span class="sd">    An abstract method that represents the main method used to get the possible lists of data IDs that are connected by a `&quot;MUST_LINK&quot;` constraints.</span>
+<span class="sd">    Each list forms a component of the constraints transitivity graph, and it forms a partition of the managed data IDs.</span>
+<span class="sd">    The transitivity is taken into account, and the `threshold` parameter is used to evaluate the impact of constraints transitivity.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        threshold (float, optional): The threshold used to evaluate the impact of constraints transitivity link. Defaults to `1.0`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `threshold` is not managed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[List[int]]: The list of lists of data IDs that represent a component of the constraints transitivity graph.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_inferred_constraint" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_inferred_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_inferred_constraint" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>(ABSTRACT METHOD)
+An abstract method that represents the main method used to check if the constraint inferred by transitivity between the two data IDs.
+The transitivity is taken into account, and the <code>threshold</code> parameter is used to evaluate the impact of constraints transitivity.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data_ID1</code></td>
+        <td><code>str</code></td>
+        <td><p>The first data ID that is concerned for this constraint.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>data_ID2</code></td>
+        <td><code>str</code></td>
+        <td><p>The second data ID that is concerned for this constraint.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>threshold</code></td>
+        <td><code>float</code></td>
+        <td><p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p></td>
+        <td><code>1.0</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if <code>data_ID1</code>, <code>data_ID2</code> or <code>threshold</code> are not managed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Optional[str]</code></td>
+      <td><p>Optional[str]: The type of the inferred constraint. The type can be <code>None</code>, <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\constraints\abstract.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_inferred_constraint</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">data_ID1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">data_ID2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    (ABSTRACT METHOD)</span>
+<span class="sd">    An abstract method that represents the main method used to check if the constraint inferred by transitivity between the two data IDs.</span>
+<span class="sd">    The transitivity is taken into account, and the `threshold` parameter is used to evaluate the impact of constraints transitivity.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data_ID1 (str): The first data ID that is concerned for this constraint.</span>
+<span class="sd">        data_ID2 (str): The second data ID that is concerned for this constraint.</span>
+<span class="sd">        threshold (float, optional): The threshold used to evaluate the impact of constraints transitivity link. Defaults to `1.0`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `data_ID1`, `data_ID2` or `threshold` are not managed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[str]: The type of the inferred constraint. The type can be `None`, `&quot;MUST_LINK&quot;` or `&quot;CANNOT_LINK&quot;`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_list_of_managed_data_IDs" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_list_of_managed_data_IDs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_list_of_managed_data_IDs" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>(ABSTRACT METHOD)
+An abstract method that represents the main method used to get the list of data IDs that are managed.</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>List[str]</code></td>
+      <td><p>List[str]: The sorted list of data IDs that are managed.</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\constraints\abstract.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_list_of_managed_data_IDs</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    (ABSTRACT METHOD)</span>
+<span class="sd">    An abstract method that represents the main method used to get the list of data IDs that are managed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[str]: The sorted list of data IDs that are managed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_min_and_max_number_of_clusters" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_min_and_max_number_of_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+
+
+<a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_min_and_max_number_of_clusters" class="headerlink" title="Permanent link">�</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>(ABSTRACT METHOD)
+An abstract method that represents the main method used to get determine, for a clustering model that would not violate any constraints, the range of the possible clusters number.
+The transitivity is taken into account, and the <code>threshold</code> parameter is used to evaluate the impact of constraints transitivity.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>threshold</code></td>
+        <td><code>float</code></td>
+        <td><p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p></td>
+        <td><code>1.0</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>if <code>threshold</code> is not managed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Tuple[int, int]</code></td>
+      <td><p>Tuple[int,int]: The minimum and the maximum possible clusters numbers (for a clustering model that would not violate any constraints).</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\constraints\abstract.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">get_min_and_max_number_of_clusters</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    (ABSTRACT METHOD)</span>
+<span class="sd">    An abstract method that represents the main method used to get determine, for a clustering model that would not violate any constraints, the range of the possible clusters number.</span>
+<span class="sd">    The transitivity is taken into account, and the `threshold` parameter is used to evaluate the impact of constraints transitivity.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        threshold (float, optional): The threshold used to evaluate the impact of constraints transitivity link. Defaults to `1.0`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if `threshold` is not managed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple[int,int]: The minimum and the maximum possible clusters numbers (for a clustering model that would not violate any constraints).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../../license/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                License
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../factory/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                constraints.factory
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
