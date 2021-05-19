@@ -51,7 +51,10 @@ jobs:
         key: quality-poetry-cache
 
     - name: Set up the project
-      run: poetry install -vv
+      run: |
+        poetry install -vv
+        poetry run python3 -m spacy download fr_core_news_sm-2.3.0 --direct
+        poetry run python3 -m spacy download en_core_web_sm-2.3.0 --direct
 
     - name: Check if the documentation builds correctly
       run: poetry run duty check-docs
