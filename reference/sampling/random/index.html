@@ -1053,7 +1053,7 @@
 
 
 
-<a href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling" class="headerlink" title="Permanent link">�</a></h2>
+<a href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling" class="headerlink" title="Permanent link">&para;</a></h2>
 
     <div class="doc doc-contents ">
 
@@ -1062,25 +1062,25 @@ It inherits from <code>AbstractConstraintsSampling</code>.</p>
 
 <p><strong>Examples:</strong></p>
     <p>```python</p>
-<h3 id="cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--import">Import.<a class="headerlink" href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--import" title="Permanent link">�</a></h3>
+<h3 id="cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--import">Import.<a class="headerlink" href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--import" title="Permanent link">&para;</a></h3>
 <p>from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
 from cognitivefactory.interactive_clustering.sampling.random import RandomConstraintsSampling</p>
-<h3 id="cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--create-an-instance-of-random-sampling">Create an instance of random sampling.<a class="headerlink" href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--create-an-instance-of-random-sampling" title="Permanent link">�</a></h3>
+<h3 id="cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--create-an-instance-of-random-sampling">Create an instance of random sampling.<a class="headerlink" href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--create-an-instance-of-random-sampling" title="Permanent link">&para;</a></h3>
 <p>sampler = RandomConstraintsSampling(random_seed=1)</p>
-<h3 id="cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--define-list-of-data-ids">Define list of data IDs.<a class="headerlink" href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--define-list-of-data-ids" title="Permanent link">�</a></h3>
+<h3 id="cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--define-list-of-data-ids">Define list of data IDs.<a class="headerlink" href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--define-list-of-data-ids" title="Permanent link">&para;</a></h3>
 <p>list_of_data_IDs = ["bonjour", "salut", "coucou", "au revoir", "a bientôt",]</p>
-<h3 id="cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--define-constraints-manager-set-it-to-none-for-no-constraints">Define constraints manager (set it to None for no constraints).<a class="headerlink" href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--define-constraints-manager-set-it-to-none-for-no-constraints" title="Permanent link">�</a></h3>
+<h3 id="cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--define-constraints-manager-set-it-to-none-for-no-constraints">Define constraints manager (set it to None for no constraints).<a class="headerlink" href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--define-constraints-manager-set-it-to-none-for-no-constraints" title="Permanent link">&para;</a></h3>
 <p>constraints_manager = BinaryConstraintsManager(
     list_of_data_IDs=list_of_data_IDs,
 )
 constraints_manager.add_constraint(data_ID1="bonjour", data_ID2="salut", constraint_type="MUST_LINK")
 constraints_manager.add_constraint(data_ID1="au revoir", data_ID2="a bientôt", constraint_type="MUST_LINK")</p>
-<h3 id="cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--run-sampling">Run sampling.<a class="headerlink" href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--run-sampling" title="Permanent link">�</a></h3>
+<h3 id="cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--run-sampling">Run sampling.<a class="headerlink" href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--run-sampling" title="Permanent link">&para;</a></h3>
 <p>selection = sampler.sample(
     list_of_data_IDs=list_of_data_IDs,
     nb_to_select=3,
 )</p>
-<h3 id="cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--print-results">Print results.<a class="headerlink" href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--print-results" title="Permanent link">�</a></h3>
+<h3 id="cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--print-results">Print results.<a class="headerlink" href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling--print-results" title="Permanent link">&para;</a></h3>
 <p>print("Expected results", ";", [("au revoir", "bonjour"), ("bonjour", "coucou"), ("a bientôt", "coucou"),])
 prin</p>
 
@@ -1108,7 +1108,7 @@ prin</p>
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-<a href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling.__init__" class="headerlink" title="Permanent link">�</a></h3>
+<a href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling.__init__" class="headerlink" title="Permanent link">&para;</a></h3>
 
     <div class="doc doc-contents ">
 
@@ -1172,7 +1172,7 @@ prin</p>
 <code class="highlight language-python"><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_of_data_IDs</span><span class="p">,</span> <span class="n">nb_to_select</span><span class="p">,</span> <span class="n">constraints_manager</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">clustering_result</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vectors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
 
 
-<a href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling.sample" class="headerlink" title="Permanent link">�</a></h3>
+<a href="#cognitivefactory.interactive_clustering.sampling.random.RandomConstraintsSampling.sample" class="headerlink" title="Permanent link">&para;</a></h3>
 
     <div class="doc doc-contents ">
 
