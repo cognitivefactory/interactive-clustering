@@ -93,7 +93,7 @@ _NB_ : Other spaCy language models can be downloaded here : [spaCy - Models & La
 ## <a name="Development"></a> Development
 
 To work on this project or contribute to it, please read
-[the Copier Poetry documentation](https://pawamoy.github.io/copier-poetry/).
+[the Copier PDM documentation](https://pawamoy.github.io/copier-pdm/).
 
 ### Quick setup and help
 
@@ -106,10 +106,11 @@ make setup
 ```
 
 Show the help:
-
 ```bash
 make help  # or just make
 ```
+
+For more details, read the [Contributing](https://cognitivefactory.github.io/interactive-clustering/contributing/) documentation.
 
 ## <a name="References"></a> References
 
