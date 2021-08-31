@@ -19,6 +19,8 @@ CI = os.environ.get("CI", "0") in {"1", "true", "yes", ""}
 WINDOWS = os.name == "nt"
 PTY = not WINDOWS and not CI
 
+# sys.path.append("src")  # To run `make check-docs` and avoid `ModuleNotFoundError: No module named 'cognitivefactory'`
+
 
 def _latest(lines: List[str], regex: Pattern) -> Optional[str]:
     for line in lines:
@@ -128,24 +130,33 @@ def check_code_quality(ctx, files=PY_SRC):
 
 
 @duty
-def check_dependencies(ctx):
+def check_dependencies(ctx, nofail=True):
     """
     Check for vulnerabilities in dependencies.
 
     Arguments:
         ctx: The context instance (passed automatically).
+        nofail: Whether to fail or not.
     """
-    nofail = False
+    # Get or Set path to safety.
     safety = which("safety")
     if not safety:
         pipx = which("pipx")
+
         if pipx:
             safety = f"{pipx} run safety"
         else:
             safety = "safety"
             nofail = True
+
+    # Get proxy information.
+    if "HTTPS_PROXY" in os.environ.keys():
+        proxy_options = f" --proxy-host={os.environ['HTTPS_PROXY']}"
+    else:
+        proxy_options = ""
+
     ctx.run(
-        f"pdm export -f requirements --without-hashes | {safety} check --stdin --full-report",
+        f"pdm export -f requirements --without-hashes | {safety} check --stdin --full-report {proxy_options}",
         title="Checking dependencies",
         pty=PTY,
         nofail=nofail,

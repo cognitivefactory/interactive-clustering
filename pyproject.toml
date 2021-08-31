@@ -29,11 +29,11 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "cvxopt~=1.2"
-    "numpy~=1.19.4"
-    "scikit-learn~=0.24.1"
-    "scipy~=1.5.3"
-    "spacy~=2.3, !=2.3.6"
+    "cvxopt~=1.2",
+    "numpy~=1.19",
+    "scikit-learn~=0.24",
+    "scipy~=1.5.3",
+    "spacy~=2.3",
 ]
 
 [project.urls]
@@ -45,7 +45,9 @@ Issues = "https://github.com/cognitivefactory/interactive-clustering/issues"
 Discussions = "https://github.com/cognitivefactory/interactive-clustering/discussions"
 
 [tool.pdm]
-package-dir = "src/cognitivefactory"
+includes = [
+    "src/cognitivefactory"
+]
 
 [tool.pdm.dev-dependencies]
 develop = [
@@ -96,7 +98,7 @@ tests = [
     "pytest-xdist~=2.2",
 ]
 typing = [
-    "mypy~=0.812"
+    "mypy~=0.812",
 ]
 
 [tool.black]
