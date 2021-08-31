@@ -8,23 +8,28 @@ __pycache__/
 dist/
 build/
 pip-wheel-metadata/
+__pypackages__/
 
 # tests
 .coverage*
 .pytest_cache/
 .mypy_cache/
 .hypothesis/
+htmlcov/
 
 # documentation
 site/
 
 # various
 poetry.lock
+pdm.lock
+.pdm.toml
 
 # editors (you should put this in your global gitignore though)
 # git config --global core.excludesfile ~/.gitignore_global
 .idea/
 .vscode/
+*.rej
 
 # temporary analysis
 TEMP/
