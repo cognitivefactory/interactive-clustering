@@ -4,7 +4,6 @@ import functools
 import re
 from itertools import chain
 from pathlib import Path
-from urllib.request import urlopen
 
 import mkdocs_gen_files
 import toml
@@ -38,6 +37,7 @@ def get_credits_data() -> dict:
         "project_name": project_name,
         "direct_dependencies": sorted(direct_dependencies),
         "indirect_dependencies": sorted(indirect_dependencies),
+        "more_credits": None,  # TODO: change https://github.com/pawamoy/jinja-templates/credits.md : `{%- if more_credits %}` -> `{%- if more_credits is defined %}`
     }
 
 
@@ -49,10 +49,40 @@ def get_credits():
         The credits page Markdown.
     """
     jinja_env = SandboxedEnvironment(undefined=StrictUndefined)
-    commit = "c78c29caa345b6ace19494a98b1544253cbaf8c1"
-    template_url = f"https://raw.githubusercontent.com/pawamoy/jinja-templates/{commit}/credits.md"
+    # commit = "c78c29caa345b6ace19494a98b1544253cbaf8c1"
+    # template_url = f"https://raw.githubusercontent.com/pawamoy/jinja-templates/{commit}/credits.md"
     template_data = get_credits_data()
-    template_text = urlopen(template_url).read().decode("utf8")  # noqa: S310
+    # template_text = urlopen(template_url).read().decode("utf8")  # noqa: S310
+    template_text = """
+    <!--
+        Template repository: https://github.com/pawamoy/jinja-templates
+        Template path: credits.md
+    -->
+
+    # Credits
+
+    These projects were used to build `{{ project_name }}`. **Thank you!**
+
+    [`python`](https://www.python.org/) |
+    [`pdm`](https://pdm.fming.dev/) |
+    [`copier-pdm`](https://github.com/pawamoy/copier-pdm)
+
+    ### Direct dependencies
+
+    {% for dep in direct_dependencies -%}
+    [`{{ dep }}`](https://pypi.org/project/{{ dep }}/){% if not loop.last %} |{% endif %}
+    {%- endfor %}
+
+    ### Indirect dependencies
+
+    {% for dep in indirect_dependencies -%}
+    [`{{ dep }}`](https://pypi.org/project/{{ dep }}/){% if not loop.last %} |{% endif %}
+    {%- endfor %}
+    {%- if more_credits %}
+
+    **[More credits from the author]({{ more_credits }})**
+    {%- endif %}
+    """
     return jinja_env.from_string(template_text).render(**template_data)
 
 
