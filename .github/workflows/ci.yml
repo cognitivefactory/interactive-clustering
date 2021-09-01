@@ -101,7 +101,7 @@ jobs:
         key: tests-cache-${{ runner.os }}-${{ matrix.python-version }}
 
     - name: Install dependencies
-      run: pdm install -G duty -G tests
+      run: pdm install -G duty -G tests -vv
 
     - name: Run the test suite
       run: pdm run duty test
