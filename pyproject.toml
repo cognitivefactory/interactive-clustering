@@ -29,11 +29,11 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "cvxopt~=1.2",
-    "numpy~=1.19",
-    "scikit-learn~=0.24",
-    "scipy~=1.5.3",
-    "spacy~=2.3",
+    "cvxopt==1.2.6",  # "cvxopt~=1.2"
+    "numpy==1.19.4",  # "numpy~=1.19"
+    "scikit-learn==0.23.2",  # "scikit-learn~=0.24"
+    "scipy==1.5.3",  # "scipy~=1.5.3"
+    "spacy==2.3.2",  # "spacy~=2.3"
 ]
 
 [project.urls]
@@ -51,8 +51,8 @@ includes = [
 
 [tool.pdm.dev-dependencies]
 develop = [
-    "fr-core-news-sm==2.3.0", # { url = "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-2.3.0/fr_core_news_sm-2.3.0.tar.gz" }
-    "en_core_web_sm==2.3.0", # { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.0/en_core_web_sm-2.3.0.tar.gz" }
+    "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-2.3.0/fr_core_news_sm-2.3.0.tar.gz"
+    "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.0/en_core_web_sm-2.3.0.tar.gz"
 ]
 duty = [
     "duty~=0.6",
