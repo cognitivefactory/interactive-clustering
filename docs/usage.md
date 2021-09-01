@@ -1,4 +1,4 @@
-# Example of use
+# Usage
 
 Import dependencies.
 ```python
@@ -47,7 +47,7 @@ Initialize constraints manager.
 # Create an instance of binary constraints manager.
 constraints_manager = managing_factory(
     manager="binary",
-    list_of_data_IDs = sorted(dict_of_texts.keys()),
+    list_of_data_IDs = list(dict_of_texts.keys()),
 )
 ```
 
@@ -61,9 +61,9 @@ clustering_model = clustering_factory(
 
 # Run clustering.
 clustering_result = clustering_model.cluster(
-    vectors=dict_of_vectors,
-    nb_clusters=2,
     constraints_manager=constraints_manager,
+    nb_clusters=2,
+    vectors=dict_of_vectors,
 )
 ```
 
@@ -90,7 +90,7 @@ sampler = sampling_factory(
 
 # Sample constraints to annotated.
 selection = sampler.sample(
-    list_of_data_IDs=sorted(dict_of_texts.keys()),
+    constraints_manager=constraints_manager,
     nb_to_select=3,
     #clustering_result=clustering_result,  # Results from iteration `N-1`.
     #vectors=dict_of_vectors,
@@ -142,9 +142,9 @@ clustering_model = clustering_factory(
 
 # Run clustering.
 clustering_result = clustering_model.cluster(
-    vectors=dict_of_vectors,
-    nb_clusters=nb_clusters,
     constraints_manager=constraints_manager,  # Annotation since iteration `0`.
+    nb_clusters=nb_clusters,
+    vectors=dict_of_vectors,
 )  # Clustering results are corrected since the previous iteration.
 ```
 
