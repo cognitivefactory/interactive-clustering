@@ -12,7 +12,6 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-import random  # To shuffle data and set random seed.
 from typing import Dict, List, Optional, Tuple, Union  # To type Python code (mypy).
 
 import numpy as np  # To handle float.
@@ -26,7 +25,6 @@ from cognitivefactory.interactive_clustering.constraints.abstract import (  # To
 from cognitivefactory.interactive_clustering.sampling.abstract import (  # To use abstract interface.
     AbstractConstraintsSampling,
 )
-from cognitivefactory.interactive_clustering.utils import checking  # To check parameters.
 
 
 # ==============================================================================
@@ -67,7 +65,7 @@ class FarhestInSameClusterConstraintsSampling(AbstractConstraintsSampling):
 
         # Run sampling.
         selection = sampler.sample(
-            list_of_data_IDs=list_of_data_IDs,
+            constraints_manager=constraints_manager,
             nb_to_select=3,
             clustering_result=clustering_result,
             vectors=vectors,
@@ -103,9 +101,8 @@ class FarhestInSameClusterConstraintsSampling(AbstractConstraintsSampling):
     # ==============================================================================
     def sample(
         self,
-        list_of_data_IDs: List[str],
+        constraints_manager: AbstractConstraintsManager,
         nb_to_select: int,
-        constraints_manager: Optional[AbstractConstraintsManager] = None,
         clustering_result: Optional[Dict[str, int]] = None,
         vectors: Optional[Dict[str, Union[ndarray, csr_matrix]]] = None,
         **kargs,
@@ -114,11 +111,10 @@ class FarhestInSameClusterConstraintsSampling(AbstractConstraintsSampling):
         The main method used to sample couple of data IDs for constraints annotation.
 
         Args:
-            list_of_data_IDs (List[str]): The list of possible data IDs that can be selected.
+            constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs.
             nb_to_select (int): The number of couple of data IDs to select.
-            constraints_manager (Optional[AbstractConstraintsManager], optional): A constraints manager over data IDs. The list of data IDs managed by `constraints_manager` has to refer to `list_of_data_IDs`. If `None`, no constraint are used during the sampling. Defaults to `None`.
-            clustering_result (Optional[Dict[str,int]], optional): A dictionary that represents the predicted cluster for each data ID. The keys of the dictionary has to refer to `list_of_data_IDs`. If `None`, no clustering result are used during the sampling. Defaults to `None`.
-            vectors (Optional[Dict[str,Union[ndarray,csr_matrix]]], optional): The representation of data vectors. The keys of the dictionary has to refer to `list_of_data_IDs`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`). If `None`, no vectors are used during the sampling. Defaults to `None`
+            clustering_result (Optional[Dict[str,int]], optional): A dictionary that represents the predicted cluster for each data ID. The keys of the dictionary represents the data IDs. If `None`, no clustering result are used during the sampling. Defaults to `None`.
+            vectors (Optional[Dict[str,Union[ndarray,csr_matrix]]], optional): vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`). If `None`, no vectors are used during the sampling. Defaults to `None`
             **kargs (dict): Other parameters that can be used in the sampling.
 
         Raises:
@@ -132,10 +128,11 @@ class FarhestInSameClusterConstraintsSampling(AbstractConstraintsSampling):
         ### GET PARAMETERS
         ###
 
-        # Check `list_of_data_IDs`.
-        if not isinstance(list_of_data_IDs, list) or not all(isinstance(element, str) for element in list_of_data_IDs):
-            raise ValueError("The `list_of_data_IDs` parameter has to be a `list` type.")
-        list_of_data_IDs = sorted(list_of_data_IDs)
+        # Store `self.constraints_manager` and `self.list_of_data_IDs`.
+        if not isinstance(constraints_manager, AbstractConstraintsManager):
+            raise ValueError("The `constraints_manager` parameter has to be a `AbstractConstraintsManager` type.")
+        self.constraints_manager: AbstractConstraintsManager = constraints_manager
+        self.list_of_data_IDs: List[str] = self.constraints_manager.get_list_of_managed_data_IDs()
 
         # Check `nb_to_select`.
         if not isinstance(nb_to_select, int) or (nb_to_select < 0):
@@ -143,23 +140,15 @@ class FarhestInSameClusterConstraintsSampling(AbstractConstraintsSampling):
         elif nb_to_select == 0:
             return []
 
-        # Check `constraints_manager`.
-        verified_constraints_manager: AbstractConstraintsManager = checking.check_constraints_manager(
-            list_of_data_IDs=list_of_data_IDs,
-            constraints_manager=constraints_manager,
-        )
-
         # Check `clustering_result`.
-        verified_clustering_result: Dict[str, int] = checking.check_clustering_result(
-            list_of_data_IDs=list_of_data_IDs,
-            clustering_result=clustering_result,
-        )
+        if not isinstance(clustering_result, dict):
+            raise ValueError("The `clustering_result` parameter has to be a `dict` type.")
+        self.clustering_result: Dict[str, int] = clustering_result
 
         # Check `vectors`.
-        verified_vectors: Dict[str, Union[ndarray, csr_matrix]] = checking.check_vectors(
-            list_of_data_IDs=list_of_data_IDs,
-            vectors=vectors,
-        )
+        if not isinstance(vectors, dict):
+            raise ValueError("The `vectors` parameter has to be a `dict` type.")
+        self.vectors: Dict[str, Union[ndarray, csr_matrix]] = vectors
 
         ###
         ### RANDOM SELECTION
@@ -168,8 +157,8 @@ class FarhestInSameClusterConstraintsSampling(AbstractConstraintsSampling):
         # Get the list of possible combinations.
         list_of_possible_combinations: List[Tuple[str, str]] = [
             (data_ID1, data_ID2)
-            for data_ID1 in list_of_data_IDs
-            for data_ID2 in list_of_data_IDs
+            for data_ID1 in self.list_of_data_IDs
+            for data_ID2 in self.list_of_data_IDs
             if (
                 # Filter on ordered data IDs.
                 data_ID1
@@ -177,7 +166,7 @@ class FarhestInSameClusterConstraintsSampling(AbstractConstraintsSampling):
             )
             and (
                 # Filter on unkown data IDs constraints.
-                verified_constraints_manager.get_inferred_constraint(
+                self.constraints_manager.get_inferred_constraint(
                     data_ID1=data_ID1,
                     data_ID2=data_ID2,
                 )
@@ -185,21 +174,17 @@ class FarhestInSameClusterConstraintsSampling(AbstractConstraintsSampling):
             )
             and (
                 # Filter on data IDs from same cluster.
-                verified_clustering_result[data_ID1]
-                == verified_clustering_result[data_ID2]
+                self.clustering_result[data_ID1]
+                == self.clustering_result[data_ID2]
             )
         ]
-
-        # Shuffle the list of possible combinations.
-        random.seed(self.random_seed)
-        random.shuffle(list_of_possible_combinations)
 
         # Sorted list of possible combinations by distance (max to min).
         list_of_possible_combinations = sorted(
             list_of_possible_combinations,
             key=lambda combination: pairwise_distances(
-                X=verified_vectors[combination[0]],
-                Y=verified_vectors[combination[1]],
+                X=self.vectors[combination[0]],
+                Y=self.vectors[combination[1]],
                 metric="euclidean",  # TODO get different pairwise_distances config in **kargs
             )[0][0].astype(np.float64),
             reverse=True,

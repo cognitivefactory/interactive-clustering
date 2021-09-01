@@ -38,9 +38,8 @@ class AbstractConstraintsSampling(ABC):
     @abstractmethod
     def sample(
         self,
-        list_of_data_IDs: List[str],
+        constraints_manager: AbstractConstraintsManager,
         nb_to_select: int,
-        constraints_manager: Optional[AbstractConstraintsManager] = None,
         clustering_result: Optional[Dict[str, int]] = None,
         vectors: Optional[Dict[str, Union[ndarray, csr_matrix]]] = None,
         **kargs,
@@ -50,11 +49,10 @@ class AbstractConstraintsSampling(ABC):
         An abstract method that represents the main method used to sample couple of data IDs for constraints annotation.
 
         Args:
-            list_of_data_IDs (List[str]): The list of possible data IDs that can be selected.
+            constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs.
             nb_to_select (int): The number of couple of data IDs to select.
-            constraints_manager (Optional[AbstractConstraintsManager], optional): A constraints manager over data IDs. The list of data IDs managed by `constraints_manager` has to refer to `list_of_data_IDs`. If `None`, no constraint are used during the sampling. Defaults to `None`.
-            clustering_result (Optional[Dict[str,int]], optional): A dictionary that represents the predicted cluster for each data ID. The keys of the dictionary has to refer to `list_of_data_IDs`. If `None`, no clustering result are used during the sampling. Defaults to `None`.
-            vectors (Optional[Dict[str,Union[ndarray,csr_matrix]]], optional): The representation of data vectors. The keys of the dictionary has to refer to `list_of_data_IDs`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`). If `None`, no vectors are used during the sampling. Defaults to `None`
+            clustering_result (Optional[Dict[str,int]], optional): A dictionary that represents the predicted cluster for each data ID. The keys of the dictionary represents the data IDs. If `None`, no clustering result are used during the sampling. Defaults to `None`.
+            vectors (Optional[Dict[str,Union[ndarray,csr_matrix]]], optional): vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`). If `None`, no vectors are used during the sampling. Defaults to `None`
             **kargs (dict): Other parameters that can be used in the sampling.
 
         Raises:
