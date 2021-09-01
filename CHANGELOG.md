@@ -5,6 +5,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [0.2.0](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.2.0) - 2021-09-01
+
+<small>[Compare with 0.1.3](https://github.com/cognitivefactory/interactive-clustering/compare/0.1.3...0.2.0)</small>
+
+### Bug Fixes
+- change constraints storage from sorted lists to sets ([47d3528](https://github.com/cognitivefactory/interactive-clustering/commit/47d35284deda6ae2e26b4fb87170d96a599fcba3) by Erwan Schild).
+
+### Code Refactoring
+- delete utils.checking ([a9a1f50](https://github.com/cognitivefactory/interactive-clustering/commit/a9a1f50ba0d101e5a212e825f907a567f64e05f7) by Erwan Schild).
+- remove checks and force usage of constraints_manager ([4cdb0bb](https://github.com/cognitivefactory/interactive-clustering/commit/4cdb0bbd11fdababb35fc4a48612897274bc69b8) by Erwan Schild).
+- improve sampling speed ([9d6ed5c](https://github.com/cognitivefactory/interactive-clustering/commit/9d6ed5c1b4baeddd35e9bbb3e32c4fbc74031633) by Erwan Schild).
+- add py.typed file ([25c7be3](https://github.com/cognitivefactory/interactive-clustering/commit/25c7be3648ff9dabf84b1349f2ae52df4ba4c8ae) by Erwan Schild).
+
+
 ## [0.1.3](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.1.3) - 2021-05-20
 
 <small>[Compare with 0.1.2](https://github.com/cognitivefactory/interactive-clustering/compare/0.1.2...0.1.3)</small>
