@@ -32,7 +32,6 @@ nav:
     - clustering.hierarchical: reference/clustering/hierarchical.md
     - clustering.spectral: reference/clustering/spectral.md
   - Utility methods:
-    - utils.checking: reference/utils/checking.md
     - utils.preprocessing: reference/utils/preprocessing.md
     - utils.vectorization: reference/utils/vectorization.md
     - utils.graph: reference/utils/graph.md

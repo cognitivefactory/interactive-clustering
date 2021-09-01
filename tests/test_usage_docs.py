@@ -62,7 +62,7 @@ def test_docs_usage():
     # Create an instance of binary constraints manager.
     constraints_manager = managing_factory(
         manager="binary",
-        list_of_data_IDs=sorted(dict_of_texts.keys()),
+        list_of_data_IDs=list(dict_of_texts.keys()),
     )
     assert constraints_manager
 
@@ -75,9 +75,9 @@ def test_docs_usage():
 
     # Run clustering.
     clustering_result = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=dict_of_vectors,
         nb_clusters=2,
-        constraints_manager=constraints_manager,
     )
     assert clustering_result
 
@@ -89,7 +89,7 @@ def test_docs_usage():
     is_finish = constraints_manager.check_completude_of_constraints()
 
     # Print result
-    if is_finish:
+    if is_finish:  # pragma: no cover
         print("All possible constraints are annotated. No more iteration can be run.")
         # break
 
@@ -101,13 +101,13 @@ def test_docs_usage():
 
     # Sample constraints to annotated.
     selection = sampler.sample(
-        list_of_data_IDs=sorted(dict_of_texts.keys()),
+        constraints_manager=constraints_manager,
         nb_to_select=3,
         # clustering_result=clustering_result,  # Results from iteration `N-1`.
         # vectors=dict_of_vectors,
     )
-    assert selection
     assert len(selection) == 3
+    assert selection
 
     # Annotate constraints (manual operation).
     ANNOTATIONS = ["MUST_LINK", "CANNOT_LINK", None]
@@ -143,8 +143,8 @@ def test_docs_usage():
 
     # Run clustering.
     clustering_result = clustering_model.cluster(
-        vectors=dict_of_vectors,
-        nb_clusters=nb_clusters,
         constraints_manager=constraints_manager,  # Annotation since iteration `0`.
+        nb_clusters=nb_clusters,
+        vectors=dict_of_vectors,
     )  # Clustering results are corrected since the previous iteration.
     assert clustering_result
