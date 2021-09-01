@@ -45,7 +45,7 @@ def vectorize(
         spacy_language_model (str, optional): The spaCy language model to use if vectorizer is spacy. Defaults to `"fr_core_news_sm"`.
 
     Raises:
-        ValueError: Raises error if vectorization `type` is not implemented or if the `spacy_language_model` is not installed.
+        ValueError: Raises error if `vectorizer_type` is not implemented or if the `spacy_language_model` is not installed.
 
     Returns:
         Dict[str, Union[ndarray,csr_matrix]]: A dictionary that contains the computed vectors.

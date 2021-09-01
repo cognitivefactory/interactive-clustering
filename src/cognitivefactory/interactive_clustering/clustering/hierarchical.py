@@ -27,7 +27,6 @@ from cognitivefactory.interactive_clustering.clustering.abstract import (  # To 
 from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
     AbstractConstraintsManager,
 )
-from cognitivefactory.interactive_clustering.utils import checking  # To check parameters.
 
 
 # ==============================================================================
@@ -69,14 +68,14 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
             "9": csr_matrix([0.00, 0.00, 1.00]),
         }
 
-        # Define constraints manager (set it to None for no constraints).
-        constraints_manager = None
+        # Define constraints manager.
+        constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
         # Run clustering.
         dict_of_predicted_clusters = clustering_model(
-            vectors=vectors
-            nb_clusters=3
-            constraints_manager=constraints_manager
+            constraints_manager=constraints_manager,
+            vectors=vectors,
+            nb_clusters=3,
         )
 
         # Print results.
@@ -126,9 +125,9 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
     # ==============================================================================
     def cluster(
         self,
+        constraints_manager: AbstractConstraintsManager,
         vectors: Dict[str, Union[ndarray, csr_matrix]],
         nb_clusters: int,
-        constraints_manager: Optional[AbstractConstraintsManager] = None,
         verbose: bool = False,
         **kargs,
     ) -> Dict[str, int]:
@@ -136,14 +135,14 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         The main method used to cluster data with the Hierarchical model.
 
         Args:
-            vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager` (if `constraints_manager` is set). The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).
-            nb_clusters (int): The number of clusters to compute. #TODO Set defaults to None with elbow method or other method ?
-            constraints_manager (Optional[AbstractConstraintsManager], optional): A constraints manager over data IDs that will force clustering to respect some conditions during computation. The list of data IDs managed by `constraints_manager` has to refer to `vectors` keys. If `None`, no constraint are used during the clustering. Defaults to `None`.
+            constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
+            vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).
+            nb_clusters (int): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?
             verbose (bool, optional): Enable verbose output. Defaults to `False`.
             **kargs (dict): Other parameters that can be used in the clustering.
 
         Raises:
-            ValueError: if `vectors` and `constraints_manager` are incompatible, or if some parameters are incorrectly set.
+            ValueError: If some parameters are incorrectly set.
 
         Returns:
             Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.
@@ -153,22 +152,16 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         ### GET PARAMETERS
         ###
 
-        # Get `list_of_data_IDs`.
+        # Store `self.constraints_manager` and `self.list_of_data_IDs`.
+        if not isinstance(constraints_manager, AbstractConstraintsManager):
+            raise ValueError("The `constraints_manager` parameter has to be a `AbstractConstraintsManager` type.")
+        self.constraints_manager: AbstractConstraintsManager = constraints_manager
+        self.list_of_data_IDs: List[str] = self.constraints_manager.get_list_of_managed_data_IDs()
+
+        # Store `self.vectors`.
         if not isinstance(vectors, dict):
             raise ValueError("The `vectors` parameter has to be a `dict` type.")
-        self.list_of_data_IDs: List[str] = sorted(vectors.keys())
-
-        # Check `constraints_manager`.
-        self.constraints_manager: AbstractConstraintsManager = checking.check_constraints_manager(
-            list_of_data_IDs=self.list_of_data_IDs,
-            constraints_manager=constraints_manager,
-        )
-
-        # Check `vectors`.
-        self.vectors: Dict[str, Union[ndarray, csr_matrix]] = checking.check_vectors(
-            list_of_data_IDs=self.list_of_data_IDs,
-            vectors=vectors,
-        )
+        self.vectors: Dict[str, Union[ndarray, csr_matrix]] = vectors
 
         # Store `self.nb_clusters`.
         if nb_clusters < 2:
@@ -216,7 +209,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         list_of_possible_lists_of_MUST_LINK_data: List[List[str]] = self.constraints_manager.get_connected_components()
 
         # Estimation of max number of iteration.
-        max_clustering_iteration = len(list_of_possible_lists_of_MUST_LINK_data) - 1
+        max_clustering_iteration: int = len(list_of_possible_lists_of_MUST_LINK_data) - 1
 
         # For each list of same data (MUST_LINK constraints).
         for MUST_LINK_data in list_of_possible_lists_of_MUST_LINK_data:
@@ -501,7 +494,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
             return pairwise_distances(
                 X=vector_centroid1,
                 Y=vector_centroid2,
-                metric="euclidean",  # TODO : Load different parameters for distance computing ?
+                metric="euclidean",  # TODO: Load different parameters for distance computing ?
             )[0][0].astype(np.float64)
 
         # Case 3 : `self.linkage` is "single".
@@ -517,7 +510,9 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         # Case 4 : `self.linkage` is "ward".
         ##if self.linkage == "ward": ## DEFAULTS
         # Compute distance
-        merged_members = self.clusters_storage[cluster_IDi].members + self.clusters_storage[cluster_IDj].members
+        merged_members: List[str] = (
+            self.clusters_storage[cluster_IDi].members + self.clusters_storage[cluster_IDj].members
+        )
         return sum(
             [
                 self.pairwise_distances_matrix[data_IDi][data_IDj]
@@ -721,8 +716,8 @@ class Cluster:
             vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager` (if `constraints_manager` is set). The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).
             cluster_ID (int): The cluster ID that is defined during `HierarchicalConstrainedClustering.cluster` running.
             clustering_iteration (int): The cluster iteration that is defined during `HierarchicalConstrainedClustering.cluster` running.
-            children (Optional[List["Cluster"]], optional): A list of clusters children to initialize cluster. Incompatible with `members` parameter. Defaults to `None`.
-            members (Optional[List[str]], optional): A list of data ID to initialize cluster. Incompatible with `children` parameter. Defaults to `None`.
+            children (Optional[List["Cluster"]], optional): A list of clusters children for cluster initialization. Incompatible with `members` parameter. Defaults to `None`.
+            members (Optional[List[str]], optional): A list of data IDs for cluster initialization. Incompatible with `children` parameter. Defaults to `None`.
 
         Raises:
             ValueError: if `children` and `members` are both set or both unset.
@@ -751,13 +746,8 @@ class Cluster:
 
         # Add members (empty or not).
         self.members: List[str] = (
-            sorted(members)
-            if members is not None
-            else sorted([data_ID for child in self.children for data_ID in child.members])
+            members if members is not None else [data_ID for child in self.children for data_ID in child.members]
         )
-
-        # Cluster size.
-        self.cluster_size: int = len(self.members)
 
         # Update centroids
         self.update_centroid()
@@ -774,7 +764,7 @@ class Cluster:
         Add new children to the cluster.
 
         Args:
-            new_children (List["Cluster"]): The lit of new clusters children to add.
+            new_children (List["Cluster"]): The list of new clusters children to add.
             new_clustering_iteration (int): The new cluster iteration that is defined during HierarchicalConstrainedClustering.clusterize running.
         """
 
@@ -788,10 +778,7 @@ class Cluster:
         self.cluster_inverse_depth = max([child.cluster_inverse_depth for child in self.children]) + 1
 
         # Update members.
-        self.members = sorted([data_ID for child in self.children for data_ID in child.members])
-
-        # Update cluster size.
-        self.cluster_size = len(self.members)
+        self.members = [data_ID for child in self.children for data_ID in child.members]
 
         # Update centroids.
         self.update_centroid()
@@ -806,8 +793,22 @@ class Cluster:
 
         # Update centroids.
         self.centroid: Union[ndarray, csr_matrix] = (
-            sum([self.vectors[data_ID] for data_ID in self.members]) / self.cluster_size
+            sum([self.vectors[data_ID] for data_ID in self.members]) / self.get_cluster_size()
         )
+
+    # ==============================================================================
+    # GET CLUSTER SIZE :
+    # ==============================================================================
+    def get_cluster_size(self) -> int:
+        """
+        Get cluster size.
+
+        Returns:
+            int: The cluster size, i.e. the number of members in the cluster.
+        """
+
+        # Update centroids.
+        return len(self.members)
 
     # ==============================================================================
     # TO DICTIONARY :
@@ -833,6 +834,5 @@ class Cluster:
 
         # Add members information.
         results["members"] = self.members
-        results["cluster_size"] = self.cluster_size
 
         return results

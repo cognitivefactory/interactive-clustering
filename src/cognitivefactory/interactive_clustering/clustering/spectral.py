@@ -27,7 +27,6 @@ from cognitivefactory.interactive_clustering.clustering.abstract import (  # To 
 from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
     AbstractConstraintsManager,
 )
-from cognitivefactory.interactive_clustering.utils import checking  # To check parameters.
 
 
 # ==============================================================================
@@ -69,8 +68,8 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
             "8": csr_matrix([0.00, 0.00, 0.00, 1.00]),
         }
 
-        # Define constraints manager (set it to None for no constraints).
-        constraints_manager = BinaryConstraintsManager(list_of_data_IDs=["0", "1", "2", "3", "4", "5", "6", "7", "8"])
+        # Define constraints manager.
+        constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
         constraints_manager.add_constraint(data_ID1="0", data_ID2="1", constraint_type="MUST_LINK")
         constraints_manager.add_constraint(data_ID1="2", data_ID2="3", constraint_type="MUST_LINK")
         constraints_manager.add_constraint(data_ID1="4", data_ID2="5", constraint_type="MUST_LINK")
@@ -81,9 +80,9 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
 
         # Run clustering.
         dict_of_predicted_clusters = clustering_model(
-            vectors=vectors
-            nb_clusters=3
-            constraints_manager=constraints_manager
+            constraints_manager=constraints_manager,
+            vectors=vectors,
+            nb_clusters=3,
         )
 
         # Print results.
@@ -137,9 +136,9 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
     # ==============================================================================
     def cluster(
         self,
+        constraints_manager: AbstractConstraintsManager,
         vectors: Dict[str, Union[ndarray, csr_matrix]],
         nb_clusters: int,
-        constraints_manager: Optional[AbstractConstraintsManager] = None,
         verbose: bool = False,
         **kargs,
     ) -> Dict[str, int]:
@@ -147,9 +146,9 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
         The main method used to cluster data with the Spectral model.
 
         Args:
-            vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager` (if `constraints_manager` is set). The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).
-            nb_clusters (int): The number of clusters to compute. #TODO Set defaults to None with elbow method or other method ?
-            constraints_manager (Optional[AbstractConstraintsManager], optional): A constraints manager over data IDs that will force clustering to respect some conditions during computation. The list of data IDs managed by `constraints_manager` has to refer to `vectors` keys. If `None`, no constraint are used during the clustering. Defaults to `None`.
+            constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
+            vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).
+            nb_clusters (int): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?
             verbose (bool, optional): Enable verbose output. Defaults to `False`.
             **kargs (dict): Other parameters that can be used in the clustering.
 
@@ -164,31 +163,21 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
         ### GET PARAMETERS
         ###
 
-        # Get `list_of_data_IDs`.
+        # Store `self.constraints_manager` and `self.list_of_data_IDs`.
+        if not isinstance(constraints_manager, AbstractConstraintsManager):
+            raise ValueError("The `constraints_manager` parameter has to be a `AbstractConstraintsManager` type.")
+        self.constraints_manager: AbstractConstraintsManager = constraints_manager
+        self.list_of_data_IDs: List[str] = self.constraints_manager.get_list_of_managed_data_IDs()
+
+        # Store `self.vectors`.
         if not isinstance(vectors, dict):
             raise ValueError("The `vectors` parameter has to be a `dict` type.")
-        self.list_of_data_IDs: List[str] = sorted(vectors.keys())
-        if not isinstance(self.list_of_data_IDs, list) or not all(
-            isinstance(element, str) for element in self.list_of_data_IDs
-        ):
-            raise ValueError("The `list_of_data_IDs` variable has to be a `list` type.")
-
-        # Check `constraints_manager`.
-        self.constraints_manager: AbstractConstraintsManager = checking.check_constraints_manager(
-            list_of_data_IDs=self.list_of_data_IDs,
-            constraints_manager=constraints_manager,
-        )
-
-        # Check `vectors`.
-        self.vectors: Dict[str, Union[ndarray, csr_matrix]] = checking.check_vectors(
-            list_of_data_IDs=self.list_of_data_IDs,
-            vectors=vectors,
-        )
+        self.vectors: Dict[str, Union[ndarray, csr_matrix]] = vectors
 
         # Store `self.nb_clusters`.
         if nb_clusters < 2:
             raise ValueError("The `nb_clusters` '" + str(nb_clusters) + "' must be greater than or equal to 2.")
-        self.nb_clusters = nb_clusters
+        self.nb_clusters: int = nb_clusters
 
         # Define `self.current_nb_components`.
         self.current_nb_components: int = (

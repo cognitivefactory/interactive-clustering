@@ -13,7 +13,7 @@
 # ==============================================================================
 
 from abc import ABC, abstractmethod  # To define an abstract class.
-from typing import Dict, Optional, Union  # To type Python code (mypy).
+from typing import Dict, Union  # To type Python code (mypy).
 
 from numpy import ndarray  # To handle matrix and vectors.
 from scipy.sparse import csr_matrix  # To handle matrix and vectors.
@@ -41,9 +41,9 @@ class AbstractConstrainedClustering(ABC):
     @abstractmethod
     def cluster(
         self,
+        constraints_manager: AbstractConstraintsManager,
         vectors: Dict[str, Union[ndarray, csr_matrix]],
         nb_clusters: int,
-        constraints_manager: Optional[AbstractConstraintsManager] = None,
         verbose: bool = False,
         **kargs,
     ) -> Dict[str, int]:
@@ -52,9 +52,9 @@ class AbstractConstrainedClustering(ABC):
         An abstract method that represents the main method used to cluster data.
 
         Args:
-            vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager` (if `constraints_manager` is set). The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).
+            constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
+            vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).
             nb_clusters (int): The number of clusters to compute. #TODO Set defaults to None with elbow method or other method ?
-            constraints_manager (Optional[AbstractConstraintsManager], optional): A constraints manager over data IDs that will force clustering to respect some conditions during computation. The list of data IDs managed by `constraints_manager` has to refer to `vectors` keys. If `None`, no constraint are used during the clustering. Defaults to `None`.
             verbose (bool, optional): Enable verbose output. Defaults to `False`.
             **kargs (dict): Other parameters that can be used in the clustering.
 
