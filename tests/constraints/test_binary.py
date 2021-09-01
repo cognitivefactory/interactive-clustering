@@ -39,7 +39,7 @@ def test_BinaryConstraintsManager_init():
 
     # Initialize a binaray constraints manager with duplicates in `list_of_data_IDs`.
     with pytest.raises(ValueError, match="`list_of_data_IDs`"):
-        constraints_manager_2 = BinaryConstraintsManager(
+        BinaryConstraintsManager(
             list_of_data_IDs=["first", "second", "same", "same"],
         )
 
@@ -89,7 +89,7 @@ def test_BinaryConstraintsManager_add_data_ID_with_correct_parameters():
     )
 
     # Run assertions.
-    assert constraints_manager.get_list_of_managed_data_IDs() == ["first", "fourth", "second", "third"]
+    assert constraints_manager.get_list_of_managed_data_IDs() == ["first", "second", "third", "fourth"]
     assert (
         constraints_manager.get_inferred_constraint(
             data_ID1="first",
@@ -169,7 +169,7 @@ def test_BinaryConstraintsManager_delete_data_ID_with_correct_parameters():
 
 
 # ==============================================================================
-# test_BinaryConstraintsManager_list_managed_data_IDs
+# test_BinaryConstraintsManager_get_list_of_managed_data_IDs
 # ==============================================================================
 
 # Not implemented because `get_list_of_managed_data_IDs` is already tested in other unittests.
