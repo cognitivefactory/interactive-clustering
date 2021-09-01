@@ -36,22 +36,21 @@ def test_RandomInSameClusterConstraintsSampling_for_correct_settings():
 
 
 # ==============================================================================
-# test_RandomInSameClusterConstraintsSampling_sample_for_incorrect_list_of_data_IDs
+# test_RandomInSameClusterConstraintsSampling_sample_for_incorrect_constraints_manager
 # ==============================================================================
-def test_RandomInSameClusterConstraintsSampling_sample_for_incorrect_list_of_data_IDs():
+def test_RandomInSameClusterConstraintsSampling_sample_for_incorrect_constraints_manager():
     """
-    Test that the `sampling.random_in_same_cluster.RandomInSameClusterConstraintsSampling` sampling raises `ValueError` for incorrect `list_of_data_IDs`.
+    Test that the `sampling.random_in_same_cluster.RandomInSameClusterConstraintsSampling` sampling raises `ValueError` for incorrect `constraints_manager`.
     """
 
     # Initialize a `RandomInSameClusterConstraintsSampling` instance.
     sampler = RandomInSameClusterConstraintsSampling(random_seed=1)
 
-    # Check sample with incorrect `list_of_data_IDs`.
-    with pytest.raises(ValueError, match="`list_of_data_IDs`"):
+    # Check sample with incorrect `constraints_manager`.
+    with pytest.raises(ValueError, match="`constraints_manager`"):
         sampler.sample(
-            list_of_data_IDs="unknown",
-            nb_to_select=None,
             constraints_manager=None,
+            nb_to_select=None,
         )
 
 
@@ -69,29 +68,31 @@ def test_RandomInSameClusterConstraintsSampling_sample_for_incorrect_nb_to_selec
     # Check sample with incorrect `nb_to_select`.
     with pytest.raises(ValueError, match="`nb_to_select`"):
         sampler.sample(
-            list_of_data_IDs=[
-                "bonjour",
-                "salut",
-                "coucou",
-                "au revoir",
-                "a bientôt",
-            ],
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ]
+            ),
             nb_to_select=None,
-            constraints_manager=None,
         )
 
-    # Check sample with incorrect `nb_to_select`.
+    # Check sample with incorrect `nb_to_select`
     with pytest.raises(ValueError, match="`nb_to_select`"):
         sampler.sample(
-            list_of_data_IDs=[
-                "bonjour",
-                "salut",
-                "coucou",
-                "au revoir",
-                "a bientôt",
-            ],
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ],
+            ),
             nb_to_select=-99,
-            constraints_manager=None,
         )
 
 
@@ -108,32 +109,7 @@ def test_RandomInSameClusterConstraintsSampling_sample_for_zero_nb_to_select():
 
     # Check sample with zero `nb_to_select`.
     assert not sampler.sample(
-        list_of_data_IDs=[
-            "bonjour",
-            "salut",
-            "coucou",
-            "au revoir",
-            "a bientôt",
-        ],
-        nb_to_select=0,
-        constraints_manager=None,
-    )
-
-
-# ==============================================================================
-# test_RandomInSameClusterConstraintsSampling_sample_for_incorrect_constraints_manager
-# ==============================================================================
-def test_RandomInSameClusterConstraintsSampling_sample_for_incorrect_constraints_manager():
-    """
-    Test that the `sampling.random_in_same_cluster.RandomInSameClusterConstraintsSampling` sampling raises `ValueError` for incorrect `constraints_manager`.
-    """
-
-    # Initialize a `RandomInSameClusterConstraintsSampling` instance.
-    sampler = RandomInSameClusterConstraintsSampling(random_seed=1)
-
-    # Check sample with incorrect `constraints_manager`.
-    with pytest.raises(ValueError, match="`constraints_manager`"):
-        sampler.sample(
+        constraints_manager=BinaryConstraintsManager(
             list_of_data_IDs=[
                 "bonjour",
                 "salut",
@@ -141,9 +117,9 @@ def test_RandomInSameClusterConstraintsSampling_sample_for_incorrect_constraints
                 "au revoir",
                 "a bientôt",
             ],
-            nb_to_select=3,
-            constraints_manager="unknown",
-        )
+        ),
+        nb_to_select=0,
+    )
 
 
 # ==============================================================================
@@ -151,7 +127,7 @@ def test_RandomInSameClusterConstraintsSampling_sample_for_incorrect_constraints
 # ==============================================================================
 def test_RandomInSameClusterConstraintsSampling_sample_for_incorrect_clustering_result():
     """
-    Test that the `sampling.random_in_same_cluster.RandomInSameClusterConstraintsSampling` sampling raises `ValueError` for incorrect `clustering_result`.
+    Test that the `sampling.random_in_same_cluster.RandomInSameClusterConstraintsSampling` sampling raises `ValueError` or `KeyError` for incorrect `clustering_result`.
     """
 
     # Initialize a `RandomInSameClusterConstraintsSampling` instance.
@@ -160,30 +136,32 @@ def test_RandomInSameClusterConstraintsSampling_sample_for_incorrect_clustering_
     # Check sample with incorrect `clustering_result`.
     with pytest.raises(ValueError, match="`clustering_result`"):
         sampler.sample(
-            list_of_data_IDs=[
-                "bonjour",
-                "salut",
-                "coucou",
-                "au revoir",
-                "a bientôt",
-            ],
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ],
+            ),
             nb_to_select=3,
-            constraints_manager=None,
             clustering_result="unknown",
         )
 
     # Check sample with incorrect `clustering_result`.
-    with pytest.raises(ValueError, match="`clustering_result`"):
+    with pytest.raises(KeyError, match="'a bientôt'|'au revoir'|'bonjour'|'coucou'|'salut'"):
         sampler.sample(
-            list_of_data_IDs=[
-                "bonjour",
-                "salut",
-                "coucou",
-                "au revoir",
-                "a bientôt",
-            ],
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ],
+            ),
             nb_to_select=3,
-            constraints_manager=None,
             clustering_result={
                 "first": 1,
                 "second": 2,
@@ -192,39 +170,39 @@ def test_RandomInSameClusterConstraintsSampling_sample_for_incorrect_clustering_
 
 
 # ==============================================================================
-# test_RandomInSameClusterConstraintsSampling_sample_for_no_constraints_manager
+# test_RandomInSameClusterConstraintsSampling_sample_for_empty_constraints_manager
 # ==============================================================================
-def test_RandomInSameClusterConstraintsSampling_sample_for_no_constraints_manager():
+def test_RandomInSameClusterConstraintsSampling_sample_for_empty_constraints_manager():
     """
-    Test that the `sampling.random_in_same_cluster.RandomInSameClusterConstraintsSampling` sampling works for no `constraints_manager`.
+    Test that the `sampling.random_in_same_cluster.RandomInSameClusterConstraintsSampling` sampling works for empty `constraints_manager`.
     """
 
     # Initialize a `RandomInSameClusterConstraintsSampling` instance.
     sampler = RandomInSameClusterConstraintsSampling(random_seed=1)
 
-    # Check sample with no `constraints_manager`.
-    assert sampler.sample(
-        list_of_data_IDs=[
-            "bonjour",
-            "salut",
-            "coucou",
-            "au revoir",
-            "a bientôt",
-        ],
-        nb_to_select=3,
-        constraints_manager=None,
-        clustering_result={
-            "bonjour": 0,
-            "salut": 0,
-            "coucou": 0,
-            "au revoir": 1,
-            "a bientôt": 1,
-        },
-    ) == [
-        ("coucou", "salut"),
-        ("a bientôt", "au revoir"),
-        ("bonjour", "salut"),
-    ]
+    # Check sample with empty `constraints_manager`.
+    assert (
+        sampler.sample(
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ],
+            ),
+            nb_to_select=3,
+            clustering_result={
+                "bonjour": 0,
+                "salut": 0,
+                "coucou": 0,
+                "au revoir": 1,
+                "a bientôt": 1,
+            },
+        )
+        == [("bonjour", "coucou"), ("coucou", "salut"), ("bonjour", "salut")]
+    )
 
 
 # ==============================================================================
@@ -252,27 +230,20 @@ def test_RandomInSameClusterConstraintsSampling_sample_for_correct_constraints_m
     constraints_manager.add_constraint(data_ID1="au revoir", data_ID2="a bientôt", constraint_type="MUST_LINK")
 
     # Check sample with correct `constraints_manager`.
-    assert sampler.sample(
-        list_of_data_IDs=[
-            "bonjour",
-            "salut",
-            "coucou",
-            "au revoir",
-            "a bientôt",
-        ],
-        nb_to_select=3,
-        constraints_manager=constraints_manager,
-        clustering_result={
-            "bonjour": 0,
-            "salut": 0,
-            "coucou": 0,
-            "au revoir": 1,
-            "a bientôt": 1,
-        },
-    ) == [
-        ("coucou", "salut"),
-        ("bonjour", "coucou"),
-    ]
+    assert (
+        sampler.sample(
+            constraints_manager=constraints_manager,
+            nb_to_select=3,
+            clustering_result={
+                "bonjour": 0,
+                "salut": 0,
+                "coucou": 0,
+                "au revoir": 1,
+                "a bientôt": 1,
+            },
+        )
+        == [("bonjour", "coucou"), ("coucou", "salut")]
+    )
 
 
 # ==============================================================================
@@ -303,15 +274,8 @@ def test_RandomInSameClusterConstraintsSampling_sample_for_full_annotated_constr
 
     # Check sample for full annotated `constraints_manager`.
     assert not sampler.sample(
-        list_of_data_IDs=[
-            "bonjour",
-            "salut",
-            "coucou",
-            "au revoir",
-            "a bientôt",
-        ],
-        nb_to_select=3,
         constraints_manager=constraints_manager,
+        nb_to_select=3,
         clustering_result={
             "bonjour": 0,
             "salut": 0,

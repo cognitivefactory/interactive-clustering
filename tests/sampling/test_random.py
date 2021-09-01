@@ -34,22 +34,21 @@ def test_RandomConstraintsSampling_for_correct_settings():
 
 
 # ==============================================================================
-# test_RandomConstraintsSampling_sample_for_incorrect_list_of_data_IDs
+# test_RandomConstraintsSampling_sample_for_incorrect_constraints_manager
 # ==============================================================================
-def test_RandomConstraintsSampling_sample_for_incorrect_list_of_data_IDs():
+def test_RandomConstraintsSampling_sample_for_incorrect_constraints_manager():
     """
-    Test that the `sampling.random.RandomConstraintsSampling` sampling raises `ValueError` for incorrect `list_of_data_IDs`.
+    Test that the `sampling.random.RandomConstraintsSampling` sampling raises `ValueError` for incorrect `constraints_manager`.
     """
 
     # Initialize a `RandomConstraintsSampling` instance.
     sampler = RandomConstraintsSampling(random_seed=1)
 
-    # Check sample with incorrect `list_of_data_IDs`
-    with pytest.raises(ValueError, match="`list_of_data_IDs`"):
+    # Check sample with incorrect `constraints_manager`.
+    with pytest.raises(ValueError, match="`constraints_manager`"):
         sampler.sample(
-            list_of_data_IDs="unknown",
-            nb_to_select=None,
             constraints_manager=None,
+            nb_to_select=None,
         )
 
 
@@ -64,32 +63,34 @@ def test_RandomConstraintsSampling_sample_for_incorrect_nb_to_select():
     # Initialize a `RandomConstraintsSampling` instance.
     sampler = RandomConstraintsSampling(random_seed=1)
 
-    # Check sample with incorrect `nb_to_select`
+    # Check sample with incorrect `nb_to_select`.
     with pytest.raises(ValueError, match="`nb_to_select`"):
         sampler.sample(
-            list_of_data_IDs=[
-                "bonjour",
-                "salut",
-                "coucou",
-                "au revoir",
-                "a bientôt",
-            ],
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ]
+            ),
             nb_to_select=None,
-            constraints_manager=None,
         )
 
     # Check sample with incorrect `nb_to_select`
     with pytest.raises(ValueError, match="`nb_to_select`"):
         sampler.sample(
-            list_of_data_IDs=[
-                "bonjour",
-                "salut",
-                "coucou",
-                "au revoir",
-                "a bientôt",
-            ],
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ],
+            ),
             nb_to_select=-99,
-            constraints_manager=None,
         )
 
 
@@ -106,32 +107,7 @@ def test_RandomConstraintsSampling_sample_for_zero_nb_to_select():
 
     # Check sample with zero `nb_to_select`
     assert not sampler.sample(
-        list_of_data_IDs=[
-            "bonjour",
-            "salut",
-            "coucou",
-            "au revoir",
-            "a bientôt",
-        ],
-        nb_to_select=0,
-        constraints_manager=None,
-    )
-
-
-# ==============================================================================
-# test_RandomConstraintsSampling_sample_for_incorrect_constraints_manager
-# ==============================================================================
-def test_RandomConstraintsSampling_sample_for_incorrect_constraints_manager():
-    """
-    Test that the `sampling.random.RandomConstraintsSampling` sampling raises `ValueError` for incorrect `constraints_manager`.
-    """
-
-    # Initialize a `RandomConstraintsSampling` instance.
-    sampler = RandomConstraintsSampling(random_seed=1)
-
-    # Check sample with incorrect `constraints_manager`
-    with pytest.raises(ValueError, match="`constraints_manager`"):
-        sampler.sample(
+        constraints_manager=BinaryConstraintsManager(
             list_of_data_IDs=[
                 "bonjour",
                 "salut",
@@ -139,38 +115,38 @@ def test_RandomConstraintsSampling_sample_for_incorrect_constraints_manager():
                 "au revoir",
                 "a bientôt",
             ],
-            nb_to_select=3,
-            constraints_manager="unknown",
-        )
+        ),
+        nb_to_select=0,
+    )
 
 
 # ==============================================================================
-# test_RandomConstraintsSampling_sample_for_no_constraints_manager
+# test_RandomConstraintsSampling_sample_for_empty_constraints_manager
 # ==============================================================================
-def test_RandomConstraintsSampling_sample_for_no_constraints_manager():
+def test_RandomConstraintsSampling_sample_for_empty_constraints_manager():
     """
-    Test that the `sampling.random.RandomConstraintsSampling` sampling works for no `constraints_manager`.
+    Test that the `sampling.random.RandomConstraintsSampling` sampling works for empty `constraints_manager`.
     """
 
     # Initialize a `RandomConstraintsSampling` instance.
     sampler = RandomConstraintsSampling(random_seed=1)
 
-    # Check sample with no `constraints_manager`
-    assert sampler.sample(
-        list_of_data_IDs=[
-            "bonjour",
-            "salut",
-            "coucou",
-            "au revoir",
-            "a bientôt",
-        ],
-        nb_to_select=3,
-        constraints_manager=None,
-    ) == [
-        ("au revoir", "salut"),
-        ("bonjour", "salut"),
-        ("coucou", "salut"),
-    ]
+    # Check sample with empty `constraints_manager`
+    assert (
+        sampler.sample(
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ],
+            ),
+            nb_to_select=3,
+        )
+        == [("coucou", "salut"), ("bonjour", "coucou"), ("au revoir", "salut")]
+    )
 
 
 # ==============================================================================
@@ -198,21 +174,13 @@ def test_RandomConstraintsSampling_sample_for_correct_constraints_manager():
     constraints_manager.add_constraint(data_ID1="au revoir", data_ID2="a bientôt", constraint_type="MUST_LINK")
 
     # Check sample with correct `constraints_manager`
-    assert sampler.sample(
-        list_of_data_IDs=[
-            "bonjour",
-            "salut",
-            "coucou",
-            "au revoir",
-            "a bientôt",
-        ],
-        nb_to_select=3,
-        constraints_manager=constraints_manager,
-    ) == [
-        ("au revoir", "bonjour"),
-        ("bonjour", "coucou"),
-        ("a bientôt", "coucou"),
-    ]
+    assert (
+        sampler.sample(
+            constraints_manager=constraints_manager,
+            nb_to_select=3,
+        )
+        == [("au revoir", "bonjour"), ("au revoir", "coucou"), ("bonjour", "coucou")]
+    )
 
 
 # ==============================================================================
@@ -243,13 +211,6 @@ def test_RandomConstraintsSampling_sample_for_full_annotated_constraints_manager
 
     # Check sample for full annotated `constraints_manager`
     assert not sampler.sample(
-        list_of_data_IDs=[
-            "bonjour",
-            "salut",
-            "coucou",
-            "au revoir",
-            "a bientôt",
-        ],
-        nb_to_select=3,
         constraints_manager=constraints_manager,
+        nb_to_select=3,
     )

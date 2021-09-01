@@ -37,22 +37,21 @@ def test_FarhestInSameClusterConstraintsSampling_for_correct_settings():
 
 
 # ==============================================================================
-# test_FarhestInSameClusterConstraintsSampling_sample_for_incorrect_list_of_data_IDs
+# test_FarhestInSameClusterConstraintsSampling_sample_for_incorrect_constraints_manager
 # ==============================================================================
-def test_FarhestInSameClusterConstraintsSampling_sample_for_incorrect_list_of_data_IDs():
+def test_FarhestInSameClusterConstraintsSampling_sample_for_incorrect_constraints_manager():
     """
-    Test that the `sampling.farhest_in_same_cluster.FarhestInSameClusterConstraintsSampling` sampling raises `ValueError` for incorrect `list_of_data_IDs`.
+    Test that the `sampling.farhest_in_same_cluster.FarhestInSameClusterConstraintsSampling` sampling raises `ValueError` for incorrect `constraints_manager`.
     """
 
     # Initialize a `FarhestInSameClusterConstraintsSampling` instance.
     sampler = FarhestInSameClusterConstraintsSampling(random_seed=1)
 
-    # Check sample with incorrect `list_of_data_IDs`.
-    with pytest.raises(ValueError, match="`list_of_data_IDs`"):
+    # Check sample with incorrect `constraints_manager`.
+    with pytest.raises(ValueError, match="`constraints_manager`"):
         sampler.sample(
-            list_of_data_IDs="unknown",
-            nb_to_select=None,
             constraints_manager=None,
+            nb_to_select=None,
         )
 
 
@@ -70,29 +69,31 @@ def test_FarhestInSameClusterConstraintsSampling_sample_for_incorrect_nb_to_sele
     # Check sample with incorrect `nb_to_select`.
     with pytest.raises(ValueError, match="`nb_to_select`"):
         sampler.sample(
-            list_of_data_IDs=[
-                "bonjour",
-                "salut",
-                "coucou",
-                "au revoir",
-                "a bientôt",
-            ],
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ]
+            ),
             nb_to_select=None,
-            constraints_manager=None,
         )
 
-    # Check sample with incorrect `nb_to_select`.
+    # Check sample with incorrect `nb_to_select`
     with pytest.raises(ValueError, match="`nb_to_select`"):
         sampler.sample(
-            list_of_data_IDs=[
-                "bonjour",
-                "salut",
-                "coucou",
-                "au revoir",
-                "a bientôt",
-            ],
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ],
+            ),
             nb_to_select=-99,
-            constraints_manager=None,
         )
 
 
@@ -107,34 +108,9 @@ def test_FarhestInSameClusterConstraintsSampling_sample_for_zero_nb_to_select():
     # Initialize a `FarhestInSameClusterConstraintsSampling` instance.
     sampler = FarhestInSameClusterConstraintsSampling(random_seed=1)
 
-    # Check sample with zero `nb_to_select`.
+    # Check sample with zero `nb_to_select`
     assert not sampler.sample(
-        list_of_data_IDs=[
-            "bonjour",
-            "salut",
-            "coucou",
-            "au revoir",
-            "a bientôt",
-        ],
-        nb_to_select=0,
-        constraints_manager=None,
-    )
-
-
-# ==============================================================================
-# test_FarhestInSameClusterConstraintsSampling_sample_for_incorrect_constraints_manager
-# ==============================================================================
-def test_FarhestInSameClusterConstraintsSampling_sample_for_incorrect_constraints_manager():
-    """
-    Test that the `sampling.farhest_in_same_cluster.FarhestInSameClusterConstraintsSampling` sampling raises `ValueError` for incorrect `constraints_manager`.
-    """
-
-    # Initialize a `FarhestInSameClusterConstraintsSampling` instance.
-    sampler = FarhestInSameClusterConstraintsSampling(random_seed=1)
-
-    # Check sample with incorrect `constraints_manager`.
-    with pytest.raises(ValueError, match="`constraints_manager`"):
-        sampler.sample(
+        constraints_manager=BinaryConstraintsManager(
             list_of_data_IDs=[
                 "bonjour",
                 "salut",
@@ -142,9 +118,9 @@ def test_FarhestInSameClusterConstraintsSampling_sample_for_incorrect_constraint
                 "au revoir",
                 "a bientôt",
             ],
-            nb_to_select=3,
-            constraints_manager="unknown",
-        )
+        ),
+        nb_to_select=0,
+    )
 
 
 # ==============================================================================
@@ -161,33 +137,42 @@ def test_FarhestInSameClusterConstraintsSampling_sample_for_incorrect_clustering
     # Check sample with incorrect `clustering_result`.
     with pytest.raises(ValueError, match="`clustering_result`"):
         sampler.sample(
-            list_of_data_IDs=[
-                "bonjour",
-                "salut",
-                "coucou",
-                "au revoir",
-                "a bientôt",
-            ],
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ],
+            ),
             nb_to_select=3,
-            constraints_manager=None,
             clustering_result="unknown",
         )
 
     # Check sample with incorrect `clustering_result`.
-    with pytest.raises(ValueError, match="`clustering_result`"):
+    with pytest.raises(KeyError, match="'a bientôt'|'au revoir'|'bonjour'|'coucou'|'salut'"):
         sampler.sample(
-            list_of_data_IDs=[
-                "bonjour",
-                "salut",
-                "coucou",
-                "au revoir",
-                "a bientôt",
-            ],
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ],
+            ),
             nb_to_select=3,
-            constraints_manager=None,
             clustering_result={
                 "first": 1,
                 "second": 2,
+            },
+            vectors={
+                "bonjour": csr_matrix([1.0, 0.0]),
+                "salut": csr_matrix([0.99, 0.0]),
+                "coucou": csr_matrix([0.8, 0.0]),
+                "au revoir": csr_matrix([0.0, 1.0]),
+                "a bientôt": csr_matrix([0.0, 0.9]),
             },
         )
 
@@ -206,15 +191,16 @@ def test_FarhestInSameClusterConstraintsSampling_sample_for_incorrect_vectors():
     # Check sample with incorrect `vectors`.
     with pytest.raises(ValueError, match="`vectors`"):
         sampler.sample(
-            list_of_data_IDs=[
-                "bonjour",
-                "salut",
-                "coucou",
-                "au revoir",
-                "a bientôt",
-            ],
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ],
+            ),
             nb_to_select=3,
-            constraints_manager=None,
             clustering_result={
                 "bonjour": 0,
                 "salut": 0,
@@ -226,17 +212,18 @@ def test_FarhestInSameClusterConstraintsSampling_sample_for_incorrect_vectors():
         )
 
     # Check sample with incorrect `vectors`.
-    with pytest.raises(ValueError, match="`vectors`"):
+    with pytest.raises(KeyError, match="'a bientôt'|'au revoir'|'bonjour'|'coucou'|'salut'"):
         sampler.sample(
-            list_of_data_IDs=[
-                "bonjour",
-                "salut",
-                "coucou",
-                "au revoir",
-                "a bientôt",
-            ],
+            constraints_manager=BinaryConstraintsManager(
+                list_of_data_IDs=[
+                    "bonjour",
+                    "salut",
+                    "coucou",
+                    "au revoir",
+                    "a bientôt",
+                ],
+            ),
             nb_to_select=3,
-            constraints_manager=None,
             clustering_result={
                 "bonjour": 0,
                 "salut": 0,
@@ -252,27 +239,28 @@ def test_FarhestInSameClusterConstraintsSampling_sample_for_incorrect_vectors():
 
 
 # ==============================================================================
-# test_FarhestInSameClusterConstraintsSampling_sample_for_no_constraints_manager
+# test_FarhestInSameClusterConstraintsSampling_sample_for_empty_constraints_manager
 # ==============================================================================
-def test_FarhestInSameClusterConstraintsSampling_sample_for_no_constraints_manager():
+def test_FarhestInSameClusterConstraintsSampling_sample_for_empty_constraints_manager():
     """
-    Test that the `sampling.farhest_in_same_cluster.FarhestInSameClusterConstraintsSampling` sampling works for no `constraints_manager`.
+    Test that the `sampling.farhest_in_same_cluster.FarhestInSameClusterConstraintsSampling` sampling works for empty `constraints_manager`.
     """
 
     # Initialize a `FarhestInSameClusterConstraintsSampling` instance.
     sampler = FarhestInSameClusterConstraintsSampling(random_seed=1)
 
-    # Check sample with no `constraints_manager`
+    # Check sample with empty `constraints_manager`
     assert sampler.sample(
-        list_of_data_IDs=[
-            "bonjour",
-            "salut",
-            "coucou",
-            "au revoir",
-            "a bientôt",
-        ],
+        constraints_manager=BinaryConstraintsManager(
+            list_of_data_IDs=[
+                "bonjour",
+                "salut",
+                "coucou",
+                "au revoir",
+                "a bientôt",
+            ],
+        ),
         nb_to_select=3,
-        constraints_manager=None,
         clustering_result={
             "bonjour": 0,
             "salut": 0,
@@ -282,14 +270,14 @@ def test_FarhestInSameClusterConstraintsSampling_sample_for_no_constraints_manag
         },
         vectors={
             "bonjour": csr_matrix([1.0, 0.0]),
-            "salut": csr_matrix([1.0, 0.0]),
+            "salut": csr_matrix([0.99, 0.0]),
             "coucou": csr_matrix([0.8, 0.0]),
-            "au revoir": csr_matrix([0.0, 1.0]),
-            "a bientôt": csr_matrix([0.0, 0.9]),
+            "au revoir": csr_matrix([0.0, 0.9]),
+            "a bientôt": csr_matrix([0.0, 0.8]),
         },
     ) == [
-        ("coucou", "salut"),
         ("bonjour", "coucou"),
+        ("coucou", "salut"),
         ("a bientôt", "au revoir"),
     ]
 
@@ -320,15 +308,8 @@ def test_FarhestInSameClusterConstraintsSampling_sample_for_correct_constraints_
 
     # Check sample with correct `constraints_manager`
     assert sampler.sample(
-        list_of_data_IDs=[
-            "bonjour",
-            "salut",
-            "coucou",
-            "au revoir",
-            "a bientôt",
-        ],
-        nb_to_select=3,
         constraints_manager=constraints_manager,
+        nb_to_select=3,
         clustering_result={
             "bonjour": 0,
             "salut": 0,
@@ -338,14 +319,14 @@ def test_FarhestInSameClusterConstraintsSampling_sample_for_correct_constraints_
         },
         vectors={
             "bonjour": csr_matrix([1.0, 0.0]),
-            "salut": csr_matrix([1.0, 0.0]),
+            "salut": csr_matrix([0.99, 0.0]),
             "coucou": csr_matrix([0.8, 0.0]),
-            "au revoir": csr_matrix([0.0, 1.0]),
-            "a bientôt": csr_matrix([0.0, 0.9]),
+            "au revoir": csr_matrix([0.0, 0.9]),
+            "a bientôt": csr_matrix([0.0, 0.8]),
         },
     ) == [
-        ("coucou", "salut"),
         ("bonjour", "coucou"),
+        ("coucou", "salut"),
     ]
 
 
@@ -377,15 +358,8 @@ def test_FarhestInSameClusterConstraintsSampling_sample_for_full_annotated_const
 
     # Check sample for full annotated `constraints_manager`
     assert not sampler.sample(
-        list_of_data_IDs=[
-            "bonjour",
-            "salut",
-            "coucou",
-            "au revoir",
-            "a bientôt",
-        ],
-        nb_to_select=3,
         constraints_manager=constraints_manager,
+        nb_to_select=3,
         clustering_result={
             "bonjour": 0,
             "salut": 0,
@@ -395,9 +369,9 @@ def test_FarhestInSameClusterConstraintsSampling_sample_for_full_annotated_const
         },
         vectors={
             "bonjour": csr_matrix([1.0, 0.0]),
-            "salut": csr_matrix([1.0, 0.0]),
+            "salut": csr_matrix([0.99, 0.0]),
             "coucou": csr_matrix([0.8, 0.0]),
-            "au revoir": csr_matrix([0.0, 1.0]),
-            "a bientôt": csr_matrix([0.0, 0.9]),
+            "au revoir": csr_matrix([0.0, 0.9]),
+            "a bientôt": csr_matrix([0.0, 0.8]),
         },
     )

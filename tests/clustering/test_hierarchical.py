@@ -54,36 +54,41 @@ def test_HierarchicalConstrainedClustering_for_correct_settings():
 
 
 # ==============================================================================
-# test_HierarchicalConstrainedClustering_cluster_for_inconsistent_vectors
+# test_HierarchicalConstrainedClustering_cluster_for_inconsistent_constraints_manager
 # ==============================================================================
-def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_vectors():
+def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_constraints_manager():
     """
-    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `vectors` parameter.
+    Test that the `clustering.spectral.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints_manager` parameter.
     """
 
     # Initialize a `HierarchicalConstrainedClustering` instance.
-    clustering_model = HierarchicalConstrainedClustering(
-        linkage="average",
-    )
+    clustering_model = HierarchicalConstrainedClustering()
 
     # Check `ValueError` for not matrix `vectors`.
-    with pytest.raises(ValueError, match="`vectors`"):
+    with pytest.raises(ValueError, match="`constraints_manager`"):
         clustering_model.cluster(
+            constraints_manager=None,
             vectors=None,
             nb_clusters=2,
         )
 
+
+# ==============================================================================
+# test_HierarchicalConstrainedClustering_cluster_for_inconsistent_vectors
+# ==============================================================================
+def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_vectors():
+    """
+    Test that the `clustering.spectral.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `vectors` parameter.
+    """
+
+    # Initialize a `HierarchicalConstrainedClustering` instance.
+    clustering_model = HierarchicalConstrainedClustering()
+
     # Check `ValueError` for not matrix `vectors`.
     with pytest.raises(ValueError, match="`vectors`"):
         clustering_model.cluster(
-            vectors="this_is_my_vectors",
-            nb_clusters=2,
-        )
-
-    # Check `ValueError` for not matrix `vectors`.
-    with pytest.raises(ValueError, match="`list_of_data_IDs`"):
-        clustering_model.cluster(
-            vectors={1: "yolo", 2: "yolo 2"},
+            constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third"]),
+            vectors=None,
             nb_clusters=2,
         )
 
@@ -93,50 +98,18 @@ def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_vectors():
 # ==============================================================================
 def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_nb_clusters():
     """
-    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    Test that the `clustering.spectral.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
     """
 
     # Initialize a `HierarchicalConstrainedClustering` instance.
-    clustering_model = HierarchicalConstrainedClustering(
-        linkage="average",
-    )
+    clustering_model = HierarchicalConstrainedClustering()
 
     # Check `ValueError` for too small `nb_clusters`.
     with pytest.raises(ValueError, match="`nb_clusters`"):
         clustering_model.cluster(
+            constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third"]),
             vectors={"first": np.array([1, 2, 3]), "second": np.array([[4, 5, 6]]), "third": csr_matrix([7, 8, 9])},
             nb_clusters=-1,
-        )
-
-
-# ==============================================================================
-# test_HierarchicalConstrainedClustering_cluster_for_inconsistent_constraints
-# ==============================================================================
-def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_constraints():
-    """
-    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints` parameter.
-    """
-
-    # Initialize a HierarchicalConstrainedClustering instance.
-    clustering_model = HierarchicalConstrainedClustering(
-        linkage="average",
-    )
-
-    # Check `ValueError` for not dictionary `constraints`.
-    with pytest.raises(ValueError, match="`constraints_manager`"):
-        clustering_model.cluster(
-            vectors={"first": np.array([1, 2, 3]), "second": np.array([[4, 5, 6]]), "third": csr_matrix([7, 8, 9])},
-            nb_clusters=2,
-            constraints_manager="this_is_my_constraints",
-        )
-
-    # Check `ValueError` for not well defined `constraints`.
-
-    with pytest.raises(ValueError, match="`constraints_manager`"):
-        clustering_model.cluster(
-            vectors={"first": np.array([1, 2, 3]), "second": np.array([[4, 5, 6]]), "third": csr_matrix([7, 8, 9])},
-            nb_clusters=2,
-            constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third", "fourth"]),
         )
 
 
@@ -173,9 +146,9 @@ def test_HierarchicalConstrainedClustering_cluster_with_ward_linkage():
 
     # Run clustering 3 clusters and some constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=3,
-        constraints_manager=constraints_manager,
     )
 
     assert clustering_model.dict_of_predicted_clusters
@@ -226,9 +199,9 @@ def test_HierarchicalConstrainedClustering_cluster_with_average_linkage():
 
     # Run clustering 3 clusters and some constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=3,
-        constraints_manager=constraints_manager,
     )
 
     assert clustering_model.dict_of_predicted_clusters
@@ -279,9 +252,9 @@ def test_HierarchicalConstrainedClustering_cluster_with_single_linkage():
 
     # Run clustering 3 clusters and some constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=3,
-        constraints_manager=constraints_manager,
     )
 
     assert clustering_model.dict_of_predicted_clusters
@@ -332,9 +305,9 @@ def test_HierarchicalConstrainedClustering_cluster_with_complete_linkage():
 
     # Run clustering 3 clusters and some constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=3,
-        constraints_manager=constraints_manager,
     )
 
     assert clustering_model.dict_of_predicted_clusters
@@ -372,7 +345,7 @@ def test_HierarchicalConstrainedClustering_cluster_with_no_constraints_1():
         "7": csr_matrix([0.00, 0.01, 0.00, 0.99]),
         "8": csr_matrix([0.00, 0.00, 0.00, 1.00]),
     }
-    constraints_manager = None
+    constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
     # Initialize a `HierarchicalConstrainedClustering` instance.
     clustering_model = HierarchicalConstrainedClustering(
@@ -381,9 +354,9 @@ def test_HierarchicalConstrainedClustering_cluster_with_no_constraints_1():
 
     # Run clustering 2 clusters and no constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=2,
-        constraints_manager=constraints_manager,
     )
 
     assert clustering_model.dict_of_predicted_clusters
@@ -411,7 +384,7 @@ def test_HierarchicalConstrainedClustering_cluster_with_no_constraints_2():
         "8": csr_matrix([0.00, 0.01, 0.99]),
         "9": csr_matrix([0.00, 0.00, 1.00]),
     }
-    constraints_manager = None
+    constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
     # Initialize a `HierarchicalConstrainedClustering` instance.
     clustering_model = HierarchicalConstrainedClustering(
@@ -420,9 +393,9 @@ def test_HierarchicalConstrainedClustering_cluster_with_no_constraints_2():
 
     # Run clustering 3 clusters and no constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=3,
-        constraints_manager=constraints_manager,
     )
     assert clustering_model.dict_of_predicted_clusters
     assert dict_of_predicted_clusters == {
@@ -475,9 +448,9 @@ def test_HierarchicalConstrainedClustering_cluster_with_some_constraints():
 
     # Run clustering 2 clusters and somme constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=3,
-        constraints_manager=constraints_manager,
     )
     assert clustering_model.dict_of_predicted_clusters
     assert dict_of_predicted_clusters == {
@@ -531,9 +504,9 @@ def test_HierarchicalConstrainedClustering_cluster_with_full_constraints():
 
     # Run clustering 4 clusters and full constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=4,
-        constraints_manager=constraints_manager,
     )
     assert clustering_model.dict_of_predicted_clusters
     assert dict_of_predicted_clusters == {
@@ -594,7 +567,7 @@ def test_HierarchicalConstrainedClustering_compute_predicted_clusters_travelling
         "10": csr_matrix([0.00, 0.00, 0.99]),
         "11": csr_matrix([0.00, 0.00, 1.00]),
     }
-    constraints_manager = None
+    constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
     # Initialize a `HierarchicalConstrainedClustering` instance.
     clustering_model = HierarchicalConstrainedClustering(
@@ -604,9 +577,9 @@ def test_HierarchicalConstrainedClustering_compute_predicted_clusters_travelling
 
     # Compute all clustering tree.
     clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=2,
-        constraints_manager=constraints_manager,
     )
 
     # Run `compute_predicted_clusters` while travalleing clustering tree by `"size"`.
@@ -653,7 +626,7 @@ def test_HierarchicalConstrainedClustering_compute_predicted_clusters_travelling
         "10": csr_matrix([0.00, 0.00, 0.99]),
         "11": csr_matrix([0.00, 0.00, 1.00]),
     }
-    constraints_manager = None
+    constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
     # Initialize a `HierarchicalConstrainedClustering` instance.
     clustering_model = HierarchicalConstrainedClustering(
@@ -663,9 +636,9 @@ def test_HierarchicalConstrainedClustering_compute_predicted_clusters_travelling
 
     # Compute all clustering tree.
     clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=2,
-        constraints_manager=constraints_manager,
     )
 
     # Run `compute_predicted_clusters` while travalleing clustering tree by `"iteration"`.
@@ -754,9 +727,9 @@ def test_HierarchicalConstrainedClustering_cluster_with_break_loop():
 
     # Run clustering.
     clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=5,
-        constraints_manager=constraints_manager,
     )
     assert clustering_model.dict_of_predicted_clusters
     assert clustering_model.dict_of_predicted_clusters == {
@@ -792,7 +765,7 @@ def test_HierarchicalConstrainedClustering_cluster_end_cases_with_too_many_clust
         "7": csr_matrix([0.00, 0.01, 0.00, 0.99]),
         "8": csr_matrix([0.00, 0.00, 0.00, 1.00]),
     }
-    constraints_manager = None
+    constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
     # Initialize a `HierarchicalConstrainedClustering` instance.
     clustering_model = HierarchicalConstrainedClustering(
@@ -801,9 +774,9 @@ def test_HierarchicalConstrainedClustering_cluster_end_cases_with_too_many_clust
 
     # Run clustering.
     dict_of_predicted_clusters = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=99,
-        constraints_manager=constraints_manager,
     )
     assert clustering_model.dict_of_predicted_clusters
     assert dict_of_predicted_clusters == {
@@ -898,7 +871,7 @@ def test_Cluster_add_new_children():
 
     assert clusters.members == ["0", "1"]
     assert clusters.clustering_iteration == 1
-    assert clusters.cluster_size == 2
+    assert clusters.get_cluster_size() == 2
 
     clusters.add_new_children(
         new_children=[
@@ -914,7 +887,7 @@ def test_Cluster_add_new_children():
 
     assert clusters.members == ["0", "1", "2", "3", "4"]
     assert clusters.clustering_iteration == 2
-    assert clusters.cluster_size == 5
+    assert clusters.get_cluster_size() == 5
 
 
 # ==============================================================================
@@ -966,7 +939,6 @@ def test_Cluster_to_dict():
                 "children": [],
                 "cluster_inverse_depth": 0,
                 "members": ["0", "1"],
-                "cluster_size": 2,
             },
             {
                 "cluster_ID": 1,
@@ -974,12 +946,10 @@ def test_Cluster_to_dict():
                 "children": [],
                 "cluster_inverse_depth": 0,
                 "members": ["2", "3", "4"],
-                "cluster_size": 3,
             },
         ],
         "cluster_inverse_depth": 1,
         "members": ["0", "1", "2", "3", "4"],
-        "cluster_size": 5,
     }
 
     assert clusters.to_dict() == dict_expected

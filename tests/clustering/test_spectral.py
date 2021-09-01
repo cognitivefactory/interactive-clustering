@@ -71,6 +71,26 @@ def test_SpectralConstrainedClustering_for_correct_settings():
 
 
 # ==============================================================================
+# test_SpectralConstrainedClustering_cluster_for_inconsistent_constraints_manager
+# ==============================================================================
+def test_SpectralConstrainedClustering_cluster_for_inconsistent_constraints_manager():
+    """
+    Test that the `clustering.spectral.SpectralConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints_manager` parameter.
+    """
+
+    # Initialize a `SpectralConstrainedClustering` instance.
+    clustering_model = SpectralConstrainedClustering()
+
+    # Check `ValueError` for not matrix `vectors`.
+    with pytest.raises(ValueError, match="`constraints_manager`"):
+        clustering_model.cluster(
+            constraints_manager=None,
+            vectors=None,
+            nb_clusters=2,
+        )
+
+
+# ==============================================================================
 # test_SpectralConstrainedClustering_cluster_for_inconsistent_vectors
 # ==============================================================================
 def test_SpectralConstrainedClustering_cluster_for_inconsistent_vectors():
@@ -84,21 +104,8 @@ def test_SpectralConstrainedClustering_cluster_for_inconsistent_vectors():
     # Check `ValueError` for not matrix `vectors`.
     with pytest.raises(ValueError, match="`vectors`"):
         clustering_model.cluster(
+            constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third"]),
             vectors=None,
-            nb_clusters=2,
-        )
-
-    # Check `ValueError` for not matrix `vectors`.
-    with pytest.raises(ValueError, match="`vectors`"):
-        clustering_model.cluster(
-            vectors="this_is_my_vectors",
-            nb_clusters=2,
-        )
-
-    # Check `ValueError` for not matrix `vectors`.
-    with pytest.raises(ValueError, match="`list_of_data_IDs`"):
-        clustering_model.cluster(
-            vectors={1: "yolo", 2: "yolo 2"},
             nb_clusters=2,
         )
 
@@ -117,36 +124,9 @@ def test_SpectralConstrainedClustering_cluster_for_inconsistent_nb_clusters():
     # Check `ValueError` for too small `nb_clusters`.
     with pytest.raises(ValueError, match="`nb_clusters`"):
         clustering_model.cluster(
+            constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third"]),
             vectors={"first": np.array([1, 2, 3]), "second": np.array([[4, 5, 6]]), "third": csr_matrix([7, 8, 9])},
             nb_clusters=-1,
-        )
-
-
-# ==============================================================================
-# test_SpectralConstrainedClustering_cluster_for_inconsistent_constraints
-# ==============================================================================
-def test_SpectralConstrainedClustering_cluster_for_inconsistent_constraints():
-    """
-    Test that the `clustering.spectral.SpectralConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints` parameter.
-    """
-
-    # Initialize a `SpectralConstrainedClustering` instance.
-    clustering_model = SpectralConstrainedClustering()
-
-    # Check `ValueError` for not dictionary `constraints`.
-    with pytest.raises(ValueError, match="`constraints_manager`"):
-        clustering_model.cluster(
-            vectors={"first": np.array([1, 2, 3]), "second": np.array([[4, 5, 6]]), "third": csr_matrix([7, 8, 9])},
-            nb_clusters=2,
-            constraints_manager="this_is_my_constraints",
-        )
-
-    # Check `ValueError` for not well defined `constraints`.
-    with pytest.raises(ValueError, match="`constraints_manager`"):
-        clustering_model.cluster(
-            vectors={"first": np.array([1, 2, 3]), "second": np.array([[4, 5, 6]]), "third": csr_matrix([7, 8, 9])},
-            nb_clusters=2,
-            constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third", "fourth"]),
         )
 
 
@@ -170,7 +150,7 @@ def test_SpectralConstrainedClustering_cluster_model_SPEC_with_no_constraints():
         "7": csr_matrix([0.00, 0.01, 0.00, 0.99]),
         "8": csr_matrix([0.00, 0.00, 0.00, 1.00]),
     }
-    constraints_manager = None
+    constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
     # Initialize a `SpectralConstrainedClustering` instance.
     clustering_model = SpectralConstrainedClustering(
@@ -180,9 +160,9 @@ def test_SpectralConstrainedClustering_cluster_model_SPEC_with_no_constraints():
 
     # Run clustering 3 clusters and no constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=3,
-        constraints_manager=constraints_manager,
     )
 
     assert clustering_model.dict_of_predicted_clusters
@@ -236,9 +216,9 @@ def test_SpectralConstrainedClustering_cluster_model_SPEC_with_some_constraints(
 
     # Run clustering 3 clusters and some constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=3,
-        constraints_manager=constraints_manager,
     )
 
     assert clustering_model.dict_of_predicted_clusters
@@ -296,9 +276,9 @@ def test_SpectralConstrainedClustering_cluster_model_SPEC_with_full_constraints(
 
     # Run clustering 3 clusters and full constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
+        constraints_manager=constraints_manager,
         vectors=vectors,
         nb_clusters=4,
-        constraints_manager=constraints_manager,
     )
 
     assert clustering_model.dict_of_predicted_clusters
