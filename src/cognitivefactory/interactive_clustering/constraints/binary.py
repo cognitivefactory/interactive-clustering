@@ -12,7 +12,7 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-from typing import Dict, List, Optional, Tuple  # To type Python code (mypy).
+from typing import Dict, List, Optional, Set, Tuple  # To type Python code (mypy).
 
 from cognitivefactory.interactive_clustering.constraints.abstract import (  # To use abstract interface.
     AbstractConstraintsManager,
@@ -82,12 +82,12 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         """
 
         # Define `self._allowed_constraint_types`.
-        self._allowed_constraint_types = {
+        self._allowed_constraint_types: Set[str] = {
             "MUST_LINK",
             "CANNOT_LINK",
         }
         # Define `self._allowed_constraint_value_range`.
-        self._allowed_constraint_value_range = {
+        self._allowed_constraint_value_range: Dict[str, float] = {
             "min": 1.0,
             "max": 1.0,
         }
@@ -137,14 +137,14 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         """
 
         # If `data_ID` is in the data IDs that are currently managed, then raises a `ValueError`.
-        if data_ID in self.get_list_of_managed_data_IDs():
+        if data_ID in self._constraints_dictionary.keys():
             raise ValueError("The `data_ID` `'" + str(data_ID) + "'` is already managed.")
 
         # Add `data_ID` to `self._constraints_dictionary.keys()`.
         self._constraints_dictionary[data_ID] = {}
 
         # Define constraint for `data_ID` and all other data IDs.
-        for other_data_ID in self.get_list_of_managed_data_IDs():
+        for other_data_ID in self._constraints_dictionary.keys():
             self._constraints_dictionary[data_ID][other_data_ID] = (
                 ("MUST_LINK", 1.0)
                 if (data_ID == other_data_ID)
@@ -158,8 +158,10 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
 
         # Regenerate `self._constraints_transitivity`.
         # `Equivalent to `self._generate_constraints_transitivity()`
-        self._constraints_transitivity["MUST_LINK"][data_ID] = [data_ID]
-        self._constraints_transitivity["CANNOT_LINK"][data_ID] = []
+        self._constraints_transitivity[data_ID] = {
+            "MUST_LINK": {data_ID: None},
+            "CANNOT_LINK": {},
+        }
 
         # Return `True`.
         return True
@@ -185,14 +187,14 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         """
 
         # If `data_ID` is not in the data IDs that are currently managed, then raises a `ValueError`.
-        if data_ID not in self.get_list_of_managed_data_IDs():
+        if data_ID not in self._constraints_dictionary.keys():
             raise ValueError("The `data_ID` `'" + str(data_ID) + "'` is not managed.")
 
         # Remove `data_ID` from `self._constraints_dictionary.keys()`.
         self._constraints_dictionary.pop(data_ID)
 
         # Remove `data_ID` from all `self._constraints_dictionary[other_data_ID].keys()`.
-        for other_data_ID in self.get_list_of_managed_data_IDs():
+        for other_data_ID in self._constraints_dictionary.keys():
             self._constraints_dictionary[other_data_ID].pop(data_ID)
 
         # Regenerate `self._constraints_transitivity`
@@ -211,11 +213,11 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         The main method used to get the list of data IDs that are managed.
 
         Returns:
-            List[str]: The sorted list of data IDs that are managed.
+            List[str]: The list of data IDs that are managed.
         """
 
         # Return the possible keys of `self._constraints_dictionary`.
-        return sorted(self._constraints_dictionary.keys())
+        return list(self._constraints_dictionary.keys())
 
     # ==============================================================================
     # CONSTRAINTS MANAGEMENT - ADDITION
@@ -244,11 +246,11 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         """
 
         # If `data_ID1` is not in the data IDs that are currently managed, then raises a `ValueError`.
-        if data_ID1 not in self.get_list_of_managed_data_IDs():
+        if data_ID1 not in self._constraints_dictionary.keys():
             raise ValueError("The `data_ID1` `'" + str(data_ID1) + "'` is not managed.")
 
         # If `data_ID2` is not in the data IDs that are currently managed, then raises a `ValueError`.
-        if data_ID2 not in self.get_list_of_managed_data_IDs():
+        if data_ID2 not in self._constraints_dictionary.keys():
             raise ValueError("The `data_ID2` `'" + str(data_ID2) + "'` is not managed.")
 
         # If the `constraint_type` is not in `self._allowed_constraint_types`, then raises a `ValueError`.
@@ -308,11 +310,11 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         """
 
         # If `data_ID1` is not in the data IDs that are currently managed, then raises a `ValueError`.
-        if data_ID1 not in self.get_list_of_managed_data_IDs():
+        if data_ID1 not in self._constraints_dictionary.keys():
             raise ValueError("The `data_ID1` `'" + str(data_ID1) + "'` is not managed.")
 
         # If `data_ID2` is not in the data IDs that are currently managed, then raises a `ValueError`.
-        if data_ID2 not in self.get_list_of_managed_data_IDs():
+        if data_ID2 not in self._constraints_dictionary.keys():
             raise ValueError("The `data_ID2` `'" + str(data_ID2) + "'` is not managed.")
 
         # Delete the constraint between `data_ID1` and `data_ID2`.
@@ -349,11 +351,11 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         """
 
         # If `data_ID1` is not in the data IDs that are currently managed, then raises a `ValueError`.
-        if data_ID1 not in self.get_list_of_managed_data_IDs():
+        if data_ID1 not in self._constraints_dictionary.keys():
             raise ValueError("The `data_ID1` `'" + str(data_ID1) + "'` is not managed.")
 
         # If `data_ID2` is not in the data IDs that are currently managed, then raises a `ValueError`.
-        if data_ID2 not in self.get_list_of_managed_data_IDs():
+        if data_ID2 not in self._constraints_dictionary.keys():
             raise ValueError("The `data_ID2` `'" + str(data_ID2) + "'` is not managed.")
 
         # Retrun the current added constraint type and value.
@@ -385,19 +387,19 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         """
 
         # If `data_ID1` is not in the data IDs that are currently managed, then raises a `ValueError`.
-        if data_ID1 not in self.get_list_of_managed_data_IDs():
+        if data_ID1 not in self._constraints_transitivity.keys():
             raise ValueError("The `data_ID1` `'" + str(data_ID1) + "'` is not managed.")
 
         # If `data_ID2` is not in the data IDs that are currently managed, then raises a `ValueError`.
-        if data_ID2 not in self.get_list_of_managed_data_IDs():
+        if data_ID2 not in self._constraints_transitivity.keys():
             raise ValueError("The `data_ID2` `'" + str(data_ID2) + "'` is not managed.")
 
         # Case of `"MUST_LINK"`.
-        if data_ID1 in self._constraints_transitivity["MUST_LINK"][data_ID2]:
+        if data_ID1 in self._constraints_transitivity[data_ID2]["MUST_LINK"].keys():
             return "MUST_LINK"
 
         # Case of `"CANNOT_LINK"`.
-        if data_ID1 in self._constraints_transitivity["CANNOT_LINK"][data_ID2]:
+        if data_ID1 in self._constraints_transitivity[data_ID2]["CANNOT_LINK"].keys():
             return "CANNOT_LINK"
 
         # Case of `None`.
@@ -423,13 +425,13 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         """
 
         # Initialize the list of connected components.
-        list_of_connected_components = []
+        list_of_connected_components: List[List[str]] = []
 
         # For each data ID...
-        for data_ID in self.get_list_of_managed_data_IDs():
+        for data_ID in self._constraints_transitivity.keys():
 
             # ... get the list of `"MUST_LINK"` data IDs linked by transitivity with `data_ID` ...
-            connected_component_of_a_data_ID = self._constraints_transitivity["MUST_LINK"][data_ID]
+            connected_component_of_a_data_ID = list(self._constraints_transitivity[data_ID]["MUST_LINK"].keys())
 
             # ... and if the connected component is not already get...
             if connected_component_of_a_data_ID not in list_of_connected_components:
@@ -437,7 +439,7 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
                 list_of_connected_components.append(connected_component_of_a_data_ID)
 
         # Return the list of connected components.
-        return sorted(list_of_connected_components)
+        return list_of_connected_components
 
     # ==============================================================================
     # CONSTRAINTS EXPLORATION - CHECK COMPLETUDE OF CONSTRAINTS
@@ -458,16 +460,13 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         """
 
         # For each data ID...
-        for data_ID in self.get_list_of_managed_data_IDs():
+        for data_ID in self._constraints_transitivity.keys():
 
             # ... if some data IDs are not linked by transitivity to this `data_ID` with a `"MUST_LINK"` or `"CANNOT_LINK"` constraints...
             if (
-                sorted(
-                    self._constraints_transitivity["MUST_LINK"][data_ID]
-                    + self._constraints_transitivity["CANNOT_LINK"][data_ID]
-                )
-                != self.get_list_of_managed_data_IDs()
-            ):
+                len(self._constraints_transitivity[data_ID]["MUST_LINK"].keys())
+                + len(self._constraints_transitivity[data_ID]["CANNOT_LINK"].keys())
+            ) != len(self._constraints_transitivity.keys()):
 
                 # ... then return `False`.
                 return False
@@ -502,15 +501,15 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
                 round(  # Round at 5 decimal if the lower bound if close to the next interger (i.e. 2.99999 -> 3.0)
                     graph.compute_lovasz_theta_number(
                         # Get the number of data IDs as number of vertex.
-                        number_of_vertex=len(self.get_list_of_managed_data_IDs()),
+                        number_of_vertex=len(self._constraints_transitivity.keys()),
                         # Get the complement of the `"CANNOT_LINK"` graph.
                         list_of_egdes=[
                             (i1, i2)
-                            for i1, data_ID1 in enumerate(self.get_list_of_managed_data_IDs())
-                            for i2, data_ID2 in enumerate(self.get_list_of_managed_data_IDs())
+                            for i1, data_ID1 in enumerate(self._constraints_transitivity.keys())
+                            for i2, data_ID2 in enumerate(self._constraints_transitivity.keys())
                             if (i1 < i2)
                             and (  # To get the complement, get all possible link that are not a `"CANNOT_LINK"`.
-                                data_ID2 not in self._constraints_transitivity["CANNOT_LINK"][data_ID1]
+                                data_ID2 not in self._constraints_transitivity[data_ID1]["CANNOT_LINK"].keys()
                             )
                         ],
                     )["theta"],
@@ -534,17 +533,19 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         """
         Generate `self._constraints_transitivity`, a constraints dictionary that takes into account the transitivity of constraints.
         Suppose there is no inconsistency in `self._constraints_dictionary`.
+        It uses `Dict[str, None]` to simulate ordered sets.
         """
 
-        self._constraints_transitivity: Dict[str, Dict[str, List[str]]] = {
-            # Initialize MUST_LINK clusters constraints.
-            "MUST_LINK": {data_ID: [data_ID] for data_ID in self.get_list_of_managed_data_IDs()},
-            # Initialize CANNOT_LINK clusters constraints.
-            "CANNOT_LINK": {data_ID: [] for data_ID in self.get_list_of_managed_data_IDs()},
+        self._constraints_transitivity: Dict[str, Dict[str, Dict[str, None]]] = {
+            data_ID: {
+                "MUST_LINK": {data_ID: None},  # Initialize MUST_LINK clusters constraints.
+                "CANNOT_LINK": {},  # Initialize CANNOT_LINK clusters constraints.
+            }
+            for data_ID in self._constraints_dictionary.keys()
         }
 
-        for data_ID1 in self.get_list_of_managed_data_IDs():
-            for data_ID2 in self.get_list_of_managed_data_IDs():
+        for data_ID1 in self._constraints_transitivity.keys():
+            for data_ID2 in self._constraints_transitivity.keys():
 
                 # Optimization : `self._constraints_dictionary` is symetric, so one pass is enough.
                 if data_ID1 > data_ID2:
@@ -588,68 +589,61 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         ###
         if constraint_type == "MUST_LINK":
 
-            # Define new common list of `"MUST_LINK"` data IDs,
-            # by merging the lists of `"MUST_LINK"` data IDs for `data_ID1` and `data_ID2`.
-            new_MUST_LINK_common_list = sorted(
-                set(
-                    self._constraints_transitivity["MUST_LINK"][data_ID1]
-                    + self._constraints_transitivity["MUST_LINK"][data_ID2]
-                )
-            )
+            # Define new common set of `"MUST_LINK"` data IDs,
+            # by merging the sets of `"MUST_LINK"` data IDs for `data_ID1` and `data_ID2`.
+            new_MUST_LINK_common_set: Dict[str, None] = {
+                **self._constraints_transitivity[data_ID1]["MUST_LINK"],
+                **self._constraints_transitivity[data_ID2]["MUST_LINK"],
+            }
 
-            # Define new common list of `"CANNOT_LINK"` data IDs,
-            # by merging the lists of `"CANNOT_LINK"` data IDs for `data_ID1` and `data_ID2`.
-            new_CANNOT_LINK_common_list = sorted(
-                set(
-                    self._constraints_transitivity["CANNOT_LINK"][data_ID1]
-                    + self._constraints_transitivity["CANNOT_LINK"][data_ID2]
-                )
-            )
+            # Define new common set of `"CANNOT_LINK"` data IDs,
+            # by merging the sets of `"CANNOT_LINK"` data IDs for `data_ID1` and `data_ID2`.
+            new_CANNOT_LINK_common_set: Dict[str, None] = {
+                **self._constraints_transitivity[data_ID1]["CANNOT_LINK"],
+                **self._constraints_transitivity[data_ID2]["CANNOT_LINK"],
+            }
 
             # For each data that are now similar to `data_ID1` and `data_ID2`...
-            for data_ID_ML in new_MUST_LINK_common_list:
-                # ... affect the new list of `"MUST_LINK"` constraints...
-                self._constraints_transitivity["MUST_LINK"][data_ID_ML] = new_MUST_LINK_common_list
-                # ... and affect the new list of `"CANNOT_LINK"` constraints.
-                self._constraints_transitivity["CANNOT_LINK"][data_ID_ML] = new_CANNOT_LINK_common_list
+            for data_ID_ML in new_MUST_LINK_common_set.keys():
+                # ... affect the new set of `"MUST_LINK"` constraints...
+                self._constraints_transitivity[data_ID_ML]["MUST_LINK"] = new_MUST_LINK_common_set
+                # ... and affect the new set of `"CANNOT_LINK"` constraints.
+                self._constraints_transitivity[data_ID_ML]["CANNOT_LINK"] = new_CANNOT_LINK_common_set
 
             # For each data that are now different to `data_ID1` and `data_ID2`...
-            for data_ID_CL in new_CANNOT_LINK_common_list:
-                # ... affect the new list of `"CANNOT_LINK"` constraints.
-                self._constraints_transitivity["CANNOT_LINK"][data_ID_CL] = sorted(
-                    set(self._constraints_transitivity["CANNOT_LINK"][data_ID_CL] + new_MUST_LINK_common_list)
-                )
+            for data_ID_CL in new_CANNOT_LINK_common_set.keys():
+                # ... affect the new set of `"CANNOT_LINK"` constraints.
+                self._constraints_transitivity[data_ID_CL]["CANNOT_LINK"] = {
+                    **self._constraints_transitivity[data_ID_CL]["CANNOT_LINK"],
+                    **new_MUST_LINK_common_set,
+                }
 
         ###
         ### Case 2 : `constraint_type` is `"CANNOT_LINK"`.
         ###
         else:  # if constraint_type == "CANNOT_LINK":
 
-            # Define new common list of `"CANNOT_LINK"` data IDs for data IDs that are similar to `data_ID1`.
-            new_CANNOT_LINK_list_for_data_ID1 = sorted(
-                set(
-                    self._constraints_transitivity["CANNOT_LINK"][data_ID1]
-                    + self._constraints_transitivity["MUST_LINK"][data_ID2]
-                )
-            )
+            # Define new common set of `"CANNOT_LINK"` data IDs for data IDs that are similar to `data_ID1`.
+            new_CANNOT_LINK_set_for_data_ID1: Dict[str, None] = {
+                **self._constraints_transitivity[data_ID1]["CANNOT_LINK"],
+                **self._constraints_transitivity[data_ID2]["MUST_LINK"],
+            }
 
-            # Define new common list of `"CANNOT_LINK"` data IDs for data IDs that are similar to `data_ID2`.
-            new_CANNOT_LINK_list_for_data_ID2 = sorted(
-                set(
-                    self._constraints_transitivity["CANNOT_LINK"][data_ID2]
-                    + self._constraints_transitivity["MUST_LINK"][data_ID1]
-                )
-            )
+            # Define new common set of `"CANNOT_LINK"` data IDs for data IDs that are similar to `data_ID2`.
+            new_CANNOT_LINK_set_for_data_ID2: Dict[str, None] = {
+                **self._constraints_transitivity[data_ID2]["CANNOT_LINK"],
+                **self._constraints_transitivity[data_ID1]["MUST_LINK"],
+            }
 
             # For each data that are similar to `data_ID1`...
-            for data_ID_like_data_ID1 in self._constraints_transitivity["MUST_LINK"][data_ID1]:
+            for data_ID_like_data_ID1 in self._constraints_transitivity[data_ID1]["MUST_LINK"].keys():
                 # ... affect the new list of `"CANNOT_LINK"` constraints.
-                self._constraints_transitivity["CANNOT_LINK"][data_ID_like_data_ID1] = new_CANNOT_LINK_list_for_data_ID1
+                self._constraints_transitivity[data_ID_like_data_ID1]["CANNOT_LINK"] = new_CANNOT_LINK_set_for_data_ID1
 
             # For each data that are similar to `data_ID2`...
-            for data_ID_like_data_ID2 in self._constraints_transitivity["MUST_LINK"][data_ID2]:
+            for data_ID_like_data_ID2 in self._constraints_transitivity[data_ID2]["MUST_LINK"].keys():
                 # ... affect the new list of `"CANNOT_LINK"` constraints.
-                self._constraints_transitivity["CANNOT_LINK"][data_ID_like_data_ID2] = new_CANNOT_LINK_list_for_data_ID2
+                self._constraints_transitivity[data_ID_like_data_ID2]["CANNOT_LINK"] = new_CANNOT_LINK_set_for_data_ID2
 
         # Return `True`
         return True

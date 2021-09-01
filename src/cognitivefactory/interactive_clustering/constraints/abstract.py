@@ -78,7 +78,7 @@ class AbstractConstraintsManager(ABC):
         An abstract method that represents the main method used to get the list of data IDs that are managed.
 
         Returns:
-            List[str]: The sorted list of data IDs that are managed.
+            List[str]: The list of data IDs that are managed.
         """
 
     # ==============================================================================
