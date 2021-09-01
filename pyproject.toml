@@ -51,8 +51,8 @@ includes = [
 
 [tool.pdm.dev-dependencies]
 develop = [
-    "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-2.3.0/fr_core_news_sm-2.3.0.tar.gz",
-    "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.0/en_core_web_sm-2.3.0.tar.gz"
+    "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-2.3.0/fr_core_news_sm-2.3.0.tar.gz",  # "fr-core-news-sm==2.3.0",
+    "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.0/en_core_web_sm-2.3.0.tar.gz",  # "en_core_web_sm==2.3.0",
 ]
 duty = [
     "duty~=0.6",
@@ -96,6 +96,8 @@ tests = [
     "pytest-randomly~=3.6",
     "pytest-sugar~=0.9",
     "pytest-xdist~=2.2",
+    "https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-2.3.0/fr_core_news_sm-2.3.0.tar.gz",  # "fr-core-news-sm==2.3.0",
+    "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.0/en_core_web_sm-2.3.0.tar.gz",  # "en_core_web_sm==2.3.0",
 ]
 typing = [
     "mypy~=0.812",
