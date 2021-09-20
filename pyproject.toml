@@ -29,7 +29,7 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "cvxopt~=1.2.6",
+    "cvxopt~=1.2.6, !=1.2.7",  # TODO: cvxopt~=1.2.6 when 1.2.7 fixed.
     "numpy~=1.19.4",
     "scikit-learn~=0.24.1",
     "scipy~=1.5.3",
