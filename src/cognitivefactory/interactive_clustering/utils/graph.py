@@ -97,7 +97,7 @@ def compute_lovasz_theta_number(
         G1[v * number_of_vertex + v, number_of_edges] = 1
 
     # Get opposite of `G1`.
-    G1 = -G1
+    G1 = -G1  # noqa: WPS434
 
     # Initialization and definition of parameter `h1` of the solver.
     h1 = -cvxopt.matrix(1.0, (number_of_vertex, number_of_vertex))
