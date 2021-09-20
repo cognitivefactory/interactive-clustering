@@ -279,7 +279,8 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
                 + "'` between data IDs `'"
                 + data_ID1
                 + "'` and `'"
-                + data_ID2 + "'`."
+                + data_ID2
+                + "'`."
             )
 
         # Get current added constraint between `data_ID1` and `data_ID2`.

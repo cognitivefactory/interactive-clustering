@@ -4,7 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+
 <!-- insertion marker -->
+## [0.2.1](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.2.1) - 2021-09-20
+
+<small>[Compare with 0.2.0](https://github.com/cognitivefactory/interactive-clustering/compare/0.2.0...0.2.1)</small>
+
+### Bug Fixes
+- correct constraints transitivity inconsistencies in BinaryConstraintsManager.add_constraint ([98f162e](https://github.com/cognitivefactory/interactive-clustering/commit/98f162e5785df13d99e25f757be4988e5fab757c) by Erwan Schild).
+
+### Code Refactoring
+- update exception message ([2003a1e](https://github.com/cognitivefactory/interactive-clustering/commit/2003a1e782a2885ae45419577aa9d599f08876a3) by Erwan Schild).
+- fix code quality errors ([740c261](https://github.com/cognitivefactory/interactive-clustering/commit/740c26162834f25188fcddb4f8a5cc24e7166976) by Erwan Schild).
+
+
 ## [0.2.0](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.2.0) - 2021-09-01
 
 <small>[Compare with 0.1.3](https://github.com/cognitivefactory/interactive-clustering/compare/0.1.3...0.2.0)</small>
