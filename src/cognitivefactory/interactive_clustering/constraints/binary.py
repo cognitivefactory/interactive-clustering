@@ -239,7 +239,7 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
             constraint_value (float, optional): The value of the constraint to add. The value have to be in range `[0.0, 1.0]`. Defaults to `1.0`.
 
         Raises:
-            ValueError: if `data_ID1`, `data_ID2` or `constraint_type` are not managed.
+            ValueError: if `data_ID1`, `data_ID2`, `constraint_type` are not managed, or if a conflict is detected with constraints inference.
 
         Returns:
             bool: `True` if the addition is done, `False` is the constraint can't be added.
@@ -264,15 +264,32 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
             )
 
         # Get current added constraint between `data_ID1` and `data_ID2`.
-        added_constraint = self.get_added_constraint(
+        inferred_constraint: Optional[str] = self.get_inferred_constraint(
+            data_ID1=data_ID1,
+            data_ID2=data_ID2,
+        )
+
+        # Case of conflict with constraints inference.
+        if (inferred_constraint is not None) and (inferred_constraint != constraint_type):
+            raise ValueError(
+                "The `constraint_type` `'"
+                + str(constraint_type)
+                + "'` is incompatible with the inferred constraint `'"
+                + str(inferred_constraint)
+                + "'`."
+            )
+
+        # Get current added constraint between `data_ID1` and `data_ID2`.
+        added_constraint: Optional[Tuple[str, float]] = self.get_added_constraint(
             data_ID1=data_ID1,
             data_ID2=data_ID2,
         )
 
         # If the constraint has already be added, ...
         if added_constraint is not None:
-            # ... just return a boolean to confirm.
-            return added_constraint[0] == constraint_type
+            # ... do nothing.
+            return True  # `added_constraint[0] == constraint_type`.
+        # Otherwise, the constraint has to be added.
 
         # Add the direct constraint between `data_ID1` and `data_ID2`.
         self._constraints_dictionary[data_ID1][data_ID2] = (constraint_type, 1.0)

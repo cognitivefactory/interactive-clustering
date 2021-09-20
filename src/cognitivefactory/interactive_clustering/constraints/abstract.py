@@ -103,7 +103,7 @@ class AbstractConstraintsManager(ABC):
             constraint_value (float, optional): The value of the constraint to add. The value have to be in range `[0.0, 1.0]`. Defaults to 1.0.
 
         Raises:
-            ValueError: if `data_ID1`, `data_ID2`, `constraint_type` or `constraint_value` are not managed.
+            ValueError: if `data_ID1`, `data_ID2`, `constraint_type` are not managed, or if a conflict is detected with constraints inference.
 
         Returns:
             bool: `True` if the addition is done, `False` is the constraint can't be added.

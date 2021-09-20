@@ -259,30 +259,14 @@ def test_BinaryConstraintsManager_add_constraint_with_already_linked_data_IDs():
         )
         is True
     )
-    assert (
-        constraints_manager.get_added_constraint(
-            data_ID1="first",
-            data_ID2="second",
-        )
-        == ("MUST_LINK", 1.0)
-    )
 
     # Try to add `"CANNOT_LINK"` data ID between `"first"` and `"second"` data IDs.
-    assert (
+    with pytest.raises(ValueError, match="`constraint_type`"):
         constraints_manager.add_constraint(
             data_ID1="first",
             data_ID2="second",
             constraint_type="CANNOT_LINK",
         )
-        is False
-    )
-    assert (
-        constraints_manager.get_added_constraint(
-            data_ID1="first",
-            data_ID2="second",
-        )
-        != ("CANNOT_LINK", 1.0)
-    )
 
 
 # ==============================================================================
@@ -327,6 +311,31 @@ def test_BinaryConstraintsManager_add_constraint_with_not_already_linked_data_ID
     assert (
         constraints_manager.get_added_constraint(
             data_ID1="first",
+            data_ID2="third",
+        )
+        == ("CANNOT_LINK", 1.0)
+    )
+
+    # Try to add `"MUST_LINK"` data ID between `"second"` and `"third"` data IDs.
+    with pytest.raises(ValueError, match="`constraint_type`"):
+        constraints_manager.add_constraint(
+            data_ID1="second",
+            data_ID2="third",
+            constraint_type="MUST_LINK",
+        )
+
+    # Try to add `"CANNOT_LINK"` data ID between `"second"` and `"third"` data IDs.
+    assert (
+        constraints_manager.add_constraint(
+            data_ID1="second",
+            data_ID2="third",
+            constraint_type="CANNOT_LINK",
+        )
+        is True
+    )
+    assert (
+        constraints_manager.get_added_constraint(
+            data_ID1="second",
             data_ID2="third",
         )
         == ("CANNOT_LINK", 1.0)
