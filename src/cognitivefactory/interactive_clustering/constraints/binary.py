@@ -276,7 +276,10 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
                 + str(constraint_type)
                 + "'` is incompatible with the inferred constraint `'"
                 + str(inferred_constraint)
-                + "'`."
+                + "'` between data IDs `'"
+                + data_ID1
+                + "'` and `'"
+                + data_ID2 + "'`."
             )
 
         # Get current added constraint between `data_ID1` and `data_ID2`.
