@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 <!-- insertion marker -->
+## [0.3.0](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.3.0) - 2021-10-04
+
+<small>[Compare with 0.2.1](https://github.com/cognitivefactory/interactive-clustering/compare/0.2.1...0.3.0)</small>
+
+### Features
+- update Constraints Sampling with clusters/distance/known_constraints restrictions ([34c5747](https://gitlab-si.cloud.cm-cic.fr/h/h3/h330/wnlp/interactive-clustering/commit/34c57475c9b6e20cc8bbdcefe9b58b0d962f0042) by Erwan Schild).
+
+
 ## [0.2.1](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.2.1) - 2021-09-20
 
 <small>[Compare with 0.2.0](https://github.com/cognitivefactory/interactive-clustering/compare/0.2.0...0.2.1)</small>
