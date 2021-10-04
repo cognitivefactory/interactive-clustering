@@ -21,10 +21,7 @@ nav:
   - Constraints Sampling:
     - sampling.abstract: reference/sampling/abstract.md
     - sampling.factory: reference/sampling/factory.md
-    - sampling.random: reference/sampling/random.md
-    - sampling.random_in_same_cluster: reference/sampling/random_in_same_cluster.md
-    - sampling.closest_in_different_clusters: reference/sampling/closest_in_different_clusters.md
-    - sampling.farhest_in_same_cluster: reference/sampling/farhest_in_same_cluster.md
+    - sampling.clusters_based: reference/sampling/clusters_based.md
   - Constrained Clustering:
     - clustering.abstract: reference/clustering/abstract.md
     - clustering.factory: reference/clustering/factory.md
