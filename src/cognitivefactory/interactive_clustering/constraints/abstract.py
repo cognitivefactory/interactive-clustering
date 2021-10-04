@@ -239,3 +239,30 @@ class AbstractConstraintsManager(ABC):
         Returns:
             Tuple[int,int]: The minimum and the maximum possible clusters numbers (for a clustering model that would not violate any constraints).
         """
+
+    # ==============================================================================
+    # ABSTRACT METHOD - CONSTRAINTS CONFLICT
+    # ==============================================================================
+
+    @abstractmethod
+    def get_list_of_involved_data_IDs_in_a_constraint_conflict(
+        self,
+        data_ID1: str,
+        data_ID2: str,
+        constraint_type: str,
+    ) -> Optional[List[str]]:
+        """
+        (ABSTRACT METHOD)
+        An abstract method that represents the main method used to get all data IDs involved in a constraints conflict.
+
+        Args:
+            data_ID1 (str): The first data ID involved in the constraint_conflit.
+            data_ID2 (str): The second data ID involved in the constraint_conflit.
+            constraint_type (str): The constraint that create a conflict. The constraints can be `"MUST_LINK"` or `"CANNOT_LINK"`.
+
+        Raises:
+            ValueError: if `data_ID1`, `data_ID2`, `constraint_type` are not managed.
+
+        Returns:
+            Optional[List[str]]: The list of data IDs that are involved in the conflict. It matches data IDs from connected components of `data_ID1` and `data_ID2`.
+        """

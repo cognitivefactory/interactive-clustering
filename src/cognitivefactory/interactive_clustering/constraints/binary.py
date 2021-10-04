@@ -668,3 +668,59 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
 
         # Return `True`
         return True
+
+    # ==============================================================================
+    # CONSTRAINTS CONFLICT - GET INVOLVED DATA IDS IN A CONFLICT
+    # ==============================================================================
+    def get_list_of_involved_data_IDs_in_a_constraint_conflict(
+        self,
+        data_ID1: str,
+        data_ID2: str,
+        constraint_type: str,
+    ) -> Optional[List[str]]:
+        """
+        Get all data IDs involved in a constraints conflict.
+
+        Args:
+            data_ID1 (str): The first data ID involved in the constraint_conflit.
+            data_ID2 (str): The second data ID involved in the constraint_conflit.
+            constraint_type (str): The constraint that create a conflict. The constraints can be `"MUST_LINK"` or `"CANNOT_LINK"`.
+
+        Raises:
+            ValueError: if `data_ID1`, `data_ID2`, `constraint_type` are not managed.
+
+        Returns:
+            Optional[List[str]]: The list of data IDs that are involved in the conflict. It matches data IDs from connected components of `data_ID1` and `data_ID2`.
+        """
+
+        # If `data_ID1` is not in the data IDs that are currently managed, then raises a `ValueError`.
+        if data_ID1 not in self._constraints_dictionary.keys():
+            raise ValueError("The `data_ID1` `'" + str(data_ID1) + "'` is not managed.")
+
+        # If `data_ID2` is not in the data IDs that are currently managed, then raises a `ValueError`.
+        if data_ID2 not in self._constraints_dictionary.keys():
+            raise ValueError("The `data_ID2` `'" + str(data_ID2) + "'` is not managed.")
+
+        # If the `constraint_conflict` is not in `self._allowed_constraint_types`, then raises a `ValueError`.
+        if constraint_type not in self._allowed_constraint_types:
+            raise ValueError(
+                "The `constraint_type` `'"
+                + str(constraint_type)
+                + "'` is not managed. Allowed constraints types are : `"
+                + str(self._allowed_constraint_types)
+                + "`."
+            )
+
+        # Case of conflict (after trying to add a constraint different from the inferred constraint).
+        if self.get_inferred_constraint(
+            data_ID1, data_ID2
+        ) is not None and constraint_type != self.get_inferred_constraint(data_ID1, data_ID2):
+            return [
+                data_ID
+                for connected_component in self.get_connected_components()  # Get involved components.
+                for data_ID in connected_component  # Get data IDs from these components.
+                if data_ID1 in connected_component or data_ID2 in connected_component
+            ]
+
+        # Case of no conflict.
+        return None

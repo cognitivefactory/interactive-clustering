@@ -1171,3 +1171,129 @@ def test_BinaryConstraintsManager_check_transitivity_after_data_ID_deletion():
         )
         is None
     )
+
+
+# ==============================================================================
+# test_BinaryConstraintsManager_get_list_of_involved_data_IDs_in_a_constraint_conflict_with_incorrect_data_ID
+# ==============================================================================
+def test_BinaryConstraintsManager_get_list_of_involved_data_IDs_in_a_constraint_conflict_with_incorrect_data_ID():
+    """
+    Test that the `get_list_of_involved_data_IDs_in_a_constraint_conflict` method of the `constraints.binary.BinaryConstraintsManager` class raises `ValueError` for incorrect data IDs.
+    """
+
+    # Initialize a classic binary constraints manager.
+    constraints_manager = BinaryConstraintsManager(
+        list_of_data_IDs=["first", "second", "third"],
+    )
+
+    # Try with `"unknown"` data ID in `"data_ID1"`.
+    with pytest.raises(ValueError, match="`data_ID1`"):
+        constraints_manager.get_list_of_involved_data_IDs_in_a_constraint_conflict(
+            data_ID1="unknown",
+            data_ID2="second",
+            constraint_type="MUST_LINK",
+        )
+
+    # Try with `"unknown"` data ID in `"data_ID2"`.
+    with pytest.raises(ValueError, match="`data_ID2`"):
+        constraints_manager.get_list_of_involved_data_IDs_in_a_constraint_conflict(
+            data_ID1="first",
+            data_ID2="unknown",
+            constraint_type="CANNOT_LINK",
+        )
+
+
+# ==============================================================================
+# test_BinaryConstraintsManager_get_list_of_involved_data_IDs_in_a_constraint_conflict_with_incorrect_constraint_type
+# ==============================================================================
+def test_BinaryConstraintsManager_get_list_of_involved_data_IDs_in_a_constraint_conflict_with_incorrect_constraint_type():
+    """
+    Test that the `get_list_of_involved_data_IDs_in_a_constraint_conflict` method of the `constraints.binary.BinaryConstraintsManager` class raises `ValueError` for an incorrect constraint type.
+    """
+
+    # Initialize a classic binary constraints manager.
+    constraints_manager = BinaryConstraintsManager(
+        list_of_data_IDs=["first", "second", "third"],
+    )
+
+    # Try with `"UNKNOWN_LINK"` constraint type in `"constraint_type"`.
+    with pytest.raises(ValueError, match="`constraint_type`"):
+        constraints_manager.get_list_of_involved_data_IDs_in_a_constraint_conflict(
+            data_ID1="first",
+            data_ID2="second",
+            constraint_type="UNKNOWN_LINK",
+        )
+
+
+# ==============================================================================
+# test_BinaryConstraintsManager_get_list_of_involved_data_IDs_in_a_constraint_conflict
+# ==============================================================================
+def test_BinaryConstraintsManager_get_list_of_involved_data_IDs_in_a_constraint_conflict():
+    """
+    Test that the `get_list_of_involved_data_IDs_in_a_constraint_conflict` method of the `constraints.binary.BinaryConstraintsManager` class works.
+    """
+
+    # Initialize a classic binary constraints manager.
+    constraints_manager = BinaryConstraintsManager(
+        list_of_data_IDs=["first", "second", "third", "fourth", "fifth"],
+    )
+    constraints_manager.add_constraint(
+        data_ID1="first",
+        data_ID2="second",
+        constraint_type="MUST_LINK",
+    )
+    constraints_manager.add_constraint(
+        data_ID1="second",
+        data_ID2="third",
+        constraint_type="MUST_LINK",
+    )
+    constraints_manager.add_constraint(
+        data_ID1="third",
+        data_ID2="fourth",
+        constraint_type="CANNOT_LINK",
+    )
+    constraints_manager.add_constraint(
+        data_ID1="fourth",
+        data_ID2="fifth",
+        constraint_type="CANNOT_LINK",
+    )
+
+    # Conflict of adding `"MUST_LINK"` between "first" and "fourth".
+    assert (
+        constraints_manager.get_list_of_involved_data_IDs_in_a_constraint_conflict(
+            data_ID1="first",
+            data_ID2="fourth",
+            constraint_type="MUST_LINK",
+        )
+        == ["first", "second", "third", "fourth"]
+    )
+
+    # Conflict of adding `"CANNOT_LINK"` between "first" and "fourth".
+    assert (
+        constraints_manager.get_list_of_involved_data_IDs_in_a_constraint_conflict(
+            data_ID1="first",
+            data_ID2="third",
+            constraint_type="CANNOT_LINK",
+        )
+        == ["first", "second", "third"]
+    )
+
+    # No conflict.
+    assert (
+        constraints_manager.get_list_of_involved_data_IDs_in_a_constraint_conflict(
+            data_ID1="first",
+            data_ID2="third",
+            constraint_type="MUST_LINK",
+        )
+        is None
+    )
+
+    # No conflict.
+    assert (
+        constraints_manager.get_list_of_involved_data_IDs_in_a_constraint_conflict(
+            data_ID1="fourth",
+            data_ID2="fifth",
+            constraint_type="CANNOT_LINK",
+        )
+        is None
+    )
