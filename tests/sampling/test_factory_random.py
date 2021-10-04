@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-* Name:         interactive-clustering/tests/sampling/test_random.py
-* Description:  Unittests for the `sampling.random` module.
+* Name:         interactive-clustering/tests/sampling/test_factory_random.py
+* Description:  Unittests for the `sampling.cluster_based` module, `"random"` sampler.
 * Author:       Erwan Schild
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
@@ -15,34 +15,34 @@
 import pytest
 
 from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
-from cognitivefactory.interactive_clustering.sampling.random import RandomConstraintsSampling
+from cognitivefactory.interactive_clustering.sampling.clusters_based import ClustersBasedConstraintsSampling
 
 
 # ==============================================================================
-# test_RandomConstraintsSampling_for_correct_settings
+# test_factory_random_sampler_for_correct_settings
 # ==============================================================================
-def test_RandomConstraintsSampling_for_correct_settings():
+def test_factory_random_sampler_for_correct_settings():
     """
-    Test that the `sampling.random.RandomConstraintsSampling` works for correct settings.
+    Test that the `random sampler` works for correct settings.
     """
 
     # Check a correct initialization.
-    sampler = RandomConstraintsSampling(random_seed=1)
+    sampler = ClustersBasedConstraintsSampling(random_seed=1)
 
     assert sampler
     assert sampler.random_seed == 1
 
 
 # ==============================================================================
-# test_RandomConstraintsSampling_sample_for_incorrect_constraints_manager
+# test_factory_random_sampler_sample_for_incorrect_constraints_manager
 # ==============================================================================
-def test_RandomConstraintsSampling_sample_for_incorrect_constraints_manager():
+def test_factory_random_sampler_sample_for_incorrect_constraints_manager():
     """
-    Test that the `sampling.random.RandomConstraintsSampling` sampling raises `ValueError` for incorrect `constraints_manager`.
+    Test that the `random sampler` sampling raises `ValueError` for incorrect `constraints_manager`.
     """
 
-    # Initialize a `RandomConstraintsSampling` instance.
-    sampler = RandomConstraintsSampling(random_seed=1)
+    # Initialize a `random sampler` instance.
+    sampler = ClustersBasedConstraintsSampling(random_seed=1)
 
     # Check sample with incorrect `constraints_manager`.
     with pytest.raises(ValueError, match="`constraints_manager`"):
@@ -53,15 +53,15 @@ def test_RandomConstraintsSampling_sample_for_incorrect_constraints_manager():
 
 
 # ==============================================================================
-# test_RandomConstraintsSampling_sample_for_incorrect_nb_to_select
+# test_factory_random_sampler_sample_for_incorrect_nb_to_select
 # ==============================================================================
-def test_RandomConstraintsSampling_sample_for_incorrect_nb_to_select():
+def test_factory_random_sampler_sample_for_incorrect_nb_to_select():
     """
-    Test that the `sampling.random.RandomConstraintsSampling` sampling raises `ValueError` for incorrect `nb_to_select`.
+    Test that the `random sampler` sampling raises `ValueError` for incorrect `nb_to_select`.
     """
 
-    # Initialize a `RandomConstraintsSampling` instance.
-    sampler = RandomConstraintsSampling(random_seed=1)
+    # Initialize a `random sampler` instance.
+    sampler = ClustersBasedConstraintsSampling(random_seed=1)
 
     # Check sample with incorrect `nb_to_select`.
     with pytest.raises(ValueError, match="`nb_to_select`"):
@@ -95,15 +95,15 @@ def test_RandomConstraintsSampling_sample_for_incorrect_nb_to_select():
 
 
 # ==============================================================================
-# test_RandomConstraintsSampling_sample_for_zero_nb_to_select
+# test_factory_random_sampler_sample_for_zero_nb_to_select
 # ==============================================================================
-def test_RandomConstraintsSampling_sample_for_zero_nb_to_select():
+def test_factory_random_sampler_sample_for_zero_nb_to_select():
     """
-    Test that the `sampling.random.RandomConstraintsSampling` sampling works for zero `nb_to_select`.
+    Test that the `random sampler` sampling works for zero `nb_to_select`.
     """
 
-    # Initialize a `RandomConstraintsSampling` instance.
-    sampler = RandomConstraintsSampling(random_seed=1)
+    # Initialize a `random sampler` instance.
+    sampler = ClustersBasedConstraintsSampling(random_seed=1)
 
     # Check sample with zero `nb_to_select`
     assert not sampler.sample(
@@ -121,15 +121,15 @@ def test_RandomConstraintsSampling_sample_for_zero_nb_to_select():
 
 
 # ==============================================================================
-# test_RandomConstraintsSampling_sample_for_empty_constraints_manager
+# test_factory_random_sampler_sample_for_empty_constraints_manager
 # ==============================================================================
-def test_RandomConstraintsSampling_sample_for_empty_constraints_manager():
+def test_factory_random_sampler_sample_for_empty_constraints_manager():
     """
-    Test that the `sampling.random.RandomConstraintsSampling` sampling works for empty `constraints_manager`.
+    Test that the `random sampler` sampling works for empty `constraints_manager`.
     """
 
-    # Initialize a `RandomConstraintsSampling` instance.
-    sampler = RandomConstraintsSampling(random_seed=1)
+    # Initialize a `random sampler` instance.
+    sampler = ClustersBasedConstraintsSampling(random_seed=1)
 
     # Check sample with empty `constraints_manager`
     assert (
@@ -150,15 +150,15 @@ def test_RandomConstraintsSampling_sample_for_empty_constraints_manager():
 
 
 # ==============================================================================
-# test_RandomConstraintsSampling_sample_for_correct_constraints_manager
+# test_factory_random_sampler_sample_for_correct_constraints_manager
 # ==============================================================================
-def test_RandomConstraintsSampling_sample_for_correct_constraints_manager():
+def test_factory_random_sampler_sample_for_correct_constraints_manager():
     """
-    Test that the `sampling.random.RandomConstraintsSampling` sampling works for correct `constraints_manager`.
+    Test that the `random sampler` sampling works for correct `constraints_manager`.
     """
 
-    # Initialize a `RandomConstraintsSampling` instance.
-    sampler = RandomConstraintsSampling(random_seed=1)
+    # Initialize a `random sampler` instance.
+    sampler = ClustersBasedConstraintsSampling(random_seed=1)
 
     # Initialize a `BinaryConstraintsManager` instance
     constraints_manager = BinaryConstraintsManager(
@@ -184,15 +184,15 @@ def test_RandomConstraintsSampling_sample_for_correct_constraints_manager():
 
 
 # ==============================================================================
-# test_RandomConstraintsSampling_sample_for_full_annotated_constraints_manager
+# test_factory_random_sampler_sample_for_full_annotated_constraints_manager
 # ==============================================================================
-def test_RandomConstraintsSampling_sample_for_full_annotated_constraints_manager():
+def test_factory_random_sampler_sample_for_full_annotated_constraints_manager():
     """
-    Test that the `sampling.random.RandomConstraintsSampling` sampling works for full annotated `constraints_manager`.
+    Test that the `random sampler` sampling works for full annotated `constraints_manager`.
     """
 
-    # Initialize a `RandomConstraintsSampling` instance.
-    sampler = RandomConstraintsSampling(random_seed=1)
+    # Initialize a `random sampler` instance.
+    sampler = ClustersBasedConstraintsSampling(random_seed=1)
 
     # Initialize a `BinaryConstraintsManager` instance
     constraints_manager = BinaryConstraintsManager(

@@ -14,17 +14,8 @@
 
 import pytest
 
-from cognitivefactory.interactive_clustering.sampling.closest_in_different_clusters import (
-    ClosestInDifferentClustersConstraintsSampling,
-)
+from cognitivefactory.interactive_clustering.sampling.clusters_based import ClustersBasedConstraintsSampling
 from cognitivefactory.interactive_clustering.sampling.factory import sampling_factory
-from cognitivefactory.interactive_clustering.sampling.farhest_in_same_cluster import (
-    FarhestInSameClusterConstraintsSampling,
-)
-from cognitivefactory.interactive_clustering.sampling.random import RandomConstraintsSampling
-from cognitivefactory.interactive_clustering.sampling.random_in_same_cluster import (
-    RandomInSameClusterConstraintsSampling,
-)
 
 
 # ==============================================================================
@@ -47,14 +38,16 @@ def test_sampling_factory_for_not_implemented_clustering():
 # ==============================================================================
 def test_sampling_factory_for_random_sampling():
     """
-    Test that the `sampling.sampling_factory` can initialize an instance of `RandomConstraintsSampling`.
+    Test that the `sampling.sampling_factory` can initialize an instance of `ClustersBasedConstraintsSampling` to sample random pairs of data IDs.
     """
 
     # Check average `random` sampling.
     sampling_model = sampling_factory(
         algorithm="random",
     )
-    assert isinstance(sampling_model, RandomConstraintsSampling)
+    assert isinstance(sampling_model, ClustersBasedConstraintsSampling)
+    assert sampling_model.clusters_restriction is None
+    assert sampling_model.distance_restriction is None
 
 
 # ==============================================================================
@@ -62,29 +55,33 @@ def test_sampling_factory_for_random_sampling():
 # ==============================================================================
 def test_sampling_factory_for_random_in_same_cluster_sampling():
     """
-    Test that the `sampling.sampling_factory` can initialize an instance of `RandomInSameClusterConstraintsSampling`.
+    Test that the `sampling.sampling_factory` can initialize an instance of `ClustersBasedConstraintsSampling` to sample random pairs of data IDs in same clusters.
     """
 
     # Check average `random_in_same_cluster` sampling.
     sampling_model = sampling_factory(
         algorithm="random_in_same_cluster",
     )
-    assert isinstance(sampling_model, RandomInSameClusterConstraintsSampling)
+    assert isinstance(sampling_model, ClustersBasedConstraintsSampling)
+    assert sampling_model.clusters_restriction == "same_cluster"
+    assert sampling_model.distance_restriction is None
 
 
 # ==============================================================================
-# test_sampling_factory_for_farhest_in_same_cluster_sampling
+# test_sampling_factory_for_farthest_in_same_cluster_sampling
 # ==============================================================================
-def test_sampling_factory_for_farhest_in_same_cluster_sampling():
+def test_sampling_factory_for_farthest_in_same_cluster_sampling():
     """
-    Test that the `sampling.sampling_factory` can initialize an instance of `FarhestInSameClusterConstraintsSampling`.
+    Test that the `sampling.sampling_factory` can initialize an instance of `ClustersBasedConstraintsSampling` to sample farthest pairs of data IDs in same clusters.
     """
 
-    # Check average `farhest_in_same_cluster` sampling.
+    # Check average `farthest_in_same_cluster` sampling.
     sampling_model = sampling_factory(
-        algorithm="farhest_in_same_cluster",
+        algorithm="farthest_in_same_cluster",
     )
-    assert isinstance(sampling_model, FarhestInSameClusterConstraintsSampling)
+    assert isinstance(sampling_model, ClustersBasedConstraintsSampling)
+    assert sampling_model.clusters_restriction == "same_cluster"
+    assert sampling_model.distance_restriction == "farthest_neighbors"
 
 
 # ==============================================================================
@@ -92,11 +89,13 @@ def test_sampling_factory_for_farhest_in_same_cluster_sampling():
 # ==============================================================================
 def test_sampling_factory_for_closest_in_different_clusters_sampling():
     """
-    Test that the `sampling.sampling_factory` can initialize an instance of `ClosestInDifferentClustersConstraintsSampling`.
+    Test that the `sampling.sampling_factory` can initialize an instance of `ClustersBasedConstraintsSampling` to sample closest pairs of data IDs in different clusters.
     """
 
     # Check average `closest_in_different_clusters` sampling.
     sampling_model = sampling_factory(
         algorithm="closest_in_different_clusters",
     )
-    assert isinstance(sampling_model, ClosestInDifferentClustersConstraintsSampling)
+    assert isinstance(sampling_model, ClustersBasedConstraintsSampling)
+    assert sampling_model.clusters_restriction == "different_clusters"
+    assert sampling_model.distance_restriction == "closest_neighbors"
