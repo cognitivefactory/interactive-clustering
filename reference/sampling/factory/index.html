@@ -569,44 +569,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../random/" class="md-nav__link">
-        sampling.random
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../random_in_same_cluster/" class="md-nav__link">
-        sampling.random_in_same_cluster
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../closest_in_different_clusters/" class="md-nav__link">
-        sampling.closest_in_different_clusters
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../farhest_in_same_cluster/" class="md-nav__link">
-        sampling.farhest_in_same_cluster
+      <a href="../clusters_based/" class="md-nav__link">
+        sampling.clusters_based
       </a>
     </li>
   
@@ -960,7 +924,7 @@
       <tr>
         <td><code>algorithm</code></td>
         <td><code>str</code></td>
-        <td><p>The identification of model to instantiate. Can be <code>"random"</code> or <code>"random_in_same_cluster"</code> or <code>"farhest_in_same_cluster"</code> or <code>"closest_in_different_clusters"</code>. Defaults to <code>"random"</code></p></td>
+        <td><p>The identification of model to instantiate. Can be <code>"random"</code> or <code>"random_in_same_cluster"</code> or <code>"farthest_in_same_cluster"</code> or <code>"closest_in_different_clusters"</code>. Defaults to <code>"random"</code></p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
@@ -1018,7 +982,7 @@
 <span class="sd">    A factory to create a new instance of a constraints sampling model.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        algorithm (str): The identification of model to instantiate. Can be `&quot;random&quot;` or `&quot;random_in_same_cluster&quot;` or `&quot;farhest_in_same_cluster&quot;` or `&quot;closest_in_different_clusters&quot;`. Defaults to `&quot;random&quot;`</span>
+<span class="sd">        algorithm (str): The identification of model to instantiate. Can be `&quot;random&quot;` or `&quot;random_in_same_cluster&quot;` or `&quot;farthest_in_same_cluster&quot;` or `&quot;closest_in_different_clusters&quot;`. Defaults to `&quot;random&quot;`</span>
 <span class="sd">        **kargs (dict): Other parameters that can be used in the instantiation.</span>
 
 <span class="sd">    Raises:</span>
@@ -1043,26 +1007,30 @@
     <span class="k">if</span> <span class="n">algorithm</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span>
         <span class="s2">&quot;random&quot;</span><span class="p">,</span>
         <span class="s2">&quot;random_in_same_cluster&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;farhest_in_same_cluster&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;farthest_in_same_cluster&quot;</span><span class="p">,</span>
         <span class="s2">&quot;closest_in_different_clusters&quot;</span><span class="p">,</span>
     <span class="p">}:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `algorithm` &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39; is not implemented.&quot;</span><span class="p">)</span>
 
     <span class="c1"># Case of Random In Same Cluster Constraints Sampling.</span>
     <span class="k">if</span> <span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;random_in_same_cluster&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">RandomInSameClusterConstraintsSampling</span><span class="p">(</span><span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ClustersBasedConstraintsSampling</span><span class="p">(</span><span class="n">clusters_restriction</span><span class="o">=</span><span class="s2">&quot;same_cluster&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
 
-    <span class="c1"># Case of Farhest In Same Cluster Constraints Sampling.</span>
-    <span class="k">if</span> <span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;farhest_in_same_cluster&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">FarhestInSameClusterConstraintsSampling</span><span class="p">(</span><span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+    <span class="c1"># Case of Farthest In Same Cluster Constraints Sampling.</span>
+    <span class="k">if</span> <span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;farthest_in_same_cluster&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ClustersBasedConstraintsSampling</span><span class="p">(</span>
+            <span class="n">distance_restriction</span><span class="o">=</span><span class="s2">&quot;farthest_neighbors&quot;</span><span class="p">,</span> <span class="n">clusters_restriction</span><span class="o">=</span><span class="s2">&quot;same_cluster&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span>
+        <span class="p">)</span>
 
     <span class="c1"># Case of Closest In Different Clusters Constraints Sampling.</span>
     <span class="k">if</span> <span class="n">algorithm</span> <span class="o">==</span> <span class="s2">&quot;closest_in_different_clusters&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">ClosestInDifferentClustersConstraintsSampling</span><span class="p">(</span><span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ClustersBasedConstraintsSampling</span><span class="p">(</span>
+            <span class="n">distance_restriction</span><span class="o">=</span><span class="s2">&quot;closest_neighbors&quot;</span><span class="p">,</span> <span class="n">clusters_restriction</span><span class="o">=</span><span class="s2">&quot;different_clusters&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span>
+        <span class="p">)</span>
 
     <span class="c1"># Case of Random Constraints Sampling.</span>
     <span class="c1">##if algorithm == &quot;random&quot;:</span>
-    <span class="k">return</span> <span class="n">RandomConstraintsSampling</span><span class="p">(</span><span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ClustersBasedConstraintsSampling</span><span class="p">(</span><span class="o">**</span><span class="n">kargs</span><span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
@@ -1119,13 +1087,13 @@
       
       
         
-        <a href="../random/" class="md-footer__link md-footer__link--next" aria-label="Next: sampling.random" rel="next">
+        <a href="../clusters_based/" class="md-footer__link md-footer__link--next" aria-label="Next: sampling.clusters_based" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              sampling.random
+              sampling.clusters_based
             </div>
           </div>
           <div class="md-footer__button md-icon">
