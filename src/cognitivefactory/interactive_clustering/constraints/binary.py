@@ -17,7 +17,6 @@ from typing import Dict, List, Optional, Set, Tuple  # To type Python code (mypy
 from cognitivefactory.interactive_clustering.constraints.abstract import (  # To use abstract interface.
     AbstractConstraintsManager,
 )
-from cognitivefactory.interactive_clustering.utils import graph  # To use utilities methods on graph
 
 
 # ==============================================================================
@@ -504,7 +503,7 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
     ) -> Tuple[int, int]:
         """
         The main method used to get determine, for a clustering model that would not violate any constraints, the range of the possible clusters number.
-        Minimum number of cluster is estimated (lower bound) with the Lovàsz number of the `"CANNOT_LINK"` constraints complement graph (cf. https://en.wikipedia.org/wiki/Graph_coloring#Lower_bounds_on_the_chromatic_number).
+        Minimum number of cluster is estimated by the coloration of the `"CANNOT_LINK"` constraints graph.
         Maximum number of cluster is defined by the number of `"MUST_LINK"` connected components.
         The transitivity is taken into account, and the `threshold` parameters is used if constraints values are used in the constraints transitivity.
 
@@ -514,36 +513,65 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         Returns:
             Tuple[int,int]: The minimum and the maximum possible clusters numbers (for a clustering model that would not violate any constraints).
         """
-        # Determine the lower bound of minimum clusters number with the Lovàsz numberof the `"CANNOT_LINK"` constraints graph.
+
+        # Get the `"MUST_LINK"` connected components.
+        list_of_connected_components: List[List[str]] = self.get_connected_components()
+
+        ###
+        ### 1. Estimation of minimum clusters number.
+        ###
+
+        # Get connected component ids.
+        list_of_connected_component_ids: List[str] = [component[0] for component in list_of_connected_components]
+
+        # Keep only components that have more that one `"CANNOT_LINK"` constraints.
+        list_of_linked_connected_components_ids: List[str] = [
+            component_id
+            for component_id in list_of_connected_component_ids
+            if len(self._constraints_transitivity[component_id]["CANNOT_LINK"].keys()) > 1  # noqa: WPS507
+        ]
+
+        # Get the `"CANNOT_LINK"` constraints.
+        list_of_cannot_link_constraints: List[Tuple[int, int]] = [
+            (i1, i2)
+            for i1, data_ID1 in enumerate(list_of_linked_connected_components_ids)
+            for i2, data_ID2 in enumerate(list_of_linked_connected_components_ids)
+            if (i1 < i2)
+            and (  # To get the complement, get all possible link that are not a `"CANNOT_LINK"`.
+                data_ID2 in self._constraints_transitivity[data_ID1]["CANNOT_LINK"].keys()
+            )
+        ]
+
+        # Create a networkx graph.
+        cannot_link_graph: nx.Graph = nx.Graph()
+        cannot_link_graph.add_nodes_from(list_of_connected_component_ids)  # Add components id as nodes in the graph.
+        cannot_link_graph.add_edges_from(
+            list_of_cannot_link_constraints
+        )  # Add cannot link constraints as edges in the graph.
+
+        # Estimate the minimum clusters number by trying to colorate the `"CANNOT_LINK"` constraints graph.
         # The lower bound has to be greater than 2.
-        lower_bound_of_minimum_clusters_number: int = max(
+        estimation_of_minimum_clusters_number: int = max(
             2,
-            int(  # Get the integer part of the lower bound
-                round(  # Round at 5 decimal if the lower bound if close to the next interger (i.e. 2.99999 -> 3.0)
-                    graph.compute_lovasz_theta_number(
-                        # Get the number of data IDs as number of vertex.
-                        number_of_vertex=len(self._constraints_transitivity.keys()),
-                        # Get the complement of the `"CANNOT_LINK"` graph.
-                        list_of_egdes=[
-                            (i1, i2)
-                            for i1, data_ID1 in enumerate(self._constraints_transitivity.keys())
-                            for i2, data_ID2 in enumerate(self._constraints_transitivity.keys())
-                            if (i1 < i2)
-                            and (  # To get the complement, get all possible link that are not a `"CANNOT_LINK"`.
-                                data_ID2 not in self._constraints_transitivity[data_ID1]["CANNOT_LINK"].keys()
-                            )
-                        ],
-                    )["theta"],
-                    5,
-                )
+            1
+            + min(
+                max(nx.coloring.greedy_color(cannot_link_graph, strategy="largest_first").values()),
+                max(nx.coloring.greedy_color(cannot_link_graph, strategy="smallest_last").values()),
+                max(nx.coloring.greedy_color(cannot_link_graph, strategy="random_sequential").values()),
+                max(nx.coloring.greedy_color(cannot_link_graph, strategy="random_sequential").values()),
+                max(nx.coloring.greedy_color(cannot_link_graph, strategy="random_sequential").values()),
             ),
         )
 
+        ###
+        ### 2. Computation of maximum clusters number.
+        ###
+
         # Determine the maximum clusters number with the number of `"MUST_LINK"` connected components.
-        maximum_clusters_number: int = len(self.get_connected_components())
+        maximum_clusters_number: int = len(list_of_connected_components)
 
         # Return minimum and maximum.
-        return (lower_bound_of_minimum_clusters_number, maximum_clusters_number)
+        return (estimation_of_minimum_clusters_number, maximum_clusters_number)
 
     # ==============================================================================
     # CONSTRAINTS TRANSITIVITY MANAGEMENT - GENERATE CONSTRAINTS TRANSITIVITY GRAPH
