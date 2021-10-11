@@ -15,9 +15,8 @@
 import random  # To shuffle data and set random seed.
 from typing import Dict, List, Optional, Tuple, Union  # To type Python code (mypy).
 
-import numpy as np  # To handle float.
 from numpy import ndarray  # To handle matrix and vectors.
-from scipy.sparse import csr_matrix  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
 from sklearn.metrics import pairwise_distances  # To compute distance.
 
 from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
@@ -213,6 +212,24 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
         ### SAMPLING
         ###
 
+        # Precompute pairwise distances.
+        if self.distance_restriction is not None:
+
+            # Compute pairwise distances.
+            matrix_of_pairwise_distances: ndarray = pairwise_distances(
+                X=vstack(vector for vector in self.vectors.values()),
+                metric="euclidean",  # TODO get different pairwise_distances config in **kargs
+            )
+
+            # Format pairwise distances in a dictionary.
+            self.dict_of_pairwise_distances: Dict[str, Dict[str, float]] = {
+                vector_ID1: {
+                    vector_ID2: float(matrix_of_pairwise_distances[i01, i02])
+                    for i02, vector_ID2 in enumerate(self.vectors.keys())
+                }
+                for i01, vector_ID1 in enumerate(self.vectors.keys())
+            }
+
         # Set random seed.
         random.seed(self.random_seed)
 
@@ -220,22 +237,14 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
         if self.distance_restriction == "closest_neighbors":
             return sorted(
                 list_of_possible_pairs_of_data_IDs,
-                key=lambda combination: pairwise_distances(
-                    X=self.vectors[combination[0]],
-                    Y=self.vectors[combination[1]],
-                    metric="euclidean",  # TODO get different pairwise_distances config in **kargs
-                )[0][0].astype(np.float64),
+                key=lambda combination: self.dict_of_pairwise_distances[combination[0]][combination[1]],
             )[:nb_to_select]
 
         # Case of farthest neightbors selection.
         if self.distance_restriction == "farthest_neighbors":
             return sorted(
                 list_of_possible_pairs_of_data_IDs,
-                key=lambda combination: pairwise_distances(
-                    X=self.vectors[combination[0]],
-                    Y=self.vectors[combination[1]],
-                    metric="euclidean",  # TODO get different pairwise_distances config in **kargs
-                )[0][0].astype(np.float64),
+                key=lambda combination: self.dict_of_pairwise_distances[combination[0]][combination[1]],
                 reverse=True,
             )[:nb_to_select]
 
