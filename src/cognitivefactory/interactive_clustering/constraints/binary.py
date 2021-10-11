@@ -14,6 +14,8 @@
 
 from typing import Dict, List, Optional, Set, Tuple  # To type Python code (mypy).
 
+import networkx as nx  # To create graph.
+
 from cognitivefactory.interactive_clustering.constraints.abstract import (  # To use abstract interface.
     AbstractConstraintsManager,
 )
