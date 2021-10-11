@@ -31,7 +31,6 @@ nav:
   - Utility methods:
     - utils.preprocessing: reference/utils/preprocessing.md
     - utils.vectorization: reference/utils/vectorization.md
-    - utils.graph: reference/utils/graph.md
     - utils.frequency: reference/utils/frequency.md
 - Development:
   - Contributing: contributing.md
