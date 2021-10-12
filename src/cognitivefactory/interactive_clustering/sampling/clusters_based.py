@@ -217,17 +217,17 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
 
             # Compute pairwise distances.
             matrix_of_pairwise_distances: ndarray = pairwise_distances(
-                X=vstack(vector for vector in self.vectors.values()),
+                X=vstack(self.vectors[data_ID] for data_ID in self.constraints_manager.get_list_of_managed_data_IDs()),
                 metric="euclidean",  # TODO get different pairwise_distances config in **kargs
             )
 
             # Format pairwise distances in a dictionary.
             self.dict_of_pairwise_distances: Dict[str, Dict[str, float]] = {
                 vector_ID1: {
-                    vector_ID2: float(matrix_of_pairwise_distances[i01, i02])
-                    for i02, vector_ID2 in enumerate(self.vectors.keys())
+                    vector_ID2: float(matrix_of_pairwise_distances[i1, i2])
+                    for i2, vector_ID2 in enumerate(self.constraints_manager.get_list_of_managed_data_IDs())
                 }
-                for i01, vector_ID1 in enumerate(self.vectors.keys())
+                for i1, vector_ID1 in enumerate(self.constraints_manager.get_list_of_managed_data_IDs())
             }
 
         # Set random seed.

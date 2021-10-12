@@ -15,9 +15,8 @@
 import random  # To shuffle data and set random seed.
 from typing import Dict, List, Optional, Union  # To type Python code (mypy).
 
-import numpy as np  # To handle float.
 from numpy import ndarray  # To handle matrix and vectors.
-from scipy.sparse import csr_matrix  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
 from sklearn.metrics import pairwise_distances  # To compute distance.
 
 from cognitivefactory.interactive_clustering.clustering.abstract import (  # To use abstract interface.; To sort clusters after computation.
@@ -256,6 +255,26 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
             # For each data ID.
             list_of_data_IDs_to_assign: List[str] = self.list_of_data_IDs.copy()
 
+            # Precompute pairwise distances between data IDs and clusters centroids.
+            matrix_of_pairwise_distances_between_data_and_clusters: ndarray = pairwise_distances(
+                X=vstack(  # Vectors of data IDs.
+                    self.vectors[data_ID] for data_ID in self.constraints_manager.get_list_of_managed_data_IDs()
+                ),
+                Y=vstack(  # Vectors of cluster centroids.
+                    centroid_vector for centroid_vector in self.centroids.values()
+                ),
+                metric="euclidean",  # TODO get different pairwise_distances config in **kargs
+            )
+
+            # Format pairwise distances in a dictionary.
+            dict_of_pairwise_distances_between_data_and_clusters: Dict[str, Dict[int, float]] = {
+                data_ID: {
+                    cluster_ID: float(matrix_of_pairwise_distances_between_data_and_clusters[i_data, i_cluster])
+                    for i_cluster, cluster_ID in enumerate(self.centroids.keys())
+                }
+                for i_data, data_ID in enumerate(self.constraints_manager.get_list_of_managed_data_IDs())
+            }
+
             # While all data aren't assigned.
             while list_of_data_IDs_to_assign:
 
@@ -292,13 +311,9 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
                 # If there is possible clusters...
                 else:
 
-                    # Compute distance between data ID and all possible centroids.
+                    # Get distance between data ID and all possible centroids.
                     distances_to_cluster_ID: Dict[float, int] = {
-                        pairwise_distances(
-                            X=self.vectors[data_ID_to_assign],
-                            Y=self.centroids[cluster_ID],
-                            metric="euclidean",  # TODO get different pairwise_distances config in **kargs
-                        )[0][0].astype(np.float64): cluster_ID
+                        dict_of_pairwise_distances_between_data_and_clusters[data_ID_to_assign][cluster_ID]: cluster_ID
                         for cluster_ID in possible_cluster_IDs
                     }
 
@@ -333,12 +348,21 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
             # Check by centroids difference (with tolerance).
             if set(self.clusters.values()) == set(new_clusters.values()):
 
+                # Precompute distance between old and new cluster centroids.
+                matrix_of_pairwise_distances_between_old_and_new_clusters: ndarray = pairwise_distances(
+                    X=vstack(  # Old clusters centroids.
+                        self.centroids[cluster_ID] for cluster_ID in self.centroids.keys()
+                    ),
+                    Y=vstack(  # New clusters centroids.
+                        new_centroids[cluster_ID] for cluster_ID in self.centroids.keys()
+                    ),
+                    metric="euclidean",  # TODO get different pairwise_distances config in **kargs
+                )
+
                 # Compute shift between kmeans iterations.
                 shift = sum(
-                    pairwise_distances(X=self.centroids[cluster_ID], Y=new_centroids[cluster_ID], metric="euclidean")[
-                        0
-                    ][0]
-                    for cluster_ID in self.centroids
+                    matrix_of_pairwise_distances_between_old_and_new_clusters[i][i]
+                    for i in range(matrix_of_pairwise_distances_between_old_and_new_clusters.shape[0])
                 )
 
                 # If shift is under tolerance : convergence !

@@ -15,9 +15,8 @@
 from datetime import datetime  # To use date in verbose output.
 from typing import Any, Dict, List, Optional, Tuple, Union  # To type Python code (mypy).
 
-import numpy as np  # To handle float.
 from numpy import ndarray  # To handle matrix and vectors.
-from scipy.sparse import csr_matrix  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
 from sklearn.metrics import pairwise_distances  # To compute distance.
 
 from cognitivefactory.interactive_clustering.clustering.abstract import (  # To use abstract interface.; To sort clusters after computation.
@@ -168,16 +167,20 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
             raise ValueError("The `nb_clusters` '" + str(nb_clusters) + "' must be greater than or equal to 2.")
         self.nb_clusters: int = nb_clusters
 
-        # Store `self.pairwise_distances_matrix`.
-        self.pairwise_distances_matrix: Dict[str, Dict[str, float]] = {
-            data_ID1: {
-                data_ID2: pairwise_distances(X=self.vectors[data_ID1], Y=self.vectors[data_ID2], metric="euclidean",)[
-                    0
-                ][0].astype(np.float64)
-                for data_ID2 in self.list_of_data_IDs
+        # Compute pairwise distances.
+        matrix_of_pairwise_distances: ndarray = pairwise_distances(
+            X=vstack(self.vectors[data_ID] for data_ID in self.constraints_manager.get_list_of_managed_data_IDs()),
+            metric="euclidean",  # TODO get different pairwise_distances config in **kargs
+        )
+
+        # Format pairwise distances in a dictionary and store `self.dict_of_pairwise_distances`.
+        self.dict_of_pairwise_distances: Dict[str, Dict[str, float]] = {
+            vector_ID1: {
+                vector_ID2: float(matrix_of_pairwise_distances[i1, i2])
+                for i2, vector_ID2 in enumerate(self.constraints_manager.get_list_of_managed_data_IDs())
             }
-            for data_ID1 in self.list_of_data_IDs
-        }  # TODO need ?
+            for i1, vector_ID1 in enumerate(self.constraints_manager.get_list_of_managed_data_IDs())
+        }
 
         ###
         ### INITIALIZE HIERARCHICAL CONSTRAINED CLUSTERING
@@ -450,7 +453,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         return parent_cluster_ID
 
     # ==============================================================================
-    # COMPUTE DISTANCE BETWEEN CLUSTERINGNEW ITERATION OF CLUSTERING :
+    # COMPUTE DISTANCE BETWEEN CLUSTERING NEW ITERATION OF CLUSTERING :
     # ==============================================================================
     def _compute_distance(self, cluster_IDi: int, cluster_IDj: int) -> float:
         """
@@ -481,7 +484,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
             return max(
                 [
-                    self.pairwise_distances_matrix[data_ID_in_cluster_IDi][data_ID_in_cluster_IDj]
+                    self.dict_of_pairwise_distances[data_ID_in_cluster_IDi][data_ID_in_cluster_IDj]
                     for data_ID_in_cluster_IDi in self.clusters_storage[cluster_IDi].members
                     for data_ID_in_cluster_IDj in self.clusters_storage[cluster_IDj].members
                 ]
@@ -489,19 +492,17 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
         # Case 2 : `self.linkage` is "average".
         if self.linkage == "average":
-            vector_centroid1 = self.clusters_storage[cluster_IDi].centroid
-            vector_centroid2 = self.clusters_storage[cluster_IDj].centroid
             return pairwise_distances(
-                X=vector_centroid1,
-                Y=vector_centroid2,
+                X=self.clusters_storage[cluster_IDi].centroid,
+                Y=self.clusters_storage[cluster_IDj].centroid,
                 metric="euclidean",  # TODO: Load different parameters for distance computing ?
-            )[0][0].astype(np.float64)
+            )[0][0]
 
         # Case 3 : `self.linkage` is "single".
         if self.linkage == "single":
             return min(
                 [
-                    self.pairwise_distances_matrix[data_ID_in_cluster_IDi][data_ID_in_cluster_IDj]
+                    self.dict_of_pairwise_distances[data_ID_in_cluster_IDi][data_ID_in_cluster_IDj]
                     for data_ID_in_cluster_IDi in self.clusters_storage[cluster_IDi].members
                     for data_ID_in_cluster_IDj in self.clusters_storage[cluster_IDj].members
                 ]
@@ -515,7 +516,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         )
         return sum(
             [
-                self.pairwise_distances_matrix[data_IDi][data_IDj]
+                self.dict_of_pairwise_distances[data_IDi][data_IDj]
                 for i, data_IDi in enumerate(merged_members)
                 for j, data_IDj in enumerate(merged_members)
                 if i < j
