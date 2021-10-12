@@ -6,6 +6,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 <!-- insertion marker -->
+## [0.4.0](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.4.0) - 2021-10-12
+
+<small>[Compare with 0.3.0](https://github.com/cognitivefactory/interactive-clustering/compare/0.3.0...0.4.0)</small>
+
+### Bug Fixes
+- correct networkx dependency requirement ([4ec4587](https://github.com/cognitivefactory/interactive-clustering/commit/4ec45874b14f1b43c57d1b75af31096515beae49) by Erwan SCHILD).
+- correct networkx import in sampling ([521a4ff](https://github.com/cognitivefactory/interactive-clustering/commit/521a4ff35862d7fa8efc08f0d8c1d87597c5b395) by Erwan Schild).
+- speed up computation of sampling.clusters_based.sampling for distance restrictions ([5ab6821](https://github.com/cognitivefactory/interactive-clustering/commit/5ab68219bd41ff09581be65e6505a7f6d77a02b4) by Erwan Schild).
+- speed up computation of constraints.binary.get_min_and_max_number_of_clusters ([1e50f7c](https://github.com/cognitivefactory/interactive-clustering/commit/1e50f7c32b2353c62102d0cbd19748991845b408) by Erwan Schild).
+
+### Code Refactoring
+- update template with copier update ([e0a7c77](https://github.com/cognitivefactory/interactive-clustering/commit/e0a7c776426694d618a1c7eba518fba9d861f02e) by Erwan Schild).
+- fix black dependenciy installation ([eef88c5](https://github.com/cognitivefactory/interactive-clustering/commit/eef88c598757edb9c90b8fbe104b059632cce80e) by Erwan Schild).
+- delete old random sampler ([6cd0a06](https://github.com/cognitivefactory/interactive-clustering/commit/6cd0a06ea94fc7b3377e6f1e15e82a8a36f0d0ef) by Erwan Schild).
+
+### Features
+- implementation of getter of data IDs involved in a constraint conflict ([6eace0d](https://github.com/cognitivefactory/interactive-clustering/commit/6eace0d0dd0ba4068769f7152119e8fbb1ee90cb) by Erwan Schild).
+
+
 ## [0.3.0](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.3.0) - 2021-10-04
 
 <small>[Compare with 0.2.1](https://github.com/cognitivefactory/interactive-clustering/compare/0.2.1...0.3.0)</small>
