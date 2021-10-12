@@ -2,7 +2,7 @@
 set -e
 
 # un/comment this if you want to enable/disable multiple Python versions
-PYTHON_VERSIONS="${PYTHON_VERSIONS-3.6 3.7 3.8 3.9 3.10 3.11}"
+#PYTHON_VERSIONS="${PYTHON_VERSIONS-3.6 3.7 3.8 3.9 3.10 3.11}"
 
 if [ -n "${PYTHON_VERSIONS}" ]; then
     for python_version in ${PYTHON_VERSIONS}; do
