@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 <!-- insertion marker -->
+## [0.4.1](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.4.1) - 2021-10-19
+
+<small>[Compare with 0.4.0](https://github.com/cognitivefactory/interactive-clustering/compare/0.4.0...0.4.1)</small>
+
+### Code Refactoring
+- speed up clustering and refactor code ([93ada28](https://github.com/cognitivefactory/interactive-clustering/commit/93ada28045d8d386ec5756abe6d97a22ab973716) by Erwan Schild).
+
+
 ## [0.4.0](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.4.0) - 2021-10-12
 
 <small>[Compare with 0.3.0](https://github.com/cognitivefactory/interactive-clustering/compare/0.3.0...0.4.0)</small>
