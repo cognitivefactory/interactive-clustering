@@ -14,7 +14,6 @@
 
 from typing import Dict, Union  # To type Python code (mypy).
 
-import numpy as np  # To handle float.
 import spacy  # To apply spacy language models.
 from numpy import ndarray  # To handle matrix and vectors.
 from scipy.sparse import csr_matrix  # To handle matrix and vectors.
@@ -95,9 +94,7 @@ def vectorize(
         )
 
         # Format dictionary of vectors to return.
-        dict_of_vectors = {
-            data_ID: tfidf_vectorization[i].astype(np.float64) for i, data_ID in enumerate(dict_of_texts.keys())
-        }
+        dict_of_vectors = {data_ID: tfidf_vectorization[i] for i, data_ID in enumerate(dict_of_texts.keys())}
 
         # Return the dictionary of vectors.
         return dict_of_vectors
@@ -123,9 +120,7 @@ def vectorize(
             ) from err
 
         # Apply vectorization.
-        dict_of_vectors = {
-            data_ID: spacy_nlp(str(text)).vector.astype(np.float64) for data_ID, text in dict_of_texts.items()
-        }
+        dict_of_vectors = {data_ID: csr_matrix(spacy_nlp(str(text)).vector) for data_ID, text in dict_of_texts.items()}
 
         # Return the dictionary of vectors.
         return dict_of_vectors
