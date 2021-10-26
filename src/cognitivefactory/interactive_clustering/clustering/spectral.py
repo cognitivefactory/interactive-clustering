@@ -12,11 +12,10 @@
 # IMPORTS PYTHON DEPENDENCIES
 # ==============================================================================
 
-from typing import Dict, List, Optional, Union  # To type Python code (mypy).
+from typing import Dict, List, Optional  # To type Python code (mypy).
 
-import numpy as np  # To handle float.
-from numpy import ndarray  # To handle matrix and vectors.
-from scipy.sparse import csr_matrix  # To handle matrix and vectors.
+# import numpy as np  # To handle float.
+from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
 from sklearn.cluster import SpectralClustering  # To use classical spectral clustering.
 from sklearn.metrics import pairwise_kernels  # To compute similary.
 
@@ -137,7 +136,7 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
     def cluster(
         self,
         constraints_manager: AbstractConstraintsManager,
-        vectors: Dict[str, Union[ndarray, csr_matrix]],
+        vectors: Dict[str, csr_matrix],
         nb_clusters: int,
         verbose: bool = False,
         **kargs,
@@ -147,7 +146,7 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
 
         Args:
             constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
-            vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).
+            vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.
             nb_clusters (int): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?
             verbose (bool, optional): Enable verbose output. Defaults to `False`.
             **kargs (dict): Other parameters that can be used in the clustering.
@@ -172,7 +171,7 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
         # Store `self.vectors`.
         if not isinstance(vectors, dict):
             raise ValueError("The `vectors` parameter has to be a `dict` type.")
-        self.vectors: Dict[str, Union[ndarray, csr_matrix]] = vectors
+        self.vectors: Dict[str, csr_matrix] = vectors
 
         # Store `self.nb_clusters`.
         if nb_clusters < 2:
@@ -187,16 +186,9 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
         )
 
         # Compute `self.pairwise_similarity_matrix`.
-        self.pairwise_similarity_matrix = csr_matrix(
-            [
-                [
-                    pairwise_kernels(X=self.vectors[data_ID1], Y=self.vectors[data_ID2], metric="rbf")[0][0].astype(
-                        np.float64
-                    )
-                    for data_ID2 in self.list_of_data_IDs
-                ]
-                for data_ID1 in self.list_of_data_IDs
-            ]
+        self.pairwise_similarity_matrix: csr_matrix = pairwise_kernels(
+            X=vstack(self.vectors[data_ID] for data_ID in self.constraints_manager.get_list_of_managed_data_IDs()),
+            metric="rbf",  # TODO get different pairwise_distances config in **kargs
         )
 
         ###
