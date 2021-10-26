@@ -13,9 +13,8 @@
 # ==============================================================================
 
 from datetime import datetime  # To use date in verbose output.
-from typing import Any, Dict, List, Optional, Tuple, Union  # To type Python code (mypy).
+from typing import Any, Dict, List, Optional, Tuple  # To type Python code (mypy).
 
-from numpy import ndarray  # To handle matrix and vectors.
 from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
 from sklearn.metrics import pairwise_distances  # To compute distance.
 
@@ -125,7 +124,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
     def cluster(
         self,
         constraints_manager: AbstractConstraintsManager,
-        vectors: Dict[str, Union[ndarray, csr_matrix]],
+        vectors: Dict[str, csr_matrix],
         nb_clusters: int,
         verbose: bool = False,
         **kargs,
@@ -135,7 +134,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
         Args:
             constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
-            vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).
+            vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.
             nb_clusters (int): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?
             verbose (bool, optional): Enable verbose output. Defaults to `False`.
             **kargs (dict): Other parameters that can be used in the clustering.
@@ -160,7 +159,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         # Store `self.vectors`.
         if not isinstance(vectors, dict):
             raise ValueError("The `vectors` parameter has to be a `dict` type.")
-        self.vectors: Dict[str, Union[ndarray, csr_matrix]] = vectors
+        self.vectors: Dict[str, csr_matrix] = vectors
 
         # Store `self.nb_clusters`.
         if nb_clusters < 2:
@@ -168,7 +167,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         self.nb_clusters: int = nb_clusters
 
         # Compute pairwise distances.
-        matrix_of_pairwise_distances: ndarray = pairwise_distances(
+        matrix_of_pairwise_distances: csr_matrix = pairwise_distances(
             X=vstack(self.vectors[data_ID] for data_ID in self.constraints_manager.get_list_of_managed_data_IDs()),
             metric="euclidean",  # TODO get different pairwise_distances config in **kargs
         )
@@ -704,7 +703,7 @@ class Cluster:
     # ==============================================================================
     def __init__(
         self,
-        vectors: Dict[str, Union[ndarray, csr_matrix]],
+        vectors: Dict[str, csr_matrix],
         cluster_ID: int,
         clustering_iteration: int,
         children: Optional[List["Cluster"]] = None,
@@ -714,7 +713,7 @@ class Cluster:
         The constructor for Cluster class.
 
         Args:
-            vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager` (if `constraints_manager` is set). The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).
+            vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager` (if `constraints_manager` is set). The value of the dictionary represent the vector of each data.
             cluster_ID (int): The cluster ID that is defined during `HierarchicalConstrainedClustering.cluster` running.
             clustering_iteration (int): The cluster iteration that is defined during `HierarchicalConstrainedClustering.cluster` running.
             children (Optional[List["Cluster"]], optional): A list of clusters children for cluster initialization. Incompatible with `members` parameter. Defaults to `None`.
@@ -725,7 +724,7 @@ class Cluster:
         """
 
         # Store links to `vectors`.
-        self.vectors: Dict[str, Union[ndarray, csr_matrix]] = vectors
+        self.vectors: Dict[str, csr_matrix] = vectors
 
         # Cluster ID and Clustering iteration.
         self.cluster_ID: int = cluster_ID
@@ -793,9 +792,7 @@ class Cluster:
         """
 
         # Update centroids.
-        self.centroid: Union[ndarray, csr_matrix] = (
-            sum([self.vectors[data_ID] for data_ID in self.members]) / self.get_cluster_size()
-        )
+        self.centroid: csr_matrix = sum([self.vectors[data_ID] for data_ID in self.members]) / self.get_cluster_size()
 
     # ==============================================================================
     # GET CLUSTER SIZE :

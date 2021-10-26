@@ -13,9 +13,8 @@
 # ==============================================================================
 
 from abc import ABC, abstractmethod  # To define an abstract class.
-from typing import Dict, Union  # To type Python code (mypy).
+from typing import Dict  # To type Python code (mypy).
 
-from numpy import ndarray  # To handle matrix and vectors.
 from scipy.sparse import csr_matrix  # To handle matrix and vectors.
 
 from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
@@ -42,7 +41,7 @@ class AbstractConstrainedClustering(ABC):
     def cluster(
         self,
         constraints_manager: AbstractConstraintsManager,
-        vectors: Dict[str, Union[ndarray, csr_matrix]],
+        vectors: Dict[str, csr_matrix],
         nb_clusters: int,
         verbose: bool = False,
         **kargs,
@@ -53,7 +52,7 @@ class AbstractConstrainedClustering(ABC):
 
         Args:
             constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
-            vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).
+            vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.
             nb_clusters (int): The number of clusters to compute. #TODO Set defaults to None with elbow method or other method ?
             verbose (bool, optional): Enable verbose output. Defaults to `False`.
             **kargs (dict): Other parameters that can be used in the clustering.

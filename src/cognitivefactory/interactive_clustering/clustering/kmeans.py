@@ -13,9 +13,8 @@
 # ==============================================================================
 
 import random  # To shuffle data and set random seed.
-from typing import Dict, List, Optional, Union  # To type Python code (mypy).
+from typing import Dict, List, Optional  # To type Python code (mypy).
 
-from numpy import ndarray  # To handle matrix and vectors.
 from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
 from sklearn.metrics import pairwise_distances  # To compute distance.
 
@@ -144,7 +143,7 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
     def cluster(
         self,
         constraints_manager: AbstractConstraintsManager,
-        vectors: Dict[str, Union[ndarray, csr_matrix]],
+        vectors: Dict[str, csr_matrix],
         nb_clusters: int,
         verbose: bool = False,
         **kargs,
@@ -154,7 +153,7 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
 
         Args:
             constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
-            vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).
+            vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.
             nb_clusters (int): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?
             verbose (bool, optional): Enable verbose output. Defaults to `False`.
             **kargs (dict): Other parameters that can be used in the clustering.
@@ -179,7 +178,7 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
         # Store `self.vectors`.
         if not isinstance(vectors, dict):
             raise ValueError("The `vectors` parameter has to be a `dict` type.")
-        self.vectors: Dict[str, Union[ndarray, csr_matrix]] = vectors
+        self.vectors: Dict[str, csr_matrix] = vectors
 
         # Store `self.nb_clusters`.
         if nb_clusters < 2:
@@ -225,7 +224,7 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
         ###
 
         # Initialize `self.centroids`.
-        self.centroids: Dict[int, Union[ndarray, csr_matrix]] = self.initialize_centroids()
+        self.centroids: Dict[int, csr_matrix] = self.initialize_centroids()
 
         # Initialize clusters
         self.clusters: Dict[str, int] = {data_ID: -1 for data_ID in self.list_of_data_IDs}
@@ -256,7 +255,7 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
             list_of_data_IDs_to_assign: List[str] = self.list_of_data_IDs.copy()
 
             # Precompute pairwise distances between data IDs and clusters centroids.
-            matrix_of_pairwise_distances_between_data_and_clusters: ndarray = pairwise_distances(
+            matrix_of_pairwise_distances_between_data_and_clusters: csr_matrix = pairwise_distances(
                 X=vstack(  # Vectors of data IDs.
                     self.vectors[data_ID] for data_ID in self.constraints_manager.get_list_of_managed_data_IDs()
                 ),
@@ -339,7 +338,7 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
             ###
 
             # Compute new centroids
-            new_centroids: Dict[int, Union[ndarray, csr_matrix]] = self.compute_centroids(clusters=new_clusters)
+            new_centroids: Dict[int, csr_matrix] = self.compute_centroids(clusters=new_clusters)
 
             ###
             ### CHECK CONVERGENCE
@@ -349,7 +348,7 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
             if set(self.clusters.values()) == set(new_clusters.values()):
 
                 # Precompute distance between old and new cluster centroids.
-                matrix_of_pairwise_distances_between_old_and_new_clusters: ndarray = pairwise_distances(
+                matrix_of_pairwise_distances_between_old_and_new_clusters: csr_matrix = pairwise_distances(
                     X=vstack(  # Old clusters centroids.
                         self.centroids[cluster_ID] for cluster_ID in self.centroids.keys()
                     ),
@@ -408,13 +407,13 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
     # ==============================================================================
     def initialize_centroids(
         self,
-    ) -> Dict[int, Union[ndarray, csr_matrix]]:
+    ) -> Dict[int, csr_matrix]:
         """
         Initialize the centroid of each cluster by a vector.
         The choice is based on a random selection among data to cluster.
 
         Returns:
-            Dict[int, Union[ndarray,csr_matrix]]: A dictionary which represent each cluster by a centroid.
+            Dict[int, csr_matrix]: A dictionary which represent each cluster by a centroid.
         """
 
         # Get the list of possible indices.
@@ -428,7 +427,7 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
         indices = indices[: self.nb_clusters]
 
         # Set initial centroids based on vectors.
-        centroids: Dict[int, Union[ndarray, csr_matrix]] = {
+        centroids: Dict[int, csr_matrix] = {
             cluster_ID: self.vectors[indices[cluster_ID]] for cluster_ID in range(self.nb_clusters)
         }
 
@@ -441,7 +440,7 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
     def compute_centroids(
         self,
         clusters: Dict[str, int],
-    ) -> Dict[int, Union[ndarray, csr_matrix]]:
+    ) -> Dict[int, csr_matrix]:
         """
         Compute the centroids of each cluster.
 
@@ -449,11 +448,11 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
             clusters (Dict[str,int]): Current clusters assignation.
 
         Returns:
-            Dict[int, Union[ndarray,csr_matrix]]: A dictionary which represent each cluster by a centroid.
+            Dict[int, csr_matrix]: A dictionary which represent each cluster by a centroid.
         """
 
         # Initialize centroids.
-        centroids: Dict[int, Union[ndarray, csr_matrix]] = {}
+        centroids: Dict[int, csr_matrix] = {}
 
         # For all possible cluster ID.
         for cluster_ID in set(clusters.values()):
@@ -464,9 +463,7 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
             ]
 
             # Compute centroid.
-            centroid_for_cluster_ID: Union[ndarray, csr_matrix] = sum(members_of_cluster_ID) / len(
-                members_of_cluster_ID
-            )
+            centroid_for_cluster_ID: csr_matrix = sum(members_of_cluster_ID) / len(members_of_cluster_ID)
 
             # Add centroids.
             centroids[cluster_ID] = centroid_for_cluster_ID

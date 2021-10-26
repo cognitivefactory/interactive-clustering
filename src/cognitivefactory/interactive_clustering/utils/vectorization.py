@@ -12,10 +12,9 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-from typing import Dict, Union  # To type Python code (mypy).
+from typing import Dict  # To type Python code (mypy).
 
 import spacy  # To apply spacy language models.
-from numpy import ndarray  # To handle matrix and vectors.
 from scipy.sparse import csr_matrix  # To handle matrix and vectors.
 from sklearn.feature_extraction.text import TfidfVectorizer  # To apply TF-IDF vectorisation.
 
@@ -27,7 +26,7 @@ def vectorize(
     dict_of_texts: Dict[str, str],
     vectorizer_type: str = "tfidf",
     spacy_language_model: str = "fr_core_news_sm",
-) -> Dict[str, Union[ndarray, csr_matrix]]:
+) -> Dict[str, csr_matrix]:
     """
     A method used to vectorize texts.
     Severals vectorizer are available : TFIDF, spaCy language model.
@@ -47,7 +46,7 @@ def vectorize(
         ValueError: Raises error if `vectorizer_type` is not implemented or if the `spacy_language_model` is not installed.
 
     Returns:
-        Dict[str, Union[ndarray,csr_matrix]]: A dictionary that contains the computed vectors.
+        Dict[str, csr_matrix]: A dictionary that contains the computed vectors.
 
     Examples:
         ```python
@@ -74,7 +73,7 @@ def vectorize(
     """
 
     # Initialize dictionary of vectors.
-    dict_of_vectors: Dict[str, Union[ndarray, csr_matrix]] = {}
+    dict_of_vectors: Dict[str, csr_matrix] = {}
 
     ###
     ### Case of TFIDF vectorization.

@@ -13,9 +13,8 @@
 # ==============================================================================
 
 import random  # To shuffle data and set random seed.
-from typing import Dict, List, Optional, Tuple, Union  # To type Python code (mypy).
+from typing import Dict, List, Optional, Tuple  # To type Python code (mypy).
 
-from numpy import ndarray  # To handle matrix and vectors.
 from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
 from sklearn.metrics import pairwise_distances  # To compute distance.
 
@@ -122,7 +121,7 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
         constraints_manager: AbstractConstraintsManager,
         nb_to_select: int,
         clustering_result: Optional[Dict[str, int]] = None,
-        vectors: Optional[Dict[str, Union[ndarray, csr_matrix]]] = None,
+        vectors: Optional[Dict[str, csr_matrix]] = None,
         **kargs,
     ) -> List[Tuple[str, str]]:
         """
@@ -132,7 +131,7 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
             constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs.
             nb_to_select (int): The number of pairs of data IDs to sample.
             clustering_result (Optional[Dict[str,int]], optional): A dictionary that represents the predicted cluster for each data ID. The keys of the dictionary represents the data IDs. If `None`, no clustering result are used during the sampling. Defaults to `None`.
-            vectors (Optional[Dict[str,Union[ndarray,csr_matrix]]], optional): vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`). If `None`, no vectors are used during the sampling. Defaults to `None`
+            vectors (Optional[Dict[str, csr_matrix]], optional): vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. If `None`, no vectors are used during the sampling. Defaults to `None`
             **kargs (dict): Other parameters that can be used in the sampling.
 
         Raises:
@@ -166,8 +165,8 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
         # If `self.distance_restriction` is set, check `vectors` parameters.
         if self.distance_restriction is not None:
             if not isinstance(vectors, dict):
-                raise ValueError("The `vectors` parameter has to be a `Dict[str, Union[ndarray, csr_matrix]]` type.")
-            self.vectors: Dict[str, Union[ndarray, csr_matrix]] = vectors
+                raise ValueError("The `vectors` parameter has to be a `Dict[str, csr_matrix]` type.")
+            self.vectors: Dict[str, csr_matrix] = vectors
 
         ###
         ### DEFINE POSSIBLE PAIRS OF DATA IDS
@@ -216,7 +215,7 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
         if self.distance_restriction is not None:
 
             # Compute pairwise distances.
-            matrix_of_pairwise_distances: ndarray = pairwise_distances(
+            matrix_of_pairwise_distances: csr_matrix = pairwise_distances(
                 X=vstack(self.vectors[data_ID] for data_ID in self.constraints_manager.get_list_of_managed_data_IDs()),
                 metric="euclidean",  # TODO get different pairwise_distances config in **kargs
             )

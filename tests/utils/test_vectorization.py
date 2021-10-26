@@ -13,7 +13,6 @@
 # ==============================================================================
 
 import pytest
-from numpy import ndarray
 from scipy.sparse import csr_matrix
 
 from cognitivefactory.interactive_clustering.utils.vectorization import vectorize
@@ -61,9 +60,9 @@ def test_vectorize_for_tfidf_vectorizer():
     # Assertions
     assert dict_of_vectors
     assert sorted(dict_of_vectors.keys()) == ["0", "1", "2"]
-    assert isinstance(dict_of_vectors["0"], (ndarray, csr_matrix))
-    assert isinstance(dict_of_vectors["1"], (ndarray, csr_matrix))
-    assert isinstance(dict_of_vectors["2"], (ndarray, csr_matrix))
+    assert isinstance(dict_of_vectors["0"], csr_matrix)
+    assert isinstance(dict_of_vectors["1"], csr_matrix)
+    assert isinstance(dict_of_vectors["2"], csr_matrix)
 
 
 # ==============================================================================
@@ -132,6 +131,6 @@ def test_vectorize_for_spacy_vectorizer():
     # Assertions
     assert dict_of_vectors
     assert sorted(dict_of_vectors.keys()) == ["0", "1", "2"]
-    assert isinstance(dict_of_vectors["0"], (ndarray, csr_matrix))
-    assert isinstance(dict_of_vectors["1"], (ndarray, csr_matrix))
-    assert isinstance(dict_of_vectors["2"], (ndarray, csr_matrix))
+    assert isinstance(dict_of_vectors["0"], csr_matrix)
+    assert isinstance(dict_of_vectors["1"], csr_matrix)
+    assert isinstance(dict_of_vectors["2"], csr_matrix)
