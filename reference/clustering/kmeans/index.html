@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://cognitivefactory.github.io/interactive-clustering/reference/clustering/kmeans/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.5143246d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.db9e7362.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -1286,8 +1286,8 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
       </tr>
       <tr>
         <td><code>vectors</code></td>
-        <td><code>Dict[str,Union[ndarray,csr_matrix]]</code></td>
-        <td><p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code>. The value of the dictionary represent the vector of each data. Vectors can be dense (<code>numpy.ndarray</code>) or sparse (<code>scipy.sparse.csr_matrix</code>).</p></td>
+        <td><code>Dict[str, csr_matrix]</code></td>
+        <td><p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code>. The value of the dictionary represent the vector of each data.</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
@@ -1345,7 +1345,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">constraints_manager</span><span class="p">:</span> <span class="n">AbstractConstraintsManager</span><span class="p">,</span>
-    <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]],</span>
+    <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">],</span>
     <span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kargs</span><span class="p">,</span>
@@ -1355,7 +1355,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
 <span class="sd">    Args:</span>
 <span class="sd">        constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.</span>
-<span class="sd">        vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).</span>
+<span class="sd">        vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.</span>
 <span class="sd">        nb_clusters (int): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?</span>
 <span class="sd">        verbose (bool, optional): Enable verbose output. Defaults to `False`.</span>
 <span class="sd">        **kargs (dict): Other parameters that can be used in the clustering.</span>
@@ -1380,7 +1380,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     <span class="c1"># Store `self.vectors`.</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vectors</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `vectors` parameter has to be a `dict` type.&quot;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]]</span> <span class="o">=</span> <span class="n">vectors</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="n">vectors</span>
 
     <span class="c1"># Store `self.nb_clusters`.</span>
     <span class="k">if</span> <span class="n">nb_clusters</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -1454,7 +1454,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code>Dict[int, Union[ndarray,csr_matrix]]</code></td>
+      <td><code>Dict[int, csr_matrix]</code></td>
       <td><p>A dictionary which represent each cluster by a centroid.</p></td>
     </tr>
   </tbody>
@@ -1464,7 +1464,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_centroids</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">clusters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]]:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the centroids of each cluster.</span>
 
@@ -1472,11 +1472,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="sd">        clusters (Dict[str,int]): Current clusters assignation.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Dict[int, Union[ndarray,csr_matrix]]: A dictionary which represent each cluster by a centroid.</span>
+<span class="sd">        Dict[int, csr_matrix]: A dictionary which represent each cluster by a centroid.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Initialize centroids.</span>
-    <span class="n">centroids</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">centroids</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="c1"># For all possible cluster ID.</span>
     <span class="k">for</span> <span class="n">cluster_ID</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">clusters</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
@@ -1487,9 +1487,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
         <span class="p">]</span>
 
         <span class="c1"># Compute centroid.</span>
-        <span class="n">centroid_for_cluster_ID</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">members_of_cluster_ID</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span>
-            <span class="n">members_of_cluster_ID</span>
-        <span class="p">)</span>
+        <span class="n">centroid_for_cluster_ID</span><span class="p">:</span> <span class="n">csr_matrix</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">members_of_cluster_ID</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">members_of_cluster_ID</span><span class="p">)</span>
 
         <span class="c1"># Add centroids.</span>
         <span class="n">centroids</span><span class="p">[</span><span class="n">cluster_ID</span><span class="p">]</span> <span class="o">=</span> <span class="n">centroid_for_cluster_ID</span>
@@ -1529,7 +1527,7 @@ The choice is based on a random selection among data to cluster.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code>Dict[int, Union[ndarray,csr_matrix]]</code></td>
+      <td><code>Dict[int, csr_matrix]</code></td>
       <td><p>A dictionary which represent each cluster by a centroid.</p></td>
     </tr>
   </tbody>
@@ -1538,13 +1536,13 @@ The choice is based on a random selection among data to cluster.</p>
           <summary>Source code in <code>interactive_clustering\clustering\kmeans.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">initialize_centroids</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]]:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize the centroid of each cluster by a vector.</span>
 <span class="sd">    The choice is based on a random selection among data to cluster.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Dict[int, Union[ndarray,csr_matrix]]: A dictionary which represent each cluster by a centroid.</span>
+<span class="sd">        Dict[int, csr_matrix]: A dictionary which represent each cluster by a centroid.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Get the list of possible indices.</span>
@@ -1558,7 +1556,7 @@ The choice is based on a random selection among data to cluster.</p>
     <span class="n">indices</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[:</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span><span class="p">]</span>
 
     <span class="c1"># Set initial centroids based on vectors.</span>
-    <span class="n">centroids</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">centroids</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="n">cluster_ID</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">cluster_ID</span><span class="p">]]</span> <span class="k">for</span> <span class="n">cluster_ID</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span><span class="p">)</span>
     <span class="p">}</span>
 
@@ -1671,7 +1669,7 @@ The choice is based on a random selection among data to cluster.</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.f89c2efe.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.1e84347e.min.js"></script>
       
     
   </body>

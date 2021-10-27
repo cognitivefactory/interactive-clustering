@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://cognitivefactory.github.io/interactive-clustering/reference/sampling/clusters_based/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.5143246d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.db9e7362.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -1250,8 +1250,8 @@ It inherits from <code>AbstractConstraintsSampling</code>.</p>
       </tr>
       <tr>
         <td><code>vectors</code></td>
-        <td><code>Optional[Dict[str,Union[ndarray,csr_matrix]]]</code></td>
-        <td><p>vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code>. The value of the dictionary represent the vector of each data. Vectors can be dense (<code>numpy.ndarray</code>) or sparse (<code>scipy.sparse.csr_matrix</code>). If <code>None</code>, no vectors are used during the sampling. Defaults to <code>None</code></p></td>
+        <td><code>Optional[Dict[str, csr_matrix]]</code></td>
+        <td><p>vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code>. The value of the dictionary represent the vector of each data. If <code>None</code>, no vectors are used during the sampling. Defaults to <code>None</code></p></td>
         <td><code>None</code></td>
       </tr>
       <tr>
@@ -1299,7 +1299,7 @@ It inherits from <code>AbstractConstraintsSampling</code>.</p>
     <span class="n">constraints_manager</span><span class="p">:</span> <span class="n">AbstractConstraintsManager</span><span class="p">,</span>
     <span class="n">nb_to_select</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">clustering_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">vectors</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">vectors</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1309,7 +1309,7 @@ It inherits from <code>AbstractConstraintsSampling</code>.</p>
 <span class="sd">        constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs.</span>
 <span class="sd">        nb_to_select (int): The number of pairs of data IDs to sample.</span>
 <span class="sd">        clustering_result (Optional[Dict[str,int]], optional): A dictionary that represents the predicted cluster for each data ID. The keys of the dictionary represents the data IDs. If `None`, no clustering result are used during the sampling. Defaults to `None`.</span>
-<span class="sd">        vectors (Optional[Dict[str,Union[ndarray,csr_matrix]]], optional): vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`). If `None`, no vectors are used during the sampling. Defaults to `None`</span>
+<span class="sd">        vectors (Optional[Dict[str, csr_matrix]], optional): vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. If `None`, no vectors are used during the sampling. Defaults to `None`</span>
 <span class="sd">        **kargs (dict): Other parameters that can be used in the sampling.</span>
 
 <span class="sd">    Raises:</span>
@@ -1343,8 +1343,8 @@ It inherits from <code>AbstractConstraintsSampling</code>.</p>
     <span class="c1"># If `self.distance_restriction` is set, check `vectors` parameters.</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance_restriction</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vectors</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `vectors` parameter has to be a `Dict[str, Union[ndarray, csr_matrix]]` type.&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]]</span> <span class="o">=</span> <span class="n">vectors</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `vectors` parameter has to be a `Dict[str, csr_matrix]` type.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="n">vectors</span>
 
     <span class="c1">###</span>
     <span class="c1">### DEFINE POSSIBLE PAIRS OF DATA IDS</span>
@@ -1393,7 +1393,7 @@ It inherits from <code>AbstractConstraintsSampling</code>.</p>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance_restriction</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 
         <span class="c1"># Compute pairwise distances.</span>
-        <span class="n">matrix_of_pairwise_distances</span><span class="p">:</span> <span class="n">ndarray</span> <span class="o">=</span> <span class="n">pairwise_distances</span><span class="p">(</span>
+        <span class="n">matrix_of_pairwise_distances</span><span class="p">:</span> <span class="n">csr_matrix</span> <span class="o">=</span> <span class="n">pairwise_distances</span><span class="p">(</span>
             <span class="n">X</span><span class="o">=</span><span class="n">vstack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">[</span><span class="n">data_ID</span><span class="p">]</span> <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_manager</span><span class="o">.</span><span class="n">get_list_of_managed_data_IDs</span><span class="p">()),</span>
             <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span>  <span class="c1"># TODO get different pairwise_distances config in **kargs</span>
         <span class="p">)</span>
@@ -1536,7 +1536,7 @@ It inherits from <code>AbstractConstraintsSampling</code>.</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.f89c2efe.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.1e84347e.min.js"></script>
       
     
   </body>

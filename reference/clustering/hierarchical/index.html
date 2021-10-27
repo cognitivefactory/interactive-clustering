@@ -14,7 +14,7 @@
         <link rel="canonical" href="https://cognitivefactory.github.io/interactive-clustering/reference/clustering/hierarchical/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.5143246d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.db9e7362.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -1179,8 +1179,8 @@ Cluster        </code>
   <tbody>
       <tr>
         <td><code>vectors</code></td>
-        <td><code>Dict[str,Union[ndarray,csr_matrix]]</code></td>
-        <td><p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code> (if <code>constraints_manager</code> is set). The value of the dictionary represent the vector of each data. Vectors can be dense (<code>numpy.ndarray</code>) or sparse (<code>scipy.sparse.csr_matrix</code>).</p></td>
+        <td><code>Dict[str, csr_matrix]</code></td>
+        <td><p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code> (if <code>constraints_manager</code> is set). The value of the dictionary represent the vector of each data.</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
@@ -1228,7 +1228,7 @@ Cluster        </code>
           <summary>Source code in <code>interactive_clustering\clustering\hierarchical.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]],</span>
+    <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">],</span>
     <span class="n">cluster_ID</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">clustering_iteration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">children</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;Cluster&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1238,7 +1238,7 @@ Cluster        </code>
 <span class="sd">    The constructor for Cluster class.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager` (if `constraints_manager` is set). The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).</span>
+<span class="sd">        vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager` (if `constraints_manager` is set). The value of the dictionary represent the vector of each data.</span>
 <span class="sd">        cluster_ID (int): The cluster ID that is defined during `HierarchicalConstrainedClustering.cluster` running.</span>
 <span class="sd">        clustering_iteration (int): The cluster iteration that is defined during `HierarchicalConstrainedClustering.cluster` running.</span>
 <span class="sd">        children (Optional[List[&quot;Cluster&quot;]], optional): A list of clusters children for cluster initialization. Incompatible with `members` parameter. Defaults to `None`.</span>
@@ -1249,7 +1249,7 @@ Cluster        </code>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Store links to `vectors`.</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]]</span> <span class="o">=</span> <span class="n">vectors</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="n">vectors</span>
 
     <span class="c1"># Cluster ID and Clustering iteration.</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">cluster_ID</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">cluster_ID</span>
@@ -1493,9 +1493,7 @@ Cluster        </code>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Update centroids.</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">centroid</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">[</span><span class="n">data_ID</span><span class="p">]</span> <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">members</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cluster_size</span><span class="p">()</span>
-    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">centroid</span><span class="p">:</span> <span class="n">csr_matrix</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">[</span><span class="n">data_ID</span><span class="p">]</span> <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">members</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cluster_size</span><span class="p">()</span>
 </code></pre></div>
         </details>
     </div>
@@ -1736,8 +1734,8 @@ Defaults to <code>"ward"</code>.</p></td>
       </tr>
       <tr>
         <td><code>vectors</code></td>
-        <td><code>Dict[str,Union[ndarray,csr_matrix]]</code></td>
-        <td><p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code>. The value of the dictionary represent the vector of each data. Vectors can be dense (<code>numpy.ndarray</code>) or sparse (<code>scipy.sparse.csr_matrix</code>).</p></td>
+        <td><code>Dict[str, csr_matrix]</code></td>
+        <td><p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code>. The value of the dictionary represent the vector of each data.</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
@@ -1795,7 +1793,7 @@ Defaults to <code>"ward"</code>.</p></td>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">constraints_manager</span><span class="p">:</span> <span class="n">AbstractConstraintsManager</span><span class="p">,</span>
-    <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]],</span>
+    <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">],</span>
     <span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kargs</span><span class="p">,</span>
@@ -1805,7 +1803,7 @@ Defaults to <code>"ward"</code>.</p></td>
 
 <span class="sd">    Args:</span>
 <span class="sd">        constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.</span>
-<span class="sd">        vectors (Dict[str,Union[ndarray,csr_matrix]]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data. Vectors can be dense (`numpy.ndarray`) or sparse (`scipy.sparse.csr_matrix`).</span>
+<span class="sd">        vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.</span>
 <span class="sd">        nb_clusters (int): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?</span>
 <span class="sd">        verbose (bool, optional): Enable verbose output. Defaults to `False`.</span>
 <span class="sd">        **kargs (dict): Other parameters that can be used in the clustering.</span>
@@ -1830,7 +1828,7 @@ Defaults to <code>"ward"</code>.</p></td>
     <span class="c1"># Store `self.vectors`.</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vectors</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `vectors` parameter has to be a `dict` type.&quot;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]]</span> <span class="o">=</span> <span class="n">vectors</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="n">vectors</span>
 
     <span class="c1"># Store `self.nb_clusters`.</span>
     <span class="k">if</span> <span class="n">nb_clusters</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -1838,7 +1836,7 @@ Defaults to <code>"ward"</code>.</p></td>
     <span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">nb_clusters</span>
 
     <span class="c1"># Compute pairwise distances.</span>
-    <span class="n">matrix_of_pairwise_distances</span><span class="p">:</span> <span class="n">ndarray</span> <span class="o">=</span> <span class="n">pairwise_distances</span><span class="p">(</span>
+    <span class="n">matrix_of_pairwise_distances</span><span class="p">:</span> <span class="n">csr_matrix</span> <span class="o">=</span> <span class="n">pairwise_distances</span><span class="p">(</span>
         <span class="n">X</span><span class="o">=</span><span class="n">vstack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">[</span><span class="n">data_ID</span><span class="p">]</span> <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_manager</span><span class="o">.</span><span class="n">get_list_of_managed_data_IDs</span><span class="p">()),</span>
         <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span>  <span class="c1"># TODO get different pairwise_distances config in **kargs</span>
     <span class="p">)</span>
@@ -2265,7 +2263,7 @@ Defaults to <code>"ward"</code>.</p></td>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.f89c2efe.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.1e84347e.min.js"></script>
       
     
   </body>
