@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 <!-- insertion marker -->
+## [0.4.2](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.4.2) - 2021-10-27
+
+<small>[Compare with 0.4.1](https://github.com/cognitivefactory/interactive-clustering/compare/0.4.1...0.4.2)</small>
+
+### Bug Fixes
+- force csr_matrix for spacy vectors in order to perform vstack ([be7b75c](https://github.com/cognitivefactory/interactive-clustering/commit/be7b75ca9678d068777de60efc4d2ef4aaa3d11f) by Erwan Schild).
+
+### Code Refactoring
+- refactor code and force sparse matrix ([63e94a2](https://github.com/cognitivefactory/interactive-clustering/commit/63e94a2ff6d0d270d9de3267d2eea2d82aa5b117) by Erwan Schild).
+- speed up spectral clustering ([711cf4d](https://github.com/cognitivefactory/interactive-clustering/commit/711cf4db3173f0c7fa1f93a464a590176db3c2ea) by Erwan Schild).
+
+
 ## [0.4.1](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.4.1) - 2021-10-19
 
 <small>[Compare with 0.4.0](https://github.com/cognitivefactory/interactive-clustering/compare/0.4.0...0.4.1)</small>
