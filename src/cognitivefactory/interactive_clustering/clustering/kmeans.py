@@ -458,8 +458,10 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
         for cluster_ID in set(clusters.values()):
 
             # Compute cluster members.
-            members_of_cluster_ID = [
-                vector for data_ID, vector in self.vectors.items() if clusters[data_ID] == cluster_ID
+            members_of_cluster_ID: List[csr_matrix] = [
+                self.vectors[data_ID]
+                for data_ID in self.constraints_manager.get_list_of_managed_data_IDs()
+                if clusters[data_ID] == cluster_ID
             ]
 
             # Compute centroid.

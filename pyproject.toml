@@ -18,7 +18,7 @@ keywords = [
     "clustering",
     "constraints",
     "constrained-clustering-algorithm",
-    "interactive-clustering"
+    "interactive-clustering",
 ]
 dynamic = [
     "version",
