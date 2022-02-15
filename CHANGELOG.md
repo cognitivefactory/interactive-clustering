@@ -6,6 +6,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 <!-- insertion marker -->
+## [0.5.0](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.5.0) - 2022-02-15
+
+<small>[Compare with 0.4.2](https://github.com/cognitivefactory/interactive-clustering/compare/0.4.2...0.5.0)</small>
+
+### Bug Fixes
+- force nb_cluster to be smaller than dataset size ([981fd0f](https://github.com/cognitivefactory/interactive-clustering/commit/981fd0fb6486da97579fd094bae6b6bec2d2f3cc) by Erwan Schild).
+- correct kmeans centroid computation for deleted data ids ([b0cd1a0](https://github.com/cognitivefactory/interactive-clustering/commit/b0cd1a081112f40e7a18c18ba48141ddc6f9c2b1) by Erwan Schild).
+
+### Code Refactoring
+- update to python 3.7 ([f363998](https://github.com/cognitivefactory/interactive-clustering/commit/f3639985f074db26df56702d5584b60b63b20943) by Erwan Schild).
+- make format ([f363998](https://github.com/cognitivefactory/interactive-clustering/commit/f3639985f074db26df56702d5584b60b63b20943) by Erwan Schild).
+
+### Features
+- add constraints manager serialization ([c2e13e2](https://github.com/cognitivefactory/interactive-clustering/commit/c2e13e2a903a493cf30b1ecc82e332051a32a47c) by Erwan Schild).
+
+
 ## [0.4.2](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.4.2) - 2021-10-27
 
 <small>[Compare with 0.4.1](https://github.com/cognitivefactory/interactive-clustering/compare/0.4.1...0.4.2)</small>
