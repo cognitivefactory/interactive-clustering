@@ -21,6 +21,8 @@ htmlcov/
 site/
 
 # various
+pdm.lock
+poetry.lock
 .pdm.toml
 __pypackages__/
 
