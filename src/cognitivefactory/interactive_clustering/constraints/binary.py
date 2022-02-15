@@ -777,8 +777,18 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         with open(filepath, "w") as fileobject:
             json.dump(
                 {
-                    "_constraints_dictionary": self._constraints_dictionary,
-                    "_constraints_transitivity": self._constraints_transitivity,
+                    "list_of_managed_data_IDs": self.get_list_of_managed_data_IDs(),
+                    "list_of_added_constraints": [
+                        {
+                            "data_ID1": data_ID1,
+                            "data_ID2": data_ID2,
+                            "constraint_type": constraint[0],
+                            "constraints_value": 1.0,  # Binary constraints manager, so force 1.0.
+                        }
+                        for data_ID1 in self._constraints_dictionary.keys()
+                        for data_ID2, constraint in self._constraints_dictionary[data_ID1].items()
+                        if (data_ID1 < data_ID2 and constraint is not None)
+                    ],
                 },
                 fileobject,
                 indent=1,
@@ -787,54 +797,11 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         # Return.
         return True
 
-    # ==============================================================================
-    # SERIALIZATION - FROM JSON
-    # ==============================================================================
-    def from_json(
-        self,
-        filepath: str,
-    ) -> bool:
-        """
-        The main method used to update a constraints manager from a deserialized one.
-
-        Args:
-            filepath (str): The path where is the deserialized constraints manager object.
-
-        Returns:
-            bool: `True` if the deserialization is done.
-        """
-
-        # Deserialize constraints manager attributes.
-        with open(filepath, "r") as fileobject:
-            attributes_from_json: Dict[str, Any] = json.load(fileobject)
-
-        # Update `self._constraints_dictionary`.
-        constraints_dictionary_from_json: Dict[str, Dict[str, Optional[Tuple[str, float]]]] = attributes_from_json[
-            "_constraints_dictionary"
-        ]
-        self._constraints_dictionary = {
-            data_ID1: {
-                data_ID2: (
-                    (constraint_value[0], constraint_value[1])  # Force tuple type.
-                    if (constraint_value is not None)
-                    else None
-                )
-                for data_ID2, constraint_value in constraints_dictionary_from_json[data_ID1].items()
-            }
-            for data_ID1 in constraints_dictionary_from_json.keys()
-        }
-
-        # Update `self._constraints_transitivity`.
-        self._constraints_transitivity = attributes_from_json["_constraints_transitivity"]
-
-        # Return.
-        return True
-
 
 # ==============================================================================
 # SERIALIZATION - FROM JSON
 # ==============================================================================
-def load_constraints_manager(
+def load_constraints_manager_from_json(
     filepath: str,
 ) -> BinaryConstraintsManager:
     """
@@ -847,15 +814,25 @@ def load_constraints_manager(
         BinaryConstraintsManager: The deserialized constraints manager.
     """
 
+    # Deserialize constraints manager attributes.
+    with open(filepath, "r") as fileobject:
+        attributes_from_json: Dict[str, Any] = json.load(fileobject)
+    list_of_managed_data_IDs: List[str] = attributes_from_json["list_of_managed_data_IDs"]
+    list_of_added_constraints: List[Dict[str, Any]] = attributes_from_json["list_of_added_constraints"]
+
     # Initialize blank constraints manager.
     constraints_manager: BinaryConstraintsManager = BinaryConstraintsManager(
-        list_of_data_IDs=[],
+        list_of_data_IDs=list_of_managed_data_IDs,
     )
 
     # Load from json.
-    constraints_manager.from_json(
-        filepath=filepath,
-    )
+    for constraint in list_of_added_constraints:
+        constraints_manager.add_constraint(
+            data_ID1=constraint["data_ID1"],
+            data_ID2=constraint["data_ID2"],
+            constraint_type=constraint["constraint_type"],
+            # constraint_value=constraint["constraint_value"],  # Binary constraints manager, so force 1.0.
+        )
 
     # Return the constraints manager.
     return constraints_manager

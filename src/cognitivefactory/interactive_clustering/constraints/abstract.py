@@ -285,19 +285,3 @@ class AbstractConstraintsManager(ABC):
         Returns:
             bool: `True` if the serialization is done.
         """
-
-    @abstractmethod
-    def from_json(
-        self,
-        filepath: str,
-    ) -> bool:
-        """
-        (ABSTRACT METHOD)
-        An abstract method that represents the main method used to deserialize a constraints manager object from a JSON file.
-
-        Args:
-            filepath (str): The path where to deserialize the constraints manager object.
-
-        Returns:
-            bool: `True` if the deserialization is done.
-        """
