@@ -294,13 +294,10 @@ def test_BinaryConstraintsManager_add_constraint_with_not_already_linked_data_ID
         )
         is True
     )
-    assert (
-        constraints_manager.get_added_constraint(
-            data_ID1="first",
-            data_ID2="second",
-        )
-        == ("MUST_LINK", 1.0)
-    )
+    assert constraints_manager.get_added_constraint(
+        data_ID1="first",
+        data_ID2="second",
+    ) == ("MUST_LINK", 1.0)
 
     # Try to add `"CANNOT_LINK"` data ID between `"first"` and `"third"` data IDs.
     assert (
@@ -311,13 +308,10 @@ def test_BinaryConstraintsManager_add_constraint_with_not_already_linked_data_ID
         )
         is True
     )
-    assert (
-        constraints_manager.get_added_constraint(
-            data_ID1="first",
-            data_ID2="third",
-        )
-        == ("CANNOT_LINK", 1.0)
-    )
+    assert constraints_manager.get_added_constraint(
+        data_ID1="first",
+        data_ID2="third",
+    ) == ("CANNOT_LINK", 1.0)
 
     # Try to add `"MUST_LINK"` data ID between `"second"` and `"third"` data IDs.
     with pytest.raises(ValueError, match="`constraint_type`"):
@@ -336,13 +330,10 @@ def test_BinaryConstraintsManager_add_constraint_with_not_already_linked_data_ID
         )
         is True
     )
-    assert (
-        constraints_manager.get_added_constraint(
-            data_ID1="second",
-            data_ID2="third",
-        )
-        == ("CANNOT_LINK", 1.0)
-    )
+    assert constraints_manager.get_added_constraint(
+        data_ID1="second",
+        data_ID2="third",
+    ) == ("CANNOT_LINK", 1.0)
 
 
 # ==============================================================================
@@ -505,22 +496,16 @@ def test_BinaryConstraintsManager_get_added_constraint_with_correct_parameters()
     )
 
     # Try to get the constraint betwwen `"first"` and `"second"`.
-    assert (
-        constraints_manager.get_added_constraint(
-            data_ID1="first",
-            data_ID2="second",
-        )
-        == ("MUST_LINK", 1.0)
-    )
+    assert constraints_manager.get_added_constraint(
+        data_ID1="first",
+        data_ID2="second",
+    ) == ("MUST_LINK", 1.0)
 
     # Try to get the constraint betwwen `"first"` and `"third"`.
-    assert (
-        constraints_manager.get_added_constraint(
-            data_ID1="first",
-            data_ID2="third",
-        )
-        == ("CANNOT_LINK", 1.0)
-    )
+    assert constraints_manager.get_added_constraint(
+        data_ID1="first",
+        data_ID2="third",
+    ) == ("CANNOT_LINK", 1.0)
 
 
 # ==============================================================================
@@ -771,20 +756,14 @@ def test_BinaryConstraintsManager_check_symetry_after_constraint_addition():
     )
 
     # Run assertion on : ML(1,2) => ML(2,1).
-    assert (
-        constraints_manager.get_added_constraint(
-            data_ID1="first",
-            data_ID2="second",
-        )
-        == ("MUST_LINK", 1.0)
-    )
-    assert (
-        constraints_manager.get_added_constraint(
-            data_ID1="second",
-            data_ID2="first",
-        )
-        == ("MUST_LINK", 1.0)
-    )
+    assert constraints_manager.get_added_constraint(
+        data_ID1="first",
+        data_ID2="second",
+    ) == ("MUST_LINK", 1.0)
+    assert constraints_manager.get_added_constraint(
+        data_ID1="second",
+        data_ID2="first",
+    ) == ("MUST_LINK", 1.0)
     assert (
         constraints_manager.get_inferred_constraint(
             data_ID1="first",
@@ -801,20 +780,14 @@ def test_BinaryConstraintsManager_check_symetry_after_constraint_addition():
     )
 
     # Run assertion on : CL(1,3) => CL(3,1).
-    assert (
-        constraints_manager.get_added_constraint(
-            data_ID1="first",
-            data_ID2="third",
-        )
-        == ("CANNOT_LINK", 1.0)
-    )
-    assert (
-        constraints_manager.get_added_constraint(
-            data_ID1="third",
-            data_ID2="first",
-        )
-        == ("CANNOT_LINK", 1.0)
-    )
+    assert constraints_manager.get_added_constraint(
+        data_ID1="first",
+        data_ID2="third",
+    ) == ("CANNOT_LINK", 1.0)
+    assert constraints_manager.get_added_constraint(
+        data_ID1="third",
+        data_ID2="first",
+    ) == ("CANNOT_LINK", 1.0)
     assert (
         constraints_manager.get_inferred_constraint(
             data_ID1="first",
@@ -1262,24 +1235,18 @@ def test_BinaryConstraintsManager_get_list_of_involved_data_IDs_in_a_constraint_
     )
 
     # Conflict of adding `"MUST_LINK"` between "first" and "fourth".
-    assert (
-        constraints_manager.get_list_of_involved_data_IDs_in_a_constraint_conflict(
-            data_ID1="first",
-            data_ID2="fourth",
-            constraint_type="MUST_LINK",
-        )
-        == ["first", "second", "third", "fourth"]
-    )
+    assert constraints_manager.get_list_of_involved_data_IDs_in_a_constraint_conflict(
+        data_ID1="first",
+        data_ID2="fourth",
+        constraint_type="MUST_LINK",
+    ) == ["first", "second", "third", "fourth"]
 
     # Conflict of adding `"CANNOT_LINK"` between "first" and "fourth".
-    assert (
-        constraints_manager.get_list_of_involved_data_IDs_in_a_constraint_conflict(
-            data_ID1="first",
-            data_ID2="third",
-            constraint_type="CANNOT_LINK",
-        )
-        == ["first", "second", "third"]
-    )
+    assert constraints_manager.get_list_of_involved_data_IDs_in_a_constraint_conflict(
+        data_ID1="first",
+        data_ID2="third",
+        constraint_type="CANNOT_LINK",
+    ) == ["first", "second", "third"]
 
     # No conflict.
     assert (

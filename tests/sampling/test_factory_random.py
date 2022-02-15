@@ -132,21 +132,18 @@ def test_factory_random_sampler_sample_for_empty_constraints_manager():
     sampler = ClustersBasedConstraintsSampling(random_seed=1)
 
     # Check sample with empty `constraints_manager`
-    assert (
-        sampler.sample(
-            constraints_manager=BinaryConstraintsManager(
-                list_of_data_IDs=[
-                    "bonjour",
-                    "salut",
-                    "coucou",
-                    "au revoir",
-                    "a bientôt",
-                ],
-            ),
-            nb_to_select=3,
-        )
-        == [("coucou", "salut"), ("bonjour", "coucou"), ("au revoir", "salut")]
-    )
+    assert sampler.sample(
+        constraints_manager=BinaryConstraintsManager(
+            list_of_data_IDs=[
+                "bonjour",
+                "salut",
+                "coucou",
+                "au revoir",
+                "a bientôt",
+            ],
+        ),
+        nb_to_select=3,
+    ) == [("coucou", "salut"), ("bonjour", "coucou"), ("au revoir", "salut")]
 
 
 # ==============================================================================
@@ -174,13 +171,10 @@ def test_factory_random_sampler_sample_for_correct_constraints_manager():
     constraints_manager.add_constraint(data_ID1="au revoir", data_ID2="a bientôt", constraint_type="MUST_LINK")
 
     # Check sample with correct `constraints_manager`
-    assert (
-        sampler.sample(
-            constraints_manager=constraints_manager,
-            nb_to_select=3,
-        )
-        == [("au revoir", "bonjour"), ("au revoir", "coucou"), ("bonjour", "coucou")]
-    )
+    assert sampler.sample(
+        constraints_manager=constraints_manager,
+        nb_to_select=3,
+    ) == [("au revoir", "bonjour"), ("au revoir", "coucou"), ("bonjour", "coucou")]
 
 
 # ==============================================================================

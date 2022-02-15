@@ -197,28 +197,25 @@ def test_factory_random_in_same_cluster_sampler_sample_for_empty_constraints_man
     )
 
     # Check sample with empty `constraints_manager`.
-    assert (
-        sampler.sample(
-            constraints_manager=BinaryConstraintsManager(
-                list_of_data_IDs=[
-                    "bonjour",
-                    "salut",
-                    "coucou",
-                    "au revoir",
-                    "a bientôt",
-                ],
-            ),
-            nb_to_select=3,
-            clustering_result={
-                "bonjour": 0,
-                "salut": 0,
-                "coucou": 0,
-                "au revoir": 1,
-                "a bientôt": 1,
-            },
-        )
-        == [("bonjour", "coucou"), ("coucou", "salut"), ("bonjour", "salut")]
-    )
+    assert sampler.sample(
+        constraints_manager=BinaryConstraintsManager(
+            list_of_data_IDs=[
+                "bonjour",
+                "salut",
+                "coucou",
+                "au revoir",
+                "a bientôt",
+            ],
+        ),
+        nb_to_select=3,
+        clustering_result={
+            "bonjour": 0,
+            "salut": 0,
+            "coucou": 0,
+            "au revoir": 1,
+            "a bientôt": 1,
+        },
+    ) == [("bonjour", "coucou"), ("coucou", "salut"), ("bonjour", "salut")]
 
 
 # ==============================================================================
@@ -249,20 +246,17 @@ def test_factory_random_in_same_cluster_sampler_sample_for_correct_constraints_m
     constraints_manager.add_constraint(data_ID1="au revoir", data_ID2="a bientôt", constraint_type="MUST_LINK")
 
     # Check sample with correct `constraints_manager`.
-    assert (
-        sampler.sample(
-            constraints_manager=constraints_manager,
-            nb_to_select=3,
-            clustering_result={
-                "bonjour": 0,
-                "salut": 0,
-                "coucou": 0,
-                "au revoir": 1,
-                "a bientôt": 1,
-            },
-        )
-        == [("bonjour", "coucou"), ("coucou", "salut")]
-    )
+    assert sampler.sample(
+        constraints_manager=constraints_manager,
+        nb_to_select=3,
+        clustering_result={
+            "bonjour": 0,
+            "salut": 0,
+            "coucou": 0,
+            "au revoir": 1,
+            "a bientôt": 1,
+        },
+    ) == [("bonjour", "coucou"), ("coucou", "salut")]
 
 
 # ==============================================================================
