@@ -44,10 +44,10 @@ _NB_ :
 
 ## <a name="Requirements"></a> Requirements
 
-Interactive Clustering requires Python 3.6 or above.
+Interactive Clustering requires Python 3.7 or above.
 
 <details>
-<summary>To install Python 3.6, I recommend using <a href="https://github.com/pyenv/pyenv"><code>pyenv</code></a>.</summary>
+<summary>To install Python 3.7, I recommend using <a href="https://github.com/pyenv/pyenv"><code>pyenv</code></a>.</summary>
 
 ```bash
 # install pyenv
@@ -58,11 +58,11 @@ export PATH="${HOME}/.pyenv/bin:${PATH}"
 export PYENV_ROOT="${HOME}/.pyenv"
 eval "$(pyenv init -)"
 
-# install Python 3.6
-pyenv install 3.6.12
+# install Python 3.7
+pyenv install 3.7
 
 # make it available globally
-pyenv global system 3.6.12
+pyenv global system 3.7
 ```
 </details>
 

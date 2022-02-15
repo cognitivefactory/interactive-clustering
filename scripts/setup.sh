@@ -2,7 +2,7 @@
 set -e
 
 # un/comment this if you want to enable/disable multiple Python versions
-#PYTHON_VERSIONS="${PYTHON_VERSIONS-3.6 3.7 3.8 3.9 3.10 3.11}"
+#PYTHON_VERSIONS="${PYTHON_VERSIONS-3.7 3.8 3.9 3.10 3.11}"
 
 install_with_pipx() {
     if ! command -v "$1" &>/dev/null; then
