@@ -53,7 +53,7 @@ def test_preprocess_for_installed_spacy_language_model():
             "1": "Hello, how old are you ?",
             "2": "Hello ! Where do you live ?",
         },
-        spacy_language_model="en_core_web_sm",
+        spacy_language_model="en_core_web_md",
     )
 
     # Assertions
@@ -108,7 +108,7 @@ def test_preprocess_for_stopwords_deletion():
     assert sorted(dict_of_preprocessed_texts.keys()) == ["0", "1", "2"]
     assert dict_of_preprocessed_texts["0"] == "signaler perte carte paiement"
     assert dict_of_preprocessed_texts["1"] == "procedure chercher carte credit avalee"
-    assert dict_of_preprocessed_texts["2"] == "carte visa plafond paiment l augmenter"
+    assert dict_of_preprocessed_texts["2"] == "carte visa plafond paiment trop l augmenter"
 
 
 # ==============================================================================
@@ -133,8 +133,8 @@ def test_preprocess_for_parsing_filter():
     assert dict_of_preprocessed_texts
     assert sorted(dict_of_preprocessed_texts.keys()) == ["0", "1", "2"]
     assert dict_of_preprocessed_texts["0"] == "comment signaler perte"
-    assert dict_of_preprocessed_texts["1"] == "quelle est la procedure chercher"
-    assert dict_of_preprocessed_texts["2"] == "carte a plafond l"
+    assert dict_of_preprocessed_texts["1"] == "quelle est procedure chercher"
+    assert dict_of_preprocessed_texts["2"] == "carte a plafond l augmenter"
 
 
 # ==============================================================================
@@ -159,5 +159,5 @@ def test_preprocess_for_lemmatization():
     assert dict_of_preprocessed_texts
     assert sorted(dict_of_preprocessed_texts.keys()) == ["0", "1", "2"]
     assert dict_of_preprocessed_texts["0"] == "comment signaler un perte de carte de paiement"
-    assert dict_of_preprocessed_texts["1"] == "quell etre le procedure pour chercher un carte de credit avaler"
+    assert dict_of_preprocessed_texts["1"] == "quell etre le procedure pour chercher un carte de credit avale"
     assert dict_of_preprocessed_texts["2"] == "mon carte visa avoir un plafond de paiment trop bas puis je l augmenter"
