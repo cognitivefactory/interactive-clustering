@@ -12,7 +12,8 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-from typing import Dict, List, Optional, Set, Tuple  # To type Python code (mypy).
+import json  # To serialize object.
+from typing import Any, Dict, List, Optional, Set, Tuple  # To type Python code (mypy).
 
 import networkx as nx  # To create graph.
 
@@ -754,3 +755,107 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
 
         # Case of no conflict.
         return None
+
+    # ==============================================================================
+    # SERIALIZATION - TO JSON
+    # ==============================================================================
+    def to_json(
+        self,
+        filepath: str = "./constraint_manager.json",
+    ) -> bool:
+        """
+        The main method used to serialize the constraints manager object into a JSON file.
+
+        Args:
+            filepath (str): The path where to serialize the constraints manager  object.
+
+        Returns:
+            bool: `True` if the serialization is done.
+        """
+
+        # Serialize constraints manager.
+        with open(filepath, "w") as fileobject:
+            json.dump(
+                {
+                    "_constraints_dictionary": self._constraints_dictionary,
+                    "_constraints_transitivity": self._constraints_transitivity,
+                },
+                fileobject,
+                indent=1,
+            )
+
+        # Return.
+        return True
+
+    # ==============================================================================
+    # SERIALIZATION - FROM JSON
+    # ==============================================================================
+    def from_json(
+        self,
+        filepath: str,
+    ) -> bool:
+        """
+        The main method used to update a constraints manager from a deserialized one.
+
+        Args:
+            filepath (str): The path where is the deserialized constraints manager object.
+
+        Returns:
+            bool: `True` if the deserialization is done.
+        """
+
+        # Deserialize constraints manager attributes.
+        with open(filepath, "r") as fileobject:
+            attributes_from_json: Dict[str, Any] = json.load(fileobject)
+
+        # Update `self._constraints_dictionary`.
+        constraints_dictionary_from_json: Dict[str, Dict[str, Optional[Tuple[str, float]]]] = attributes_from_json[
+            "_constraints_dictionary"
+        ]
+        self._constraints_dictionary = {
+            data_ID1: {
+                data_ID2: (
+                    (constraint_value[0], constraint_value[1])  # Force tuple type.
+                    if (constraint_value is not None)
+                    else None
+                )
+                for data_ID2, constraint_value in constraints_dictionary_from_json[data_ID1].items()
+            }
+            for data_ID1 in constraints_dictionary_from_json.keys()
+        }
+
+        # Update `self._constraints_transitivity`.
+        self._constraints_transitivity = attributes_from_json["_constraints_transitivity"]
+
+        # Return.
+        return True
+
+
+# ==============================================================================
+# SERIALIZATION - FROM JSON
+# ==============================================================================
+def load_constraints_manager(
+    filepath: str,
+) -> BinaryConstraintsManager:
+    """
+    The main method used initialize a constraints manager from a deserialized one.
+
+    Args:
+        filepath (str): The path where is the deserialized constraints manager object.
+
+    Returns:
+        BinaryConstraintsManager: The deserialized constraints manager.
+    """
+
+    # Initialize blank constraints manager.
+    constraints_manager: BinaryConstraintsManager = BinaryConstraintsManager(
+        list_of_data_IDs=[],
+    )
+
+    # Load from json.
+    constraints_manager.from_json(
+        filepath=filepath,
+    )
+
+    # Return the constraints manager.
+    return constraints_manager

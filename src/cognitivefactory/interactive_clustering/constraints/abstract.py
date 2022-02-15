@@ -266,3 +266,38 @@ class AbstractConstraintsManager(ABC):
         Returns:
             Optional[List[str]]: The list of data IDs that are involved in the conflict. It matches data IDs from connected components of `data_ID1` and `data_ID2`.
         """
+
+    # ==============================================================================
+    # ABSTRACT METHOD - SERIALIZATION
+    # ==============================================================================
+    @abstractmethod
+    def to_json(
+        self,
+        filepath: str,
+    ) -> bool:
+        """
+        (ABSTRACT METHOD)
+        An abstract method that represents the main method used to serialize the constraints manager object into a JSON file.
+
+        Args:
+            filepath (str): The path where to serialize the constraints manager  object.
+
+        Returns:
+            bool: `True` if the serialization is done.
+        """
+
+    @abstractmethod
+    def from_json(
+        self,
+        filepath: str,
+    ) -> bool:
+        """
+        (ABSTRACT METHOD)
+        An abstract method that represents the main method used to deserialize a constraints manager object from a JSON file.
+
+        Args:
+            filepath (str): The path where to deserialize the constraints manager object.
+
+        Returns:
+            bool: `True` if the deserialization is done.
+        """
