@@ -11,6 +11,7 @@ pip-wheel-metadata/
 __pypackages__/
 
 # tests
+tests/temp/*.json
 .coverage*
 .pytest_cache/
 .mypy_cache/
