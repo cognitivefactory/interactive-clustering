@@ -129,8 +129,10 @@ def preprocess(
         spacy_nlp = spacy.load(
             name=spacy_language_model,
             disable=[
-                # "tagger", # Needed for lemmatization.
+                # "morphologizer", # Needed for lemmatization.
                 # "parser", # Needed for filtering on dependency parsing.
+                # "attribute_ruler",  # Need for pos tagging.
+                # "lemmatizer", # Needed for lemmatization.
                 "ner",  # Not needed
             ],
         )
