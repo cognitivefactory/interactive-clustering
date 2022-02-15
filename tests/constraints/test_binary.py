@@ -16,7 +16,7 @@ import pytest
 
 from cognitivefactory.interactive_clustering.constraints.binary import (
     BinaryConstraintsManager,
-    load_constraints_manager,
+    load_constraints_manager_from_json,
 )
 
 
@@ -1274,7 +1274,7 @@ def test_BinaryConstraintsManager_get_list_of_involved_data_IDs_in_a_constraint_
 # ==============================================================================
 def test_BinaryConstraintsManager_serialization():
     """
-    Test that `to_json` and `from_json` methods of the `constraints.binary.BinaryConstraintsManager` class work.
+    Test that `to_json` and `load_constraints_manager_from_json` methods of the `constraints.binary.BinaryConstraintsManager` class work.
     """
 
     # Initialize a classic binary constraints manager.
@@ -1298,7 +1298,7 @@ def test_BinaryConstraintsManager_serialization():
     )
 
     # Deserialize from JSON
-    constraints_manager_2 = load_constraints_manager(
+    constraints_manager_2 = load_constraints_manager_from_json(
         filepath="./tests/temp/test_BinaryConstraintsManager_to_json__constraints_manager_1.json",
     )
 
