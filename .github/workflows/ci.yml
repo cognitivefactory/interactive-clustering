@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - develop
+      - sdia2022
   pull_request:
     branches:
       - main
