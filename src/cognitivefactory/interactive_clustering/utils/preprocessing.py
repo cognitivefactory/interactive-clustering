@@ -28,7 +28,7 @@ def preprocess(
     apply_stopwords_deletion: bool = False,
     apply_parsing_filter: bool = False,
     apply_lemmatization: bool = False,
-    spacy_language_model: str = "fr_core_news_sm",
+    spacy_language_model: str = "fr_core_news_md",
 ) -> Dict[str, str]:
     """
     A method used to preprocess texts.
@@ -46,7 +46,7 @@ def preprocess(
         apply_stopwords_deletion (bool, optional): The option to delete stopwords. Defaults to `False`.
         apply_parsing_filter (bool, optional): The option to filter tokens based on dependency parsing results. If set, it only keeps `"ROOT"` tokens and their direct children. Defaults to `False`.
         apply_lemmatization (bool, optional): The option to lemmatize tokens. Defaults to `False`.
-        spacy_language_model (str, optional): The spaCy language model to use if vectorizer is spacy. The model has to be installed. Defaults to `"fr_core_news_sm"`.
+        spacy_language_model (str, optional): The spaCy language model to use if vectorizer is spacy. The model has to be installed. Defaults to `"fr_core_news_md"`.
 
     Raises:
         ValueError: Raises error if the `spacy_language_model` is not installed.
@@ -72,7 +72,7 @@ def preprocess(
             apply_stopwords_deletion=True,
             apply_parsing_filter=False,
             apply_lemmatization=False,
-            spacy_language_model="fr_core_news_sm",
+            spacy_language_model="fr_core_news_md",
         )
 
         # Print results.

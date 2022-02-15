@@ -25,7 +25,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer  # To apply TF-IDF v
 def vectorize(
     dict_of_texts: Dict[str, str],
     vectorizer_type: str = "tfidf",
-    spacy_language_model: str = "fr_core_news_sm",
+    spacy_language_model: str = "fr_core_news_md",
 ) -> Dict[str, csr_matrix]:
     """
     A method used to vectorize texts.
@@ -40,7 +40,7 @@ def vectorize(
     Args:
         dict_of_texts (Dict[str,str]): A dictionary that contains the texts to vectorize.
         vectorizer_type (str, optional): The vectorizer type to use. The type can be `"tfidf"` or `"spacy"`. Defaults to `"tfidf"`.
-        spacy_language_model (str, optional): The spaCy language model to use if vectorizer is spacy. Defaults to `"fr_core_news_sm"`.
+        spacy_language_model (str, optional): The spaCy language model to use if vectorizer is spacy. Defaults to `"fr_core_news_md"`.
 
     Raises:
         ValueError: Raises error if `vectorizer_type` is not implemented or if the `spacy_language_model` is not installed.
@@ -64,7 +64,7 @@ def vectorize(
         dict_of_vectors = vectorize(
             dict_of_texts=dict_of_texts
             vectorizer_type="spacy",
-            spacy_language_model="fr_core_news_sm",
+            spacy_language_model="fr_core_news_md",
         )
 
         # Print results.
@@ -108,8 +108,10 @@ def vectorize(
             spacy_nlp = spacy.load(
                 name=spacy_language_model,
                 disable=[
-                    "tagger",  # Not needed
+                    "morphologizer",  # Not needed
                     "parser",  # Not needed
+                    "attribute_ruler",  # Not needed
+                    "lemmatizer",  # Not needed
                     "ner",  # Not needed
                 ],
             )
