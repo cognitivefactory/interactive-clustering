@@ -14,7 +14,10 @@
 
 import pytest
 
-from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
+from cognitivefactory.interactive_clustering.constraints.binary import (
+    BinaryConstraintsManager,
+    load_constraints_manager,
+)
 
 
 # ==============================================================================
@@ -1297,3 +1300,57 @@ def test_BinaryConstraintsManager_get_list_of_involved_data_IDs_in_a_constraint_
         )
         is None
     )
+
+
+# ==============================================================================
+# test_BinaryConstraintsManager_serialization
+# ==============================================================================
+def test_BinaryConstraintsManager_serialization():
+    """
+    Test that `to_json` and `from_json` methods of the `constraints.binary.BinaryConstraintsManager` class work.
+    """
+
+    # Initialize a classic binary constraints manager.
+    constraints_manager_1 = BinaryConstraintsManager(
+        list_of_data_IDs=["first", "second", "third"],
+    )
+    constraints_manager_1.add_constraint(
+        data_ID1="first",
+        data_ID2="second",
+        constraint_type="MUST_LINK",
+    )
+    constraints_manager_1.add_constraint(
+        data_ID1="second",
+        data_ID2="third",
+        constraint_type="CANNOT_LINK",
+    )
+
+    # Serialize to JSON.
+    constraints_manager_1.to_json(
+        filepath="./tests/temp/test_BinaryConstraintsManager_to_json__constraints_manager_1.json",
+    )
+
+    # Deserialize from JSON
+    constraints_manager_2 = load_constraints_manager(
+        filepath="./tests/temp/test_BinaryConstraintsManager_to_json__constraints_manager_1.json",
+    )
+
+    # Assert type.
+    assert isinstance(constraints_manager_2, BinaryConstraintsManager)
+
+    # Assert data IDs storage is the same.
+    assert constraints_manager_1.get_list_of_managed_data_IDs() == constraints_manager_2.get_list_of_managed_data_IDs()
+
+    # Assert constraints storage.
+    assert constraints_manager_1.get_added_constraint(
+        data_ID1="first", data_ID2="second"
+    ) == constraints_manager_2.get_added_constraint(data_ID1="first", data_ID2="second")
+    assert constraints_manager_1.get_added_constraint(
+        data_ID1="second", data_ID2="third"
+    ) == constraints_manager_2.get_added_constraint(data_ID1="second", data_ID2="third")
+
+    # Assert constraints transitivity.
+
+    assert constraints_manager_1.get_inferred_constraint(
+        data_ID1="first", data_ID2="third"
+    ) == constraints_manager_2.get_inferred_constraint(data_ID1="first", data_ID2="third")

@@ -661,6 +661,26 @@ def test_HierarchicalConstrainedClustering_compute_predicted_clusters_travelling
         "11": 3,
     }
 
+    # Run `compute_predicted_clusters` while travalleing clustering tree by `"iteration"`.
+    dict_of_predicted_clusters = clustering_model.compute_predicted_clusters(
+        nb_clusters=99,
+        by="iteration",
+    )
+    assert dict_of_predicted_clusters == {
+        "00": 0,
+        "01": 1,
+        "02": 2,
+        "03": 3,
+        "04": 4,
+        "05": 5,
+        "06": 6,
+        "07": 7,
+        "08": 8,
+        "09": 9,
+        "10": 10,
+        "11": 11,
+    }
+
 
 # ==============================================================================
 # test_HierarchicalConstrainedClustering_cluster_with_break_loop
