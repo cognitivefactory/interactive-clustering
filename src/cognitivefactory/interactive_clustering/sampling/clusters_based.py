@@ -83,7 +83,7 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
         Args:
             random_seed (Optional[int]): The random seed to use to redo the same sampling. Defaults to `None`.
             clusters_restriction (Optional[str]): Restrict the sampling with a cluster constraints. Can impose data IDs to be in `"same_cluster"` or `"different_clusters"`. Defaults to `None`.  # TODO: `"specific_clusters"`
-            distance_restriction (Optional[str]): Restrict the sampling with a distance constraints. Can impose data IDs to be `"closest_neighbors"` or `""farthest_neighbors""`. Defaults to `None`.
+            distance_restriction (Optional[str]): Restrict the sampling with a distance constraints. Can impose data IDs to be `"closest_neighbors"` or `"farthest_neighbors"`. Defaults to `None`.
             without_added_constraints (bool): Option to not sample the already added constraints. Defaults to `True`.
             without_inferred_constraints (bool): Option to not sample the deduced constraints from already added one. Defaults to `True`.
             **kargs (dict): Other parameters that can be used in the instantiation.

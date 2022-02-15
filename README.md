@@ -14,15 +14,15 @@ _Interactive clustering_ is a method intended to assist in the design of a train
 
 This iterative process begins with an unlabeled dataset, and it uses a sequence of two substeps :
 
-1. the user defines constraints on data sampled by the mathine ;
+1. the user defines constraints on data sampled by the computer ;
 
-2. the machine performs data partitioning using a constrained clustering algorithm.
+2. the computer performs data partitioning using a constrained clustering algorithm.
 
 Thus, at each step of the process :
 
 - the user corrects the clustering of the previous steps using constraints, and
 
-- the machine offers a corrected and more relevant data partitioning for the next step.
+- the computer offers a corrected and more relevant data partitioning for the next step.
 
 The process use severals objects :
 
