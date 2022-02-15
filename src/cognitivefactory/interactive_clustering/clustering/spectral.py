@@ -176,7 +176,7 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
         # Store `self.nb_clusters`.
         if nb_clusters < 2:
             raise ValueError("The `nb_clusters` '" + str(nb_clusters) + "' must be greater than or equal to 2.")
-        self.nb_clusters: int = nb_clusters
+        self.nb_clusters: int = min(nb_clusters, len(self.list_of_data_IDs))
 
         # Define `self.current_nb_components`.
         self.current_nb_components: int = (
