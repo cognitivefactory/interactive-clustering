@@ -46,11 +46,12 @@ Discussions = "https://github.com/cognitivefactory/interactive-clustering/discus
 
 [tool.pdm]
 includes = [
-    "src/cognitivefactory"
+    "src/cognitivefactory",
 ]
 
-[tool.pdm.overrides]
-scipy = ">=1.8"  # Solve python3.10 pdm failure.
+overrides = [
+    "scipy>=1.8",  # Solve python3.10 pdm failure.
+]
 
 [tool.pdm.dev-dependencies]
 develop = [
