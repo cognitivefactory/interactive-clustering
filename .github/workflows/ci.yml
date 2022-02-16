@@ -49,7 +49,7 @@ jobs:
         key: checks-cache
 
     - name: Resolving dependencies
-      run: pdm lock
+      run: pdm lock -v
 
     - name: Install dependencies
       run: |
