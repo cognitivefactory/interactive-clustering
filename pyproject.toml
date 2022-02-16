@@ -49,6 +49,9 @@ includes = [
     "src/cognitivefactory"
 ]
 
+[tool.pdm.overrides]
+scipy = ">=1.8"  # Solve python3.10 pdm failure.
+
 [tool.pdm.dev-dependencies]
 develop = [
     "https://github.com/explosion/spacy-models/releases/download/fr_core_news_md-3.1.0/fr_core_news_md-3.1.0.tar.gz",  # "fr-core-news-md==3.1.0",
