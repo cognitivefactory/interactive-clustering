@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 <!-- insertion marker -->
+## [0.5.1](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.5.1) - 2022-02-16
+
+<small>[Compare with 0.5.0](https://github.com/cognitivefactory/interactive-clustering/compare/0.5.0...0.5.1)</small>
+
+### Bug Fixes
+- update constraints manager serialization ([6111542](https://github.com/cognitivefactory/interactive-clustering/commit/61115428e949ee1f51e3d9d2a3d42c6a0ef4c48b) by Erwan Schild).
+
+### Code Refactoring
+- speed up constraints transitivity ([5e255ef](https://github.com/cognitivefactory/interactive-clustering/commit/5e255eff67f3c8371343bf15c14bdda7079ddc69) by Erwan Schild).
+- update spacy usage ([2d05289](https://github.com/cognitivefactory/interactive-clustering/commit/2d0528919da69535a845820a33999f6e42c2036c) by Erwan Schild).
+
+
 ## [0.5.0](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.5.0) - 2022-02-15
 
 <small>[Compare with 0.4.2](https://github.com/cognitivefactory/interactive-clustering/compare/0.4.2...0.5.0)</small>
