@@ -78,9 +78,6 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         Args:
             list_of_data_IDs (List[str]): The list of data IDs to manage.
             **kargs (dict): Other parameters that can be used in the instantiation.
-
-        Raises:
-            ValueError: if `list_of_data_IDs` has duplicates.
         """
 
         # Define `self._allowed_constraint_types`.
@@ -94,10 +91,6 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
             "max": 1.0,
         }
 
-        # If `list_of_data_IDs` has duplicates, raise `ValueError`.
-        if len(list_of_data_IDs) != len(set(list_of_data_IDs)):
-            raise ValueError("There is duplicates in `list_of_data_IDs`.")
-
         # Store `self.kargs` for binary constraints managing.
         self.kargs = kargs
 
@@ -110,12 +103,20 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
                     else None  # Unknwon constraints if `data_ID1` != `data_ID2`.
                 )
                 for data_ID2 in list_of_data_IDs
+                if (data_ID1 <= data_ID2)
             }
             for data_ID1 in list_of_data_IDs
         }
 
         # Define `self._constraints_transitivity`.
-        self._generate_constraints_transitivity()
+        # `Equivalent to `self._generate_constraints_transitivity()`
+        self._constraints_transitivity: Dict[str, Dict[str, Dict[str, None]]] = {
+            data_ID: {
+                "MUST_LINK": {data_ID: None},  # Initialize MUST_LINK clusters constraints.
+                "CANNOT_LINK": {},  # Initialize CANNOT_LINK clusters constraints.
+            }
+            for data_ID in list_of_data_IDs
+        }
 
     # ==============================================================================
     # DATA_ID MANAGEMENT - ADDITION
@@ -147,16 +148,12 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
 
         # Define constraint for `data_ID` and all other data IDs.
         for other_data_ID in self._constraints_dictionary.keys():
-            self._constraints_dictionary[data_ID][other_data_ID] = (
-                ("MUST_LINK", 1.0)
-                if (data_ID == other_data_ID)
-                else None  # Unknwon constraints if `data_ID` != `other_data_ID`.
-            )
-            self._constraints_dictionary[other_data_ID][data_ID] = (
-                ("MUST_LINK", 1.0)
-                if (data_ID == other_data_ID)
-                else None  # Unknwon constraints if `data_ID1` != `other_data_ID`.
-            )
+            if data_ID == other_data_ID:
+                self._constraints_dictionary[data_ID][data_ID] = ("MUST_LINK", 1.0)
+            elif data_ID < other_data_ID:
+                self._constraints_dictionary[data_ID][other_data_ID] = None
+            else:  # elif data_ID > other_data_ID:
+                self._constraints_dictionary[other_data_ID][data_ID] = None
 
         # Regenerate `self._constraints_transitivity`.
         # `Equivalent to `self._generate_constraints_transitivity()`
@@ -193,11 +190,11 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
             raise ValueError("The `data_ID` `'" + str(data_ID) + "'` is not managed.")
 
         # Remove `data_ID` from `self._constraints_dictionary.keys()`.
-        self._constraints_dictionary.pop(data_ID)
+        self._constraints_dictionary.pop(data_ID, None)
 
         # Remove `data_ID` from all `self._constraints_dictionary[other_data_ID].keys()`.
         for other_data_ID in self._constraints_dictionary.keys():
-            self._constraints_dictionary[other_data_ID].pop(data_ID)
+            self._constraints_dictionary[other_data_ID].pop(data_ID, None)
 
         # Regenerate `self._constraints_transitivity`
         self._generate_constraints_transitivity()
@@ -298,8 +295,10 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         # Otherwise, the constraint has to be added.
 
         # Add the direct constraint between `data_ID1` and `data_ID2`.
-        self._constraints_dictionary[data_ID1][data_ID2] = (constraint_type, 1.0)
-        self._constraints_dictionary[data_ID2][data_ID1] = (constraint_type, 1.0)
+        if data_ID1 <= data_ID2:
+            self._constraints_dictionary[data_ID1][data_ID2] = (constraint_type, 1.0)
+        else:
+            self._constraints_dictionary[data_ID2][data_ID1] = (constraint_type, 1.0)
 
         # Add the transitivity constraint between `data_ID1` and `data_ID2`.
         self._add_constraint_transitivity(
@@ -341,8 +340,10 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
             raise ValueError("The `data_ID2` `'" + str(data_ID2) + "'` is not managed.")
 
         # Delete the constraint between `data_ID1` and `data_ID2`.
-        self._constraints_dictionary[data_ID1][data_ID2] = None
-        self._constraints_dictionary[data_ID2][data_ID1] = None
+        if data_ID1 <= data_ID2:
+            self._constraints_dictionary[data_ID1][data_ID2] = None
+        else:
+            self._constraints_dictionary[data_ID2][data_ID1] = None
 
         # Regenerate `self._constraints_transitivity`.
         self._generate_constraints_transitivity()
@@ -382,7 +383,11 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
             raise ValueError("The `data_ID2` `'" + str(data_ID2) + "'` is not managed.")
 
         # Retrun the current added constraint type and value.
-        return self._constraints_dictionary[data_ID1][data_ID2]
+        return (
+            self._constraints_dictionary[data_ID1][data_ID2]
+            if (data_ID1 <= data_ID2)
+            else self._constraints_dictionary[data_ID2][data_ID1]
+        )
 
     # ==============================================================================
     # CONSTRAINTS EXPLORATION - GETTER
@@ -588,7 +593,8 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         It uses `Dict[str, None]` to simulate ordered sets.
         """
 
-        self._constraints_transitivity: Dict[str, Dict[str, Dict[str, None]]] = {
+        # Reset constraints transitivity.
+        self._constraints_transitivity = {
             data_ID: {
                 "MUST_LINK": {data_ID: None},  # Initialize MUST_LINK clusters constraints.
                 "CANNOT_LINK": {},  # Initialize CANNOT_LINK clusters constraints.
@@ -596,12 +602,8 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
             for data_ID in self._constraints_dictionary.keys()
         }
 
-        for data_ID1 in self._constraints_transitivity.keys():
-            for data_ID2 in self._constraints_transitivity.keys():
-
-                # Optimization : `self._constraints_dictionary` is symetric, so one pass is enough.
-                if data_ID1 > data_ID2:
-                    continue
+        for data_ID1 in self._constraints_dictionary.keys():
+            for data_ID2 in self._constraints_dictionary[data_ID1].keys():
 
                 # Get the constraint between `data_ID1` and `data_ID2`.
                 constraint = self._constraints_dictionary[data_ID1][data_ID2]
@@ -744,13 +746,13 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
 
         # Case of conflict (after trying to add a constraint different from the inferred constraint).
         if self.get_inferred_constraint(
-            data_ID1, data_ID2
-        ) is not None and constraint_type != self.get_inferred_constraint(data_ID1, data_ID2):
+            data_ID1=data_ID1, data_ID2=data_ID2
+        ) is not None and constraint_type != self.get_inferred_constraint(data_ID1=data_ID1, data_ID2=data_ID2):
             return [
                 data_ID
                 for connected_component in self.get_connected_components()  # Get involved components.
                 for data_ID in connected_component  # Get data IDs from these components.
-                if data_ID1 in connected_component or data_ID2 in connected_component
+                if (data_ID1 in connected_component or data_ID2 in connected_component)
             ]
 
         # Case of no conflict.
@@ -787,7 +789,7 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
                         }
                         for data_ID1 in self._constraints_dictionary.keys()
                         for data_ID2, constraint in self._constraints_dictionary[data_ID1].items()
-                        if (data_ID1 < data_ID2 and constraint is not None)
+                        if (constraint is not None)
                     ],
                 },
                 fileobject,
@@ -817,16 +819,16 @@ def load_constraints_manager_from_json(
     # Deserialize constraints manager attributes.
     with open(filepath, "r") as fileobject:
         attributes_from_json: Dict[str, Any] = json.load(fileobject)
-    list_of_managed_data_IDs: List[str] = attributes_from_json["list_of_managed_data_IDs"]
-    list_of_added_constraints: List[Dict[str, Any]] = attributes_from_json["list_of_added_constraints"]
+    # list_of_managed_data_IDs: List[str] = attributes_from_json["list_of_managed_data_IDs"]
+    # list_of_added_constraints: List[Dict[str, Any]] = attributes_from_json["list_of_added_constraints"]
 
     # Initialize blank constraints manager.
     constraints_manager: BinaryConstraintsManager = BinaryConstraintsManager(
-        list_of_data_IDs=list_of_managed_data_IDs,
+        list_of_data_IDs=attributes_from_json["list_of_managed_data_IDs"],
     )
 
     # Load from json.
-    for constraint in list_of_added_constraints:
+    for constraint in attributes_from_json["list_of_added_constraints"]:
         constraints_manager.add_constraint(
             data_ID1=constraint["data_ID1"],
             data_ID2=constraint["data_ID2"],

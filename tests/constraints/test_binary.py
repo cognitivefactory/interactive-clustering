@@ -41,10 +41,10 @@ def test_BinaryConstraintsManager_init():
     assert constraints_manager_2.get_list_of_managed_data_IDs() == ["first", "second", "third"]
 
     # Initialize a binaray constraints manager with duplicates in `list_of_data_IDs`.
-    with pytest.raises(ValueError, match="`list_of_data_IDs`"):
-        BinaryConstraintsManager(
-            list_of_data_IDs=["first", "second", "same", "same"],
-        )
+    constraints_manager_3 = BinaryConstraintsManager(
+        list_of_data_IDs=["first", "second", "same", "same"],
+    )
+    assert constraints_manager_3.get_list_of_managed_data_IDs() == ["first", "second", "same"]
 
 
 # ==============================================================================
