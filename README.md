@@ -73,8 +73,8 @@ With `pip`:
 # install package
 python3 -m pip install cognitivefactory-interactive-clustering
 
-# install spacy language model dependencies (the one you want, with version "^2.3")
-python3 -m spacy download fr_core_news_sm-2.3.0 --direct
+# install spacy language model dependencies (the one you want, with version "3.1.x")
+python3 -m spacy download fr_core_news_md-3.1.0 --direct
 ```
 
 With [`pipx`](https://github.com/pipxproject/pipx):
@@ -85,11 +85,11 @@ python3 -m pip install --user pipx
 # install package
 pipx install --python python3 cognitivefactory-interactive-clustering
 
-# install spacy language model dependencies (the one you want, with version "^2.3")
-python3 -m spacy download fr_core_news_sm-2.3.0 --direct
+# install spacy language model dependencies (the one you want, with version "3.1.x")
+python3 -m spacy download fr_core_news_md-3.1.0 --direct
 ```
 
-_NB_ : Other spaCy language models can be downloaded here : [spaCy - Models & Languages](https://spacy.io/usage/models). Use spacy version `"^2.3"`.
+_NB_ : Other spaCy language models can be downloaded here : [spaCy - Models & Languages](https://spacy.io/usage/models). Use spacy version `"3.1.x"`.
 
 ## <a name="Development"></a> Development
 
