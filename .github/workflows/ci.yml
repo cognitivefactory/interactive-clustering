@@ -49,7 +49,7 @@ jobs:
         key: checks-cache
 
     - name: Resolving dependencies
-      run: pdm lock -v
+      run: pdm lock --verbose
 
     - name: Install dependencies
       run: |
@@ -57,16 +57,16 @@ jobs:
         pip install safety
 
     - name: Check if the documentation builds correctly
-      run: pdm run duty check-docs
+      run: pdm run duty check-docs--verbose
 
     - name: Check the code quality
-      run: pdm run duty check-code-quality
+      run: pdm run duty check-code-quality--verbose
 
     - name: Check if the code is correctly typed
-      run: pdm run duty check-types
+      run: pdm run duty check-types--verbose
 
     - name: Check for vulnerabilities in dependencies
-      run: pdm run duty check-dependencies
+      run: pdm run duty check-dependencies--verbose
 
   tests:
 
@@ -81,7 +81,7 @@ jobs:
         - "3.7"
         - "3.8"
         - "3.9"
-        - "3.10"
+        # - "3.10" # TODO: python 3.10 not compatible...
 
     runs-on: ${{ matrix.os }}
 
@@ -109,10 +109,10 @@ jobs:
         key: tests-cache-${{ runner.os }}-${{ matrix.python-version }}
 
     - name: Install dependencies
-      run: pdm install -G duty -G tests -v
+      run: pdm install -G duty -G tests --verbose
 
     - name: Run the test suite
-      run: pdm run duty test
+      run: pdm run duty test --verbose
 
     - name: Compute tests coverage
-      run: pdm run duty coverage
+      run: pdm run duty coverage --verbose
