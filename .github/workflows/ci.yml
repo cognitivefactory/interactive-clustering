@@ -49,24 +49,24 @@ jobs:
         key: checks-cache
 
     - name: Resolving dependencies
-      run: pdm lock --verbose
+      run: pdm --verbose lock
 
     - name: Install dependencies
       run: |
-        pdm install -G duty -G docs -G quality -G typing
+        pdm --verbose install -G duty -G docs -G quality -G typing
         pip install safety
 
     - name: Check if the documentation builds correctly
-      run: pdm run duty check-docs--verbose
+      run: pdm --verbose run duty check-docs
 
     - name: Check the code quality
-      run: pdm run duty check-code-quality--verbose
+      run: pdm --verbose run duty check-code-quality
 
     - name: Check if the code is correctly typed
-      run: pdm run duty check-types--verbose
+      run: pdm --verbose run duty check-types
 
     - name: Check for vulnerabilities in dependencies
-      run: pdm run duty check-dependencies--verbose
+      run: pdm --verbose run duty check-dependencies
 
   tests:
 
@@ -109,10 +109,10 @@ jobs:
         key: tests-cache-${{ runner.os }}-${{ matrix.python-version }}
 
     - name: Install dependencies
-      run: pdm install -G duty -G tests --verbose
+      run: pdm --verbose install -G duty -G tests
 
     - name: Run the test suite
-      run: pdm run duty test --verbose
+      run: pdm --verbose run duty test
 
     - name: Compute tests coverage
-      run: pdm run duty coverage --verbose
+      run: pdm --verbose run duty coverage
