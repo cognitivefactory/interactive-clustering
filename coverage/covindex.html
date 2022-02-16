@@ -5,75 +5,61 @@
     <title>Coverage report</title>
     <link rel="icon" sizes="32x32" href="favicon_32.png">
     <link rel="stylesheet" href="style.css" type="text/css">
-    <script type="text/javascript" src="jquery.min.js"></script>
-    <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
-    <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
-    <script type="text/javascript" src="jquery.hotkeys.js"></script>
-    <script type="text/javascript" src="coverage_html.js"></script>
-    <script type="text/javascript">
-        jQuery(document).ready(coverage.index_ready);
-    </script>
+    <script type="text/javascript" src="coverage_html.js" defer></script>
 </head>
 <body class="indexfile">
-<div id="header">
+<header>
     <div class="content">
         <h1>Coverage report:
             <span class="pc_cov">100.00%</span>
         </h1>
-        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+        <div id="help_panel_wrapper">
+            <input id="help_panel_state" type="checkbox">
+            <label for="help_panel_state">
+                <img id="keyboard_icon" src="keybd_closed.png" alt="Show/hide keyboard shortcuts" />
+            </label>
+            <div id="help_panel">
+                <p class="legend">Shortcuts on this page</p>
+                <div>
+                    <p class="keyhelp">
+                        <kbd>n</kbd>
+                        <kbd>s</kbd>
+                        <kbd>m</kbd>
+                        <kbd>x</kbd>
+                        <kbd>b</kbd>
+                        <kbd>p</kbd>
+                        <kbd>c</kbd> &nbsp; change column sorting
+                    </p>
+                </div>
+            </div>
+        </div>
         <form id="filter_container">
             <input id="filter" type="text" value="" placeholder="filter..." />
         </form>
     </div>
-</div>
-<div class="help_panel">
-    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
-    <p class="legend">Hot-keys on this page</p>
-    <div>
-    <p class="keyhelp">
-        <span class="key">n</span>
-        <span class="key">s</span>
-        <span class="key">m</span>
-        <span class="key">x</span>
-        <span class="key">b</span>
-        <span class="key">p</span>
-        <span class="key">c</span> &nbsp; change column sorting
-    </p>
-    </div>
-</div>
-<div id="index">
-    <table class="index">
+</header>
+<main id="index">
+    <table class="index" data-sortable>
         <thead>
             <tr class="tablehead" title="Click to sort">
-                <th class="name left headerSortDown shortkey_n">Module</th>
-                <th class="shortkey_s">statements</th>
-                <th class="shortkey_m">missing</th>
-                <th class="shortkey_x">excluded</th>
-                <th class="shortkey_b">branches</th>
-                <th class="shortkey_p">partial</th>
-                <th class="right shortkey_c">coverage</th>
+                <th class="name left" aria-sort="none" data-shortcut="n">Module</th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="s">statements</th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="m">missing</th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="x">excluded</th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="b">branches</th>
+                <th aria-sort="none" data-default-sort-order="descending" data-shortcut="p">partial</th>
+                <th class="right" aria-sort="none" data-shortcut="c">coverage</th>
             </tr>
         </thead>
-        <tfoot>
-            <tr class="total">
-                <td class="name left">Total</td>
-                <td>1652</td>
-                <td>0</td>
-                <td>19</td>
-                <td>348</td>
-                <td>0</td>
-                <td class="right" data-ratio="2000 2000">100.00%</td>
-            </tr>
-        </tfoot>
         <tbody>
             <tr class="file">
                 <td class="name left"><a href="d_d033c55677eb0514_abstract_py.html">src\cognitivefactory\interactive_clustering\clustering\abstract.py</a></td>
                 <td>18</td>
                 <td>0</td>
                 <td>0</td>
-                <td>6</td>
+                <td>8</td>
                 <td>0</td>
-                <td class="right" data-ratio="24 24">100.00%</td>
+                <td class="right" data-ratio="26 26">100.00%</td>
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_d033c55677eb0514_factory_py.html">src\cognitivefactory\interactive_clustering\clustering\factory.py</a></td>
@@ -89,45 +75,45 @@
                 <td>154</td>
                 <td>0</td>
                 <td>12</td>
-                <td>90</td>
+                <td>94</td>
                 <td>0</td>
-                <td class="right" data-ratio="244 244">100.00%</td>
+                <td class="right" data-ratio="248 248">100.00%</td>
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_d033c55677eb0514_kmeans_py.html">src\cognitivefactory\interactive_clustering\clustering\kmeans.py</a></td>
                 <td>87</td>
                 <td>0</td>
                 <td>4</td>
-                <td>50</td>
+                <td>52</td>
                 <td>0</td>
-                <td class="right" data-ratio="137 137">100.00%</td>
+                <td class="right" data-ratio="139 139">100.00%</td>
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_d033c55677eb0514_spectral_py.html">src\cognitivefactory\interactive_clustering\clustering\spectral.py</a></td>
                 <td>51</td>
                 <td>0</td>
                 <td>1</td>
-                <td>24</td>
+                <td>26</td>
                 <td>0</td>
-                <td class="right" data-ratio="75 75">100.00%</td>
+                <td class="right" data-ratio="77 77">100.00%</td>
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_df1ead702276a5fb_abstract_py.html">src\cognitivefactory\interactive_clustering\constraints\abstract.py</a></td>
-                <td>26</td>
+                <td>28</td>
                 <td>0</td>
                 <td>0</td>
+                <td>2</td>
                 <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="26 26">100.00%</td>
+                <td class="right" data-ratio="30 30">100.00%</td>
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_df1ead702276a5fb_binary_py.html">src\cognitivefactory\interactive_clustering\constraints\binary.py</a></td>
-                <td>132</td>
+                <td>145</td>
                 <td>0</td>
                 <td>0</td>
-                <td>82</td>
+                <td>94</td>
                 <td>0</td>
-                <td class="right" data-ratio="214 214">100.00%</td>
+                <td class="right" data-ratio="239 239">100.00%</td>
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_df1ead702276a5fb_factory_py.html">src\cognitivefactory\interactive_clustering\constraints\factory.py</a></td>
@@ -143,18 +129,18 @@
                 <td>8</td>
                 <td>0</td>
                 <td>0</td>
+                <td>2</td>
                 <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="8 8">100.00%</td>
+                <td class="right" data-ratio="10 10">100.00%</td>
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_369b74fc41a2cca8_clusters_based_py.html">src\cognitivefactory\interactive_clustering\sampling\clusters_based.py</a></td>
                 <td>57</td>
                 <td>0</td>
                 <td>0</td>
-                <td>46</td>
+                <td>48</td>
                 <td>0</td>
-                <td class="right" data-ratio="103 103">100.00%</td>
+                <td class="right" data-ratio="105 105">100.00%</td>
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_369b74fc41a2cca8_factory_py.html">src\cognitivefactory\interactive_clustering\sampling\factory.py</a></td>
@@ -193,15 +179,6 @@
                 <td class="right" data-ratio="30 30">100.00%</td>
             </tr>
             <tr class="file">
-                <td class="name left"><a href="d_a8a82bc8b584655b___init___py.html">tests\clustering\__init__.py</a></td>
-                <td>1</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="1 1">100.00%</td>
-            </tr>
-            <tr class="file">
                 <td class="name left"><a href="d_a8a82bc8b584655b_test_abstract_py.html">tests\clustering\test_abstract.py</a></td>
                 <td>8</td>
                 <td>0</td>
@@ -221,12 +198,12 @@
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_a8a82bc8b584655b_test_hierarchical_py.html">tests\clustering\test_hierarchical.py</a></td>
-                <td>197</td>
+                <td>199</td>
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                <td class="right" data-ratio="197 197">100.00%</td>
+                <td class="right" data-ratio="199 199">100.00%</td>
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_a8a82bc8b584655b_test_kmeans_py.html">tests\clustering\test_kmeans.py</a></td>
@@ -256,15 +233,6 @@
                 <td class="right" data-ratio="1 1">100.00%</td>
             </tr>
             <tr class="file">
-                <td class="name left"><a href="d_595793af9f1bd600___init___py.html">tests\constraints\__init__.py</a></td>
-                <td>1</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="1 1">100.00%</td>
-            </tr>
-            <tr class="file">
                 <td class="name left"><a href="d_595793af9f1bd600_test_abstract_py.html">tests\constraints\test_abstract.py</a></td>
                 <td>6</td>
                 <td>0</td>
@@ -275,12 +243,12 @@
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_595793af9f1bd600_test_binary_py.html">tests\constraints\test_binary.py</a></td>
-                <td>227</td>
+                <td>238</td>
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-                <td class="right" data-ratio="227 227">100.00%</td>
+                <td class="right" data-ratio="238 238">100.00%</td>
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_595793af9f1bd600_test_factory_py.html">tests\constraints\test_factory.py</a></td>
@@ -290,15 +258,6 @@
                 <td>0</td>
                 <td>0</td>
                 <td class="right" data-ratio="10 10">100.00%</td>
-            </tr>
-            <tr class="file">
-                <td class="name left"><a href="d_b0711cfa333aafab___init___py.html">tests\sampling\__init__.py</a></td>
-                <td>1</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="1 1">100.00%</td>
             </tr>
             <tr class="file">
                 <td class="name left"><a href="d_b0711cfa333aafab_test_abstract_py.html">tests\sampling\test_abstract.py</a></td>
@@ -409,15 +368,6 @@
                 <td class="right" data-ratio="4 4">100.00%</td>
             </tr>
             <tr class="file">
-                <td class="name left"><a href="d_0199cb44406b0f54___init___py.html">tests\utils\__init__.py</a></td>
-                <td>1</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td class="right" data-ratio="1 1">100.00%</td>
-            </tr>
-            <tr class="file">
                 <td class="name left"><a href="d_0199cb44406b0f54_test_frequency_py.html">tests\utils\test_frequency.py</a></td>
                 <td>6</td>
                 <td>0</td>
@@ -445,18 +395,29 @@
                 <td class="right" data-ratio="27 27">100.00%</td>
             </tr>
         </tbody>
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>1676</td>
+                <td>0</td>
+                <td>19</td>
+                <td>376</td>
+                <td>0</td>
+                <td class="right" data-ratio="2052 2052">100.00%</td>
+            </tr>
+        </tfoot>
     </table>
     <p id="no_rows">
         No items found using the specified filter.
     </p>
-</div>
-<div id="footer">
+</main>
+<footer>
     <div class="content">
         <p>
-            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v6.0.2</a>,
-            created at 2021-10-26 10:04 +0200
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v6.3.1</a>,
+            created at 2022-02-16 13:40 +0100
         </p>
     </div>
-</div>
+</footer>
 </body>
 </html>

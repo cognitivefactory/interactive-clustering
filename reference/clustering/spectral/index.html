@@ -10,11 +10,10 @@
       
       
       
-      
         <link rel="canonical" href="https://cognitivefactory.github.io/interactive-clustering/reference/clustering/spectral/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.11">
     
     
       
@@ -22,10 +21,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.db9e7362.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50e68009.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
         
       
     
@@ -35,9 +34,8 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
-    
     
     
       <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
@@ -46,9 +44,9 @@
     
       <link rel="stylesheet" href="../../../css/mkdocstrings.css">
     
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -65,9 +63,8 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
   
     
-    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
-      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -83,6 +80,7 @@
     <div data-md-component="announce">
       
     </div>
+    
     
       
 
@@ -141,8 +139,7 @@
       <label class="md-header__button md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -174,11 +171,10 @@
     
     
       <div class="md-header__source">
-        
-<a href="https://github.com/cognitivefactory/interactive-clustering/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/cognitivefactory/interactive-clustering/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     cognitivefactory/interactive-clustering
@@ -288,11 +284,10 @@
   </label>
   
     <div class="md-nav__source">
-      
-<a href="https://github.com/cognitivefactory/interactive-clustering/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/cognitivefactory/interactive-clustering/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     cognitivefactory/interactive-clustering
@@ -693,6 +688,7 @@
       </a>
       
         
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -930,6 +926,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -994,14 +991,14 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cognitivefactory/interactive-clustering/edit/master/docs/reference/clustering/spectral.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                  <h1>clustering.spectral</h1>
-                
-                <div class="doc doc-object doc-module">
+<a href="https://github.com/cognitivefactory/interactive-clustering/edit/master/docs/reference/clustering/spectral.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+  <h1>clustering.spectral</h1>
+
+<div class="doc doc-object doc-module">
 
 <a id="cognitivefactory.interactive_clustering.clustering.spectral"></a>
     <div class="doc doc-contents first">
@@ -1097,6 +1094,481 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Computed results&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">dict_of_predicted_clusters</span><span class="p">)</span>
 </code></pre></div>
 
+        <details class="quote">
+          <summary>Source code in <code>interactive_clustering\clustering\spectral.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SpectralConstrainedClustering</span><span class="p">(</span><span class="n">AbstractConstrainedClustering</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class implements the spectral constrained clustering.</span>
+<span class="sd">    It inherits from `AbstractConstrainedClustering`.</span>
+
+<span class="sd">    References:</span>
+<span class="sd">        - Spectral Clustering: `Ng, A. Y., M. I. Jordan, et Y.Weiss (2002). On Spectral Clustering: Analysis and an algorithm. In T. G. Dietterich, S. Becker, et Z. Ghahramani (Eds.), Advances in Neural Information Processing Systems 14. MIT Press.`</span>
+<span class="sd">        - Constrained _&#39;SPEC&#39;_ Spectral Clustering: `Kamvar, S. D., D. Klein, et C. D. Manning (2003). Spectral Learning. Proceedings of the international joint conference on artificial intelligence, 561–566.`</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        ```python</span>
+<span class="sd">        # Import.</span>
+<span class="sd">        from scipy.sparse import csr_matrix</span>
+<span class="sd">        from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager</span>
+<span class="sd">        from cognitivefactory.interactive_clustering.clustering.spectral import SpectralConstrainedClustering</span>
+
+<span class="sd">        # Create an instance of spectral clustering.</span>
+<span class="sd">        clustering_model = SpectralConstrainedClustering(</span>
+<span class="sd">            model=&quot;SPEC&quot;,</span>
+<span class="sd">            random_seed=1,</span>
+<span class="sd">        )</span>
+
+<span class="sd">        # Define vectors.</span>
+<span class="sd">        # NB : use cognitivefactory.interactive_clustering.utils to preprocess and vectorize texts.</span>
+<span class="sd">        vectors = {</span>
+<span class="sd">            &quot;0&quot;: csr_matrix([1.00, 0.00, 0.00, 0.00]),</span>
+<span class="sd">            &quot;1&quot;: csr_matrix([0.95, 0.02, 0.02, 0.01]),</span>
+<span class="sd">            &quot;2&quot;: csr_matrix([0.98, 0.00, 0.02, 0.00]),</span>
+<span class="sd">            &quot;3&quot;: csr_matrix([0.99, 0.00, 0.01, 0.00]),</span>
+<span class="sd">            &quot;4&quot;: csr_matrix([0.60, 0.17, 0.16, 0.07]),</span>
+<span class="sd">            &quot;5&quot;: csr_matrix([0.60, 0.16, 0.17, 0.07]),</span>
+<span class="sd">            &quot;6&quot;: csr_matrix([0.01, 0.01, 0.01, 0.97]),</span>
+<span class="sd">            &quot;7&quot;: csr_matrix([0.00, 0.01, 0.00, 0.99]),</span>
+<span class="sd">            &quot;8&quot;: csr_matrix([0.00, 0.00, 0.00, 1.00]),</span>
+<span class="sd">        }</span>
+
+<span class="sd">        # Define constraints manager.</span>
+<span class="sd">        constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))</span>
+<span class="sd">        constraints_manager.add_constraint(data_ID1=&quot;0&quot;, data_ID2=&quot;1&quot;, constraint_type=&quot;MUST_LINK&quot;)</span>
+<span class="sd">        constraints_manager.add_constraint(data_ID1=&quot;2&quot;, data_ID2=&quot;3&quot;, constraint_type=&quot;MUST_LINK&quot;)</span>
+<span class="sd">        constraints_manager.add_constraint(data_ID1=&quot;4&quot;, data_ID2=&quot;5&quot;, constraint_type=&quot;MUST_LINK&quot;)</span>
+<span class="sd">        constraints_manager.add_constraint(data_ID1=&quot;7&quot;, data_ID2=&quot;8&quot;, constraint_type=&quot;MUST_LINK&quot;)</span>
+<span class="sd">        constraints_manager.add_constraint(data_ID1=&quot;0&quot;, data_ID2=&quot;4&quot;, constraint_type=&quot;CANNOT_LINK&quot;)</span>
+<span class="sd">        constraints_manager.add_constraint(data_ID1=&quot;2&quot;, data_ID2=&quot;4&quot;, constraint_type=&quot;CANNOT_LINK&quot;)</span>
+<span class="sd">        constraints_manager.add_constraint(data_ID1=&quot;4&quot;, data_ID2=&quot;7&quot;, constraint_type=&quot;CANNOT_LINK&quot;)</span>
+
+<span class="sd">        # Run clustering.</span>
+<span class="sd">        dict_of_predicted_clusters = clustering_model(</span>
+<span class="sd">            constraints_manager=constraints_manager,</span>
+<span class="sd">            vectors=vectors,</span>
+<span class="sd">            nb_clusters=3,</span>
+<span class="sd">        )</span>
+
+<span class="sd">        # Print results.</span>
+<span class="sd">        print(&quot;Expected results&quot;, &quot;;&quot;, {&quot;0&quot;: 0, &quot;1&quot;: 0, &quot;2&quot;: 0, &quot;3&quot;: 0, &quot;4&quot;: 1, &quot;5&quot;: 1, &quot;6&quot;: 2, &quot;7&quot;: 2, &quot;8&quot;: 2,})</span>
+<span class="sd">        print(&quot;Computed results&quot;, &quot;:&quot;, dict_of_predicted_clusters)</span>
+<span class="sd">        ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># ==============================================================================</span>
+    <span class="c1"># INITIALIZATION</span>
+    <span class="c1"># ==============================================================================</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;SPEC&quot;</span><span class="p">,</span> <span class="n">nb_components</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The constructor for Spectral Constrainted Clustering class.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model (str, optional): The spectral clustering model to use. Available spectral models are `&quot;SPEC&quot;` and `&quot;CCSR&quot;`. Defaults to `&quot;SPEC&quot;`.</span>
+<span class="sd">            nb_components (Optional[int], optional): The number of eigenvectors to compute in the spectral clustering. If `None`, set the number of components to the number of clusters. Defaults to `None`.</span>
+<span class="sd">            random_seed (Optional[int], optional): The random seed to use to redo the same clustering. Defaults to `None`.</span>
+<span class="sd">            **kargs (dict): Other parameters that can be used in the instantiation.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: if some parameters are incorrectly set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Store `self.model`.</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="o">!=</span> <span class="s2">&quot;SPEC&quot;</span><span class="p">:</span>  <span class="c1"># TODO use `not in {&quot;SPEC&quot;}`. # TODO `&quot;CCSR&quot;` to add after correction.</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `model` &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39; is not implemented.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="c1"># Store `self.nb_components`.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nb_components</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">nb_components</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The `nb_components` &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nb_components</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39; must be `None` or greater than or equal to 2.&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_components</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">nb_components</span>
+
+        <span class="c1"># Store `self.random_seed`.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_seed</span>
+
+        <span class="c1"># Store `self.kargs` for kmeans clustering.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kargs</span> <span class="o">=</span> <span class="n">kargs</span>
+
+        <span class="c1"># Initialize `self.dict_of_predicted_clusters`.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_predicted_clusters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># ==============================================================================</span>
+    <span class="c1"># MAIN - CLUSTER DATA</span>
+    <span class="c1"># ==============================================================================</span>
+    <span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">constraints_manager</span><span class="p">:</span> <span class="n">AbstractConstraintsManager</span><span class="p">,</span>
+        <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">],</span>
+        <span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The main method used to cluster data with the Spectral model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.</span>
+<span class="sd">            vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.</span>
+<span class="sd">            nb_clusters (int): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?</span>
+<span class="sd">            verbose (bool, optional): Enable verbose output. Defaults to `False`.</span>
+<span class="sd">            **kargs (dict): Other parameters that can be used in the clustering.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: if `vectors` and `constraints_manager` are incompatible, or if some parameters are incorrectly set.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1">###</span>
+        <span class="c1">### GET PARAMETERS</span>
+        <span class="c1">###</span>
+
+        <span class="c1"># Store `self.constraints_manager` and `self.list_of_data_IDs`.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">constraints_manager</span><span class="p">,</span> <span class="n">AbstractConstraintsManager</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `constraints_manager` parameter has to be a `AbstractConstraintsManager` type.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">constraints_manager</span><span class="p">:</span> <span class="n">AbstractConstraintsManager</span> <span class="o">=</span> <span class="n">constraints_manager</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_manager</span><span class="o">.</span><span class="n">get_list_of_managed_data_IDs</span><span class="p">()</span>
+
+        <span class="c1"># Store `self.vectors`.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vectors</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `vectors` parameter has to be a `dict` type.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="n">vectors</span>
+
+        <span class="c1"># Store `self.nb_clusters`.</span>
+        <span class="k">if</span> <span class="n">nb_clusters</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `nb_clusters` &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nb_clusters</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39; must be greater than or equal to 2.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">nb_clusters</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span><span class="p">))</span>
+
+        <span class="c1"># Define `self.current_nb_components`.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_nb_components</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nb_components</span>
+            <span class="k">if</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_components</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_components</span><span class="p">))</span>
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Compute `self.pairwise_similarity_matrix`.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pairwise_similarity_matrix</span><span class="p">:</span> <span class="n">csr_matrix</span> <span class="o">=</span> <span class="n">pairwise_kernels</span><span class="p">(</span>
+            <span class="n">X</span><span class="o">=</span><span class="n">vstack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">[</span><span class="n">data_ID</span><span class="p">]</span> <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">constraints_manager</span><span class="o">.</span><span class="n">get_list_of_managed_data_IDs</span><span class="p">()),</span>
+            <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span>  <span class="c1"># TODO get different pairwise_distances config in **kargs</span>
+        <span class="p">)</span>
+
+        <span class="c1">###</span>
+        <span class="c1">### RUN SPECTRAL CONSTRAINED CLUSTERING</span>
+        <span class="c1">###</span>
+
+        <span class="c1"># Initialize `self.dict_of_predicted_clusters`.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_predicted_clusters</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Case of `&quot;CCSR&quot;` spectral clustering.</span>
+        <span class="c1"># TODO Don&#39;t work.</span>
+        <span class="c1">##if self.model == &quot;CCSR&quot;:</span>
+        <span class="c1">##    self.dict_of_predicted_clusters = self.clustering_spectral_model_CCSR(verbose=verbose)</span>
+
+        <span class="c1"># Case of `&quot;SPEC&quot;` spectral clustering.</span>
+        <span class="c1">##### DEFAULTS : if self.model==&quot;SPEC&quot;:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_predicted_clusters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clustering_spectral_model_SPEC</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+
+        <span class="c1">###</span>
+        <span class="c1">### RETURN PREDICTED CLUSTERS</span>
+        <span class="c1">###</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_predicted_clusters</span>
+
+    <span class="c1"># ==============================================================================</span>
+    <span class="c1"># IMPLEMENTATION - SPEC SPECTRAL CLUSTERING</span>
+    <span class="c1"># ==============================================================================</span>
+    <span class="k">def</span> <span class="nf">clustering_spectral_model_SPEC</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Implementation of a simple Spectral clustering algorithm, based affinity matrix modifications.</span>
+
+<span class="sd">        References :</span>
+<span class="sd">            - Constrained _&#39;SPEC&#39;_ Spectral Clustering: `Kamvar, S. D., D. Klein, et C. D. Manning (2003). Spectral Learning. Proceedings of the international joint conference on artificial intelligence, 561–566.`</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            verbose (bool, optional): Enable verbose output. Default is `False`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1">###</span>
+        <span class="c1">### MODIFY CONSTRAINTS MATRIX WITH CONSTRAINTS</span>
+        <span class="c1">###</span>
+
+        <span class="c1"># Modify the similarity over data IDs.</span>
+        <span class="k">for</span> <span class="n">ID1</span><span class="p">,</span> <span class="n">data_ID1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">ID2</span><span class="p">,</span> <span class="n">data_ID2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span><span class="p">):</span>
+
+                <span class="c1"># Symetry is already handled in next instructions.</span>
+                <span class="k">if</span> <span class="n">ID1</span> <span class="o">&gt;</span> <span class="n">ID2</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="c1"># For each `&quot;MUST_LINK&quot;` constraint, set the similarity to 1.0.</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">constraints_manager</span><span class="o">.</span><span class="n">get_inferred_constraint</span><span class="p">(</span>
+                        <span class="n">data_ID1</span><span class="o">=</span><span class="n">data_ID1</span><span class="p">,</span>
+                        <span class="n">data_ID2</span><span class="o">=</span><span class="n">data_ID2</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="o">==</span> <span class="s2">&quot;MUST_LINK&quot;</span>
+                <span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pairwise_similarity_matrix</span><span class="p">[</span><span class="n">ID1</span><span class="p">,</span> <span class="n">ID2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pairwise_similarity_matrix</span><span class="p">[</span><span class="n">ID2</span><span class="p">,</span> <span class="n">ID1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+                <span class="c1"># For each `&quot;CANNOT_LINK&quot;` constraint, set the similarity to 0.0.</span>
+                <span class="k">elif</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">constraints_manager</span><span class="o">.</span><span class="n">get_inferred_constraint</span><span class="p">(</span>
+                        <span class="n">data_ID1</span><span class="o">=</span><span class="n">data_ID1</span><span class="p">,</span>
+                        <span class="n">data_ID2</span><span class="o">=</span><span class="n">data_ID2</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="o">==</span> <span class="s2">&quot;CANNOT_LINK&quot;</span>
+                <span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pairwise_similarity_matrix</span><span class="p">[</span><span class="n">ID1</span><span class="p">,</span> <span class="n">ID2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pairwise_similarity_matrix</span><span class="p">[</span><span class="n">ID2</span><span class="p">,</span> <span class="n">ID1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="c1">###</span>
+        <span class="c1">### RUN SPECTRAL CONSTRAINED CLUSTERING</span>
+        <span class="c1">###     | Define laplacian matrix</span>
+        <span class="c1">###     | Compute eigen vectors</span>
+        <span class="c1">###     | Cluster eigen vectors</span>
+        <span class="c1">###     | Return labels based on eigen vectors clustering</span>
+        <span class="c1">###</span>
+
+        <span class="c1"># Initialize spectral clustering model.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clustering_model</span> <span class="o">=</span> <span class="n">SpectralClustering</span><span class="p">(</span>
+            <span class="n">n_clusters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span><span class="p">,</span>
+            <span class="c1"># n_components=self.current_nb_components, #TODO Add if `scikit-learn&gt;=0.24.1`</span>
+            <span class="n">affinity</span><span class="o">=</span><span class="s2">&quot;precomputed&quot;</span><span class="p">,</span>
+            <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_seed</span><span class="p">,</span>
+            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Run spectral clustering model.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clustering_model</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pairwise_similarity_matrix</span><span class="p">)</span>
+
+        <span class="c1"># Get prediction of spectral clustering model.</span>
+        <span class="n">list_of_clusters</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clustering_model</span><span class="o">.</span><span class="n">labels_</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+        <span class="c1"># Define the dictionary of predicted clusters.</span>
+        <span class="n">predicted_clusters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">data_ID</span><span class="p">:</span> <span class="n">list_of_clusters</span><span class="p">[</span><span class="n">ID</span><span class="p">]</span> <span class="k">for</span> <span class="n">ID</span><span class="p">,</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Rename cluster IDs by order.</span>
+        <span class="n">predicted_clusters</span> <span class="o">=</span> <span class="n">rename_clusters_by_order</span><span class="p">(</span><span class="n">clusters</span><span class="o">=</span><span class="n">predicted_clusters</span><span class="p">)</span>
+
+        <span class="c1"># Return predicted clusters</span>
+        <span class="k">return</span> <span class="n">predicted_clusters</span>
+
+    <span class="c1"># ==============================================================================</span>
+    <span class="c1"># IMPLEMENTATION - CCSR SPECTRAL CLUSTERING</span>
+    <span class="c1"># ==============================================================================</span>
+    <span class="sd">&quot;&quot;&quot; #TODO : do not work. check if 1) wrong implementation ? 2) cvxopt better ?</span>
+<span class="sd">    def clustering_spectral_model_CCSR(</span>
+<span class="sd">        self,</span>
+<span class="sd">        verbose: bool = False,</span>
+<span class="sd">    ) -&gt; Dict[str, int]:</span>
+<span class="sd">        \&quot;&quot;&quot;</span>
+        <span class="n">Implementation</span> <span class="n">of</span> <span class="n">Constrained</span> <span class="n">Clustering</span> <span class="k">with</span> <span class="n">Spectral</span> <span class="n">Regularization</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">based</span> <span class="n">on</span> <span class="n">spectral</span> <span class="n">semidefinite</span> <span class="n">programming</span> <span class="n">interpretation</span><span class="o">.</span>
+        <span class="o">-</span> <span class="n">Source</span> <span class="p">:</span> <span class="err">`</span><span class="n">Li</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span><span class="p">,</span> <span class="n">Liu</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="p">,</span> <span class="o">&amp;</span> <span class="n">Tang</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span> <span class="p">(</span><span class="mi">2009</span><span class="p">)</span><span class="o">.</span> <span class="n">Constrained</span> <span class="n">clustering</span> <span class="n">via</span> <span class="n">spectral</span> <span class="n">regularization</span><span class="o">.</span> <span class="mi">2009</span> <span class="n">IEEE</span> <span class="n">Conference</span> <span class="n">on</span> <span class="n">Computer</span> <span class="n">Vision</span> <span class="ow">and</span> <span class="n">Pattern</span> <span class="n">Recognition</span><span class="o">.</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">doi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mf">10.1109</span><span class="o">/</span><span class="n">cvpr</span><span class="mf">.2009.5206852</span><span class="err">`</span>
+        <span class="o">-</span> <span class="n">MATLAB</span> <span class="n">Implementation</span> <span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">icube</span><span class="o">-</span><span class="n">forge</span><span class="o">.</span><span class="n">unistra</span><span class="o">.</span><span class="n">fr</span><span class="o">/</span><span class="n">lampert</span><span class="o">/</span><span class="n">TSCC</span><span class="o">/-/</span><span class="n">tree</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">methods</span><span class="o">/</span><span class="n">Li09</span>
+        <span class="o">-</span> <span class="n">SOLVERS</span> <span class="n">comparison</span> <span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">PICOS</span><span class="o">/</span>
+        <span class="o">-</span> <span class="n">CVXPY</span> <span class="n">solver</span> <span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">cvxpy</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+
+        <span class="n">Args</span><span class="p">:</span>
+            <span class="n">verbose</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">optional</span><span class="p">):</span> <span class="n">Enable</span> <span class="n">verbose</span> <span class="n">output</span><span class="o">.</span> <span class="n">Defaults</span> <span class="n">to</span> <span class="err">`</span><span class="kc">False</span><span class="err">`</span><span class="o">.</span>
+
+        <span class="n">Returns</span><span class="p">:</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span> <span class="n">A</span> <span class="n">dictionary</span> <span class="n">that</span> <span class="n">contains</span> <span class="n">the</span> <span class="n">predicted</span> <span class="n">cluster</span> <span class="k">for</span> <span class="n">each</span> <span class="n">data</span> <span class="n">ID</span><span class="o">.</span>
+        \<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        ###</span>
+<span class="s2">        ### COMPUTE NORMALIZED LAPLACIAN</span>
+<span class="s2">        ###</span>
+
+<span class="s2">        # Compute the normalized Laplacian.</span>
+<span class="s2">        normalized_laplacian, diagonal = csgraph_laplacian(</span>
+<span class="s2">            csgraph=self.pairwise_similarity_matrix,</span>
+<span class="s2">            normed=True,</span>
+<span class="s2">            return_diag=True</span>
+<span class="s2">        )</span>
+
+<span class="s2">        ###</span>
+<span class="s2">        ### COMPUTE EIGENVECTORS OF LAPLACIAN</span>
+<span class="s2">        ###</span>
+
+<span class="s2">        random.seed(self.random_seed)</span>
+<span class="s2">        v0 = np.random.rand(min(normalized_laplacian.shape))</span>
+
+<span class="s2">        # Compute the largest eigen vectors.</span>
+<span class="s2">        eigen_values, eigen_vectors = eigsh(</span>
+<span class="s2">            A=normalized_laplacian,</span>
+<span class="s2">            which=&quot;SM&quot;,</span>
+<span class="s2">            k=self.current_nb_components + 1,</span>
+<span class="s2">            v0=v0,</span>
+<span class="s2">        )</span>
+
+<span class="s2">        # Ignore eigenvector of eigenvalue 0.</span>
+<span class="s2">        eigen_values = eigen_values[1:]</span>
+<span class="s2">        eigen_vectors = eigen_vectors.T[1:]</span>
+
+<span class="s2">        if verbose:  # pragma: no cover</span>
+<span class="s2">            print(&quot;EIGENVALUES / EIGENVECTORS&quot;)</span>
+
+<span class="s2">            for k in range(len(eigen_values)):</span>
+<span class="s2">                print(&quot;    &quot;, &quot;=============&quot;)</span>
+<span class="s2">                print(&quot;    &quot;, &quot;ID :         &quot;, k)</span>
+<span class="s2">                print(&quot;    &quot;, &quot;VAL :        &quot;, eigen_values[k])</span>
+<span class="s2">                print(&quot;    &quot;, &quot;VEC :        &quot;, eigen_vectors[k])</span>
+
+<span class="s2">        ###</span>
+<span class="s2">        ### FORMALIZE SEMIDEFINITE PROBLEM</span>
+<span class="s2">        ###</span>
+
+<span class="s2">        ## Problem ::</span>
+<span class="s2">        ## Cost function to minimize : L(z) = 1/2 * z.T * B * z + b.T * z + c</span>
+<span class="s2">        ## z : variable to find with the SDP problem</span>
+<span class="s2">        ## z = vec(M)</span>
+<span class="s2">        ## M &gt;&gt; 0 (semi definite positive), i.e. M = M.T, M.shape=(nb_components, nb_components)</span>
+<span class="s2">        ## B = sum ( s_ij s_ij.T )</span>
+<span class="s2">        # for ij in MUST_LINK or i,j in CANNOT_LINK</span>
+<span class="s2">        ## b = -2 * sum ( t_ij * s_ij )</span>
+<span class="s2">        # for ij in MUST_LINK or i,j in CANNOT_LINK</span>
+<span class="s2">        ## c = sum ( t_ij^2 )</span>
+<span class="s2">        # for ij in MUST_LINK or i,j in CANNOT_LINK</span>
+<span class="s2">        ## s_ij = vec( eigen_vector_i.T * eigen_vector_j )</span>
+<span class="s2">        ## t_ij = 1 if MUST_LINK(i,j), 0 if CANNOT_LINK(i,j)</span>
+
+<span class="s2">        # Initialization of SDP variables.</span>
+<span class="s2">        B = np.zeros((self.current_nb_components ** 2, self.current_nb_components ** 2))</span>
+<span class="s2">        b = np.zeros((self.current_nb_components ** 2, 1))</span>
+<span class="s2">        c = 0</span>
+
+<span class="s2">        for ID1, data_ID1 in enumerate(self.list_of_data_IDs):</span>
+<span class="s2">            for ID2, data_ID2 in enumerate(self.list_of_data_IDs):</span>
+
+<span class="s2">                # Get eigenvectors.</span>
+<span class="s2">                eigen_vector_i = np.atleast_2d(eigen_vectors.T[ID1])</span>
+<span class="s2">                eigen_vector_j = np.atleast_2d(eigen_vectors.T[ID2])</span>
+
+<span class="s2">                # Compute eigenvectors similarity.</span>
+<span class="s2">                U = eigen_vector_j.T @ eigen_vector_i</span>
+<span class="s2">                s = np.atleast_2d(U.ravel())</span>
+
+
+<span class="s2">                # For each `&quot;MUST_LINK&quot;` constraint, ....</span>
+<span class="s2">                if self.constraints_manager.get_inferred_constraint(</span>
+<span class="s2">                    data_ID1=data_ID1,</span>
+<span class="s2">                    data_ID2=data_ID2,</span>
+<span class="s2">                ) == &quot;MUST_LINK&quot;:</span>
+
+<span class="s2">                    # Add the value to SDP variables.</span>
+<span class="s2">                    B += s.T * s</span>
+<span class="s2">                    b += - 1 * s.T</span>
+<span class="s2">                    c += 1 * 1</span>
+
+<span class="s2">                # For each `&quot;CANNOT_LINK&quot;` constraint, ....</span>
+<span class="s2">                if self.constraints_manager.get_inferred_constraint(</span>
+<span class="s2">                    data_ID1=data_ID1,</span>
+<span class="s2">                    data_ID2=data_ID2,</span>
+<span class="s2">                ) == &quot;CANNOT_LINK&quot;:</span>
+
+<span class="s2">                    # Add the value to SDP variables.</span>
+<span class="s2">                    B += s.T * s</span>
+<span class="s2">                    b += - 0 * s.T</span>
+<span class="s2">                    c += 0 * 0</span>
+
+<span class="s2">        ###</span>
+<span class="s2">        ### SOLVE SEMIDEFINITE PROBLEM</span>
+<span class="s2">        ###</span>
+
+<span class="s2">        # Create a symetric matrix variable.</span>
+<span class="s2">        M = cp.Variable((self.current_nb_components, self.current_nb_components))</span>
+
+<span class="s2">        ### Define constraints.</span>
+<span class="s2">        SDP_constraints = []</span>
+
+<span class="s2">        # The solution must be positive semidefinite.</span>
+<span class="s2">        SDP_constraints += [M &gt;&gt; 0]</span>
+
+<span class="s2">        # Define cost function to minimize : `( 1/2 * z.T * B * z + b.T * z + c )`.</span>
+<span class="s2">        self.SDP_problem = cp.Problem(</span>
+<span class="s2">            cp.Minimize(</span>
+<span class="s2">                cp.quad_form(cp.atoms.affine.vec.vec(M), B)  # `1/2 * z.T * B * z`.</span>
+<span class="s2">                + b.T @ cp.atoms.affine.vec.vec(M)  # `b.T * z`.</span>
+<span class="s2">                + c  # c</span>
+<span class="s2">            ),</span>
+<span class="s2">            SDP_constraints,</span>
+<span class="s2">        )</span>
+
+<span class="s2">        # Solve the SDP problem.</span>
+<span class="s2">        self.SDP_problem.solve(solver=&quot;MOSEK&quot;)</span>
+<span class="s2">        if verbose:  # pragma: no cover</span>
+<span class="s2">            print(&quot;SEMIDEFINITE PROBLEM&quot;)</span>
+<span class="s2">            print(&quot;    &quot;, &quot;STATUS&quot;, &quot;:&quot;, self.SDP_problem.status)</span>
+<span class="s2">            print(&quot;    &quot;, &quot;COST FUNCTION VALUE&quot;, &quot;:&quot;, self.SDP_problem.value)</span>
+
+<span class="s2">        ###</span>
+<span class="s2">        ### CLUSTER EIGEN VECTORS</span>
+<span class="s2">        ###</span>
+
+<span class="s2">        # Define square root of M, and force sqrtM to be symetric.</span>
+<span class="s2">        sqrtM = sqrtm(M.value).real</span>
+<span class="s2">        sqrtM = (sqrtM + sqrtM.T) / 2</span>
+
+<span class="s2">        # Compute new embeddings for spectral clustering.</span>
+<span class="s2">        new_vectors_to_clusters = eigen_vectors.T @ sqrtM</span>
+
+<span class="s2">        # Initialize kmeans klustering model.</span>
+<span class="s2">        self.clustering_model = KMeans(</span>
+<span class="s2">            n_clusters=self.nb_clusters,</span>
+<span class="s2">            max_iter=10000,</span>
+<span class="s2">            random_state=self.random_seed,</span>
+<span class="s2">        )</span>
+
+<span class="s2">        # Run kmeans clustering model.</span>
+<span class="s2">        self.clustering_model.fit_predict(</span>
+<span class="s2">            X=new_vectors_to_clusters</span>
+<span class="s2">        )</span>
+
+<span class="s2">        # Get prediction of kmeans clustering model.</span>
+<span class="s2">        list_of_clusters: List[int] = self.clustering_model.labels_.tolist()</span>
+
+<span class="s2">        # Define the dictionary of predicted clusters.</span>
+<span class="s2">        predicted_clusters: Dict[str, int] = {</span>
+<span class="s2">            data_ID: list_of_clusters[ID]</span>
+<span class="s2">            for ID, data_ID in enumerate(self.list_of_data_IDs)</span>
+<span class="s2">        }</span>
+
+<span class="s2">        ###</span>
+<span class="s2">        ### RENAME CLUSTERS BY ORDER</span>
+<span class="s2">        ###</span>
+
+<span class="s2">        # Define a map to be able to rename cluster IDs.</span>
+<span class="s2">        mapping_of_old_ID_to_new_ID: Dict[int, int] = </span><span class="si">{}</span><span class="s2"></span>
+<span class="s2">        new_ID: int = 0</span>
+<span class="s2">        for data_ID in self.list_of_data_IDs:</span>
+<span class="s2">            if predicted_clusters[data_ID] not in mapping_of_old_ID_to_new_ID.keys():</span>
+<span class="s2">                mapping_of_old_ID_to_new_ID[predicted_clusters[data_ID]] = new_ID</span>
+<span class="s2">                new_ID += 1</span>
+
+<span class="s2">        # Rename cluster IDs.</span>
+<span class="s2">        predicted_clusters = {</span>
+<span class="s2">            data_ID: mapping_of_old_ID_to_new_ID[predicted_clusters[data_ID]]</span>
+<span class="s2">            for data_ID in self.list_of_data_IDs</span>
+<span class="s2">        }</span>
+
+<span class="s2">        # Return predicted clusters</span>
+<span class="s2">        return predicted_clusters</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+</code></pre></div>
+        </details>
 
 
 
@@ -1357,7 +1829,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     <span class="c1"># Store `self.nb_clusters`.</span>
     <span class="k">if</span> <span class="n">nb_clusters</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `nb_clusters` &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nb_clusters</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39; must be greater than or equal to 2.&quot;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">nb_clusters</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">nb_clusters</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span><span class="p">))</span>
 
     <span class="c1"># Define `self.current_nb_components`.</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">current_nb_components</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="p">(</span>
@@ -1564,11 +2036,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     </div>
 
   </div>
-                
-              
-              
-                
-
 
               
             </article>
@@ -1582,8 +2049,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
@@ -1622,16 +2088,15 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        
-          Made with
-          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-            Material for MkDocs
-          </a>
-        
-        
-      </div>
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -1641,10 +2106,10 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.092fa1f6.min.js"}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.1e84347e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.5a9542cf.min.js"></script>
       
     
   </body>
