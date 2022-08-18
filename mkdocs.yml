@@ -4,6 +4,7 @@ site_url: "https://cognitivefactory.github.io/interactive-clustering"
 repo_url: "https://github.com/cognitivefactory/interactive-clustering"
 repo_name: "cognitivefactory/interactive-clustering"
 site_dir: "site"
+watch: [README.md, CONTRIBUTING.md, CHANGELOG.md, src/cognitivefactory/interactive_clustering]
 
 nav:
 - Home:
@@ -13,25 +14,25 @@ nav:
   - Credits: credits.md
   - License: license.md
 # defer to gen-files + literate-nav
-- Code Reference:
-  - Constraints Managing:
-    - constraints.abstract: reference/constraints/abstract.md
-    - constraints.factory: reference/constraints/factory.md
-    - constraints.binary: reference/constraints/binary.md
-  - Constraints Sampling:
-    - sampling.abstract: reference/sampling/abstract.md
-    - sampling.factory: reference/sampling/factory.md
-    - sampling.clusters_based: reference/sampling/clusters_based.md
-  - Constrained Clustering:
-    - clustering.abstract: reference/clustering/abstract.md
-    - clustering.factory: reference/clustering/factory.md
-    - clustering.kmeans: reference/clustering/kmeans.md
-    - clustering.hierarchical: reference/clustering/hierarchical.md
-    - clustering.spectral: reference/clustering/spectral.md
-  - Utility methods:
-    - utils.preprocessing: reference/utils/preprocessing.md
-    - utils.vectorization: reference/utils/vectorization.md
-    - utils.frequency: reference/utils/frequency.md
+- Code Reference: reference/
+####  - Constraints Managing:
+####    - constraints.abstract: reference/constraints/abstract.md
+####    - constraints.factory: reference/constraints/factory.md
+####    - constraints.binary: reference/constraints/binary.md
+####  - Constraints Sampling:
+####    - sampling.abstract: reference/sampling/abstract.md
+####    - sampling.factory: reference/sampling/factory.md
+####    - sampling.clusters_based: reference/sampling/clusters_based.md
+####  - Constrained Clustering:
+####    - clustering.abstract: reference/clustering/abstract.md
+####    - clustering.factory: reference/clustering/factory.md
+####    - clustering.kmeans: reference/clustering/kmeans.md
+####    - clustering.hierarchical: reference/clustering/hierarchical.md
+####    - clustering.spectral: reference/clustering/spectral.md
+####  - Utility methods:
+####    - utils.preprocessing: reference/utils/preprocessing.md
+####    - utils.vectorization: reference/utils/vectorization.md
+####    - utils.frequency: reference/utils/frequency.md
 - Development:
   - Contributing: contributing.md
   - Code of Conduct: code_of_conduct.md
@@ -41,6 +42,7 @@ theme:
   name: material
   features:
   - navigation.tabs
+  - navigation.tabs.sticky
   - navigation.top
   palette:
   - media: "(prefers-color-scheme: light)"
@@ -64,30 +66,33 @@ extra_css:
 
 markdown_extensions:
 - admonition
+- callouts
 - pymdownx.emoji
 - pymdownx.magiclink
 - pymdownx.snippets:
     check_paths: true
 - pymdownx.superfences
-- pymdownx.tabbed
+- pymdownx.tabbed:
+    alternate_style: true
 - pymdownx.tasklist
 - toc:
     permalink: true
 
 plugins:
 - search
+- markdown-exec
 - gen-files:
     scripts:
-    - docs/gen_credits.py
-    #- docs/gen_ref_nav.py
+    - docs/gen_ref_nav.py
 - literate-nav:
     nav_file: SUMMARY.md
 - coverage
+- section-index
 - mkdocstrings:
     watch:
-    - src/cognitivefactory
-    handlers:
-      python:
-        setup_commands:
-          - import sys
-          - sys.path.append('src')
+    - src/cognitivefactory/
+
+extra:
+  social:
+  - icon: fontawesome/brands/github
+    link: https://github.com/erwanschild

@@ -1,10 +1,10 @@
 # Changes here will be overwritten by Copier
-_commit: 0.4.4
-_src_path: gh:pawamoy/copier-pdm.git
+_commit: 0.9.10
+_src_path: https://github.com/pawamoy/copier-pdm.git
 author_email: erwan.schild@e-i.com
 author_fullname: Erwan Schild
 author_username: erwanschild
-copyright_date: '2021'
+copyright_date: '2022'
 copyright_holder: Erwan Schild
 copyright_holder_email: erwan.schild@e-i.com
 copyright_license: CeCILL-C License v1.0
