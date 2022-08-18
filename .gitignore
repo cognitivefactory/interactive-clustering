@@ -25,6 +25,7 @@ pdm.lock
 poetry.lock
 .pdm.toml
 __pypackages__/
+.data/
 
 # editors (you should put this in your global gitignore though)
 # git config --global core.excludesfile ~/.gitignore_global
