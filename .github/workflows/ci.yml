@@ -60,7 +60,7 @@ jobs:
       run: pdm --verbose run duty check-docs
 
     - name: Check the code quality
-      run: pdm --verbose run duty check-code-quality
+      run: pdm --verbose run duty check-quality
 
     - name: Check if the code is correctly typed
       run: pdm --verbose run duty check-types
@@ -109,6 +109,9 @@ jobs:
           ${{ steps.set_variables.outputs.PIP_CACHE }}
           ${{ steps.set_variables.outputs.PDM_CACHE }}
         key: tests-cache-${{ runner.os }}-${{ matrix.python-version }}
+
+    - name: Resolving dependencies
+      run: pdm --verbose lock
 
     - name: Install dependencies
       run: pdm --verbose install -G duty -G tests
