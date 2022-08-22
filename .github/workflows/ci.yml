@@ -53,8 +53,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pdm --verbose install -G duty -G docs -G quality -G typing
-        pip install safety
+        pdm --verbose install -G duty -G docs -G quality -G typing -G seurity
 
     - name: Check if the documentation builds correctly
       run: pdm --verbose run duty check-docs
@@ -81,9 +80,8 @@ jobs:
         - "3.7"
         - "3.8"
         - "3.9"
-        - "3.10"
-        - "3.11-dev"
-        # - "3.10" # TODO: python 3.10 not compatible...
+        #### - "3.10"  # TODO: numpy==1.21.1 & scipy==1.6.1 & spacy not compatible...
+        #### - "3.11-dev"  # TODO: numpy==1.21.1 & scipy==1.6.1 & spacy not compatible...
 
     runs-on: ${{ matrix.os }}
 
