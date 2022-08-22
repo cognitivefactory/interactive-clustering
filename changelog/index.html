@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://cognitivefactory.github.io/interactive-clustering/changelog/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.11">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
     
     
       
@@ -21,19 +21,21 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.50e68009.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.69437709.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
         
       
+      
     
     
     
       
+        
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -44,7 +46,7 @@
     
       <link rel="stylesheet" href="../css/mkdocstrings.css">
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,16 +86,18 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Interactive Clustering" class="md-header__button md-logo" aria-label="Interactive Clustering" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -119,7 +123,7 @@
           <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
             </label>
           
         
@@ -128,7 +132,7 @@
           <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
             <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
             </label>
           
         
@@ -137,7 +141,7 @@
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -145,13 +149,13 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -171,10 +175,10 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/cognitivefactory/interactive-clustering/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/cognitivefactory/interactive-clustering" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     cognitivefactory/interactive-clustering
@@ -184,14 +188,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -228,7 +226,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../reference/constraints/abstract/" class="md-tabs__link">
+      <a href="../reference/cognitivefactory/interactive_clustering/" class="md-tabs__link">
         Code Reference
       </a>
     </li>
@@ -256,7 +254,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -277,17 +281,17 @@
     <a href=".." title="Interactive Clustering" class="md-nav__button md-logo" aria-label="Interactive Clustering" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     Interactive Clustering
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/cognitivefactory/interactive-clustering/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/cognitivefactory/interactive-clustering" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     cognitivefactory/interactive-clustering
@@ -395,6 +399,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#052-2022-08-22" class="md-nav__link">
+    0.5.2 - 2022-08-22
+  </a>
+  
+    <nav class="md-nav" aria-label="0.5.2 - 2022-08-22">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-refactoring" class="md-nav__link">
+    Code Refactoring
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#051-2022-02-16" class="md-nav__link">
     0.5.1 - 2022-02-16
   </a>
@@ -410,7 +434,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring" class="md-nav__link">
+  <a href="#code-refactoring_1" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -437,7 +461,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_1" class="md-nav__link">
+  <a href="#code-refactoring_2" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -471,7 +495,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_2" class="md-nav__link">
+  <a href="#code-refactoring_3" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -491,7 +515,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_3" class="md-nav__link">
+  <a href="#code-refactoring_4" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -518,7 +542,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_4" class="md-nav__link">
+  <a href="#code-refactoring_5" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -572,7 +596,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_5" class="md-nav__link">
+  <a href="#code-refactoring_6" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -599,7 +623,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_6" class="md-nav__link">
+  <a href="#code-refactoring_7" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -626,7 +650,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_7" class="md-nav__link">
+  <a href="#code-refactoring_8" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -660,7 +684,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_8" class="md-nav__link">
+  <a href="#code-refactoring_9" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -764,14 +788,78 @@
       
       
         <label class="md-nav__link" for="__nav_2_1">
-          Constraints Managing
+          cognitivefactory
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Constraints Managing" data-md-level="2">
+      <nav class="md-nav" aria-label="cognitivefactory" data-md-level="2">
         <label class="md-nav__title" for="__nav_2_1">
           <span class="md-nav__icon md-icon"></span>
-          Constraints Managing
+          cognitivefactory
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1" type="checkbox" id="__nav_2_1_1" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../reference/cognitivefactory/interactive_clustering/">interactive_clustering</a>
+          
+            <label for="__nav_2_1_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="interactive_clustering" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          interactive_clustering
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1_1" type="checkbox" id="__nav_2_1_1_1" >
+      
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../reference/cognitivefactory/interactive_clustering/clustering/">clustering</a>
+          
+            <label for="__nav_2_1_1_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="clustering" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_1_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          clustering
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -781,8 +869,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/constraints/abstract/" class="md-nav__link">
-        constraints.abstract
+      <a href="../reference/cognitivefactory/interactive_clustering/clustering/abstract/" class="md-nav__link">
+        abstract
       </a>
     </li>
   
@@ -795,8 +883,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/constraints/factory/" class="md-nav__link">
-        constraints.factory
+      <a href="../reference/cognitivefactory/interactive_clustering/clustering/factory/" class="md-nav__link">
+        factory
       </a>
     </li>
   
@@ -809,8 +897,36 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/constraints/binary/" class="md-nav__link">
-        constraints.binary
+      <a href="../reference/cognitivefactory/interactive_clustering/clustering/hierarchical/" class="md-nav__link">
+        hierarchical
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/cognitivefactory/interactive_clustering/clustering/kmeans/" class="md-nav__link">
+        kmeans
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/cognitivefactory/interactive_clustering/clustering/spectral/" class="md-nav__link">
+        spectral
       </a>
     </li>
   
@@ -833,20 +949,26 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1_2" type="checkbox" id="__nav_2_1_1_2" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_2_2">
-          Constraints Sampling
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../reference/cognitivefactory/interactive_clustering/constraints/">constraints</a>
+          
+            <label for="__nav_2_1_1_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="constraints" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_1_1_2">
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Constraints Sampling" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_2">
-          <span class="md-nav__icon md-icon"></span>
-          Constraints Sampling
+          constraints
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -856,8 +978,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/sampling/abstract/" class="md-nav__link">
-        sampling.abstract
+      <a href="../reference/cognitivefactory/interactive_clustering/constraints/abstract/" class="md-nav__link">
+        abstract
       </a>
     </li>
   
@@ -870,8 +992,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/sampling/factory/" class="md-nav__link">
-        sampling.factory
+      <a href="../reference/cognitivefactory/interactive_clustering/constraints/binary/" class="md-nav__link">
+        binary
       </a>
     </li>
   
@@ -884,8 +1006,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/sampling/clusters_based/" class="md-nav__link">
-        sampling.clusters_based
+      <a href="../reference/cognitivefactory/interactive_clustering/constraints/factory/" class="md-nav__link">
+        factory
       </a>
     </li>
   
@@ -908,20 +1030,26 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1_3" type="checkbox" id="__nav_2_1_1_3" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_2_3">
-          Constrained Clustering
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../reference/cognitivefactory/interactive_clustering/sampling/">sampling</a>
+          
+            <label for="__nav_2_1_1_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="sampling" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_1_1_3">
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Constrained Clustering" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
-          Constrained Clustering
+          sampling
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -931,8 +1059,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/clustering/abstract/" class="md-nav__link">
-        clustering.abstract
+      <a href="../reference/cognitivefactory/interactive_clustering/sampling/abstract/" class="md-nav__link">
+        abstract
       </a>
     </li>
   
@@ -945,8 +1073,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/clustering/factory/" class="md-nav__link">
-        clustering.factory
+      <a href="../reference/cognitivefactory/interactive_clustering/sampling/clusters_based/" class="md-nav__link">
+        clusters_based
       </a>
     </li>
   
@@ -959,36 +1087,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/clustering/kmeans/" class="md-nav__link">
-        clustering.kmeans
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/clustering/hierarchical/" class="md-nav__link">
-        clustering.hierarchical
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/clustering/spectral/" class="md-nav__link">
-        clustering.spectral
+      <a href="../reference/cognitivefactory/interactive_clustering/sampling/factory/" class="md-nav__link">
+        factory
       </a>
     </li>
   
@@ -1011,20 +1111,26 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1_4" type="checkbox" id="__nav_2_1_1_4" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_2_4">
-          Utility methods
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../reference/cognitivefactory/interactive_clustering/utils/">utils</a>
+          
+            <label for="__nav_2_1_1_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="utils" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_1_1_4">
           <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Utility methods" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_4">
-          <span class="md-nav__icon md-icon"></span>
-          Utility methods
+          utils
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1034,8 +1140,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/utils/preprocessing/" class="md-nav__link">
-        utils.preprocessing
+      <a href="../reference/cognitivefactory/interactive_clustering/utils/frequency/" class="md-nav__link">
+        frequency
       </a>
     </li>
   
@@ -1048,8 +1154,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/utils/vectorization/" class="md-nav__link">
-        utils.vectorization
+      <a href="../reference/cognitivefactory/interactive_clustering/utils/preprocessing/" class="md-nav__link">
+        preprocessing
       </a>
     </li>
   
@@ -1062,9 +1168,23 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/utils/frequency/" class="md-nav__link">
-        utils.frequency
+      <a href="../reference/cognitivefactory/interactive_clustering/utils/vectorization/" class="md-nav__link">
+        vectorization
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1186,6 +1306,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#052-2022-08-22" class="md-nav__link">
+    0.5.2 - 2022-08-22
+  </a>
+  
+    <nav class="md-nav" aria-label="0.5.2 - 2022-08-22">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-refactoring" class="md-nav__link">
+    Code Refactoring
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#051-2022-02-16" class="md-nav__link">
     0.5.1 - 2022-02-16
   </a>
@@ -1201,7 +1341,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring" class="md-nav__link">
+  <a href="#code-refactoring_1" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -1228,7 +1368,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_1" class="md-nav__link">
+  <a href="#code-refactoring_2" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -1262,7 +1402,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_2" class="md-nav__link">
+  <a href="#code-refactoring_3" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -1282,7 +1422,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_3" class="md-nav__link">
+  <a href="#code-refactoring_4" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -1309,7 +1449,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_4" class="md-nav__link">
+  <a href="#code-refactoring_5" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -1363,7 +1503,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_5" class="md-nav__link">
+  <a href="#code-refactoring_6" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -1390,7 +1530,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_6" class="md-nav__link">
+  <a href="#code-refactoring_7" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -1417,7 +1557,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_7" class="md-nav__link">
+  <a href="#code-refactoring_8" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -1451,7 +1591,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#code-refactoring_8" class="md-nav__link">
+  <a href="#code-refactoring_9" class="md-nav__link">
     Code Refactoring
   </a>
   
@@ -1481,9 +1621,10 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/cognitivefactory/interactive-clustering/edit/master/docs/changelog.md" title="Edit this page" class="md-content__button md-icon">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-</a>
+  <a href="https://github.com/cognitivefactory/interactive-clustering/edit/master/docs/changelog.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
 
 
 <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
@@ -1491,13 +1632,19 @@
 <p>The format is based on <a href="http://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
 and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <!-- insertion marker -->
+<h2 id="052-2022-08-22"><a href="https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.5.2">0.5.2</a> - 2022-08-22<a class="headerlink" href="#052-2022-08-22" title="Permanent link">&para;</a></h2>
+<p><small><a href="https://github.com/cognitivefactory/interactive-clustering/compare/0.5.1...0.5.2">Compare with 0.5.1</a></small></p>
+<h3 id="code-refactoring">Code Refactoring<a class="headerlink" href="#code-refactoring" title="Permanent link">&para;</a></h3>
+<ul>
+<li>update copier-pdm template (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/bd937640d388ef8345937c15ea2505b881e38ce8">bd93764</a> by SCHILD Erwan).</li>
+</ul>
 <h2 id="051-2022-02-16"><a href="https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.5.1">0.5.1</a> - 2022-02-16<a class="headerlink" href="#051-2022-02-16" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/cognitivefactory/interactive-clustering/compare/0.5.0...0.5.1">Compare with 0.5.0</a></small></p>
 <h3 id="bug-fixes">Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">&para;</a></h3>
 <ul>
 <li>update constraints manager serialization (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/61115428e949ee1f51e3d9d2a3d42c6a0ef4c48b">6111542</a> by Erwan Schild).</li>
 </ul>
-<h3 id="code-refactoring">Code Refactoring<a class="headerlink" href="#code-refactoring" title="Permanent link">&para;</a></h3>
+<h3 id="code-refactoring_1">Code Refactoring<a class="headerlink" href="#code-refactoring_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>speed up constraints transitivity (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/5e255eff67f3c8371343bf15c14bdda7079ddc69">5e255ef</a> by Erwan Schild).</li>
 <li>update spacy usage (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/2d0528919da69535a845820a33999f6e42c2036c">2d05289</a> by Erwan Schild).</li>
@@ -1509,7 +1656,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>force nb_cluster to be smaller than dataset size (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/981fd0fb6486da97579fd094bae6b6bec2d2f3cc">981fd0f</a> by Erwan Schild).</li>
 <li>correct kmeans centroid computation for deleted data ids (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/b0cd1a081112f40e7a18c18ba48141ddc6f9c2b1">b0cd1a0</a> by Erwan Schild).</li>
 </ul>
-<h3 id="code-refactoring_1">Code Refactoring<a class="headerlink" href="#code-refactoring_1" title="Permanent link">&para;</a></h3>
+<h3 id="code-refactoring_2">Code Refactoring<a class="headerlink" href="#code-refactoring_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>update to python 3.7 (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/f3639985f074db26df56702d5584b60b63b20943">f363998</a> by Erwan Schild).</li>
 <li>make format (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/f3639985f074db26df56702d5584b60b63b20943">f363998</a> by Erwan Schild).</li>
@@ -1524,14 +1671,14 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li>force csr_matrix for spacy vectors in order to perform vstack (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/be7b75ca9678d068777de60efc4d2ef4aaa3d11f">be7b75c</a> by Erwan Schild).</li>
 </ul>
-<h3 id="code-refactoring_2">Code Refactoring<a class="headerlink" href="#code-refactoring_2" title="Permanent link">&para;</a></h3>
+<h3 id="code-refactoring_3">Code Refactoring<a class="headerlink" href="#code-refactoring_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>refactor code and force sparse matrix (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/63e94a2ff6d0d270d9de3267d2eea2d82aa5b117">63e94a2</a> by Erwan Schild).</li>
 <li>speed up spectral clustering (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/711cf4db3173f0c7fa1f93a464a590176db3c2ea">711cf4d</a> by Erwan Schild).</li>
 </ul>
 <h2 id="041-2021-10-19"><a href="https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.4.1">0.4.1</a> - 2021-10-19<a class="headerlink" href="#041-2021-10-19" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/cognitivefactory/interactive-clustering/compare/0.4.0...0.4.1">Compare with 0.4.0</a></small></p>
-<h3 id="code-refactoring_3">Code Refactoring<a class="headerlink" href="#code-refactoring_3" title="Permanent link">&para;</a></h3>
+<h3 id="code-refactoring_4">Code Refactoring<a class="headerlink" href="#code-refactoring_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>speed up clustering and refactor code (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/93ada28045d8d386ec5756abe6d97a22ab973716">93ada28</a> by Erwan Schild).</li>
 </ul>
@@ -1544,7 +1691,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>speed up computation of sampling.clusters_based.sampling for distance restrictions (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/5ab68219bd41ff09581be65e6505a7f6d77a02b4">5ab6821</a> by Erwan Schild).</li>
 <li>speed up computation of constraints.binary.get_min_and_max_number_of_clusters (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/1e50f7c32b2353c62102d0cbd19748991845b408">1e50f7c</a> by Erwan Schild).</li>
 </ul>
-<h3 id="code-refactoring_4">Code Refactoring<a class="headerlink" href="#code-refactoring_4" title="Permanent link">&para;</a></h3>
+<h3 id="code-refactoring_5">Code Refactoring<a class="headerlink" href="#code-refactoring_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li>update template with copier update (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/e0a7c776426694d618a1c7eba518fba9d861f02e">e0a7c77</a> by Erwan Schild).</li>
 <li>fix black dependenciy installation (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/eef88c598757edb9c90b8fbe104b059632cce80e">eef88c5</a> by Erwan Schild).</li>
@@ -1566,7 +1713,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li>correct constraints transitivity inconsistencies in BinaryConstraintsManager.add_constraint (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/98f162e5785df13d99e25f757be4988e5fab757c">98f162e</a> by Erwan Schild).</li>
 </ul>
-<h3 id="code-refactoring_5">Code Refactoring<a class="headerlink" href="#code-refactoring_5" title="Permanent link">&para;</a></h3>
+<h3 id="code-refactoring_6">Code Refactoring<a class="headerlink" href="#code-refactoring_6" title="Permanent link">&para;</a></h3>
 <ul>
 <li>fix code quality errors (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/02c03ee4fb1cf50a28c896c93a43ee00708a2d38">02c03ee</a> by Erwan Schild).</li>
 <li>update exception message (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/2003a1e782a2885ae45419577aa9d599f08876a3">2003a1e</a> by Erwan Schild).</li>
@@ -1577,7 +1724,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li>change constraints storage from sorted lists to sets (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/47d35284deda6ae2e26b4fb87170d96a599fcba3">47d3528</a> by Erwan Schild).</li>
 </ul>
-<h3 id="code-refactoring_6">Code Refactoring<a class="headerlink" href="#code-refactoring_6" title="Permanent link">&para;</a></h3>
+<h3 id="code-refactoring_7">Code Refactoring<a class="headerlink" href="#code-refactoring_7" title="Permanent link">&para;</a></h3>
 <ul>
 <li>delete utils.checking (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/a9a1f50ba0d101e5a212e825f907a567f64e05f7">a9a1f50</a> by Erwan Schild).</li>
 <li>remove checks and force usage of constraints_manager (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/4cdb0bbd11fdababb35fc4a48612897274bc69b8">4cdb0bb</a> by Erwan Schild).</li>
@@ -1588,7 +1735,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <p><small><a href="https://github.com/cognitivefactory/interactive-clustering/compare/0.1.2...0.1.3">Compare with 0.1.2</a></small></p>
 <h2 id="012-2021-05-19"><a href="https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.1.2">0.1.2</a> - 2021-05-19<a class="headerlink" href="#012-2021-05-19" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/cognitivefactory/interactive-clustering/compare/0.1.1...0.1.2">Compare with 0.1.1</a></small></p>
-<h3 id="code-refactoring_7">Code Refactoring<a class="headerlink" href="#code-refactoring_7" title="Permanent link">&para;</a></h3>
+<h3 id="code-refactoring_8">Code Refactoring<a class="headerlink" href="#code-refactoring_8" title="Permanent link">&para;</a></h3>
 <ul>
 <li>correct format and tests (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/e3245f33bf09680d926bdd890c162f6e4df1ab4d">e3245f3</a> by Erwan SCHILD).</li>
 </ul>
@@ -1601,7 +1748,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>fix encoding error on fr_core_news_sm-2.3.0/meta.json ? (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/98acb42d3fc0e06fe6687d28f3f4b531243a88ab">98acb42</a> by Erwan SCHILD).</li>
 <li>correct installation sources (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/de4c727798f174fbd0c87ae6f6204b09a8d0a131">de4c727</a> by Erwan SCHILD).</li>
 </ul>
-<h3 id="code-refactoring_8">Code Refactoring<a class="headerlink" href="#code-refactoring_8" title="Permanent link">&para;</a></h3>
+<h3 id="code-refactoring_9">Code Refactoring<a class="headerlink" href="#code-refactoring_9" title="Permanent link">&para;</a></h3>
 <ul>
 <li>order import and update documentation (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/70e8780749f9a5b8cc0ae261c5f33e4712480dad">70e8780</a> by Erwan SCHILD).</li>
 <li>remove local fr_core_news_sm model (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/1f9da8fee5fc9728114e19753a54a7e4edacc25d">1f9da8f</a> by Erwan SCHILD).</li>
@@ -1612,13 +1759,17 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>implement Interactive Clustering (<a href="https://github.com/cognitivefactory/interactive-clustering/commit/d678d87d0d485cb7b977bb229b9bb8c6fc590c66">d678d87</a> by Erwan SCHILD).</li>
 </ul>
 
+
+
+
               
             </article>
+            
           </div>
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
             Back to top
           </a>
         
@@ -1626,12 +1777,13 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
         <a href="../usage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Usage" rel="prev">
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
           <div class="md-footer__title">
             <div class="md-ellipsis">
@@ -1655,7 +1807,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
             </div>
           </div>
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
           </div>
         </a>
       
@@ -1673,6 +1825,19 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
   
 </div>
       
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/erwanschild" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
     </div>
   </div>
 </footer>
@@ -1681,10 +1846,11 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.092fa1f6.min.js"}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.5a9542cf.min.js"></script>
+      <script src="../assets/javascripts/bundle.9c69f0bc.min.js"></script>
       
     
   </body>
