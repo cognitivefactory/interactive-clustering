@@ -53,7 +53,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pdm --verbose install -G duty -G docs -G quality -G typing -G seurity
+        pdm --verbose install -G duty -G docs -G quality -G typing -G security
 
     - name: Check if the documentation builds correctly
       run: pdm --verbose run duty check-docs
