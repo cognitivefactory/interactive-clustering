@@ -10,39 +10,30 @@ release_args = version
 test_args = match
 
 BASIC_DUTIES = \
-	changelog \
-	check-dependencies \
 	clean \
-	coverage \
 	docs \
-	docs-deploy \
-	docs-regen \
 	docs-serve \
-	format \
+	docs-deploy \
+	changelog \
 	release
 
 QUALITY_DUTIES = \
+	format \
+	check \
 	check-quality \
 	check-docs \
 	check-types \
-	test
+	check-dependencies \
+	test \
+	coverage
 
 .PHONY: help
 help:
 	@$(DUTY) --list
 
-.PHONY: lock
-lock:
-	@pdm lock
-
 .PHONY: setup
 setup:
 	@bash scripts/setup.sh
-
-.PHONY: check
-check:
-	@bash scripts/multirun.sh duty check-quality check-types check-docs
-	@$(DUTY) check-dependencies
 
 .PHONY: $(BASIC_DUTIES)
 $(BASIC_DUTIES):
