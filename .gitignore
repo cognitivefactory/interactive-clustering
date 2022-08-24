@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 .venv/
 
+# notebook
+*.ipynb_checkpoints
+
 # build
 *.egg-info/
 dist/
