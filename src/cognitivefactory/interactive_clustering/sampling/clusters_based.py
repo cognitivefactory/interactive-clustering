@@ -37,8 +37,8 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
     Examples:
         ```python
         # Import.
-        from r_wnlp.interactive_clustering.constraints.binary import BinaryConstraintsManager
-        from r_wnlp.interactive_clustering.sampling.clusters_based import ClustersBasedConstraintsSampling
+        from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
+        from cognitivefactory.interactive_clustering.sampling.clusters_based import ClustersBasedConstraintsSampling
 
         # Create an instance of random sampling.
         sampler = ClustersBasedConstraintsSampling(random_seed=1)
