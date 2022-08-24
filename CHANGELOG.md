@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 <!-- insertion marker -->
+## [0.5.3](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.5.3) - 2022-08-24
+
+<small>[Compare with 0.5.2](https://github.com/cognitivefactory/interactive-clustering/compare/0.5.2...0.5.3)</small>
+
+### Build
+- refactor scripts and configs ([1f56aeb](https://github.com/cognitivefactory/interactive-clustering/commit/1f56aeb6c13eaad67c520bf67272078bdc4a63c2) by SCHILD Erwan).
+
+
 ## [0.5.2](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.5.2) - 2022-08-22
 
 <small>[Compare with 0.5.1](https://github.com/cognitivefactory/interactive-clustering/compare/0.5.1...0.5.2)</small>
@@ -86,7 +94,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <small>[Compare with 0.2.1](https://github.com/cognitivefactory/interactive-clustering/compare/0.2.1...0.3.0)</small>
 
 ### Features
-- update Constraints Sampling with clusters/distance/known_constraints restrictions ([34c5747](https://gitlab-si.cloud.cm-cic.fr/h/h3/h330/wnlp/interactive-clustering/commit/34c57475c9b6e20cc8bbdcefe9b58b0d962f0042) by Erwan Schild).
+- update Constraints Sampling with clusters/distance/known_constraints restrictions ([34c5747](https://github.com/cognitivefactory/interactive-clustering/commit/34c57475c9b6e20cc8bbdcefe9b58b0d962f0042) by Erwan Schild).
 
 
 ## [0.2.1](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.2.1) - 2021-09-20
