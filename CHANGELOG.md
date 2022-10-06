@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 <!-- insertion marker -->
+## [0.5.4](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.5.4) - 2022-10-06
+
+<small>[Compare with 0.5.3](https://github.com/cognitivefactory/interactive-clustering/compare/0.5.3...0.5.4)</small>
+
+### Code Refactoring
+- fix F541 in duties.py ([79a14b8](https://github.com/cognitivefactory/interactive-clustering/commit/79a14b8c2e71d0076c237fea8a7ad4e8fbbc3818) by SCHILD Erwan).
+- update copier template to 0.10.2 ([fe282d1](https://github.com/cognitivefactory/interactive-clustering/commit/fe282d14476bb3716d39f346a92f04af966245c2) by SCHILD Erwan).
+
+
 ## [0.5.3](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.5.3) - 2022-08-25
 
 <small>[Compare with 0.5.2](https://github.com/cognitivefactory/interactive-clustering/compare/0.5.2...0.5.3)</small>
