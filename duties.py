@@ -96,45 +96,6 @@ def check_quality(ctx, files=PY_SRC):
 
 
 @duty
-def check_dependencies(ctx):
-    """
-    Check for vulnerabilities in dependencies.
-
-    Arguments:
-        ctx: The context instance (passed automatically).
-    """
-    # undo possible patching
-    # see https://github.com/pyupio/safety/issues/348
-    for module in sys.modules:  # noqa: WPS528
-        if module.startswith("safety.") or module == "safety":
-            del sys.modules[module]  # noqa: WPS420
-
-    importlib.invalidate_caches()
-
-    # reload original, unpatched safety
-    from safety.formatter import report
-    from safety.safety import check as safety_check
-    from safety.util import read_requirements
-
-    # retrieve the list of dependencies
-    requirements = ctx.run(
-        ["pdm", "export", "-f", "requirements", "--without-hashes"],
-        title="Exporting dependencies as requirements",
-        allow_overrides=False,
-    )
-
-    # check using safety as a library
-    def safety():  # noqa: WPS430
-        packages = list(read_requirements(StringIO(requirements)))
-        vulns = safety_check(packages=packages, ignore_ids="", key="", db_mirror="", cached=False, proxy={})
-        output_report = report(vulns=vulns, full=True, checked_packages=len(packages))
-        if vulns:
-            print(output_report)
-
-    ctx.run(safety, title="Checking dependencies")
-
-
-@duty
 def check_docs(ctx):
     """
     Check if the documentation builds correctly.
@@ -157,10 +118,59 @@ def check_types(ctx):  # noqa: WPS231
     """
     os.environ["MYPYPATH"] = "src"
     ctx.run(
-        "mypy --config-file config/mypy.ini src --namespace-packages --explicit-package-bases",
+        f"mypy --config-file config/mypy.ini src --namespace-packages --explicit-package-bases",
         title="Type-checking",
         pty=PTY,
     )
+
+
+@duty
+def check_dependencies(ctx):
+    """
+    Check for vulnerabilities in dependencies.
+
+    Arguments:
+        ctx: The context instance (passed automatically).
+    """
+    # undo possible patching
+    # see https://github.com/pyupio/safety/issues/348
+    for module in sys.modules:  # noqa: WPS528
+        if module.startswith("safety.") or module == "safety":
+            del sys.modules[module]  # noqa: WPS420
+
+    importlib.invalidate_caches()
+
+    # reload original, unpatched safety
+    from safety.formatter import SafetyFormatter
+    from safety.safety import calculate_remediations
+    from safety.safety import check as safety_check
+    from safety.util import read_requirements
+
+    # retrieve the list of dependencies
+    requirements = ctx.run(
+        ["pdm", "export", "-f", "requirements", "--without-hashes"],
+        title="Exporting dependencies as requirements",
+        allow_overrides=False,
+    )
+
+    # check using safety as a library
+    def safety():  # noqa: WPS430
+        packages = list(read_requirements(StringIO(requirements)))
+        vulns, db_full = safety_check(packages=packages, ignore_vulns="")
+        remediations = calculate_remediations(vulns, db_full)
+        output_report = SafetyFormatter("text").render_vulnerabilities(
+            announcements=[],
+            vulnerabilities=vulns,
+            remediations=remediations,
+            full=True,
+            packages=packages,
+        )
+        if vulns:
+            print(output_report)
+            return False
+        return True
+
+    ctx.run(safety, title="Checking dependencies")
 
 
 @duty

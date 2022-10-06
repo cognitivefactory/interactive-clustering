@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier
-_commit: 0.9.10
+_commit: 0.10.2
 _src_path: https://github.com/pawamoy/copier-pdm.git
 author_email: erwan.schild@e-i.com
 author_fullname: Erwan Schild
@@ -17,3 +17,4 @@ repository_name: interactive-clustering
 repository_namespace: cognitivefactory
 repository_provider: github.com
 use_precommit: false
+

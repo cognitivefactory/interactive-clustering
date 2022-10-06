@@ -6,6 +6,9 @@ on:
       - main
       - develop
       - sdia2022
+      - sdia2022-david
+      - sdia2022-esther
+      - sdia2022-marc
   pull_request:
     branches:
       - main
