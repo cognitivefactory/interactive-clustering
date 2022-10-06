@@ -118,7 +118,7 @@ def check_types(ctx):  # noqa: WPS231
     """
     os.environ["MYPYPATH"] = "src"
     ctx.run(
-        f"mypy --config-file config/mypy.ini src --namespace-packages --explicit-package-bases",
+        "mypy --config-file config/mypy.ini src --namespace-packages --explicit-package-bases",
         title="Type-checking",
         pty=PTY,
     )
