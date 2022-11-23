@@ -191,10 +191,11 @@ def _affinity_propagation_constrained(
 
     A = np.zeros((n_similarities, n_similarities))
     R = np.zeros((n_similarities, n_similarities))  # Initialize messages
-    # E-I: CL constraints
-    Q1 = np.zeros((n_similarities, n_similarities, len(cannot_links))) # qj (m, mn) [m,j,n]
-    Q2 = np.zeros((n_similarities, n_similarities, len(cannot_links))) # qj (mn, m) [m,j,n]
-    Sp = np.zeros((n_similarities, n_similarities)) # Ŝ
+    if not absolute_must_links:
+        # E-I: CL constraints
+        Q1 = np.zeros((n_similarities, n_similarities, len(cannot_links))) # qj (m, mn) [m,j,n]
+        Q2 = np.zeros((n_similarities, n_similarities, len(cannot_links))) # qj (mn, m) [m,j,n]
+        Sp = np.zeros((n_similarities, n_similarities)) # Ŝ
 
     # Intermediate results
     tmp = np.zeros((n_similarities, n_similarities))
