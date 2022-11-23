@@ -7,7 +7,7 @@ import re
 import numpy as np
 import warnings
 
-from typing import Dict, List, Set, Tuple
+from typing import Dict, List, Set, Tuple, Union, Any
 
 from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
 from sklearn.metrics import pairwise_distances  # To compute distance.
@@ -359,12 +359,16 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
 
     def __init__(
         self,
+        preference: Union[float, Any] = None,
         max_iteration: int = 200,
-        convergence_iter: int = 15
+        convergence_iter: int = 15,
+        random_state = None
     ) -> None:
         """
         La doc...
         """
+
+        self.preference = preference
 
         # Store 'self.max_iteration`.
         if max_iteration < 1:
@@ -372,6 +376,8 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
         self.max_iteration: int = max_iteration
 
         self.convergence_iter = convergence_iter
+
+        self.random_state = random_state
 
 
 
@@ -383,7 +389,7 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
         self, 
         constraints_manager: AbstractConstraintsManager, 
         vectors: Dict[str, csr_matrix], 
-        nb_clusters: int, 
+        nb_clusters: int = -1, 
         verbose: bool = False, 
         **kargs
     ) -> Dict[str, int]:
@@ -419,11 +425,6 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
             raise ValueError("The `vectors` parameter has to be a `dict` type.")
         self.vectors: Dict[str, csr_matrix] = vectors
 
-        # Store `self.nb_clusters`.
-        if nb_clusters < 2:
-            raise ValueError("The `nb_clusters` '" + str(nb_clusters) + "' must be greater than or equal to 2.")
-        self.nb_clusters: int = nb_clusters
-
         ###
         ### RUN AFFINITY PROPAGATION CONSTRAINED CLUSTERING
         ###
@@ -431,9 +432,6 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
         # Correspondances ID -> index
         data_ID_to_idx: Dict[str, int] = {v: i for i,v in enumerate(self.list_of_data_IDs)}
         n_sample = len(self.list_of_data_IDs)
-
-        # Initialisation de l'algo sklearn
-        ap: AffinityPropagation = AffinityPropagation(affinity='precomputed', verbose=True)
 
         # Calcul de la matrice des similarités entre les points réels
         S: csr_matrix = - pairwise_distances(vstack(self.vectors[data_ID] for data_ID in self.list_of_data_IDs))
@@ -458,11 +456,17 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
             S,
             must_links,
             cannot_links,
+            preference=self.preference,
             verbose=verbose,
             max_iter=self.max_iteration,
-            convergence_iter=self.convergence_iter
+            convergence_iter=self.convergence_iter,
+            random_state=self.random_state
         )
 
-        return {self.list_of_data_IDs[i]: l for i,l in enumerate(labels)}
+        self.dict_of_predicted_clusters = rename_clusters_by_order(
+            {self.list_of_data_IDs[i]: l for i,l in enumerate(labels)}
+        )
+
+        return self.dict_of_predicted_clusters
         # return {i: l for i,l in enumerate(labels)}
 
