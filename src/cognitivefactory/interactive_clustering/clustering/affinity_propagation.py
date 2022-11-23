@@ -8,6 +8,7 @@ import numpy as np
 import warnings
 
 from typing import Dict, List, Set, Tuple, Union, Any
+from itertools import product
 
 from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
 from sklearn.metrics import pairwise_distances  # To compute distance.
@@ -71,6 +72,7 @@ def _affinity_propagation_constrained(
     return_n_iter=False,
     random_state=None,
     remove_degeneracies=True,
+    absolute_must_links=False
 ):
     """Perform Affinity Propagation Clustering of data.
 
@@ -206,29 +208,43 @@ def _affinity_propagation_constrained(
     if verbose:
         print("S", S, sep='\n')
 
-    # Must-link meta-points blocks
-    MPS = np.array(
-        [
-            [
-                0 if i in Pm else max(S[i,j] for j in Pm) 
-                for Pm in must_links
-            ] 
-            for i in range(n_samples)
-        ]
-    )
+    if absolute_must_links:
+        Saml = np.zeros((n_must_links, n_must_links))
 
-    if verbose:
-        print("MPS", MPS, sep='\n')
-    
-    # 
-    S = np.block([[S,       MPS],
-                  [MPS.T,   2 * np.min(S) * np.ones((n_must_links, n_must_links))]])
+        for i,j in product(range(n_must_links), range(n_must_links)):
+            Saml[i,j] = max(S[k,l] for k,l in product(must_links[i], must_links[j]))
+
+        S = Saml
+
+        n_similarities = n_must_links
+        
+    else:
+        # Must-link meta-points blocks
+        MPS = np.array(
+            [
+                [
+                    0 if i in Pm else max(S[i,j] for j in Pm) 
+                    for Pm in must_links
+                ] 
+                for i in range(n_samples)
+            ]
+        )
+
+        if verbose:
+            print("MPS", MPS, sep='\n')
+        
+        # 
+        S = np.block([[S,       MPS],
+                    [MPS.T,   2 * np.min(S) * np.ones((n_must_links, n_must_links))]])
 
     # Place preference on the diagonal of S
     S.flat[:: (n_similarities + 1)] = preference
 
     if verbose:
         print("working S", S, sep='\n')
+
+    if absolute_must_links:
+        Sp = S
 
     # Execute parallel affinity propagation updates
     e = np.zeros((n_similarities, convergence_iter))
@@ -238,22 +254,26 @@ def _affinity_propagation_constrained(
     for it in range(max_iter):
         if verbose:
             print(f"Running iteration #{it}...")
-        # Sp = S + np.sum(Q2, axis=2)
-        #np.sum(Q2, axis=2, out=Sp)
-        #np.add(S, Sp, Sp)
-        Sp[:] = S
-        for m in range(n_samples, n_similarities):
-            Sp[m,:] += sum(Q2[m,:,n] for n,CLm in enumerate(cannot_links) if m in CLm)
 
-        # if verbose:
-        #     print(Q2)
+        if not absolute_must_links:  # TODO: Cannot link not supported for absolute_must_links mode
+            # TODO: Verify Cannot link implementation as its effect is almost inexistant
 
-        # Q1 = A + R - Q2
-        Q1new = A[:,:,None] + R[:,:,None] - Q2
+            # Sp = S + np.sum(Q2, axis=2)
+            #np.sum(Q2, axis=2, out=Sp)
+            #np.add(S, Sp, Sp)
+            Sp[:] = S
+            for m in range(n_samples, n_similarities):
+                Sp[m,:] += sum(Q2[m,:,n] for n,CLm in enumerate(cannot_links) if m in CLm)
 
-        # Q2 = - max(0, Q1)
-        Q2 = - np.maximum(0, Q1)
-        Q1 = Q1new
+            # if verbose:
+            #     print(Q2)
+
+            # Q1 = A + R - Q2
+            Q1new = A[:,:,None] + R[:,:,None] - Q2
+
+            # Q2 = - max(0, Q1)
+            Q2 = - np.maximum(0, Q1)
+            Q1 = Q1new
 
         # tmp = A + S; compute responsibilities
         np.add(A, Sp, tmp)
@@ -319,8 +339,16 @@ def _affinity_propagation_constrained(
         c = np.argmax(Sp[:, I], axis=1)
         c[I] = np.arange(K)
         labels = I[c]
-        # Remove meta-points
-        labels = labels[:n_samples]
+        if absolute_must_links:
+            # Assign labels to meta-points members
+            _labels = [-1] * n_samples
+            for l,ml in zip(labels, must_links):
+                for i in ml:
+                    _labels[i] = l
+            labels = _labels
+        else:
+            # Remove meta-points
+            labels = labels[:n_samples]
         # Reduce labels to a sorted, gapless, list
         cluster_centers_indices = np.unique(labels)
         labels = np.searchsorted(cluster_centers_indices, labels)
@@ -362,7 +390,8 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
         preference: Union[float, Any] = None,
         max_iteration: int = 200,
         convergence_iter: int = 15,
-        random_state = None
+        random_state = None,
+        absolute_must_links: bool = False,
     ) -> None:
         """
         La doc...
@@ -378,6 +407,8 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
         self.convergence_iter = convergence_iter
 
         self.random_state = random_state
+
+        self.absolute_must_links = absolute_must_links
 
 
 
@@ -460,7 +491,8 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
             verbose=verbose,
             max_iter=self.max_iteration,
             convergence_iter=self.convergence_iter,
-            random_state=self.random_state
+            random_state=self.random_state,
+            absolute_must_links=self.absolute_must_links,
         )
 
         self.dict_of_predicted_clusters = rename_clusters_by_order(
