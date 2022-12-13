@@ -358,11 +358,12 @@ def _affinity_propagation_constrained(
         cluster_centers_indices = np.unique(labels)
         labels = np.searchsorted(cluster_centers_indices, labels)
     else:
-        warnings.warn(
-            "Affinity propagation did not converge, this model "
-            "will not have any cluster centers.",
-            ConvergenceWarning,
-        )
+        if verbose:
+            warnings.warn(
+                "Affinity propagation did not converge, this model "
+                "will not have any cluster centers.",
+                ConvergenceWarning,
+            )
         labels = np.array([-1] * n_samples)
         cluster_centers_indices = []
 
