@@ -519,8 +519,28 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
             )
 
         # Handle empty clusters
-        # See https://github.com/scikit-learn/scikit-learn/blob/0.19.1/sklearn/cluster/_k_means.pyx#L309
         n_samples_in_cluster = np.bincount(labels, minlength=self.nb_clusters)
+        empty_clusters = np.where(n_samples_in_cluster == 0)[0]
+
+        for empty_cluster_id in empty_clusters:
+
+            # Get clusters that have at least 2 points and can give one of them to another cluster
+            filled_clusters = np.where(n_samples_in_cluster > 1)[0]
+
+            # Get points from filled_clusters, and compute distance to their center
+            distances_to_clusters: Dict[str, float] = {}
+
+            for cluster_id in filled_clusters:
+                available_cluster_points = np.where(labels == cluster_id)[0]
+                for point in available_cluster_points:
+                    distances_to_clusters[point] = self._dist(X[point], cluster_centers[cluster_id], A)
+
+            # Fill empty clusters with the farthest points regarding their respective centers
+            filling_point = max(distances_to_clusters, key=distances_to_clusters.get)
+            labels[filling_point] = empty_cluster_id
+
+            n_samples_in_cluster = np.bincount(labels, minlength=10)
+
         empty_clusters = np.where(n_samples_in_cluster == 0)[0]
 
         if empty_clusters.size:
