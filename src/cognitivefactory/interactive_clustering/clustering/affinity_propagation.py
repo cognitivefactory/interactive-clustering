@@ -1,18 +1,25 @@
+"""
+* Name:         interactive-clustering/src/clustering/affinity_propagation.py
+* Description:  Implementation of constrained Affinity Propagation clustering algorithm.
+* Author:       David Nicolazo
+* Created:      2/03/2022
+* Licence:      CeCILL (https://cecill.info/licences.fr.html)
+"""
 
 # ==============================================================================
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-import re
-import numpy as np
 import math
 import warnings
+from itertools import combinations, product
+from typing import Any, Dict, List, Set, Tuple, Union
 
-from typing import Dict, List, Set, Tuple, Union, Any
-from itertools import product, combinations
-
+import numpy as np
 from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
+from sklearn.exceptions import ConvergenceWarning
 from sklearn.metrics import pairwise_distances  # To compute distance.
+from sklearn.utils import as_float_array, check_random_state
 
 from cognitivefactory.interactive_clustering.clustering.abstract import (  # To use abstract interface.; To sort clusters after computation.
     AbstractConstrainedClustering,
@@ -21,25 +28,13 @@ from cognitivefactory.interactive_clustering.clustering.abstract import (  # To 
 from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
     AbstractConstraintsManager,
 )
-from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
-from sklearn.cluster import (
-    AffinityPropagation, affinity_propagation
-)
 
 # ==============================================================================
 # AFFINITY PROPAGATION FROM SKLEARN UNDER CONSTRAINTS
+# https://github.com/scikit-learn/scikit-learn/blob/98cf537f5c538fdbc9d27b851cf03ce7611b8a48/sklearn/cluster/_affinity_propagation.py
+# Modified by David Nicolazo <git@dabsunter.fr> according to https://proceedings.mlr.press/v5/givoni09a.html
 # ==============================================================================
 
-
-from sklearn.exceptions import ConvergenceWarning
-from sklearn.base import BaseEstimator, ClusterMixin
-from sklearn.utils import as_float_array, check_random_state
-from sklearn.utils import check_scalar
-from sklearn.utils.deprecation import deprecated
-from sklearn.utils.validation import check_is_fitted
-from sklearn.metrics import euclidean_distances
-from sklearn.metrics import pairwise_distances_argmin
-from sklearn._config import config_context
 
 def _equal_similarities_and_preferences(S, preference):
     def all_equal_preferences():
@@ -55,15 +50,14 @@ def _equal_similarities_and_preferences(S, preference):
     return all_equal_preferences() and all_equal_similarities()
 
 
-
 def _update_metapoints(S, must_links, cannot_links):
     pass
+
 
 def _affinity_propagation_constrained(
     S,
     must_links,
     cannot_links,
-    *,
     preference=None,
     convergence_iter=15,
     max_iter=200,
@@ -73,8 +67,9 @@ def _affinity_propagation_constrained(
     return_n_iter=False,
     random_state=None,
     remove_degeneracies=True,
-    absolute_must_links=False
+    absolute_must_links=False,
 ):
+    # TODO: Changer le format de la docstring.
     """Perform Affinity Propagation Clustering of data.
 
     Read more in the :ref:`User Guide <affinity_propagation>`.
@@ -121,6 +116,12 @@ def _affinity_propagation_constrained(
 
         .. versionadded:: 0.23
             this parameter was previously hardcoded as 0.
+
+    remove_degeneracies : bool, default=True
+        Whether to remove degeneracies in the similarity matrix.
+
+    absolute_must_links : bool, default=False
+        Whether to use absolute must links implementation.
 
     Returns
     -------
@@ -171,10 +172,7 @@ def _affinity_propagation_constrained(
     if n_samples == 1 or _equal_similarities_and_preferences(S, _preference):
         # It makes no sense to run the algorithm in this case, so return 1 or
         # n_samples clusters, depending on preferences
-        warnings.warn(
-            "All samples have mutually equal similarities. "
-            "Returning arbitrary cluster center(s)."
-        )
+        warnings.warn("All samples have mutually equal similarities. Returning arbitrary cluster center(s).")
         if _preference.flat[0] >= S.flat[n_samples - 1]:
             return (
                 (np.arange(n_samples), np.arange(n_samples), 0)
@@ -192,18 +190,16 @@ def _affinity_propagation_constrained(
 
     # Remove degeneracies
     if remove_degeneracies:
-        S += (
-            np.finfo(S.dtype).eps * S + np.finfo(S.dtype).tiny * 100
-        ) * random_state.randn(n_samples, n_samples)
+        S += (np.finfo(S.dtype).eps * S + np.finfo(S.dtype).tiny * 100) * random_state.randn(n_samples, n_samples)
 
     if verbose:
-        print("S", S, sep='\n')
+        print("S", S, sep="\n")
 
     if absolute_must_links:
         Saml = np.zeros((n_must_links, n_must_links))
 
-        for i,j in product(range(n_must_links), range(n_must_links)):
-            Saml[i,j] = max(S[k,l] for k,l in product(must_links[i], must_links[j]))
+        for i, j in product(range(n_must_links), range(n_must_links)):
+            Saml[i, j] = max(S[k, l] for k, l in product(must_links[i], must_links[j]))
 
         S = Saml
 
@@ -211,31 +207,22 @@ def _affinity_propagation_constrained(
 
         if preference is None:
             _preference = np.array(np.median(S))
-        
+
     else:
         # Must-link meta-points blocks
-        MPS = np.array(
-            [
-                [
-                    0 if i in Pm else max(S[i,j] for j in Pm) 
-                    for Pm in must_links
-                ] 
-                for i in range(n_samples)
-            ]
-        )
+        MPS = np.array([[0 if i in Pm else max(S[i, j] for j in Pm) for Pm in must_links] for i in range(n_samples)])
 
         if verbose:
-            print("MPS", MPS, sep='\n')
-        
-        # 
-        S = np.block([[S,       MPS],
-                    [MPS.T,   2 * np.min(S) * np.ones((n_must_links, n_must_links))]])
+            print("MPS", MPS, sep="\n")
+
+        #
+        S = np.block([[S, MPS], [MPS.T, 2 * np.min(S) * np.ones((n_must_links, n_must_links))]])
 
     # Place preference on the diagonal of S
     S.flat[:: (n_similarities + 1)] = _preference
 
     if verbose:
-        print("working S", S, sep='\n')
+        print("working S", S, sep="\n")
 
     if absolute_must_links:
         Sp = S
@@ -244,9 +231,9 @@ def _affinity_propagation_constrained(
     R = np.zeros((n_similarities, n_similarities))  # Initialize messages
     if not absolute_must_links:
         # E-I: CL constraints
-        Q1 = np.zeros((n_similarities, n_similarities, len(cannot_links))) # qj (m, mn) [m,j,n]
-        Q2 = np.zeros((n_similarities, n_similarities, len(cannot_links))) # qj (mn, m) [m,j,n]
-        Sp = np.zeros((n_similarities, n_similarities)) # Ŝ
+        Q1 = np.zeros((n_similarities, n_similarities, len(cannot_links)))  # qj (m, mn) [m,j,n]
+        Q2 = np.zeros((n_similarities, n_similarities, len(cannot_links)))  # qj (mn, m) [m,j,n]
+        Sp = np.zeros((n_similarities, n_similarities))  # Ŝ
 
     # Intermediate results
     tmp = np.zeros((n_similarities, n_similarities))
@@ -264,20 +251,20 @@ def _affinity_propagation_constrained(
             # TODO: Verify Cannot link implementation as its effect is almost inexistant
 
             # Sp = S + np.sum(Q2, axis=2)
-            #np.sum(Q2, axis=2, out=Sp)
-            #np.add(S, Sp, Sp)
+            # np.sum(Q2, axis=2, out=Sp)
+            # np.add(S, Sp, Sp)
             Sp[:] = S
             for m in range(n_samples, n_similarities):
-                Sp[m,:] += sum(Q2[m,:,n] for n,CLm in enumerate(cannot_links) if m in CLm)
+                Sp[m, :] += sum(Q2[m, :, n] for n, CLm in enumerate(cannot_links) if m in CLm)
 
             # if verbose:
             #     print(Q2)
 
             # Q1 = A + R - Q2
-            Q1new = A[:,:,None] + R[:,:,None] - Q2
+            Q1new = A[:, :, None] + R[:, :, None] - Q2
 
             # Q2 = - max(0, Q1)
-            Q2 = - np.maximum(0, Q1)
+            Q2 = -np.maximum(0, Q1)
             Q1 = Q1new
 
         # tmp = A + S; compute responsibilities
@@ -318,7 +305,7 @@ def _affinity_propagation_constrained(
 
         if it >= convergence_iter:
             se = np.sum(e, axis=1)
-            unconverged = np.sum((se == convergence_iter) + (se == 0)) != n_similarities#n_samples
+            unconverged = np.sum((se == convergence_iter) + (se == 0)) != n_similarities  # n_samples
             if (not unconverged and (K > 0)) or (it == max_iter):
                 never_converged = False
                 if verbose:
@@ -346,11 +333,11 @@ def _affinity_propagation_constrained(
         labels = I[c]
         if absolute_must_links:
             # Assign labels to meta-points members
-            _labels = [-1] * n_samples
-            for l,ml in zip(labels, must_links):
+            real_labels = [-1 for _ in range(n_samples)]
+            for l, ml in zip(labels, must_links):
                 for i in ml:
-                    _labels[i] = l
-            labels = _labels
+                    real_labels[i] = l
+            labels = real_labels
         else:
             # Remove meta-points
             labels = labels[:n_samples]
@@ -360,8 +347,7 @@ def _affinity_propagation_constrained(
     else:
         if verbose:
             warnings.warn(
-                "Affinity propagation did not converge, this model "
-                "will not have any cluster centers.",
+                "Affinity propagation did not converge, this model " "will not have any cluster centers.",
                 ConvergenceWarning,
             )
         labels = np.array([-1] * n_samples)
@@ -373,11 +359,10 @@ def _affinity_propagation_constrained(
         return cluster_centers_indices, labels
 
 
-
-
 # ==============================================================================
 # AFFINITY PROPAGATION CONSTRAINED CLUSTERING
 # ==============================================================================
+
 
 class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
     """
@@ -385,7 +370,7 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
     It inherits from `AbstractConstrainedClustering`.
 
     References:
-        - ...
+        - Inmar Givoni, Brendan Frey Proceedings of the Twelth International Conference on Artificial Intelligence and Statistics, PMLR 5:161-168, 2009. 
 
     Examples:
         ...
@@ -396,14 +381,26 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
         preference: Union[float, Any] = None,
         max_iteration: int = 200,
         convergence_iter: int = 15,
-        random_state = None,
+        random_state=None,
         absolute_must_links: bool = False,
         smart_preference: bool = False,
-        smart_preference_factor: float = 2/3,
+        smart_preference_factor: float = 2 / 3,
         ensure_nb_clusters: bool = False,
     ) -> None:
-        """
-        La doc...
+        """Initialize the affinity propagation constrained clustering.
+
+        Args:
+            preference (Union[float, Any], optional): Preference parameter. Defaults to None.
+            max_iteration (int, optional): Nombre maximal d'itérations. Defaults to 200.
+            convergence_iter (int, optional): Nombre d'itérations à considérer pour détecter la convergence. Defaults to 15.
+            random_state (Any, optional): État aléatoire (seed). Defaults to None.
+            absolute_must_links (bool, optional): Utiliser l'implémentations respectant strictement les contraintes must-link. Defaults to False.
+            smart_preference (bool, optional): Calculer de manière "intelligente" la paramètre préférence en fonction du nombre de contraintes. Defaults to False.
+            smart_preference_factor (float, optional): Paramètre d'ajustement de `smart_preference`. Defaults to 2/3.
+            ensure_nb_clusters (bool, optional): Relance un clustering tant que le nombre de cluster ne correspond pas. Defaults to False.
+
+        Raises:
+            ValueError: Paramètre invalide.
         """
 
         self.preference = preference
@@ -425,19 +422,17 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
 
         self.ensure_nb_clusters = ensure_nb_clusters
 
-
-
     # ==============================================================================
     # MAIN - CLUSTER DATA
     # ==============================================================================
 
     def cluster(
-        self, 
-        constraints_manager: AbstractConstraintsManager, 
-        vectors: Dict[str, csr_matrix], 
-        nb_clusters: int = 0, 
-        verbose: bool = False, 
-        **kargs
+        self,
+        constraints_manager: AbstractConstraintsManager,
+        vectors: Dict[str, csr_matrix],
+        nb_clusters: int = 0,
+        verbose: bool = False,
+        **kargs,
     ) -> Dict[str, int]:
         """
         The main method used to cluster data with the KMeans model.
@@ -476,11 +471,11 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
         ###
 
         # Correspondances ID -> index
-        data_ID_to_idx: Dict[str, int] = {v: i for i,v in enumerate(self.list_of_data_IDs)}
+        data_ID_to_idx: Dict[str, int] = {v: i for i, v in enumerate(self.list_of_data_IDs)}
         n_sample = len(self.list_of_data_IDs)
 
         # Calcul de la matrice des similarités entre les points réels
-        S: csr_matrix = - pairwise_distances(vstack(self.vectors[data_ID] for data_ID in self.list_of_data_IDs))
+        S: csr_matrix = -pairwise_distances(vstack(self.vectors[data_ID] for data_ID in self.list_of_data_IDs))
 
         # Récupération des fermetures transitives des contraintes MUST_LINK
         must_link_closures: List[List[str]] = self.constraints_manager.get_connected_components()
@@ -488,29 +483,31 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
         must_links: List[Set[int]] = [{data_ID_to_idx[ID] for ID in closure} for closure in must_link_closures]
 
         if verbose:
-            print("Must-links", *must_links, sep='\n')
+            print("Must-links", *must_links, sep="\n")
 
         cannot_links: List[Tuple[int, int]] = []
 
-        for i,j in combinations(range(n_sample), 2):
-            constraint = self.constraints_manager.get_added_constraint(self.list_of_data_IDs[i], self.list_of_data_IDs[j])
-            if constraint and constraint[0] == 'CANNOT_LINK':
-                cannot_links.append((i,j))
+        for i, j in combinations(range(n_sample), 2):
+            constraint = self.constraints_manager.get_added_constraint(
+                self.list_of_data_IDs[i], self.list_of_data_IDs[j]
+            )
+            if constraint and constraint[0] == "CANNOT_LINK":
+                cannot_links.append((i, j))
 
         preference = self.preference
         median = np.median(S)
 
         if self.smart_preference:
             n_must_links = 0
-            for data1,data2 in combinations(self.list_of_data_IDs, 2):
+            for data1, data2 in combinations(self.list_of_data_IDs, 2):
                 constraint = constraints_manager.get_added_constraint(data1, data2)
-                if constraint and constraint[0] == 'MUST_LINK':
+                if constraint and constraint[0] == "MUST_LINK":
                     n_must_links += 1
 
             must_link_completeness = n_must_links / math.comb(len(self.list_of_data_IDs), 2)
 
             preference = (1 - must_link_completeness) * median * self.smart_preference_factor
-        
+
         elif not preference:
             preference = median
 
@@ -527,11 +524,11 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
                 absolute_must_links=self.absolute_must_links,
             )
 
-        cluster_center_indices,labels = run_ap(preference)
+        cluster_center_indices, labels = run_ap(preference)
 
         # ensure_nb_clusters: Not very conclusive
         if self.ensure_nb_clusters:
-            epsilon    = 0.005
+            epsilon = 0.005
             max_change = 250
 
             while (current_nb_clusters := len(cluster_center_indices)) < nb_clusters:
@@ -541,11 +538,18 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
                     change = np.clip(nb_clusters - current_nb_clusters, -max_change, max_change)
                 preference += change * -median * epsilon
                 if verbose:
-                    print("found", current_nb_clusters, "clusters /", nb_clusters, "wanted, run again with preference:", preference)
-                cluster_center_indices,labels = run_ap(preference)
+                    print(
+                        "found",
+                        current_nb_clusters,
+                        "clusters /",
+                        nb_clusters,
+                        "wanted, run again with preference:",
+                        preference,
+                    )
+                cluster_center_indices, labels = run_ap(preference)
 
         self.dict_of_predicted_clusters = rename_clusters_by_order(
-            {self.list_of_data_IDs[i]: l for i,l in enumerate(labels)}
+            {self.list_of_data_IDs[i]: l for i, l in enumerate(labels)}
         )
 
         if verbose:
@@ -553,4 +557,3 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
 
         return self.dict_of_predicted_clusters
         # return {i: l for i,l in enumerate(labels)}
-

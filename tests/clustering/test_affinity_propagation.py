@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
-
 """
-* Name:         interactive-clustering/tests/clustering/test_dbscan.py
-* Description:  Unittests for the `clustering.dbscan` module.
+* Name:         interactive-clustering/tests/clustering/test_affinity_propagation.py
+* Description:  Unittests for the `clustering.affinity_propagation` module.
 * Author:       David Nicolazo
 * Created:      2/11/2022
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
@@ -13,12 +11,12 @@
 # ==============================================================================
 
 
-import pytest
 from scipy.sparse import csr_matrix
 
+from cognitivefactory.interactive_clustering.clustering.affinity_propagation import (
+    AffinityPropagationConstrainedClustering,
+)
 from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
-from cognitivefactory.interactive_clustering.clustering.affinity_propagation import AffinityPropagationConstrainedClustering
-
 
 
 # ==============================================================================
