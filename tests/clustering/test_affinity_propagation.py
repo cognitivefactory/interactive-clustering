@@ -77,7 +77,6 @@ def test_AffinityPropagationConstrainedClustering_cluster_with_no_constraints_1(
 # test_DBScanConstrainedClustering_cluster_with_no_constraints_2
 # ==============================================================================
 def test_AffinityPropagationConstrainedClustering_cluster_with_no_constraints_2():
-
     # Define `vectors` and `constraints_manager`
     vectors = {
         "0": csr_matrix([2.00, 0.00, 0.00, 0.00]),

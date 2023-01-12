@@ -116,7 +116,6 @@ def test_docs_usage():
     ]  # List of triplets with format `(data_ID1, data_ID2, annotation_type)` where `annotation_type` can be "MUST_LINK" or "CANNOT_LINK".
 
     for annotation in list_of_annotation:
-
         # Get the annotation
         data_ID1, data_ID2, constraint_type = annotation
 

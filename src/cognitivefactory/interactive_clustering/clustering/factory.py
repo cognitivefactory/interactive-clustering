@@ -63,12 +63,10 @@ def clustering_factory(algorithm: str = "kmeans", **kargs) -> "AbstractConstrain
 
     # Case of Hierachical Constrained Clustering.
     if algorithm == "hierarchical":
-
         return HierarchicalConstrainedClustering(**kargs)
 
     # Case of Spectral Constrained Clustering.
     if algorithm == "spectral":
-
         return SpectralConstrainedClustering(**kargs)
 
     # Case of KMeans Constrained Clustering.

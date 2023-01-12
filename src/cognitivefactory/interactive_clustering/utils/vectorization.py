@@ -62,7 +62,7 @@ def vectorize(
 
         # Apply vectorization.
         dict_of_vectors = vectorize(
-            dict_of_texts=dict_of_texts
+            dict_of_texts=dict_of_texts,
             vectorizer_type="spacy",
             spacy_language_model="fr_core_news_md",
         )
@@ -79,12 +79,13 @@ def vectorize(
     ### Case of TFIDF vectorization.
     ###
     if vectorizer_type == "tfidf":
-
         # Initialize vectorizer.
         vectorizer = TfidfVectorizer(
             analyzer="word",
             ngram_range=(1, 3),
             min_df=2,
+            ####min_df=0.0, max_df=0.95, max_features=20000,
+            ####ngram_range=(1,5), analyzer="char_wb", sublinear_tf=True,
         )
 
         # Apply vectorization.
@@ -102,7 +103,6 @@ def vectorize(
     ### Case of SPACY vectorization.
     ###
     if vectorizer_type == "spacy":
-
         # Load vectorizer (spaCy language model).
         try:
             spacy_nlp = spacy.load(

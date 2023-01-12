@@ -138,7 +138,6 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         y=None,
         **kargs,
     ) -> Dict[str, int]:
-
         """
         The main method used to cluster data with the KMeans model.
 
@@ -221,7 +220,6 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
 
         # Repeat until convergence
         while not converged and iteration < self.max_iteration:
-
             prev_cluster_centers = cluster_centers.copy()
 
             # Find farthest pair of points according to each metric
@@ -398,11 +396,11 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
             ml_graph[k] = set()
             cl_graph[k] = set()
 
-        for (i, j) in self.ml:
+        for i, j in self.ml:
             ml_graph[i].add(j)
             ml_graph[j].add(i)
 
-        for (l, m) in self.cl:
+        for l, m in self.cl:
             cl_graph[l].add(m)
             cl_graph[m].add(l)
 
@@ -418,7 +416,7 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
                             ml_graph[x1].add(x2)
                 neighborhoods.append(component)
 
-        for (ind_1, ind_2) in self.cl:
+        for ind_1, ind_2 in self.cl:
             for x in ml_graph[ind_1]:
                 self._add_both(cl_graph, x, ind_2)
 
@@ -429,7 +427,7 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
                 for b in ml_graph[ind_2]:
                     self._add_both(cl_graph, a, b)
 
-        for (index_1, _) in ml_graph.items():
+        for index_1, _ in ml_graph.items():
             for index_2 in ml_graph[index_1]:
                 if index_2 != index_1 and index_2 in cl_graph[index_1]:
                     raise ValueError("Inconsistent constraints between " + str(index_1) + " and " + str(index_2))
@@ -483,7 +481,6 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         return farthest[2] - self._dist(X[i], X[j], A)
 
     def _objective_fn(self, X, i, labels, cluster_centers, cluster_id, A, farthest, ml_graph, cl_graph, w):
-
         sign, logdet = np.linalg.slogdet(A)
         log_det_a = sign * logdet
 
@@ -523,7 +520,6 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         empty_clusters = np.where(n_samples_in_cluster == 0)[0]
 
         for empty_cluster_id in empty_clusters:
-
             # Get clusters that have at least 2 points and can give one of them to another cluster
             filled_clusters = np.where(n_samples_in_cluster > 1)[0]
 

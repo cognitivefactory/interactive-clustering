@@ -206,9 +206,7 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         ###
 
         for possible_core_ID in self.list_of_data_IDs:
-
             if self.dict_of_data_IDs_labels[possible_core_ID] != "SINGLE_CORE":
-
                 # Points involved in a Cannot-link constraint are not associated to other points in this step
                 list_of_possible_neighbors: List[str] = [
                     neighbor_ID
@@ -253,12 +251,10 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
                         break
 
                 if len(list_of_neighbors_ID) < self.min_samples:
-
                     self.dict_of_data_IDs_labels[possible_core_ID] = "NOISE"
 
                 elif no_conflict is False:
                     for neighbor_ID in list_of_neighbors_ID:
-
                         # Each point of the neighborhood will be a single core point cluster
                         # and won't be involved in other clusters in this step
 
@@ -266,7 +262,6 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
                         self.dict_of_local_clusters[neighbor_ID] = [neighbor_ID]
 
                 else:
-
                     self.dict_of_data_IDs_labels[possible_core_ID] = "CORE"
                     self.dict_of_local_clusters[possible_core_ID] = list_of_neighbors_ID
 
@@ -307,28 +302,22 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         dict_of_assigned_local_cluster: Dict[str, str] = {data_ID: "NONE" for data_ID in self.list_of_data_IDs}
 
         for data_ID_i in self.list_of_data_IDs:
-
             if data_ID_i not in list_of_analyzed_IDs:
-
                 if compatible_cluster_IDs[data_ID_i]:
-
                     # Choose a coherent ID of core local cluster corresponding to a local cluster ID of data_ID_i
 
                     # Initialize ID of the potential local cluster of data_ID_i and list of involved points
                     local_cluster_i_points: List[str] = []
 
                     if self.dict_of_data_IDs_labels[data_ID_i] == "NOISE":
-
                         data_ID_i_cluster = data_ID_i
                         local_cluster_i_points = [data_ID_i]
 
                     elif data_ID_i in self.dict_of_local_clusters.keys():
-
                         data_ID_i_cluster = data_ID_i
                         local_cluster_i_points = self.dict_of_local_clusters[data_ID_i]
 
                     else:
-
                         # Choose a local cluster ID where data_ID_i is in,
                         # and preferably a local cluster ID that is not already in a core local cluster
 
@@ -340,9 +329,7 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
                         local_cluster_i_points = self.dict_of_local_clusters[data_ID_i_cluster]
 
                     for data_ID_j in compatible_cluster_IDs[data_ID_i]:
-
                         if self.dict_of_data_IDs_labels[data_ID_j] == "NOISE":
-
                             # Merge all the available points of the clusters involved in a Must-link constraint
 
                             list_of_core_cluster_points = []
@@ -359,16 +346,13 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
                                 )
                             )
                         else:
-
                             # Initialize ID of the potential local cluster of data_ID_j and the list of involved points
                             local_cluster_j_points = []
 
                             if data_ID_j in self.dict_of_local_clusters.keys():
-
                                 local_cluster_j_points = [data_ID_j]
 
                             else:
-
                                 # Choose a local cluster ID where data_ID_j is in,
                                 # and preferably a local cluster ID that is not already in a core local cluster
 
@@ -421,7 +405,6 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         ###
 
         for core_cluster_ID in self.dict_of_core_local_clusters.keys():
-
             merging = True
 
             while merging and self.dict_of_local_clusters:
@@ -431,7 +414,6 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
 
                 # Compute the distances between the core cluster and the local clusters
                 for local_cluster_ID in self.dict_of_local_clusters.keys():
-
                     # Compute the smallest distance between points of the core cluster and the local cluster
                     min_distance = min(
                         [
@@ -448,11 +430,9 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
                 closest_cluster = min(distances_to_local_clusters)
 
                 if distances_to_local_clusters[closest_cluster] > self.eps:
-
                     merging = False
 
                 else:
-
                     # Get the lists of not compatible data_IDs for deciding if clusters are merged
                     not_compatible_IDs: List[List[str]] = [
                         [
@@ -501,7 +481,6 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
 
         # Consider the remaining local clusters
         for local_cluster in self.dict_of_local_clusters.keys():
-
             # Remove points that already are in a final cluster
             points_to_remove = []
             for local_cluster_point in self.dict_of_local_clusters[local_cluster]:

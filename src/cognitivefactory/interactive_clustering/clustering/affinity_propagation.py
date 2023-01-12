@@ -370,7 +370,7 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
     It inherits from `AbstractConstrainedClustering`.
 
     References:
-        - Inmar Givoni, Brendan Frey Proceedings of the Twelth International Conference on Artificial Intelligence and Statistics, PMLR 5:161-168, 2009. 
+        - Inmar Givoni, Brendan Frey Proceedings of the Twelth International Conference on Artificial Intelligence and Statistics, PMLR 5:161-168, 2009.
 
     Examples:
         ...

@@ -28,7 +28,6 @@ def test_vectorize_for_unimplemented_vectorizer():
 
     # Check a unimplemented vectorizer.
     with pytest.raises(ValueError, match="`vectorizer_type`"):
-
         vectorize(
             dict_of_texts={
                 "0": "comment signaler une perte de carte de paiement",
@@ -75,7 +74,6 @@ def test_vectorize_for_uninstalled_spacy_language_model():
 
     # Check a unimplemented vectorizer.
     with pytest.raises(ValueError, match="`spacy_language_model`"):
-
         vectorize(
             dict_of_texts={
                 "0": "comment signaler une perte de carte de paiement",

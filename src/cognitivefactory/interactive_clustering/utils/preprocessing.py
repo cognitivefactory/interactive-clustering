@@ -68,7 +68,7 @@ def preprocess(
 
         # Apply preprocessing.
         dict_of_preprocessed_texts = preprocess(
-            dict_of_texts=dict_of_texts
+            dict_of_texts=dict_of_texts,
             apply_stopwords_deletion=True,
             apply_parsing_filter=False,
             apply_lemmatization=False,
@@ -144,7 +144,6 @@ def preprocess(
 
     # For each text...
     for key, text in dict_of_texts.items():
-
         # Force string type.
         preprocessed_text: str = str(text)
 
@@ -181,7 +180,6 @@ def preprocess(
 
         # Apply retokenization with lemmatization.
         if apply_lemmatization:
-
             preprocessed_text = " ".join([token.lemma_.strip() for token in tokens])
 
         # Apply retokenization without lemmatization.

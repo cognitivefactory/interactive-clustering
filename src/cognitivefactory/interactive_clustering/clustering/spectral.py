@@ -240,7 +240,6 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
         # Modify the similarity over data IDs.
         for ID1, data_ID1 in enumerate(self.list_of_data_IDs):
             for ID2, data_ID2 in enumerate(self.list_of_data_IDs):
-
                 # Symetry is already handled in next instructions.
                 if ID1 > ID2:
                     continue
