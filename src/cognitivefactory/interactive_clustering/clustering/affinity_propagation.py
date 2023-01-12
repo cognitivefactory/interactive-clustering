@@ -552,6 +552,8 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
             {self.list_of_data_IDs[i]: l for i, l in enumerate(labels)}
         )
 
+        self.number_of_clusters = len(cluster_center_indices)
+
         if verbose:
             print("dict of predicted clusters:", self.dict_of_predicted_clusters)
 
