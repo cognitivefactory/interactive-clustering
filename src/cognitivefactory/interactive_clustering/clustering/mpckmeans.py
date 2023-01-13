@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.clustering.mpckmeans
 * Description:  Implementation of constrained mpckmeans clustering algorithms.
-* Author:       Esther Lenotre
+* Author:       Esther LENOTRE
 * Created:      10/09/2022
 * Licence:      CeCILL-C License v1.0 (https://cecill.info/licences.fr.html)
 """
@@ -12,20 +12,18 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# import random  # To shuffle data and set random seed.
-from typing import Dict, List, Optional, Set, Tuple  # To type Python code (mypy).
+# import random
+from typing import Dict, List, Optional, Set, Tuple
 
 import numpy as np
 import scipy
-from scipy.sparse import csr_matrix  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix
 
-from cognitivefactory.interactive_clustering.clustering.abstract import (  # To use abstract interface.; To sort clusters after computation.
+from cognitivefactory.interactive_clustering.clustering.abstract import (
     AbstractConstrainedClustering,
     rename_clusters_by_order,
 )
-from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
-    AbstractConstraintsManager,
-)
+from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
 
 
 # ==============================================================================
@@ -84,6 +82,7 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
     # ==============================================================================
     def __init__(
         self,
+        model: str = "MPC",
         max_iteration: int = 150,
         w: float = 1.0,
         random_seed: Optional[int] = None,
@@ -93,6 +92,7 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         The constructor for MPCKMeans Constrainted Clustering class.
 
         Args:
+            model (str, optional): The kmeans clustering model to use. Available kmeans models are `"MPC"`. Defaults to `"MPC"`.
             max_iteration (int, optional): The maximum number of kmeans iteration for convergence. Defaults to `150`.
             w (float, optional): Weight for the constraints
             random_seed (Optional[int]): The random seed to use to redo the same clustering. Defaults to `None`.
@@ -101,6 +101,11 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         Raises:
             ValueError: if some parameters are incorrectly set.
         """
+
+        # Store `self.`model`.
+        if model != "MPC":  # TODO use `not in {"MPC"}`.
+            raise ValueError("The `model` '" + str(model) + "' is not implemented.")
+        self.model: str = model
 
         # Store 'self.max_iteration`.
         if max_iteration < 1:
@@ -133,7 +138,7 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         self,
         constraints_manager: AbstractConstraintsManager,
         vectors: Dict[str, csr_matrix],
-        nb_clusters: int = 2,
+        nb_clusters: Optional[int],
         verbose: bool = False,
         y=None,
         **kargs,
@@ -144,7 +149,7 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         Args:
             constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
             vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.
-            nb_clusters (int): The number of clusters to compute. Here None.
+            nb_clusters (Optional[int]): The number of clusters to compute. Here None.
             verbose (bool, optional): Enable verbose output. Defaults to `False`.
             y : Something.
             **kargs (dict): Other parameters that can be used in the clustering.
@@ -155,10 +160,6 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         Returns:
             Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.
         """
-
-        id_names, X = np.array(list(vectors.keys())), np.array(
-            [matrix_value.toarray()[0] for matrix_value in vectors.values()]
-        )
 
         ###
         ### GET PARAMETERS
@@ -176,10 +177,22 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         self.vectors: Dict[str, csr_matrix] = vectors
 
         # Store `self.nb_clusters`.
-        if nb_clusters < 2:
+        if (nb_clusters is None) or (nb_clusters < 2):
             raise ValueError("The `nb_clusters` '" + str(nb_clusters) + "' must be greater than or equal to 2.")
         self.nb_clusters: int = min(nb_clusters, len(self.list_of_data_IDs))
 
+        # TODO: Reformat vectors
+        id_names: np.ndarray = np.array(list(vectors.keys()))
+        X: np.ndarray = np.array([
+            (
+                np.array(v).flatten()
+                if isinstance(v, np.ndarray) or isinstance(v, list)
+                else v.toarray().flatten()
+            )
+            for v in vectors.values()
+        ])
+
+        # TODO: reformat constraints
         self.ml: List[Tuple[int, int]] = [
             (i, j)
             for i, data_ID_i in enumerate(self.list_of_data_IDs)
@@ -193,6 +206,7 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
             )
         ]
 
+        # TODO: reformat constraints
         self.cl: List[Tuple[int, int]] = [
             (i, j)
             for i, data_ID_i in enumerate(self.list_of_data_IDs)
@@ -238,8 +252,6 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
             cluster_centers_shift = prev_cluster_centers - cluster_centers
             converged = np.allclose(cluster_centers_shift, np.zeros(cluster_centers.shape), atol=1e-6, rtol=0)
             iteration += 1
-
-        # print('\t', iteration, converged)
 
         self.cluster_centers = cluster_centers
         self.labels = labels
@@ -299,7 +311,7 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
             A (np.ndarray): Positive-definite matrix used for the distances.
 
         Returns:
-            Tuple: Indexes of the farthest pair of points and the corresponding distance.
+            Tuple[int, int, float]: Indexes of the farthest pair of points and the corresponding distance.
         """
 
         farthest = None
@@ -396,13 +408,13 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
             ml_graph[k] = set()
             cl_graph[k] = set()
 
-        for i, j in self.ml:
-            ml_graph[i].add(j)
-            ml_graph[j].add(i)
+        for data_ID_i1, data_ID_j1 in self.ml:
+            ml_graph[data_ID_i1].add(data_ID_j1)
+            ml_graph[data_ID_j1].add(data_ID_i1)
 
-        for l, m in self.cl:
-            cl_graph[l].add(m)
-            cl_graph[m].add(l)
+        for data_ID_i2, data_ID_j2 in self.cl:
+            cl_graph[data_ID_i2].add(data_ID_j2)
+            cl_graph[data_ID_j2].add(data_ID_i2)
 
         visited = [False for _ in range(n)]
         neighborhoods = []
@@ -416,15 +428,15 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
                             ml_graph[x1].add(x2)
                 neighborhoods.append(component)
 
-        for ind_1, ind_2 in self.cl:
-            for x in ml_graph[ind_1]:
-                self._add_both(cl_graph, x, ind_2)
+        for data_ID_i3, data_ID_j3 in self.cl:
+            for x in ml_graph[data_ID_i3]:
+                self._add_both(cl_graph, x, data_ID_j3)
 
-            for y in ml_graph[ind_2]:
-                self._add_both(cl_graph, ind_1, y)
+            for y in ml_graph[data_ID_j3]:
+                self._add_both(cl_graph, data_ID_i3, y)
 
-            for a in ml_graph[ind_1]:
-                for b in ml_graph[ind_2]:
+            for a in ml_graph[data_ID_i3]:
+                for b in ml_graph[data_ID_j3]:
                     self._add_both(cl_graph, a, b)
 
         for index_1, _ in ml_graph.items():
@@ -474,27 +486,29 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
     # COMPUTE CLUSTERS
     # ==============================================================================
 
-    def _f_m(self, X, i, j, A):
+    def _f_m(self, X: np.ndarray, i: int, j: int, A) -> float:
         return self._dist(X[i], X[j], A)
 
-    def _f_c(self, X, i, j, A, farthest):
+    def _f_c(self, X: np.ndarray, i: int, j: int, A, farthest) -> float:
         return farthest[2] - self._dist(X[i], X[j], A)
 
-    def _objective_fn(self, X, i, labels, cluster_centers, cluster_id, A, farthest, ml_graph, cl_graph, w):
+    def _objective_fn(
+        self, X: np.ndarray, i: int, labels, cluster_centers, cluster_id, A, farthest, ml_graph, cl_graph, w
+    ) -> float:
         sign, logdet = np.linalg.slogdet(A)
         log_det_a = sign * logdet
 
         if log_det_a == np.inf:
             log_det_a = 0
 
-        term_d = self._dist(X[i], cluster_centers[cluster_id], A) - log_det_a
+        term_d: float = self._dist(X[i], cluster_centers[cluster_id], A) - log_det_a
 
-        term_m = 0
+        term_m: float = 0
         for j in ml_graph[i]:
             if labels[j] >= 0 and labels[j] != cluster_id:
                 term_m += 2 * w * self._f_m(X, i, j, A)
 
-        term_c = 0
+        term_c: float = 0
         for k in cl_graph[i]:
             if labels[k] == cluster_id:
                 # assert self._f_c(i, k, A, farthest) >= 0
@@ -532,7 +546,7 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
                     distances_to_clusters[point] = self._dist(X[point], cluster_centers[cluster_id], A)
 
             # Fill empty clusters with the farthest points regarding their respective centers
-            filling_point = max(distances_to_clusters, key=distances_to_clusters.get)
+            filling_point: float = max(distances_to_clusters, key=distances_to_clusters.get)
             labels[filling_point] = empty_cluster_id
 
             n_samples_in_cluster = np.bincount(labels, minlength=10)

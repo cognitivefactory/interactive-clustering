@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.clustering.factory
 * Description:  The factory method used to easily initialize a constrained clustering algorithm.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL-C License v1.0 (https://cecill.info/licences.fr.html)
 """
@@ -12,18 +12,15 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-from cognitivefactory.interactive_clustering.clustering.abstract import (  # To use abstract interface.
-    AbstractConstrainedClustering,
+from cognitivefactory.interactive_clustering.clustering.abstract import AbstractConstrainedClustering
+from cognitivefactory.interactive_clustering.clustering.affinity_propagation import (
+    AffinityPropagationConstrainedClustering,
 )
-from cognitivefactory.interactive_clustering.clustering.hierarchical import (  # To use hierarchical constrained clustering implementation.
-    HierarchicalConstrainedClustering,
-)
-from cognitivefactory.interactive_clustering.clustering.kmeans import (  # To use kmeans constrained clustering implementation.
-    KMeansConstrainedClustering,
-)
-from cognitivefactory.interactive_clustering.clustering.spectral import (  # To use spectral constrained clustering implementation.
-    SpectralConstrainedClustering,
-)
+from cognitivefactory.interactive_clustering.clustering.dbscan import DBScanConstrainedClustering
+from cognitivefactory.interactive_clustering.clustering.hierarchical import HierarchicalConstrainedClustering
+from cognitivefactory.interactive_clustering.clustering.kmeans import KMeansConstrainedClustering
+from cognitivefactory.interactive_clustering.clustering.mpckmeans import MPCKMeansConstrainedClustering
+from cognitivefactory.interactive_clustering.clustering.spectral import SpectralConstrainedClustering
 
 
 # ==============================================================================
@@ -34,7 +31,7 @@ def clustering_factory(algorithm: str = "kmeans", **kargs) -> "AbstractConstrain
     A factory to create a new instance of a constrained clustering model.
 
     Args:
-        algorithm (str): The identification of model to instantiate. Can be `"hierarchical"` or `"kmeans"` or `"spectral"`. Defaults to `"kmeans"`.
+        algorithm (str): The identification of model to instantiate. Can be `"affinity_propagation"`, `"dbscan"`, `"hierarchical"`, `"kmeans"`,  `"mpckmeans"` or `"spectral"`. Defaults to `"kmeans"`.
         **kargs (dict): Other parameters that can be used in the instantiation.
 
     Raises:
@@ -58,17 +55,42 @@ def clustering_factory(algorithm: str = "kmeans", **kargs) -> "AbstractConstrain
     """
 
     # Check that the requested algorithm is implemented.
-    if algorithm not in {"hierarchical", "kmeans", "spectral"}:
+    if algorithm not in {
+        "affinity_propagation",
+        "dbscan",
+        "hierarchical",
+        "kmeans",
+        "mpckmeans",
+        "spectral",
+    }:
         raise ValueError("The `algorithm` '" + str(algorithm) + "' is not implemented.")
 
+    # Initialize
+    cluster_object: AbstractConstrainedClustering
+
+    # Case of Affinity Propagation Constrained Clustering.
+    if algorithm == "affinity_propagation":
+        cluster_object = AffinityPropagationConstrainedClustering(**kargs)
+
+    # Case of DBScan Constrained Clustering.
+    elif algorithm == "dbscan":
+        cluster_object = DBScanConstrainedClustering(**kargs)
+
     # Case of Hierachical Constrained Clustering.
-    if algorithm == "hierarchical":
-        return HierarchicalConstrainedClustering(**kargs)
+    elif algorithm == "hierarchical":
+        cluster_object = HierarchicalConstrainedClustering(**kargs)
+
+    # Case of MPC KMmeans Constrained Clustering.
+    elif algorithm == "mpckmeans":
+        cluster_object = MPCKMeansConstrainedClustering(**kargs)
 
     # Case of Spectral Constrained Clustering.
-    if algorithm == "spectral":
-        return SpectralConstrainedClustering(**kargs)
+    elif algorithm == "spectral":
+        cluster_object = SpectralConstrainedClustering(**kargs)
 
-    # Case of KMeans Constrained Clustering.
-    ## if algorithm=="kmeans":
-    return KMeansConstrainedClustering(**kargs)
+    # Default case of KMeans Constrained Clustering (algorithm=="kmeans":).
+    else:
+        cluster_object = KMeansConstrainedClustering(**kargs)
+
+    # Return cluster object.
+    return cluster_object

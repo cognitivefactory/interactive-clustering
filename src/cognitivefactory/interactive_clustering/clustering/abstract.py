@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.clustering.abstract
 * Description:  The abstract class used to define constrained clustering algorithms.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL-C License v1.0 (https://cecill.info/licences.fr.html)
 """
@@ -12,14 +12,12 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-from abc import ABC, abstractmethod  # To define an abstract class.
-from typing import Dict  # To type Python code (mypy).
+from abc import ABC, abstractmethod
+from typing import Dict, Optional
 
-from scipy.sparse import csr_matrix  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix
 
-from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
-    AbstractConstraintsManager,
-)
+from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
 
 
 # ==============================================================================
@@ -42,7 +40,7 @@ class AbstractConstrainedClustering(ABC):
         self,
         constraints_manager: AbstractConstraintsManager,
         vectors: Dict[str, csr_matrix],
-        nb_clusters: int,
+        nb_clusters: Optional[int],
         verbose: bool = False,
         **kargs,
     ) -> Dict[str, int]:
@@ -53,7 +51,7 @@ class AbstractConstrainedClustering(ABC):
         Args:
             constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
             vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.
-            nb_clusters (int): The number of clusters to compute. #TODO Set defaults to None with elbow method or other method ?
+            nb_clusters (Optional[int]): The number of clusters to compute. Can be `None` if this parameters is estimated or if the algorithm doesn't need it.
             verbose (bool, optional): Enable verbose output. Defaults to `False`.
             **kargs (dict): Other parameters that can be used in the clustering.
 

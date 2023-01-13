@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.constraints.binary
 * Description:  Implementation of binary constraints manager.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL-C License v1.0 (https://cecill.info/licences.fr.html)
 """
@@ -12,14 +12,12 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-import json  # To serialize object.
-from typing import Any, Dict, List, Optional, Set, Tuple  # To type Python code (mypy).
+import json
+from typing import Any, Dict, List, Optional, Set, Tuple
 
-import networkx as nx  # To create graph.
+import networkx as nx
 
-from cognitivefactory.interactive_clustering.constraints.abstract import (  # To use abstract interface.
-    AbstractConstraintsManager,
-)
+from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
 
 
 # ==============================================================================

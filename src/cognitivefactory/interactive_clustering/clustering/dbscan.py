@@ -3,28 +3,27 @@
 """
 * Name:         cognitivefactory.interactive_clustering.clustering.dbscan
 * Description:  Implementation of constrained DBScan clustering algorithms.
-* Author:       Marc Trutt
+* Author:       Marc TRUTT
 * Created:      08/05/2022
+* Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
 
 # ==============================================================================
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-# import random  # To shuffle data and set random seed.
-from typing import Dict, List  # To type Python code (mypy).
+# import random
+from typing import Dict, List, Optional
 
 import numpy as np
-from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
-from sklearn.metrics import pairwise_distances  # To compute distance.
+from scipy.sparse import csr_matrix, vstack
+from sklearn.metrics import pairwise_distances
 
-from cognitivefactory.interactive_clustering.clustering.abstract import (  # To use abstract interface.; To sort clusters after computation.
+from cognitivefactory.interactive_clustering.clustering.abstract import (
     AbstractConstrainedClustering,
     rename_clusters_by_order,
 )
-from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
-    AbstractConstraintsManager,
-)
+from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
 
 
 # ==============================================================================
@@ -32,11 +31,12 @@ from cognitivefactory.interactive_clustering.constraints.abstract import (  # To
 # ==============================================================================
 class DBScanConstrainedClustering(AbstractConstrainedClustering):
     """
-    This class implements the dbscan constrained clustering.
+    This class implements the DBScan constrained clustering.
     It inherits from `AbstractConstrainedClustering`.
 
     References:
-        - Ruiz, C., Spiliopoulou, M., Menasalvas, E. (2007). C-DBSCAN: Density-Based Clustering with Constraints. In: An, A., Stefanowski, J., Ramanna, S., Butz, C.J., Pedrycz, W., Wang, G. (eds) Rough Sets, Fuzzy Sets, Data Mining and Granular Computing. RSFDGrC 2007. Lecture Notes in Computer Science(), vol 4482. Springer, Berlin, Heidelberg.
+        - DBScan Clustering: `Ester, Martin & Kröger, Peer & Sander, Joerg & Xu, Xiaowei. (1996). A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise. KDD. 96. 226-231`.
+        - Constrained DBScan Clustering: `Ruiz, Carlos & Spiliopoulou, Myra & Menasalvas, Ernestina. (2007). C-DBSCAN: Density-Based Clustering with Constraints. 216-223. 10.1007/978-3-540-72530-5_25.`
 
     Examples:
         ```python
@@ -46,7 +46,10 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         from cognitivefactory.interactive_clustering.clustering.dbscan import DBScanConstrainedClustering
 
         # Create an instance of CDBscan clustering.
-        clustering_model = DBScanConstrainedClustering(eps= 0.02, min_samples=3)
+        clustering_model = DBScanConstrainedClustering(
+            eps=0.02,
+            min_samples=3,
+        )
 
         # Define vectors.
         # NB : use cognitivefactory.interactive_clustering.utils to preprocess and vectorize texts.
@@ -74,7 +77,8 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         # Run clustering.
         dict_of_predicted_clusters = clustering_model.cluster(
             constraints_manager=constraints_manager,
-            vectors=vectors
+            vectors=vectors,
+            #### nb_clusters=None,
         )
 
         # Print results.
@@ -90,16 +94,16 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         self,
         eps: float = 0.5,
         min_samples: int = 5,
-        metric: str = "euclidean",
+        random_seed: Optional[int] = None,
         **kargs,
     ) -> None:
         """
         The constructor for DBScan Constrainted Clustering class.
 
         Args:
-            eps (float): The maximus radius of a neighborhood around its center
-            min_samples (int): The minimum number of points in a neighborhood to consider a center as a core point
-            metric (str): The metric used to compute distances
+            eps (float): The maximus radius of a neighborhood around its center. Defaults to `0.5`.
+            min_samples (int): The minimum number of points in a neighborhood to consider a center as a core point. Defaults to `5`.
+            random_seed (Optional[int]): The random seed to use to redo the same clustering. Defaults to `None`.
             **kargs (dict): Other parameters that can be used in the instantiation.
 
         Raises:
@@ -116,19 +120,19 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
             raise ValueError("The `min_samples` must be greater than or equal to 1.")
         self.min_samples: int = min_samples
 
-        # Store 'self.metric`.
-        self.metric: str = metric
+        # Store `self.random_seed`.
+        self.random_seed: Optional[int] = random_seed
 
         # Store `self.kargs` for kmeans clustering.
         self.kargs = kargs
 
-        # Initialize `self.dict_of_predicted_clusters.
-        self.dict_of_predicted_clusters: Dict[str, int] = {}
+        # Initialize `self.dict_of_predicted_clusters`.
+        self.dict_of_predicted_clusters: Optional[Dict[str, int]] = None
 
         # Initialize number of clusters attributes.
-        self.number_of_single_noise_point_clusters = 0
-        self.number_of_regular_clusters = 0
-        self.number_of_clusters = 0
+        self.number_of_single_noise_point_clusters: int = 0
+        self.number_of_regular_clusters: int = 0
+        self.number_of_clusters: int = 0
 
     # ==============================================================================
     # MAIN - CLUSTER DATA
@@ -137,7 +141,7 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         self,
         constraints_manager: AbstractConstraintsManager,
         vectors: Dict[str, csr_matrix],
-        nb_clusters: int = None,
+        nb_clusters: Optional[int] = None,
         verbose: bool = False,
         **kargs,
     ) -> Dict[str, int]:
@@ -147,7 +151,7 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         Args:
             constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
             vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.
-            nb_clusters (int): The number of clusters to compute. Here None.
+            nb_clusters (Optional[int]): The number of clusters to compute. Here `None`.
             verbose (bool, optional): Enable verbose output. Defaults to `False`.
             **kargs (dict): Other parameters that can be used in the clustering.
 
@@ -173,10 +177,19 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
             raise ValueError("The `vectors` parameter has to be a `dict` type.")
         self.vectors: Dict[str, csr_matrix] = vectors
 
+        # Store `self.nb_clusters`.
+        if nb_clusters is not None:
+            raise ValueError("The `nb_clusters` should be 'None' for DBScan clustering.")
+        self.nb_clusters: Optional[int] = None
+
+        ###
+        ### RUN DBSCAN CONSTRAINED CLUSTERING
+        ###
+
         # Compute pairwise distances.
         matrix_of_pairwise_distances: csr_matrix = pairwise_distances(
             X=vstack(self.vectors[data_ID] for data_ID in self.constraints_manager.get_list_of_managed_data_IDs()),
-            metric=self.metric,  # TODO get different pairwise_distances config in **kargs
+            metric="euclidean",  # TODO get different pairwise_distances config in **kargs
         )
 
         # Format pairwise distances in a dictionary and store `self.dict_of_pairwise_distances`.
@@ -192,13 +205,16 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         ### INITIALIZE VARIABLES
         ###
 
+        # Initialize `self.dict_of_predicted_clusters`.
+        self.dict_of_predicted_clusters = {}
+
         # To assign "CORE", "SINGLE_CORE" or "NOISE" labels to the points
         self.dict_of_data_IDs_labels: Dict[str, str] = {data_ID: "UNLABELED" for data_ID in self.list_of_data_IDs}
 
         # To store the lists of points of each computed local cluster
         self.dict_of_local_clusters: Dict[str, List[str]] = {}
 
-        # To store the lists of points of each computed  core local cluster
+        # To store the lists of points of each computed core local cluster
         self.dict_of_core_local_clusters: Dict[str, List[str]] = {data_ID: [] for data_ID in self.list_of_data_IDs}
 
         ###
@@ -426,7 +442,6 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
                     distances_to_local_clusters[local_cluster_ID] = min_distance
 
                 # Find closest local cluster to core cluster
-
                 closest_cluster = min(distances_to_local_clusters)
 
                 if distances_to_local_clusters[closest_cluster] > self.eps:
@@ -473,7 +488,7 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         # Defining final clusters
 
         # Consider the final core local clusters
-        assigned_cluster_id = 0
+        assigned_cluster_id: int = 0
         for core_cluster in self.dict_of_core_local_clusters.keys():
             for cluster_point in self.dict_of_core_local_clusters[core_cluster]:
                 self.dict_of_predicted_clusters[cluster_point] = assigned_cluster_id
@@ -496,13 +511,15 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
                 assigned_cluster_id += 1
 
         # Rename clusters
-        self.dict_of_predicted_clusters = rename_clusters_by_order(clusters=self.dict_of_predicted_clusters)
+        self.dict_of_predicted_clusters = rename_clusters_by_order(
+            clusters=self.dict_of_predicted_clusters,
+        )
 
         # Set number of regular clusters
         self.number_of_regular_clusters = np.unique(np.array(list(self.dict_of_predicted_clusters.values()))).shape[0]
 
         # Consider ignored points
-        ignored_cluster_id = -1
+        ignored_cluster_id: int = -1
         for potential_ignored_point in self.list_of_data_IDs:
             if potential_ignored_point not in self.dict_of_predicted_clusters:
                 self.dict_of_predicted_clusters[potential_ignored_point] = ignored_cluster_id

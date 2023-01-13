@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.utils.preprocessing
 * Description:  Utilities methods to apply NLP preprocessing.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -12,12 +12,12 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-import unicodedata  # To handle accents.
-from typing import Dict  # To type Python code (mypy).
+import unicodedata
+from typing import Dict
 
-import spacy  # To apply spacy language models.
+import spacy
 
-# from nltk.stem.snowball import SnowballStemmer  # To stemm texts.
+# from nltk.stem.snowball import SnowballStemmer
 
 
 # ==============================================================================

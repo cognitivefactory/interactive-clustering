@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.utils.frequency
 * Description:  Utilities methods for frequency analysis.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -12,7 +12,7 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-from typing import Dict, List  # To type Python code (mypy).
+from typing import Dict, List
 
 
 # ==============================================================================

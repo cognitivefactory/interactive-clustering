@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.sampling.clusters_based
 * Description:  Implementation of constraints sampling based on clusters information.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      04/10/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -12,18 +12,14 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-import random  # To shuffle data and set random seed.
-from typing import Dict, List, Optional, Tuple  # To type Python code (mypy).
+import random
+from typing import Dict, List, Optional, Tuple
 
-from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
-from sklearn.metrics import pairwise_distances  # To compute distance.
+from scipy.sparse import csr_matrix, vstack
+from sklearn.metrics import pairwise_distances
 
-from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
-    AbstractConstraintsManager,
-)
-from cognitivefactory.interactive_clustering.sampling.abstract import (  # To use abstract interface.
-    AbstractConstraintsSampling,
-)
+from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
+from cognitivefactory.interactive_clustering.sampling.abstract import AbstractConstraintsSampling
 
 
 # ==============================================================================
