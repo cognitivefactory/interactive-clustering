@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/clustering/test_mpckmeans.py
 * Description:  Unittests for the `clustering.mpckmeans` module.
-* Author:       Esther Lenôtre
+* Author:       Esther LENOTRE
 * Created:      02/11/2022
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -53,21 +53,6 @@ def test_MPCKMeansConstrainedClustering_for_inconsistent_max_iteration():
 
 
 # ==============================================================================
-# test_MPCKMeansConstrainedClustering_for_inconsistent_tolerance
-# ==============================================================================
-def test_MPCKMeansConstrainedClustering_for_inconsistent_tolerance():
-    """
-    Test that the `clustering.kmeans.MPCKMeansConstrainedClustering` initialization raises an `ValueError` for inconsistent `tolerance` parameter.
-    """
-
-    # Check `ValueError` for bad string value for `tolerance`.
-    with pytest.raises(ValueError, match="`tolerance`"):
-        MPCKMeansConstrainedClustering(
-            tolerance=-1,
-        )
-
-
-# ==============================================================================
 # test_MPCKMeansConstrainedClustering_for_inconsistent_w
 # ==============================================================================
 def test_MPCKMeansConstrainedClustering_for_inconsistent_w():
@@ -92,16 +77,14 @@ def test_MPCKMeansConstrainedClustering_for_correct_settings():
 
     # Check a correct initialization.
     clustering_model = MPCKMeansConstrainedClustering(
-        model="COP",
+        model="MPC",
         max_iteration=100,
-        tolerance=1e-3,
         w=0.5,
         random_seed=3,
     )
     assert clustering_model
-    assert clustering_model.model == "COP"
+    assert clustering_model.model == "MPC"
     assert clustering_model.max_iteration == 100
-    assert math.isclose(clustering_model.tolerance, 1e-3)
     assert math.isclose(clustering_model.w, 0.5)
     assert clustering_model.random_seed == 3
 
@@ -147,9 +130,29 @@ def test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_vectors():
 
 
 # ==============================================================================
-# test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters
+# test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters_1
 # ==============================================================================
-def test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters():
+def test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters_1():
+    """
+    Test that the `clustering.spectral.MPCKMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    """
+
+    # Initialize a `MPCKMeansConstrainedClustering` instance.
+    clustering_model = MPCKMeansConstrainedClustering()
+
+    # Check `ValueError` for too small `nb_clusters`.
+    with pytest.raises(ValueError, match="`nb_clusters`"):
+        clustering_model.cluster(
+            constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third"]),
+            vectors={"first": np.array([1, 2, 3]), "second": np.array([[4, 5, 6]]), "third": csr_matrix([7, 8, 9])},
+            nb_clusters=None,
+        )
+
+
+# ==============================================================================
+# test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters_2
+# ==============================================================================
+def test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters_2():
     """
     Test that the `clustering.spectral.MPCKMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
     """
@@ -171,7 +174,7 @@ def test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters():
 # ==============================================================================
 def test_MPCKMeansConstrainedClustering_cluster_with_no_constraints_1():
     """
-    Test that the `clustering.dbscan.MPCKMeansConstrainedClustering` clustering works with no `constraints`.
+    Test that the `clustering.mpckmeans.MPCKMeansConstrainedClustering` clustering works with no `constraints`.
     """
 
     # Define `vectors` and `constraints_manager`
@@ -224,7 +227,7 @@ def test_MPCKMeansConstrainedClustering_cluster_with_no_constraints_1():
 # ==============================================================================
 def test_MPCKMeansConstrainedClustering_cluster_with_no_constraints_2():
     """
-    Test that the `clustering.dbscan.MPCKMeansConstrainedClustering` clustering works with no `constraints`.
+    Test that the `clustering.mpckmeans.MPCKMeansConstrainedClustering` clustering works with no `constraints`.
     """
 
     # Define `vectors` and `constraints_manager`
@@ -284,7 +287,7 @@ def test_MPCKMeansConstrainedClustering_cluster_with_no_constraints_2():
 # ==============================================================================
 def test_MPCKMeansConstrainedClustering_cluster_with_some_constraints():
     """
-    Test that the `clustering.dbscan.MPCKMeansConstrainedClustering` clustering works with no `constraints`.
+    Test that the `clustering.mpckmeans.MPCKMeansConstrainedClustering` clustering works with no `constraints`.
     """
 
     # Define `vectors` and `constraints_manager`
@@ -321,14 +324,14 @@ def test_MPCKMeansConstrainedClustering_cluster_with_some_constraints():
     assert dict_of_predicted_clusters == {
         "0": 0,
         "1": 1,
-        "2": 1,
-        "3": 1,
+        "2": 2,
+        "3": 2,
         "4": 3,
-        "5": 1,
+        "5": 2,
         "6": 3,
-        "7": 2,
+        "7": 0,
         "8": 1,
         "9": 3,
-        "10": 2,
+        "10": 0,
         "11": 1,
     }

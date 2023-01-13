@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/constraints/test_binary.py
 * Description:  Unittests for the `constraints.binary` module.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """

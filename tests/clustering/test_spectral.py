@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/clustering/test_spectral.py
 * Description:  Unittests for the `clustering.spectral` module.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -111,9 +111,29 @@ def test_SpectralConstrainedClustering_cluster_for_inconsistent_vectors():
 
 
 # ==============================================================================
-# test_SpectralConstrainedClustering_cluster_for_inconsistent_nb_clusters
+# test_SpectralConstrainedClustering_cluster_for_inconsistent_nb_clusters_1
 # ==============================================================================
-def test_SpectralConstrainedClustering_cluster_for_inconsistent_nb_clusters():
+def test_SpectralConstrainedClustering_cluster_for_inconsistent_nb_clusters_1():
+    """
+    Test that the `clustering.spectral.SpectralConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    """
+
+    # Initialize a `SpectralConstrainedClustering` instance.
+    clustering_model = SpectralConstrainedClustering()
+
+    # Check `ValueError` for too small `nb_clusters`.
+    with pytest.raises(ValueError, match="`nb_clusters`"):
+        clustering_model.cluster(
+            constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third"]),
+            vectors={"first": np.array([1, 2, 3]), "second": np.array([[4, 5, 6]]), "third": csr_matrix([7, 8, 9])},
+            nb_clusters=None,
+        )
+
+
+# ==============================================================================
+# test_SpectralConstrainedClustering_cluster_for_inconsistent_nb_clusters_2
+# ==============================================================================
+def test_SpectralConstrainedClustering_cluster_for_inconsistent_nb_clusters_2():
     """
     Test that the `clustering.spectral.SpectralConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
     """

@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/test_sampling.py
 * Description:  Unittests for the `sampling` module.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """

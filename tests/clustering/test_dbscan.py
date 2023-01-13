@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/clustering/test_dbscan.py
 * Description:  Unittests for the `clustering.dbscan` module.
-* Author:       Marc Trutt
+* Author:       Marc TRUTT
 * Created:      31/10/2022
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -12,8 +12,9 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-
+import math
 import pytest
+import numpy as np
 from scipy.sparse import csr_matrix
 
 from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
@@ -51,6 +52,24 @@ def test_DBScanConstrainedClustering_for_inconsistent_min_samples():
 
 
 # ==============================================================================
+# test_DBScanConstrainedClustering_for_correct_settings
+# ==============================================================================
+def test_DBScanConstrainedClustering_for_correct_settings():
+    """
+    Test that the `clustering.dbscan.DBScanConstrainedClustering` initialization runs correctly with the correct settings.
+    """
+
+    # Check a correct initialization.
+    clustering_model = DBScanConstrainedClustering(
+        eps=0.5,
+        min_samples=3,
+    )
+    assert clustering_model
+    assert math.isclose(clustering_model.eps, 0.5)
+    assert clustering_model.min_samples == 3
+
+
+# ==============================================================================
 # test_DBScanConstrainedClustering_cluster_for_inconsistent_constraints_manager
 # ==============================================================================
 def test_DBScanConstrainedClustering_cluster_for_inconsistent_constraints_manager():
@@ -85,6 +104,26 @@ def test_DBScanConstrainedClustering_cluster_for_inconsistent_vectors():
         clustering_model.cluster(
             constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third"]),
             vectors=None,
+        )
+
+
+# ==============================================================================
+# test_DBScanConstrainedClustering_cluster_for_inconsistent_nb_clusters
+# ==============================================================================
+def test_DBScanConstrainedClustering_cluster_for_inconsistent_nb_clusters():
+    """
+    Test that the `clustering.dbscan.DBScanConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    """
+
+    # Initialize a `DBScanConstrainedClustering` instance.
+    clustering_model = DBScanConstrainedClustering()
+
+    # Check `ValueError` for not matrix `nb_clusters`.
+    with pytest.raises(ValueError, match="`nb_clusters`"):
+        clustering_model.cluster(
+            constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third"]),
+            vectors={"first": np.array([1, 2, 3]), "second": np.array([[4, 5, 6]]), "third": csr_matrix([7, 8, 9])},
+            nb_clusters=4,
         )
 
 
@@ -167,7 +206,7 @@ def test_DBScanConstrainedClustering_cluster_with_no_constraints_2():
     constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
     # Initialize a `KMeansConstrainedClustering` instance.
-    clustering_model = DBScanConstrainedClustering(eps=0.5, min_samples=3)
+    clustering_model = DBScanConstrainedClustering(eps=0.5, min_samples=3,)
 
     # Run clustering 2 clusters and no constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
@@ -183,7 +222,20 @@ def test_DBScanConstrainedClustering_cluster_with_no_constraints_2():
     They are not numerous enough to create a cluster
     """
 
-    assert dict_of_predicted_clusters == {"1": 0, "2": 1, "3": 1, "4": 2, "5": 1, "6": 2, "8": 0, "9": 2, "11": 0}
+    assert dict_of_predicted_clusters == {
+        "0": -1,
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "4": 2,
+        "5": 1,
+        "6": 2,
+        "7": -2,
+        "8": 0,
+        "9": 2,
+        "10": -3,
+        "11": 0,
+    }
 
 
 # ==============================================================================

@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/utils/test_preprocessing.py
 * Description:  Unittests for the `utils.preprocessing` module.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -133,7 +133,7 @@ def test_preprocess_for_parsing_filter():
     assert sorted(dict_of_preprocessed_texts.keys()) == ["0", "1", "2"]
     assert dict_of_preprocessed_texts["0"] == "comment signaler perte"
     assert dict_of_preprocessed_texts["1"] == "quelle est procedure chercher"
-    assert dict_of_preprocessed_texts["2"] == "carte a plafond l augmenter"
+    assert dict_of_preprocessed_texts["2"] == "carte a plafond augmenter"
 
 
 # ==============================================================================
@@ -158,5 +158,5 @@ def test_preprocess_for_lemmatization():
     assert dict_of_preprocessed_texts
     assert sorted(dict_of_preprocessed_texts.keys()) == ["0", "1", "2"]
     assert dict_of_preprocessed_texts["0"] == "comment signaler un perte de carte de paiement"
-    assert dict_of_preprocessed_texts["1"] == "quell etre le procedure pour chercher un carte de credit avale"
+    assert dict_of_preprocessed_texts["1"] == "quel etre le procedure pour chercher un carte de credit avaler"
     assert dict_of_preprocessed_texts["2"] == "mon carte visa avoir un plafond de paiment trop bas puis je l augmenter"

@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/sampling/test_factory_farthest_in_same_cluster.py
 * Description:  Unittests for the `sampling.cluster_based` module, `"farhest_in_same_cluster"` sampler.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
