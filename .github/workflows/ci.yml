@@ -6,9 +6,6 @@ on:
       - main
       - develop
       - sdia2022
-      - sdia2022-david
-      - sdia2022-esther
-      - sdia2022-marc
   pull_request:
     branches:
       - main
@@ -30,21 +27,15 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up PDM
-      uses: pdm-project/setup-pdm@v2.6
+      uses: pdm-project/setup-pdm@v3
       with:
         python-version: "3.8"
 
-    - name: Set cache variables
-      id: set_variables
-      run: |
-        echo "::set-output name=PIP_CACHE::$(pip cache dir)"
-        echo "::set-output name=PDM_CACHE::$(pdm config cache_dir)"
-
     - name: Set up cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           ${{ steps.set_variables.outputs.PIP_CACHE }}
@@ -52,11 +43,10 @@ jobs:
         key: checks-cache
 
     - name: Resolving dependencies
-      run: pdm --verbose lock
+      run: pdm --verbose lock 
 
     - name: Install dependencies
-      run: |
-        pdm --verbose install -G duty -G docs -G quality -G typing -G security
+      run: pdm --verbose install -G duty -G docs -G quality -G typing -G security
 
     - name: Check if the documentation builds correctly
       run: pdm --verbose run duty check-docs
@@ -93,7 +83,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up PDM
-      uses: pdm-project/setup-pdm@v2.6
+      uses: pdm-project/setup-pdm@v3
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -104,7 +94,7 @@ jobs:
         echo "::set-output name=PDM_CACHE::$(pdm config cache_dir)"
 
     - name: Set up cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           ${{ steps.set_variables.outputs.PIP_CACHE }}
