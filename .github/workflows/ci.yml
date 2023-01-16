@@ -34,6 +34,12 @@ jobs:
       with:
         python-version: "3.8"
 
+    - name: Set cache variables
+      id: set_variables
+      run: |
+        echo "::set-output name=PIP_CACHE::$(pip cache dir)"
+        echo "::set-output name=PDM_CACHE::$(pdm config cache_dir)"
+
     - name: Set up cache
       uses: actions/cache@v3
       with:
