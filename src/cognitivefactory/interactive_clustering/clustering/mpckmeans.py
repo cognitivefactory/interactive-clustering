@@ -34,8 +34,12 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
     This class implements the MPCkmeans constrained clustering.
     It inherits from `AbstractConstrainedClustering`.
 
+    Forked from https://github.com/Behrouz-Babaki/COP-Kmeans/blob/master/copkmeans/cop_kmeans.py
+    Modified by Esther LENOTRE <git@estherlenotre.fr> according to https://proceedings.mlr.press/v5/givoni09a.html
+
     References:
-        - https://github.com/Behrouz-Babaki/COP-Kmeans/blob/master/copkmeans/cop_kmeans.py
+        - KMeans Clustering: `MacQueen, J. (1967). Some methods for classification and analysis of multivariate observations. Proceedings of the fifth Berkeley symposium on mathematical statistics and probability 1(14), 281–297.`
+        - Constrained _'MPC'_ KMeans Clustering: `Khan, Md. A., Tamim, I., Ahmed, E., & Awal, M. A. (2012). Multiple Parameter Based Clustering (MPC): Prospective Analysis for Effective Clustering in Wireless Sensor Network (WSN) Using K-Means Algorithm. In Wireless Sensor Network (Vol. 04, Issue 01, pp. 18–24). Scientific Research Publishing, Inc. https://doi.org/10.4236/wsn.2012.41003`
 
     Examples:
         ```python
