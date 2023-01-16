@@ -80,11 +80,11 @@ jobs:
         - macos-latest
         - windows-latest
         python-version:
-        - "3.7"
+        #### - "3.7"  # Not compatible with numpy<1.22
         - "3.8"
         - "3.9"
-        #### - "3.10"  # TODO: numpy==1.21.1 & scipy==1.6.1 & spacy not compatible...
-        #### - "3.11-dev"  # TODO: numpy==1.21.1 & scipy==1.6.1 & spacy not compatible...
+        #### - "3.10"  # Not compatible with networkx<=2.6, scikit-learn<=1.0
+        #### - "3.11"  # Not compatible with networkx<=2.6, scikit-learn<=1.0
 
     runs-on: ${{ matrix.os }}
 
