@@ -183,14 +183,12 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
 
         # TODO: Reformat vectors
         id_names: np.ndarray = np.array(list(vectors.keys()))
-        X: np.ndarray = np.array([
-            (
-                np.array(v).flatten()
-                if isinstance(v, np.ndarray) or isinstance(v, list)
-                else v.toarray().flatten()
-            )
-            for v in vectors.values()
-        ])
+        X: np.ndarray = np.array(
+            [
+                (np.array(v).flatten() if isinstance(v, (np.ndarray, list)) else v.toarray().flatten())
+                for v in vectors.values()
+            ]
+        )
 
         # TODO: reformat constraints
         self.ml: List[Tuple[int, int]] = [
