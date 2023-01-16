@@ -16,11 +16,11 @@ import math
 
 import pytest
 
-from cognitivefactory.interactive_clustering.clustering.factory import clustering_factory
 from cognitivefactory.interactive_clustering.clustering.affinity_propagation import (
     AffinityPropagationConstrainedClustering,
 )
 from cognitivefactory.interactive_clustering.clustering.dbscan import DBScanConstrainedClustering
+from cognitivefactory.interactive_clustering.clustering.factory import clustering_factory
 from cognitivefactory.interactive_clustering.clustering.hierarchical import HierarchicalConstrainedClustering
 from cognitivefactory.interactive_clustering.clustering.kmeans import KMeansConstrainedClustering
 from cognitivefactory.interactive_clustering.clustering.mpckmeans import MPCKMeansConstrainedClustering

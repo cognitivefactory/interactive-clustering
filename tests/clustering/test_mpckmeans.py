@@ -94,7 +94,7 @@ def test_MPCKMeansConstrainedClustering_for_correct_settings():
 # ==============================================================================
 def test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_constraints_manager():
     """
-    Test that the `clustering.spectral.MPCKMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints_manager` parameter.
+    Test that the `clustering.mpckmeans.MPCKMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints_manager` parameter.
     """
 
     # Initialize a `MPCKMeansConstrainedClustering` instance.
@@ -114,7 +114,7 @@ def test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_constraints_man
 # ==============================================================================
 def test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_vectors():
     """
-    Test that the `clustering.spectral.MPCKMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `vectors` parameter.
+    Test that the `clustering.mpckmeans.MPCKMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `vectors` parameter.
     """
 
     # Initialize a `KMeansConstrainedClustering` instance.
@@ -134,7 +134,7 @@ def test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_vectors():
 # ==============================================================================
 def test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters_1():
     """
-    Test that the `clustering.spectral.MPCKMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    Test that the `clustering.mpckmeans.MPCKMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
     """
 
     # Initialize a `MPCKMeansConstrainedClustering` instance.
@@ -154,7 +154,7 @@ def test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters_1()
 # ==============================================================================
 def test_MPCKMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters_2():
     """
-    Test that the `clustering.spectral.MPCKMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    Test that the `clustering.mpckmeans.MPCKMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
     """
 
     # Initialize a `MPCKMeansConstrainedClustering` instance.
@@ -309,6 +309,7 @@ def test_MPCKMeansConstrainedClustering_cluster_with_some_constraints():
     constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
     constraints_manager.add_constraint(data_ID1="0", data_ID2="7", constraint_type="MUST_LINK")
     constraints_manager.add_constraint(data_ID1="0", data_ID2="10", constraint_type="MUST_LINK")
+    constraints_manager.add_constraint(data_ID1="0", data_ID2="4", constraint_type="CANNOT_LINK")
 
     # Initialize a `KMeansConstrainedClustering` instance.
     clustering_model = MPCKMeansConstrainedClustering()

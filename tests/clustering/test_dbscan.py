@@ -13,8 +13,9 @@
 # ==============================================================================
 
 import math
-import pytest
+
 import numpy as np
+import pytest
 from scipy.sparse import csr_matrix
 
 from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
@@ -206,7 +207,10 @@ def test_DBScanConstrainedClustering_cluster_with_no_constraints_2():
     constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
     # Initialize a `KMeansConstrainedClustering` instance.
-    clustering_model = DBScanConstrainedClustering(eps=0.5, min_samples=3,)
+    clustering_model = DBScanConstrainedClustering(
+        eps=0.5,
+        min_samples=3,
+    )
 
     # Run clustering 2 clusters and no constraints.
     dict_of_predicted_clusters = clustering_model.cluster(
@@ -265,6 +269,7 @@ def test_DBScanConstrainedClustering_cluster_with_some_constraints():
     constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
     constraints_manager.add_constraint(data_ID1="0", data_ID2="7", constraint_type="MUST_LINK")
     constraints_manager.add_constraint(data_ID1="0", data_ID2="10", constraint_type="MUST_LINK")
+    constraints_manager.add_constraint(data_ID1="0", data_ID2="4", constraint_type="CANNOT_LINK")
 
     # Initialize a `KMeansConstrainedClustering` instance.
     clustering_model = DBScanConstrainedClustering(eps=0.5, min_samples=3)

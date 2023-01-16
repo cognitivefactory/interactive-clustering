@@ -58,7 +58,7 @@ def test_HierarchicalConstrainedClustering_for_correct_settings():
 # ==============================================================================
 def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_constraints_manager():
     """
-    Test that the `clustering.spectral.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints_manager` parameter.
+    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints_manager` parameter.
     """
 
     # Initialize a `HierarchicalConstrainedClustering` instance.
@@ -78,7 +78,7 @@ def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_constraints_
 # ==============================================================================
 def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_vectors():
     """
-    Test that the `clustering.spectral.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `vectors` parameter.
+    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `vectors` parameter.
     """
 
     # Initialize a `HierarchicalConstrainedClustering` instance.
@@ -98,7 +98,7 @@ def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_vectors():
 # ==============================================================================
 def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_nb_clusters_1():
     """
-    Test that the `clustering.spectral.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
     """
 
     # Initialize a `HierarchicalConstrainedClustering` instance.
@@ -118,7 +118,7 @@ def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_nb_clusters_
 # ==============================================================================
 def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_nb_clusters_2():
     """
-    Test that the `clustering.spectral.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
     """
 
     # Initialize a `HierarchicalConstrainedClustering` instance.

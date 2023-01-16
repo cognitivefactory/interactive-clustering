@@ -94,7 +94,7 @@ def test_KMeansConstrainedClustering_for_correct_settings():
 # ==============================================================================
 def test_KMeansConstrainedClustering_cluster_for_inconsistent_constraints_manager():
     """
-    Test that the `clustering.spectral.KMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints_manager` parameter.
+    Test that the `clustering.kmeans.KMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints_manager` parameter.
     """
 
     # Initialize a `KMeansConstrainedClustering` instance.
@@ -114,7 +114,7 @@ def test_KMeansConstrainedClustering_cluster_for_inconsistent_constraints_manage
 # ==============================================================================
 def test_KMeansConstrainedClustering_cluster_for_inconsistent_vectors():
     """
-    Test that the `clustering.spectral.KMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `vectors` parameter.
+    Test that the `clustering.kmeans.KMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `vectors` parameter.
     """
 
     # Initialize a `KMeansConstrainedClustering` instance.
@@ -134,7 +134,7 @@ def test_KMeansConstrainedClustering_cluster_for_inconsistent_vectors():
 # ==============================================================================
 def test_KMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters_1():
     """
-    Test that the `clustering.spectral.KMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    Test that the `clustering.kmeans.KMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
     """
 
     # Initialize a `KMeansConstrainedClustering` instance.
@@ -154,7 +154,7 @@ def test_KMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters_1():
 # ==============================================================================
 def test_KMeansConstrainedClustering_cluster_for_inconsistent_nb_clusters_2():
     """
-    Test that the `clustering.spectral.KMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    Test that the `clustering.kmeans.KMeansConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
     """
 
     # Initialize a `KMeansConstrainedClustering` instance.

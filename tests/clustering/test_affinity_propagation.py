@@ -11,6 +11,7 @@
 # ==============================================================================
 
 
+import numpy as np
 import pytest
 from scipy.sparse import csr_matrix
 
@@ -33,6 +34,7 @@ def test_AffinityPropagationConstrainedClustering_for_inconsistent_max_iteration
         AffinityPropagationConstrainedClustering(
             max_iteration=-1,
         )
+
 
 # ==============================================================================
 # test_AffinityPropagationConstrainedClustering_for_inconsistent_convergence_iteration
@@ -59,12 +61,72 @@ def test_AffinityPropagationConstrainedClustering_for_correct_settings():
 
     # Check a correct initialization.
     clustering_model = AffinityPropagationConstrainedClustering(
-        max_iteration = 100,
-        convergence_iteration = 5,
+        max_iteration=100,
+        convergence_iteration=5,
     )
     assert clustering_model
     assert clustering_model.max_iteration == 100
     assert clustering_model.convergence_iteration == 5
+
+
+# ==============================================================================
+# test_AffinityPropagationConstrainedClustering_cluster_for_inconsistent_constraints_manager
+# ==============================================================================
+def test_AffinityPropagationConstrainedClustering_cluster_for_inconsistent_constraints_manager():
+    """
+    Test that the `clustering.affinity_propagation.AffinityPropagationConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints_manager` parameter.
+    """
+
+    # Initialize a `AffinityPropagationConstrainedClustering` instance.
+    clustering_model = AffinityPropagationConstrainedClustering()
+
+    # Check `ValueError` for not matrix `vectors`.
+    with pytest.raises(ValueError, match="`constraints_manager`"):
+        clustering_model.cluster(
+            constraints_manager=None,
+            vectors=None,
+            nb_clusters=2,
+        )
+
+
+# ==============================================================================
+# test_AffinityPropagationConstrainedClustering_cluster_for_inconsistent_vectors
+# ==============================================================================
+def test_AffinityPropagationConstrainedClustering_cluster_for_inconsistent_vectors():
+    """
+    Test that the `clustering.affinity_propagation.AffinityPropagationConstrainedClustering` clustering raises an `ValueError` for inconsistent `vectors` parameter.
+    """
+
+    # Initialize a `AffinityPropagationConstrainedClustering` instance.
+    clustering_model = AffinityPropagationConstrainedClustering()
+
+    # Check `ValueError` for not matrix `vectors`.
+    with pytest.raises(ValueError, match="`vectors`"):
+        clustering_model.cluster(
+            constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third"]),
+            vectors=None,
+            nb_clusters=2,
+        )
+
+
+# ==============================================================================
+# test_AffinityPropagationConstrainedClustering_cluster_for_inconsistent_nb_clusters
+# ==============================================================================
+def test_AffinityPropagationConstrainedClustering_cluster_for_inconsistent_nb_clusters_1():
+    """
+    Test that the `clustering.affinity_propagation.AffinityPropagationConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    """
+
+    # Initialize a `AffinityPropagationConstrainedClustering` instance.
+    clustering_model = AffinityPropagationConstrainedClustering()
+
+    # Check `ValueError` for too small `nb_clusters`.
+    with pytest.raises(ValueError, match="`nb_clusters`"):
+        clustering_model.cluster(
+            constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third"]),
+            vectors={"first": np.array([1, 2, 3]), "second": np.array([[4, 5, 6]]), "third": csr_matrix([7, 8, 9])},
+            nb_clusters=2,
+        )
 
 
 # ==============================================================================
@@ -93,7 +155,7 @@ def test_AffinityPropagationConstrainedClustering_cluster_with_no_constraints_1(
 
     constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
-    # Initialize a `KMeansConstrainedClustering` instance.
+    # Initialize a `AffinityPropagationConstrainedClustering` instance.
     clustering_model = AffinityPropagationConstrainedClustering()
 
     # Run clustering 2 clusters and no constraints.
@@ -144,7 +206,7 @@ def test_AffinityPropagationConstrainedClustering_cluster_with_no_constraints_2(
 
     constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
-    # Initialize a `KMeansConstrainedClustering` instance.
+    # Initialize a `AffinityPropagationConstrainedClustering` instance.
     clustering_model = AffinityPropagationConstrainedClustering()
 
     # Run clustering with no constraints.
@@ -204,8 +266,9 @@ def test_AffinityPropagationConstrainedClustering_cluster_with_some_constraints(
     constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
     constraints_manager.add_constraint(data_ID1="0", data_ID2="7", constraint_type="MUST_LINK")
     constraints_manager.add_constraint(data_ID1="0", data_ID2="10", constraint_type="MUST_LINK")
+    constraints_manager.add_constraint(data_ID1="0", data_ID2="4", constraint_type="CANNOT_LINK")
 
-    # Initialize a `KMeansConstrainedClustering` instance.
+    # Initialize a `AffinityPropagationConstrainedClustering` instance.
     clustering_model = AffinityPropagationConstrainedClustering()
 
     # Run clustering with some constraints.
