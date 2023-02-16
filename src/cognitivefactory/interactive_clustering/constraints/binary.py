@@ -53,7 +53,7 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         # Add constraints.
         constraints_manager.add_constraint(data_ID1="0", data_ID2="1", constraint_type="MUST_LINK")
         constraints_manager.add_constraint(data_ID1="1", data_ID2="2", constraint_type="MUST_LINK")
-        constraints_manager.add_constraint(data_ID1="2, data_ID2="3", constraint_type="CANNOT_LINK")
+        constraints_manager.add_constraint(data_ID1="2", data_ID2="3", constraint_type="CANNOT_LINK")
 
         # Get added constraint.
         constraints_manager.get_added_constraint(data_ID1="0", data_ID2="1")  # expected ("MUST_LINK", 1.0)
@@ -70,7 +70,6 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
     # INITIALIZATION
     # ==============================================================================
     def __init__(self, list_of_data_IDs: List[str], **kargs) -> None:
-
         """
         The constructor for Binary Constraints Manager class.
         This class use the strong transitivity to infer on constraints, so constraints values are not taken into account.
@@ -125,7 +124,6 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         self,
         data_ID: str,
     ) -> bool:
-
         """
         The main method used to add a new data ID to manage.
 
@@ -457,7 +455,6 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
 
         # For each data ID...
         for data_ID in self._constraints_transitivity.keys():
-
             # ... get the list of `"MUST_LINK"` data IDs linked by transitivity with `data_ID` ...
             connected_component_of_a_data_ID = list(self._constraints_transitivity[data_ID]["MUST_LINK"].keys())
 
@@ -489,13 +486,11 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
 
         # For each data ID...
         for data_ID in self._constraints_transitivity.keys():
-
             # ... if some data IDs are not linked by transitivity to this `data_ID` with a `"MUST_LINK"` or `"CANNOT_LINK"` constraints...
             if (
                 len(self._constraints_transitivity[data_ID]["MUST_LINK"].keys())
                 + len(self._constraints_transitivity[data_ID]["CANNOT_LINK"].keys())
             ) != len(self._constraints_transitivity.keys()):
-
                 # ... then return `False`.
                 return False
 
@@ -604,7 +599,6 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
 
         for data_ID1 in self._constraints_dictionary.keys():
             for data_ID2 in self._constraints_dictionary[data_ID1].keys():
-
                 # Get the constraint between `data_ID1` and `data_ID2`.
                 constraint = self._constraints_dictionary[data_ID1][data_ID2]
 
@@ -642,7 +636,6 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         ### Case 1 : `constraint_type` is `"MUST_LINK"`.
         ###
         if constraint_type == "MUST_LINK":
-
             # Define new common set of `"MUST_LINK"` data IDs,
             # by merging the sets of `"MUST_LINK"` data IDs for `data_ID1` and `data_ID2`.
             new_MUST_LINK_common_set: Dict[str, None] = {
@@ -676,7 +669,6 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
         ### Case 2 : `constraint_type` is `"CANNOT_LINK"`.
         ###
         else:  # if constraint_type == "CANNOT_LINK":
-
             # Define new common set of `"CANNOT_LINK"` data IDs for data IDs that are similar to `data_ID1`.
             new_CANNOT_LINK_set_for_data_ID1: Dict[str, None] = {
                 **self._constraints_transitivity[data_ID1]["CANNOT_LINK"],

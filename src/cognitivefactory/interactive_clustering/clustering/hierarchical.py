@@ -187,7 +187,6 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
         # Verbose
         if verbose:  # pragma: no cover
-
             # Verbose - Print progression status.
             TIME_start: datetime = datetime.now()
             print(
@@ -215,7 +214,6 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
         # For each list of same data (MUST_LINK constraints).
         for MUST_LINK_data in list_of_possible_lists_of_MUST_LINK_data:
-
             # Create a initial cluster with data that MUST be LINKed.
             self._add_new_cluster_by_setting_members(
                 members=MUST_LINK_data,
@@ -240,10 +238,8 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
         # Iter until convergence of clustering.
         while len(self.current_clusters) > 1:
-
             # Verbose
             if verbose:  # pragma: no cover
-
                 # Verbose - Print progression status.
                 TIME_current: datetime = datetime.now()
                 print(
@@ -275,7 +271,6 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
             # Update distances
             for cluster_ID in self.current_clusters:
-
                 if cluster_ID != merged_cluster_ID:
                     # Compute distance between cluster and merged cluster.
                     distance = self._compute_distance(cluster_IDi=cluster_ID, cluster_IDj=merged_cluster_ID)
@@ -291,7 +286,6 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
         # Verbose
         if verbose:  # pragma: no cover
-
             # Verbose - Print progression status.
             TIME_current = datetime.now()
 
@@ -315,7 +309,6 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
         # If several clusters remains, then merge them in a cluster root.
         if len(self.current_clusters) > 1:
-
             # Merge all remaining clusters.
             # If merge one cluster "node" with many cluster "leaves" : add clusters "leaves" to the children of the cluster "node".
             # If merge many clusters "nodes" and/or many clusters "leaves" : create a new cluster "node".
@@ -480,7 +473,6 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
         # Case 1 : `self.linkage` is "complete".
         if self.linkage == "complete":
-
             return max(
                 [
                     self.dict_of_pairwise_distances[data_ID_in_cluster_IDi][data_ID_in_cluster_IDj]
@@ -643,7 +635,6 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
         # Explore `HierarchicalConstrainedClustering` children until dict_of_predicted_clusters has the right number of children.
         while len(list_of_clusters) < nb_clusters:
-
             if by == "size":
                 # Get the biggest cluster in current children from `HierarchicalConstrainedClustering` exploration.
                 # i.e. it's the cluster that has the more data to split.
@@ -676,10 +667,8 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
 
         # For all cluster...
         for cluster in list_of_clusters:
-
             # ... and for all member in each cluster...
             for data_ID in cluster.members:
-
                 # ... affect the predicted cluster (cluster ID) to the data.
                 predicted_clusters[data_ID] = cluster.cluster_ID
 

@@ -240,7 +240,6 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
 
         # While no convergence
         while (not converged) and (current_iteration < self.max_iteration):
-
             # Increase current iteration number.
             current_iteration += 1
 
@@ -276,7 +275,6 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
 
             # While all data aren't assigned.
             while list_of_data_IDs_to_assign:
-
                 # Get a data_ID to assign
                 data_ID_to_assign: str = list_of_data_IDs_to_assign.pop()
 
@@ -301,7 +299,6 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
 
                 # If there is no possible cluster...
                 if possible_cluster_IDs == []:  # noqa: WPS520
-
                     # Assign the data ID to a new cluster
                     new_clusters[data_ID_to_assign] = max(
                         max([cluster_ID for _, cluster_ID in new_clusters.items()]) + 1, self.nb_clusters
@@ -309,7 +306,6 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
 
                 # If there is possible clusters...
                 else:
-
                     # Get distance between data ID and all possible centroids.
                     distances_to_cluster_ID: Dict[float, int] = {
                         dict_of_pairwise_distances_between_data_and_clusters[data_ID_to_assign][cluster_ID]: cluster_ID
@@ -346,7 +342,6 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
 
             # Check by centroids difference (with tolerance).
             if set(self.clusters.values()) == set(new_clusters.values()):
-
                 # Precompute distance between old and new cluster centroids.
                 matrix_of_pairwise_distances_between_old_and_new_clusters: csr_matrix = pairwise_distances(
                     X=vstack(  # Old clusters centroids.
@@ -369,7 +364,6 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
 
             # Check if number of clusters have changed.
             else:
-
                 # Uncomparable shift.
                 shift = float("Inf")
 
@@ -456,7 +450,6 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
 
         # For all possible cluster ID.
         for cluster_ID in set(clusters.values()):
-
             # Compute cluster members.
             members_of_cluster_ID: List[csr_matrix] = [
                 self.vectors[data_ID]

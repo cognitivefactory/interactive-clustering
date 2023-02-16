@@ -178,7 +178,6 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
         # Loop over pairs of data IDs.
         for data_ID1 in self.constraints_manager.get_list_of_managed_data_IDs():
             for data_ID2 in self.constraints_manager.get_list_of_managed_data_IDs():
-
                 # Select ordered pairs.
                 if data_ID1 >= data_ID2:
                     continue
@@ -213,7 +212,6 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
 
         # Precompute pairwise distances.
         if self.distance_restriction is not None:
-
             # Compute pairwise distances.
             matrix_of_pairwise_distances: csr_matrix = pairwise_distances(
                 X=vstack(self.vectors[data_ID] for data_ID in self.constraints_manager.get_list_of_managed_data_IDs()),
