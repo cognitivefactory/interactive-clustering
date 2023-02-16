@@ -10,13 +10,11 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-import warnings
 from itertools import combinations, product
 from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 from scipy.sparse import csr_matrix, vstack
-from sklearn.exceptions import ConvergenceWarning
 from sklearn.metrics import pairwise_distances
 from sklearn.utils import check_random_state
 
@@ -88,7 +86,7 @@ def _affinity_propagation_constrained(
 
     if n_samples == 1 or _equal_similarities_and_preferences(S, preference):
         # It makes no sense to run the algorithm in this case, so return 1 or n_samples clusters, depending on preferences
-        warnings.warn("All samples have mutually equal similarities. Returning arbitrary cluster center(s).")
+        # TODO: warnings.warn("All samples have mutually equal similarities. Returning arbitrary cluster center(s).")
         if preference.flat[0] >= S.flat[n_samples - 1]:
             return np.arange(n_samples)
         return [0 for _ in range(n_samples)]
@@ -241,11 +239,8 @@ def _affinity_propagation_constrained(
         cluster_centers_indices = np.unique(labels)
         labels = np.searchsorted(cluster_centers_indices, labels)
     else:
-        if verbose:  # pragma: no cover
-            warnings.warn(
-                "Affinity propagation did not converge, this model " "will not have any cluster centers.",
-                ConvergenceWarning,
-            )
+        # TODO: if verbose:  # pragma: no cover
+        # TODO: warnings.warn("Affinity propagation did not converge, this model " "will not have any cluster centers.", ConvergenceWarning)
         labels = [-1 for _ in range(n_samples)]
         cluster_centers_indices = []
 
@@ -303,7 +298,7 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
         constraints_manager.add_constraint(data_ID1="4", data_ID2="7", constraint_type="CANNOT_LINK")
 
         # Run clustering.
-        dict_of_predicted_clusters = clustering_model(
+        dict_of_predicted_clusters = clustering_model.cluster(
             constraints_manager=constraints_manager,
             vectors=vectors,
             ####nb_clusters=None,

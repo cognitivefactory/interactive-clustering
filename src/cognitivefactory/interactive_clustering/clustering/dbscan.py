@@ -183,7 +183,7 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         self.nb_clusters: Optional[int] = None
 
         ###
-        ### RUN DBSCAN CONSTRAINED CLUSTERING
+        ### COMPUTE DISTANCE
         ###
 
         # Compute pairwise distances.
@@ -431,7 +431,7 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
                 # Compute the distances between the core cluster and the local clusters
                 for local_cluster_ID in self.dict_of_local_clusters.keys():
                     # Compute the smallest distance between points of the core cluster and the local cluster
-                    min_distance = min(
+                    distances_to_local_clusters[local_cluster_ID] = min(
                         [
                             self.dict_of_pairwise_distances[core_cluster_pt][local_cluster_pt]
                             for core_cluster_pt in self.dict_of_core_local_clusters[core_cluster_ID]
@@ -439,10 +439,10 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
                         ]
                     )
 
-                    distances_to_local_clusters[local_cluster_ID] = min_distance
-
                 # Find closest local cluster to core cluster
-                closest_cluster = min(distances_to_local_clusters)
+                closest_cluster = min(
+                    distances_to_local_clusters
+                )  # TODO: min(distances_to_local_clusters, key=lambda x: distances_to_local_clusters[x])
 
                 if distances_to_local_clusters[closest_cluster] > self.eps:
                     merging = False
@@ -485,7 +485,9 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
                     else:
                         merging = False
 
-        # Defining final clusters
+        ###
+        ### DEFINING FINAL CLUSTERS
+        ###
 
         # Consider the final core local clusters
         assigned_cluster_id: int = 0

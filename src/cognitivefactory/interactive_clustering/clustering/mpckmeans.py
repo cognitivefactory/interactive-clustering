@@ -73,7 +73,11 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         constraints_manager.add_constraint(data_ID1="2", data_ID2="4", constraint_type="CANNOT_LINK")
 
         cluster_model = MPCKMeansConstrainedClustering()
-        dict_of_predicted_clusters = cluster_model.cluster(constraints_manager = constraints_manager, vectors = vectors, nb_clusters=3)
+        dict_of_predicted_clusters = cluster_model.cluster(
+            constraints_manager=constraints_manager,
+            vectors=vectors,
+            nb_clusters=3,
+        )
 
         # Print results.
         print("Expected results", ";", {"0": 0, "1": 0, "2": 1, "3": 1, "4": 2, "5": 2, "6": 0, "7": 0, "8": 0,})
