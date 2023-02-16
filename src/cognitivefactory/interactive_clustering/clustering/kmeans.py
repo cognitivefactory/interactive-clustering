@@ -74,7 +74,7 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
         constraints_manager.add_constraint(data_ID1="2", data_ID2="4", constraint_type="CANNOT_LINK")
 
         # Run clustering.
-        dict_of_predicted_clusters = clustering_model(
+        dict_of_predicted_clusters = clustering_model.cluster(
             constraints_manager=constraints_manager,
             vectors=vectors,
             nb_clusters=3,

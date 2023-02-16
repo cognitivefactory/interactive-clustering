@@ -76,7 +76,11 @@ def preprocess(
         )
 
         # Print results.
-        print("Expected results", ";", {"0": "signaler perte carte paiement", "1": "procedure chercher carte credit avalee", "2": "carte visa plafond paiment l augmenter",})
+        print("Expected results", ";", {
+            "0": "signaler perte carte paiement",
+            "1": "procedure chercher carte credit avalee",
+            "2": "carte visa plafond paiment l augmenter",
+        })
         print("Computed results", ":", dict_of_preprocessed_texts)
         ```
     """

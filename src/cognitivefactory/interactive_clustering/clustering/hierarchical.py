@@ -68,7 +68,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
         # Run clustering.
-        dict_of_predicted_clusters = clustering_model(
+        dict_of_predicted_clusters = clustering_model.cluster(
             constraints_manager=constraints_manager,
             vectors=vectors,
             nb_clusters=3,
