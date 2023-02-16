@@ -12,8 +12,14 @@
       
         <link rel="canonical" href="https://cognitivefactory.github.io/interactive-clustering/reference/cognitivefactory/interactive_clustering/clustering/hierarchical/">
       
+      
+        <link rel="prev" href="../factory/">
+      
+      
+        <link rel="next" href="../kmeans/">
+      
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
     
     
       
@@ -21,13 +27,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.69437709.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.0d440cfe.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.cbb835fc.min.css">
-        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.2505c338.min.css">
       
       
+
     
     
     
@@ -40,6 +46,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../../assets/_markdown_exec_ansi.css">
+    
       <link rel="stylesheet" href="../../../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../../../../css/material.css">
@@ -50,6 +58,7 @@
     
       
 
+    
     
     
   </head>
@@ -119,7 +128,6 @@
       <form class="md-header__option" data-md-component="palette">
         
           
-          
           <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -127,7 +135,6 @@
             </label>
           
         
-          
           
           <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -154,7 +161,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -166,7 +173,7 @@
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -178,7 +185,7 @@
         <a href="https://github.com/cognitivefactory/interactive-clustering" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     cognitivefactory/interactive-clustering
@@ -291,7 +298,7 @@
       <a href="https://github.com/cognitivefactory/interactive-clustering" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     cognitivefactory/interactive-clustering
@@ -312,17 +319,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_1">
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
           Home
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Home" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_1">
           <span class="md-nav__icon md-icon"></span>
           Home
@@ -418,17 +426,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
       
       
       
-      
-        <label class="md-nav__link" for="__nav_2">
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
           Code Reference
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Code Reference" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Code Reference
@@ -446,17 +455,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
       
       
       
-      
-        <label class="md-nav__link" for="__nav_2_1">
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
           cognitivefactory
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="cognitivefactory" data-md-level="2">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2_1">
           <span class="md-nav__icon md-icon"></span>
           cognitivefactory
@@ -474,8 +484,9 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1" type="checkbox" id="__nav_2_1_1" checked>
       
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" checked>
       
       
       
@@ -490,7 +501,7 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="interactive_clustering" data-md-level="3">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2_1_1">
           <span class="md-nav__icon md-icon"></span>
           interactive_clustering
@@ -508,8 +519,9 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1_1" type="checkbox" id="__nav_2_1_1_1" checked>
       
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1_1" checked>
       
       
       
@@ -524,7 +536,7 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="clustering" data-md-level="4">
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_1_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2_1_1_1">
           <span class="md-nav__icon md-icon"></span>
           clustering
@@ -568,7 +580,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
       
@@ -736,8 +748,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1_2" type="checkbox" id="__nav_2_1_1_2" >
       
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1_2" >
       
       
       
@@ -752,7 +765,7 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="constraints" data-md-level="4">
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_1_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2_1_1_2">
           <span class="md-nav__icon md-icon"></span>
           constraints
@@ -817,8 +830,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1_3" type="checkbox" id="__nav_2_1_1_3" >
       
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1_3" >
       
       
       
@@ -833,7 +847,7 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="sampling" data-md-level="4">
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_1_3_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2_1_1_3">
           <span class="md-nav__icon md-icon"></span>
           sampling
@@ -898,8 +912,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1_4" type="checkbox" id="__nav_2_1_1_4" >
       
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1_4" >
       
       
       
@@ -914,7 +929,7 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="utils" data-md-level="4">
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_1_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2_1_1_4">
           <span class="md-nav__icon md-icon"></span>
           utils
@@ -1001,17 +1016,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_3">
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
           Development
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Development" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Development
@@ -1187,13 +1203,14 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-  <a href="https://github.com/cognitivefactory/interactive-clustering/edit/master/docs/src\cognitivefactory\interactive_clustering\clustering\hierarchical.py" title="Edit this page" class="md-content__button md-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
-  </a>
+                  
+
+  
+  
 
 
 
@@ -1243,7 +1260,18 @@
 
         <details class="quote">
           <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\hierarchical.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">696</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">685</span>
+<span class="normal">686</span>
+<span class="normal">687</span>
+<span class="normal">688</span>
+<span class="normal">689</span>
+<span class="normal">690</span>
+<span class="normal">691</span>
+<span class="normal">692</span>
+<span class="normal">693</span>
+<span class="normal">694</span>
+<span class="normal">695</span>
+<span class="normal">696</span>
 <span class="normal">697</span>
 <span class="normal">698</span>
 <span class="normal">699</span>
@@ -1372,19 +1400,8 @@
 <span class="normal">822</span>
 <span class="normal">823</span>
 <span class="normal">824</span>
-<span class="normal">825</span>
-<span class="normal">826</span>
-<span class="normal">827</span>
-<span class="normal">828</span>
-<span class="normal">829</span>
-<span class="normal">830</span>
-<span class="normal">831</span>
-<span class="normal">832</span>
-<span class="normal">833</span>
-<span class="normal">834</span>
-<span class="normal">835</span>
-<span class="normal">836</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Cluster</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="normal">825</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Cluster</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class represents a cluster as a node of the hierarchical clustering tree.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1399,7 +1416,7 @@
         <span class="n">children</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;Cluster&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">members</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The constructor for Cluster class.</span>
 
 <span class="sd">        Args:</span>
@@ -1450,7 +1467,7 @@
         <span class="n">new_children</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;Cluster&quot;</span><span class="p">],</span>
         <span class="n">new_clustering_iteration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add new children to the cluster.</span>
 
 <span class="sd">        Args:</span>
@@ -1477,7 +1494,7 @@
     <span class="c1"># UPDATE CENTROIDS :</span>
     <span class="c1"># ==============================================================================</span>
     <span class="k">def</span> <span class="nf">update_centroid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Update centroid of the cluster.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -1488,7 +1505,7 @@
     <span class="c1"># GET CLUSTER SIZE :</span>
     <span class="c1"># ==============================================================================</span>
     <span class="k">def</span> <span class="nf">get_cluster_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get cluster size.</span>
 
 <span class="sd">        Returns:</span>
@@ -1502,7 +1519,7 @@
     <span class="c1"># TO DICTIONARY :</span>
     <span class="c1"># ==============================================================================</span>
     <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Transform the Cluster object into a dictionary. It can be used before serialize this object in JSON.</span>
 
 <span class="sd">        Returns:</span>
@@ -1597,7 +1614,7 @@
         <tr>
           <td><code>children</code></td>
           <td>
-                <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<a title="cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster" href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster">Cluster</a>]]</code>
+                <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster" href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster">Cluster</a>]]</code>
           </td>
           <td><p>A list of clusters children for cluster initialization. Incompatible with <code>members</code> parameter. Defaults to <code>None</code>.</p></td>
           <td>
@@ -1637,7 +1654,18 @@
 
       <details class="quote">
         <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\hierarchical.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">704</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">693</span>
+<span class="normal">694</span>
+<span class="normal">695</span>
+<span class="normal">696</span>
+<span class="normal">697</span>
+<span class="normal">698</span>
+<span class="normal">699</span>
+<span class="normal">700</span>
+<span class="normal">701</span>
+<span class="normal">702</span>
+<span class="normal">703</span>
+<span class="normal">704</span>
 <span class="normal">705</span>
 <span class="normal">706</span>
 <span class="normal">707</span>
@@ -1675,18 +1703,7 @@
 <span class="normal">739</span>
 <span class="normal">740</span>
 <span class="normal">741</span>
-<span class="normal">742</span>
-<span class="normal">743</span>
-<span class="normal">744</span>
-<span class="normal">745</span>
-<span class="normal">746</span>
-<span class="normal">747</span>
-<span class="normal">748</span>
-<span class="normal">749</span>
-<span class="normal">750</span>
-<span class="normal">751</span>
-<span class="normal">752</span>
-<span class="normal">753</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">742</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">],</span>
     <span class="n">cluster_ID</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -1694,7 +1711,7 @@
     <span class="n">children</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="s2">&quot;Cluster&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">members</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The constructor for Cluster class.</span>
 
 <span class="sd">    Args:</span>
@@ -1770,7 +1787,7 @@
         <tr>
           <td><code>new_children</code></td>
           <td>
-                <code><span title="typing.List">List</span>[<a title="cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster" href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster">Cluster</a>]</code>
+                <code><span title="typing.List">List</span>[<a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster" href="#cognitivefactory.interactive_clustering.clustering.hierarchical.Cluster">Cluster</a>]</code>
           </td>
           <td><p>The list of new clusters children to add.</p></td>
           <td>
@@ -1792,7 +1809,18 @@
 
       <details class="quote">
         <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\hierarchical.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">758</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">747</span>
+<span class="normal">748</span>
+<span class="normal">749</span>
+<span class="normal">750</span>
+<span class="normal">751</span>
+<span class="normal">752</span>
+<span class="normal">753</span>
+<span class="normal">754</span>
+<span class="normal">755</span>
+<span class="normal">756</span>
+<span class="normal">757</span>
+<span class="normal">758</span>
 <span class="normal">759</span>
 <span class="normal">760</span>
 <span class="normal">761</span>
@@ -1807,23 +1835,12 @@
 <span class="normal">770</span>
 <span class="normal">771</span>
 <span class="normal">772</span>
-<span class="normal">773</span>
-<span class="normal">774</span>
-<span class="normal">775</span>
-<span class="normal">776</span>
-<span class="normal">777</span>
-<span class="normal">778</span>
-<span class="normal">779</span>
-<span class="normal">780</span>
-<span class="normal">781</span>
-<span class="normal">782</span>
-<span class="normal">783</span>
-<span class="normal">784</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_new_children</span><span class="p">(</span>
+<span class="normal">773</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_new_children</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">new_children</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;Cluster&quot;</span><span class="p">],</span>
     <span class="n">new_clustering_iteration</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Add new children to the cluster.</span>
 
 <span class="sd">    Args:</span>
@@ -1885,17 +1902,17 @@
 
       <details class="quote">
         <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\hierarchical.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">800</span>
-<span class="normal">801</span>
-<span class="normal">802</span>
-<span class="normal">803</span>
-<span class="normal">804</span>
-<span class="normal">805</span>
-<span class="normal">806</span>
-<span class="normal">807</span>
-<span class="normal">808</span>
-<span class="normal">809</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_cluster_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">789</span>
+<span class="normal">790</span>
+<span class="normal">791</span>
+<span class="normal">792</span>
+<span class="normal">793</span>
+<span class="normal">794</span>
+<span class="normal">795</span>
+<span class="normal">796</span>
+<span class="normal">797</span>
+<span class="normal">798</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_cluster_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get cluster size.</span>
 
 <span class="sd">    Returns:</span>
@@ -1944,7 +1961,18 @@
 
       <details class="quote">
         <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\hierarchical.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">814</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">803</span>
+<span class="normal">804</span>
+<span class="normal">805</span>
+<span class="normal">806</span>
+<span class="normal">807</span>
+<span class="normal">808</span>
+<span class="normal">809</span>
+<span class="normal">810</span>
+<span class="normal">811</span>
+<span class="normal">812</span>
+<span class="normal">813</span>
+<span class="normal">814</span>
 <span class="normal">815</span>
 <span class="normal">816</span>
 <span class="normal">817</span>
@@ -1955,19 +1983,8 @@
 <span class="normal">822</span>
 <span class="normal">823</span>
 <span class="normal">824</span>
-<span class="normal">825</span>
-<span class="normal">826</span>
-<span class="normal">827</span>
-<span class="normal">828</span>
-<span class="normal">829</span>
-<span class="normal">830</span>
-<span class="normal">831</span>
-<span class="normal">832</span>
-<span class="normal">833</span>
-<span class="normal">834</span>
-<span class="normal">835</span>
-<span class="normal">836</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="normal">825</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Transform the Cluster object into a dictionary. It can be used before serialize this object in JSON.</span>
 
 <span class="sd">    Returns:</span>
@@ -2011,14 +2028,14 @@
 
       <details class="quote">
         <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\hierarchical.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">789</span>
-<span class="normal">790</span>
-<span class="normal">791</span>
-<span class="normal">792</span>
-<span class="normal">793</span>
-<span class="normal">794</span>
-<span class="normal">795</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_centroid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">778</span>
+<span class="normal">779</span>
+<span class="normal">780</span>
+<span class="normal">781</span>
+<span class="normal">782</span>
+<span class="normal">783</span>
+<span class="normal">784</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">update_centroid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Update centroid of the cluster.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -2051,7 +2068,7 @@
 
   <div class="doc doc-contents ">
       <p class="doc doc-class-bases">
-        Bases: <code><a title="cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering" href="../abstract/#cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering">AbstractConstrainedClustering</a></code></p>
+        Bases: <code><a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering" href="../abstract/#cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering">AbstractConstrainedClustering</a></code></p>
 
   
       <p>This class implements the hierarchical constrained clustering.
@@ -2754,19 +2771,8 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="normal">676</span>
 <span class="normal">677</span>
 <span class="normal">678</span>
-<span class="normal">679</span>
-<span class="normal">680</span>
-<span class="normal">681</span>
-<span class="normal">682</span>
-<span class="normal">683</span>
-<span class="normal">684</span>
-<span class="normal">685</span>
-<span class="normal">686</span>
-<span class="normal">687</span>
-<span class="normal">688</span>
-<span class="normal">689</span>
-<span class="normal">690</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HierarchicalConstrainedClustering</span><span class="p">(</span><span class="n">AbstractConstrainedClustering</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="normal">679</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">HierarchicalConstrainedClustering</span><span class="p">(</span><span class="n">AbstractConstrainedClustering</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class implements the hierarchical constrained clustering.</span>
 <span class="sd">    It inherits from `AbstractConstrainedClustering`.</span>
 
@@ -2821,7 +2827,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     <span class="c1"># INITIALIZATION</span>
     <span class="c1"># ==============================================================================</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linkage</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ward&quot;</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The constructor for Hierarchical Constrainted Clustering class.</span>
 
 <span class="sd">        Args:</span>
@@ -2864,7 +2870,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
         <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The main method used to cluster data with the Hierarchical model.</span>
 
 <span class="sd">        Args:</span>
@@ -2922,7 +2928,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
         <span class="c1"># Verbose</span>
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-
             <span class="c1"># Verbose - Print progression status.</span>
             <span class="n">TIME_start</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
             <span class="nb">print</span><span class="p">(</span>
@@ -2950,7 +2955,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
         <span class="c1"># For each list of same data (MUST_LINK constraints).</span>
         <span class="k">for</span> <span class="n">MUST_LINK_data</span> <span class="ow">in</span> <span class="n">list_of_possible_lists_of_MUST_LINK_data</span><span class="p">:</span>
-
             <span class="c1"># Create a initial cluster with data that MUST be LINKed.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_add_new_cluster_by_setting_members</span><span class="p">(</span>
                 <span class="n">members</span><span class="o">=</span><span class="n">MUST_LINK_data</span><span class="p">,</span>
@@ -2975,10 +2979,8 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
         <span class="c1"># Iter until convergence of clustering.</span>
         <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-
             <span class="c1"># Verbose</span>
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-
                 <span class="c1"># Verbose - Print progression status.</span>
                 <span class="n">TIME_current</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
                 <span class="nb">print</span><span class="p">(</span>
@@ -3010,7 +3012,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
             <span class="c1"># Update distances</span>
             <span class="k">for</span> <span class="n">cluster_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">:</span>
-
                 <span class="k">if</span> <span class="n">cluster_ID</span> <span class="o">!=</span> <span class="n">merged_cluster_ID</span><span class="p">:</span>
                     <span class="c1"># Compute distance between cluster and merged cluster.</span>
                     <span class="n">distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_distance</span><span class="p">(</span><span class="n">cluster_IDi</span><span class="o">=</span><span class="n">cluster_ID</span><span class="p">,</span> <span class="n">cluster_IDj</span><span class="o">=</span><span class="n">merged_cluster_ID</span><span class="p">)</span>
@@ -3026,7 +3027,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
         <span class="c1"># Verbose</span>
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-
             <span class="c1"># Verbose - Print progression status.</span>
             <span class="n">TIME_current</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 
@@ -3050,7 +3050,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
         <span class="c1"># If several clusters remains, then merge them in a cluster root.</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-
             <span class="c1"># Merge all remaining clusters.</span>
             <span class="c1"># If merge one cluster &quot;node&quot; with many cluster &quot;leaves&quot; : add clusters &quot;leaves&quot; to the children of the cluster &quot;node&quot;.</span>
             <span class="c1"># If merge many clusters &quot;nodes&quot; and/or many clusters &quot;leaves&quot; : create a new cluster &quot;node&quot;.</span>
@@ -3078,7 +3077,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">members</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create or Update a cluster by setting its members, and add it to the storage and current clusters.</span>
 
 <span class="sd">        Args:</span>
@@ -3111,7 +3110,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">children</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create or Update a cluster by setting its children, and add it to the storage and current clusters.</span>
 
 <span class="sd">        Args:</span>
@@ -3125,7 +3124,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
         <span class="k">for</span> <span class="n">child_ID_to_remove</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">child_ID_to_remove</span><span class="p">)</span>
 
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        ###</span>
 <span class="sd">        ### Tree optimization : if only one node, then update this node as parent of all leaves.</span>
 <span class="sd">        ### TODO : test of check if relevant to use. pros = smarter tree visualisation ; cons = cluster number more difficult to choose.</span>
@@ -3190,7 +3189,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     <span class="c1"># COMPUTE DISTANCE BETWEEN CLUSTERING NEW ITERATION OF CLUSTERING :</span>
     <span class="c1"># ==============================================================================</span>
     <span class="k">def</span> <span class="nf">_compute_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster_IDi</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">cluster_IDj</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute distance between two clusters.</span>
 
 <span class="sd">        Args:</span>
@@ -3215,7 +3214,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
         <span class="c1"># Case 1 : `self.linkage` is &quot;complete&quot;.</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">linkage</span> <span class="o">==</span> <span class="s2">&quot;complete&quot;</span><span class="p">:</span>
-
             <span class="k">return</span> <span class="nb">max</span><span class="p">(</span>
                 <span class="p">[</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_pairwise_distances</span><span class="p">[</span><span class="n">data_ID_in_cluster_IDi</span><span class="p">][</span><span class="n">data_ID_in_cluster_IDj</span><span class="p">]</span>
@@ -3261,7 +3259,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     <span class="c1"># DISTANCE : GETTER</span>
     <span class="c1"># ==============================================================================</span>
     <span class="k">def</span> <span class="nf">_get_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cluster_IDi</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">cluster_IDj</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the distance between two clusters.</span>
 
 <span class="sd">        Args:</span>
@@ -3288,7 +3286,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
         <span class="n">cluster_IDi</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">cluster_IDj</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the distance between two clusters.</span>
 
 <span class="sd">        Args:</span>
@@ -3310,7 +3308,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     <span class="c1"># GET THE TWO CLOSEST CLUSTERS</span>
     <span class="c1"># ==============================================================================</span>
     <span class="k">def</span> <span class="nf">_get_the_two_clostest_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the two clusters which are the two closest clusters.</span>
 
 <span class="sd">        Returns:</span>
@@ -3351,7 +3349,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     <span class="c1"># COMPUTE PREDICTED CLUSTERS</span>
     <span class="c1"># ==============================================================================</span>
     <span class="k">def</span> <span class="nf">compute_predicted_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">by</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;size&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute the predicted clusters based on clustering tree and estimation of number of clusters.</span>
 
 <span class="sd">        Args:</span>
@@ -3378,7 +3376,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
         <span class="c1"># Explore `HierarchicalConstrainedClustering` children until dict_of_predicted_clusters has the right number of children.</span>
         <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_clusters</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">nb_clusters</span><span class="p">:</span>
-
             <span class="k">if</span> <span class="n">by</span> <span class="o">==</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span>
                 <span class="c1"># Get the biggest cluster in current children from `HierarchicalConstrainedClustering` exploration.</span>
                 <span class="c1"># i.e. it&#39;s the cluster that has the more data to split.</span>
@@ -3411,10 +3408,8 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
         <span class="c1"># For all cluster...</span>
         <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">list_of_clusters</span><span class="p">:</span>
-
             <span class="c1"># ... and for all member in each cluster...</span>
             <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="n">cluster</span><span class="o">.</span><span class="n">members</span><span class="p">:</span>
-
                 <span class="c1"># ... affect the predicted cluster (cluster ID) to the data.</span>
                 <span class="n">predicted_clusters</span><span class="p">[</span><span class="n">data_ID</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">cluster_ID</span>
 
@@ -3553,7 +3548,7 @@ Defaults to <code>"ward"</code>.</p></td>
 <span class="normal">117</span>
 <span class="normal">118</span>
 <span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linkage</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ward&quot;</span><span class="p">,</span> <span class="n">random_seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The constructor for Hierarchical Constrainted Clustering class.</span>
 
 <span class="sd">    Args:</span>
@@ -3618,7 +3613,7 @@ Defaults to <code>"ward"</code>.</p></td>
         <tr>
           <td><code>constraints_manager</code></td>
           <td>
-                <code><a title="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" href="../../constraints/abstract/#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager">AbstractConstraintsManager</a></code>
+                <code><a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" href="../../constraints/abstract/#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager">AbstractConstraintsManager</a></code>
           </td>
           <td><p>A constraints manager over data IDs that will force clustering to respect some conditions during computation.</p></td>
           <td>
@@ -3912,14 +3907,7 @@ Defaults to <code>"ward"</code>.</p></td>
 <span class="normal">327</span>
 <span class="normal">328</span>
 <span class="normal">329</span>
-<span class="normal">330</span>
-<span class="normal">331</span>
-<span class="normal">332</span>
-<span class="normal">333</span>
-<span class="normal">334</span>
-<span class="normal">335</span>
-<span class="normal">336</span>
-<span class="normal">337</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span>
+<span class="normal">330</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">constraints_manager</span><span class="p">:</span> <span class="n">AbstractConstraintsManager</span><span class="p">,</span>
     <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">],</span>
@@ -3927,7 +3915,7 @@ Defaults to <code>"ward"</code>.</p></td>
     <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The main method used to cluster data with the Hierarchical model.</span>
 
 <span class="sd">    Args:</span>
@@ -3985,7 +3973,6 @@ Defaults to <code>"ward"</code>.</p></td>
 
     <span class="c1"># Verbose</span>
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-
         <span class="c1"># Verbose - Print progression status.</span>
         <span class="n">TIME_start</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span>
@@ -4013,7 +4000,6 @@ Defaults to <code>"ward"</code>.</p></td>
 
     <span class="c1"># For each list of same data (MUST_LINK constraints).</span>
     <span class="k">for</span> <span class="n">MUST_LINK_data</span> <span class="ow">in</span> <span class="n">list_of_possible_lists_of_MUST_LINK_data</span><span class="p">:</span>
-
         <span class="c1"># Create a initial cluster with data that MUST be LINKed.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_add_new_cluster_by_setting_members</span><span class="p">(</span>
             <span class="n">members</span><span class="o">=</span><span class="n">MUST_LINK_data</span><span class="p">,</span>
@@ -4038,10 +4024,8 @@ Defaults to <code>"ward"</code>.</p></td>
 
     <span class="c1"># Iter until convergence of clustering.</span>
     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-
         <span class="c1"># Verbose</span>
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-
             <span class="c1"># Verbose - Print progression status.</span>
             <span class="n">TIME_current</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
             <span class="nb">print</span><span class="p">(</span>
@@ -4073,7 +4057,6 @@ Defaults to <code>"ward"</code>.</p></td>
 
         <span class="c1"># Update distances</span>
         <span class="k">for</span> <span class="n">cluster_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">:</span>
-
             <span class="k">if</span> <span class="n">cluster_ID</span> <span class="o">!=</span> <span class="n">merged_cluster_ID</span><span class="p">:</span>
                 <span class="c1"># Compute distance between cluster and merged cluster.</span>
                 <span class="n">distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_distance</span><span class="p">(</span><span class="n">cluster_IDi</span><span class="o">=</span><span class="n">cluster_ID</span><span class="p">,</span> <span class="n">cluster_IDj</span><span class="o">=</span><span class="n">merged_cluster_ID</span><span class="p">)</span>
@@ -4089,7 +4072,6 @@ Defaults to <code>"ward"</code>.</p></td>
 
     <span class="c1"># Verbose</span>
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-
         <span class="c1"># Verbose - Print progression status.</span>
         <span class="n">TIME_current</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 
@@ -4113,7 +4095,6 @@ Defaults to <code>"ward"</code>.</p></td>
 
     <span class="c1"># If several clusters remains, then merge them in a cluster root.</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_clusters</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-
         <span class="c1"># Merge all remaining clusters.</span>
         <span class="c1"># If merge one cluster &quot;node&quot; with many cluster &quot;leaves&quot; : add clusters &quot;leaves&quot; to the children of the cluster &quot;node&quot;.</span>
         <span class="c1"># If merge many clusters &quot;nodes&quot; and/or many clusters &quot;leaves&quot; : create a new cluster &quot;node&quot;.</span>
@@ -4225,7 +4206,15 @@ Defaults to <code>"ward"</code>.</p></td>
 
       <details class="quote">
         <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\hierarchical.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">618</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">610</span>
+<span class="normal">611</span>
+<span class="normal">612</span>
+<span class="normal">613</span>
+<span class="normal">614</span>
+<span class="normal">615</span>
+<span class="normal">616</span>
+<span class="normal">617</span>
+<span class="normal">618</span>
 <span class="normal">619</span>
 <span class="normal">620</span>
 <span class="normal">621</span>
@@ -4286,19 +4275,8 @@ Defaults to <code>"ward"</code>.</p></td>
 <span class="normal">676</span>
 <span class="normal">677</span>
 <span class="normal">678</span>
-<span class="normal">679</span>
-<span class="normal">680</span>
-<span class="normal">681</span>
-<span class="normal">682</span>
-<span class="normal">683</span>
-<span class="normal">684</span>
-<span class="normal">685</span>
-<span class="normal">686</span>
-<span class="normal">687</span>
-<span class="normal">688</span>
-<span class="normal">689</span>
-<span class="normal">690</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">compute_predicted_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">by</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;size&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="normal">679</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">compute_predicted_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">by</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;size&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the predicted clusters based on clustering tree and estimation of number of clusters.</span>
 
 <span class="sd">    Args:</span>
@@ -4325,7 +4303,6 @@ Defaults to <code>"ward"</code>.</p></td>
 
     <span class="c1"># Explore `HierarchicalConstrainedClustering` children until dict_of_predicted_clusters has the right number of children.</span>
     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_clusters</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">nb_clusters</span><span class="p">:</span>
-
         <span class="k">if</span> <span class="n">by</span> <span class="o">==</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span>
             <span class="c1"># Get the biggest cluster in current children from `HierarchicalConstrainedClustering` exploration.</span>
             <span class="c1"># i.e. it&#39;s the cluster that has the more data to split.</span>
@@ -4358,10 +4335,8 @@ Defaults to <code>"ward"</code>.</p></td>
 
     <span class="c1"># For all cluster...</span>
     <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">list_of_clusters</span><span class="p">:</span>
-
         <span class="c1"># ... and for all member in each cluster...</span>
         <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="n">cluster</span><span class="o">.</span><span class="n">members</span><span class="p">:</span>
-
             <span class="c1"># ... affect the predicted cluster (cluster ID) to the data.</span>
             <span class="n">predicted_clusters</span><span class="p">[</span><span class="n">data_ID</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">cluster_ID</span>
 
@@ -4396,10 +4371,12 @@ Defaults to <code>"ward"</code>.</p></td>
 
 
 
-              
-            </article>
-            
-          </div>
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
           <a href="#" class="md-top md-icon" data-md-component="top" hidden>
@@ -4410,42 +4387,6 @@ Defaults to <code>"ward"</code>.</p></td>
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="../factory/" class="md-footer__link md-footer__link--prev" aria-label="Previous: factory" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              factory
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../kmeans/" class="md-footer__link md-footer__link--next" aria-label="Next: kmeans" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              kmeans
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -4463,11 +4404,13 @@ Defaults to <code>"ward"</code>.</p></td>
   
     
     
+    
+    
       
       
     
     <a href="https://github.com/erwanschild" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
     </a>
   
 </div>
@@ -4481,10 +4424,10 @@ Defaults to <code>"ward"</code>.</p></td>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../../../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../../../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
       
     
   </body>
