@@ -40,11 +40,18 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
+    # Functionnal dependencies.
     "networkx>=2.6",  # validation 12-2022: 2.6
     "numpy>=1.23.5",  # validation 12-2022: 1.23
     "scikit-learn>=0.24.1",  # validation 12-2022: 0.24, 1.0
     "scipy>=1.7.3",  # validation 12-2022: 1.5, 1.7
     "spacy>=3.4, <3.5",  # validation 12-2022: 3.1, 3.4
+	
+    # Technical dependencies.
+	# None,
+
+    # Safety dependencies.
+    "setuptools>=65.5.1",  # TODO: Vulnerability https://pyup.io/v/52495/f17
 ]
 
 [project.urls]
