@@ -38,37 +38,18 @@ _NB_ :
 
 - For more details, read the [Documentation](#Documentation) and the articles in the [References](#References) section.
 
+
 ## <a name="Documentation"></a> Documentation
 
 - [Main documentation](https://cognitivefactory.github.io/interactive-clustering/)
 
-## <a name="Requirements"></a> Requirements
-
-Interactive Clustering requires Python 3.7 or above.
-
-<details>
-<summary>To install Python 3.7, I recommend using <a href="https://github.com/pyenv/pyenv"><code>pyenv</code></a>.</summary>
-
-```bash
-# install pyenv
-git clone https://github.com/pyenv/pyenv ~/.pyenv
-
-# setup pyenv (you should also put these three lines in .bashrc or similar)
-export PATH="${HOME}/.pyenv/bin:${PATH}"
-export PYENV_ROOT="${HOME}/.pyenv"
-eval "$(pyenv init -)"
-
-# install Python 3.7
-pyenv install 3.7
-
-# make it available globally
-pyenv global system 3.7
-```
-</details>
 
 ## <a name="Installation"></a> Installation
 
-With `pip`:
+Interactive Clustering requires Python 3.8 or above.
+
+To install with [`pip`](https://github.com/pypa/pip):
+
 ```bash
 # install package
 python3 -m pip install cognitivefactory-interactive-clustering
@@ -77,7 +58,8 @@ python3 -m pip install cognitivefactory-interactive-clustering
 python3 -m spacy download fr_core_news_md-3.1.0 --direct
 ```
 
-With [`pipx`](https://github.com/pipxproject/pipx):
+To install with [`pipx`](https://github.com/pypa/pipx):
+
 ```bash
 # install pipx
 python3 -m pip install --user pipx
@@ -91,27 +73,15 @@ python3 -m spacy download fr_core_news_md-3.1.0 --direct
 
 _NB_ : Other spaCy language models can be downloaded here : [spaCy - Models & Languages](https://spacy.io/usage/models). Use spacy version `"3.1.x"`.
 
+
 ## <a name="Development"></a> Development
 
-To work on this project or contribute to it, please read
-[the Copier PDM documentation](https://pawamoy.github.io/copier-pdm/).
+To work on this project or contribute to it, please read:
 
-### Quick setup and help
+- the [Copier PDM](https://pawamoy.github.io/copier-pdm/) template documentation ;
+- the [Contributing](https://cognitivefactory.github.io/interactive-clustering/contributing/) page for environment setup and development help ;
+- the [Code of Conduct](https://cognitivefactory.github.io/interactive-clustering/code_of_conduct/) page for contribution rules.
 
-Get the code and prepare the environment:
-
-```bash
-git clone https://github.com/cognitivefactory/interactive-clustering/
-cd interactive-clustering
-make setup
-```
-
-Show the help:
-```bash
-make help  # or just make
-```
-
-For more details, read the [Contributing](https://cognitivefactory.github.io/interactive-clustering/contributing/) documentation.
 
 ## <a name="References"></a> References
 
