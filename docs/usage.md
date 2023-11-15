@@ -29,7 +29,7 @@ Preprocess data.
 # Preprocess data.
 dict_of_preprocess_texts = preprocess(
     dict_of_texts=dict_of_texts,
-    spacy_language_model="fr_core_news_sm",
+    spacy_language_model="fr_core_news_md",
 )  # Apply simple preprocessing. Spacy language model has to be installed. Other parameters are available.
 ```
 

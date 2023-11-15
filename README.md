@@ -93,9 +93,16 @@ To work on this project or contribute to it, please read:
 - **Constraints and Constrained Clustering**:
     - Constraints in clustering: `Wagstaff, K. et C. Cardie (2000). Clustering with Instance-level Constraints. Proceedings of the Seventeenth International Conference on Machine Learning, 1103–1110.`
     - Survey on Constrained Clustering: `Lampert, T., T.-B.-H. Dao, B. Lafabregue, N. Serrette, G. Forestier, B. Cremilleux, C. Vrain, et P. Gancarski (2018). Constrained distance based clustering for time-series : a comparative and experimental study. Data Mining and Knowledge Discovery 32(6), 1663–1707.`
+    - Affinity Propagation:
+        - Affinity Propagation Clustering: `Frey, B. J., & Dueck, D. (2007). Clustering by Passing Messages Between Data Points. In Science (Vol. 315, Issue 5814, pp. 972–976). American Association for the Advancement of Science (AAAS). https://doi.org/10.1126/science.1136800`
+        - Constrained Affinity Propagation Clustering: `Givoni, I., & Frey, B. J. (2009). Semi-Supervised Affinity Propagation with Instance-Level Constraints. Proceedings of the Twelth International Conference on Artificial Intelligence and Statistics, PMLR 5:161-168`
+    - DBScan:
+        - DBScan Clustering: `Ester, Martin & Kröger, Peer & Sander, Joerg & Xu, Xiaowei. (1996). A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise. KDD. 96. 226-231`.
+        - Constrained DBScan Clustering: `Ruiz, Carlos & Spiliopoulou, Myra & Menasalvas, Ernestina. (2007). C-DBSCAN: Density-Based Clustering with Constraints. 216-223. 10.1007/978-3-540-72530-5_25.`
     - KMeans Clustering:
         - KMeans Clustering: `MacQueen, J. (1967). Some methods for classification and analysis of multivariate observations. Proceedings of the fifth Berkeley symposium on mathematical statistics and probability 1(14), 281–297.`
         - Constrained _'COP'_ KMeans Clustering: `Wagstaff, K., C. Cardie, S. Rogers, et S. Schroedl (2001). Constrained K-means Clustering with Background Knowledge. International Conference on Machine Learning`
+        - Constrained _'MPC'_ KMeans Clustering: `Khan, Md. A., Tamim, I., Ahmed, E., & Awal, M. A. (2012). Multiple Parameter Based Clustering (MPC): Prospective Analysis for Effective Clustering in Wireless Sensor Network (WSN) Using K-Means Algorithm. In Wireless Sensor Network (Vol. 04, Issue 01, pp. 18–24). Scientific Research Publishing, Inc. https://doi.org/10.4236/wsn.2012.41003`
     - Hierarchical Clustering:
         - Hierarchical Clustering: `Murtagh, F. et P. Contreras (2012). Algorithms for hierarchical clustering : An overview. Wiley Interdisc. Rew.: Data Mining and Knowledge Discovery 2, 86–97.`
         - Constrained Hierarchical Clustering: `Davidson, I. et S. S. Ravi (2005). Agglomerative Hierarchical Clustering with Constraints : Theoretical and Empirical Results. Springer, Berlin, Heidelberg 3721, 12.`

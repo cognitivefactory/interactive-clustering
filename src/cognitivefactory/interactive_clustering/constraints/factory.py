@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.constraints.factory
 * Description:  The factory method used to easily initialize a constraints manager.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL-C License v1.0 (https://cecill.info/licences.fr.html)
 """
@@ -12,14 +12,10 @@
 # IMPORTS :
 # =============================================================================
 
-from typing import List  # To type Python code (mypy).
+from typing import List
 
-from cognitivefactory.interactive_clustering.constraints.abstract import (  # To use abstract interface.
-    AbstractConstraintsManager,
-)
-from cognitivefactory.interactive_clustering.constraints.binary import (  # To use binary constraints manager implementation.
-    BinaryConstraintsManager,
-)
+from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
+from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
 
 
 # ==============================================================================

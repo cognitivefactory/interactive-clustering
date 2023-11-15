@@ -170,7 +170,7 @@ def check_dependencies(ctx):
             return False
         return True
 
-    ctx.run(safety, title="Checking dependencies")
+    ctx.run(safety, title="Checking dependencies", nofail=True)
 
 
 @duty

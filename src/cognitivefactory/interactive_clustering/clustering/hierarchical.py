@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.clustering.hierarchical
 * Description:  Implementation of constrained hierarchical clustering algorithms.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL-C License v1.0 (https://cecill.info/licences.fr.html)
 """
@@ -12,19 +12,17 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-from datetime import datetime  # To use date in verbose output.
-from typing import Any, Dict, List, Optional, Tuple  # To type Python code (mypy).
+from datetime import datetime
+from typing import Any, Dict, List, Optional, Tuple
 
-from scipy.sparse import csr_matrix, vstack  # To handle matrix and vectors.
-from sklearn.metrics import pairwise_distances  # To compute distance.
+from scipy.sparse import csr_matrix, vstack
+from sklearn.metrics import pairwise_distances
 
-from cognitivefactory.interactive_clustering.clustering.abstract import (  # To use abstract interface.; To sort clusters after computation.
+from cognitivefactory.interactive_clustering.clustering.abstract import (
     AbstractConstrainedClustering,
     rename_clusters_by_order,
 )
-from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
-    AbstractConstraintsManager,
-)
+from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
 
 
 # ==============================================================================
@@ -70,7 +68,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
 
         # Run clustering.
-        dict_of_predicted_clusters = clustering_model(
+        dict_of_predicted_clusters = clustering_model.cluster(
             constraints_manager=constraints_manager,
             vectors=vectors,
             nb_clusters=3,
@@ -125,7 +123,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         self,
         constraints_manager: AbstractConstraintsManager,
         vectors: Dict[str, csr_matrix],
-        nb_clusters: int,
+        nb_clusters: Optional[int],
         verbose: bool = False,
         **kargs,
     ) -> Dict[str, int]:
@@ -135,7 +133,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         Args:
             constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
             vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.
-            nb_clusters (int): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?
+            nb_clusters (Optional[int]): The number of clusters to compute.
             verbose (bool, optional): Enable verbose output. Defaults to `False`.
             **kargs (dict): Other parameters that can be used in the clustering.
 
@@ -162,7 +160,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         self.vectors: Dict[str, csr_matrix] = vectors
 
         # Store `self.nb_clusters`.
-        if nb_clusters < 2:
+        if (nb_clusters is None) or (nb_clusters < 2):
             raise ValueError("The `nb_clusters` '" + str(nb_clusters) + "' must be greater than or equal to 2.")
         self.nb_clusters: int = min(nb_clusters, len(self.list_of_data_IDs))
 

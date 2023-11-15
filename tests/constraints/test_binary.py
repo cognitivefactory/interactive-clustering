@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/constraints/test_binary.py
 * Description:  Unittests for the `constraints.binary` module.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -663,9 +663,9 @@ def test_BinaryConstraintsManager_get_min_and_max_number_of_clusters():
     constraints_manager = BinaryConstraintsManager(
         list_of_data_IDs=["first", "second", "third", "fourth", "fifth", "sixth"],
     )
-    min, max = constraints_manager.get_min_and_max_number_of_clusters()
-    assert min == 2
-    assert max == 6
+    mini, maxi = constraints_manager.get_min_and_max_number_of_clusters()
+    assert mini == 2
+    assert maxi == 6
 
     # Add `"MUST_LINK"` constraint between `"first"` and `"second"`.
     constraints_manager.add_constraint(
@@ -673,9 +673,9 @@ def test_BinaryConstraintsManager_get_min_and_max_number_of_clusters():
         data_ID2="second",
         constraint_type="MUST_LINK",
     )
-    min, max = constraints_manager.get_min_and_max_number_of_clusters()
-    assert min == 2
-    assert max == 5
+    mini, maxi = constraints_manager.get_min_and_max_number_of_clusters()
+    assert mini == 2
+    assert maxi == 5
 
     # Add `"CANNOT_LINK"` constraint between `"second"` and `"third"`.
     constraints_manager.add_constraint(
@@ -683,9 +683,9 @@ def test_BinaryConstraintsManager_get_min_and_max_number_of_clusters():
         data_ID2="third",
         constraint_type="CANNOT_LINK",
     )
-    min, max = constraints_manager.get_min_and_max_number_of_clusters()
-    assert min == 2
-    assert max == 5
+    mini, maxi = constraints_manager.get_min_and_max_number_of_clusters()
+    assert mini == 2
+    assert maxi == 5
 
     # Add `"CANNOT_LINK"` constraint between `"second"` and `"fourth"`.
     constraints_manager.add_constraint(
@@ -693,9 +693,9 @@ def test_BinaryConstraintsManager_get_min_and_max_number_of_clusters():
         data_ID2="fourth",
         constraint_type="CANNOT_LINK",
     )
-    min, max = constraints_manager.get_min_and_max_number_of_clusters()
-    assert min == 2
-    assert max == 5
+    mini, maxi = constraints_manager.get_min_and_max_number_of_clusters()
+    assert mini == 2
+    assert maxi == 5
 
     # Add `"CANNOT_LINK"` constraint between `"third"` and `"fourth"`.
     constraints_manager.add_constraint(
@@ -703,9 +703,9 @@ def test_BinaryConstraintsManager_get_min_and_max_number_of_clusters():
         data_ID2="fourth",
         constraint_type="CANNOT_LINK",
     )
-    min, max = constraints_manager.get_min_and_max_number_of_clusters()
-    assert min == 3  # 2.99999...
-    assert max == 5
+    mini, maxi = constraints_manager.get_min_and_max_number_of_clusters()
+    assert mini == 3  # 2.99999...
+    assert maxi == 5
 
     # Add `"MUST_LINK"` constraint between `"fourth"` and `"fifth"`.
     constraints_manager.add_constraint(
@@ -713,9 +713,9 @@ def test_BinaryConstraintsManager_get_min_and_max_number_of_clusters():
         data_ID2="fifth",
         constraint_type="MUST_LINK",
     )
-    min, max = constraints_manager.get_min_and_max_number_of_clusters()
-    assert min == 3  # 2.99999...
-    assert max == 4
+    mini, maxi = constraints_manager.get_min_and_max_number_of_clusters()
+    assert mini == 3  # 2.99999...
+    assert maxi == 4
 
     # Add `"MUST_LINK"` constraint between `"fourth"` and `"sixth"`.
     constraints_manager.add_constraint(
@@ -723,9 +723,9 @@ def test_BinaryConstraintsManager_get_min_and_max_number_of_clusters():
         data_ID2="sixth",
         constraint_type="MUST_LINK",
     )
-    min, max = constraints_manager.get_min_and_max_number_of_clusters()
-    assert min == 3  # 2.99999...
-    assert max == 3
+    mini, maxi = constraints_manager.get_min_and_max_number_of_clusters()
+    assert mini == 3  # 2.99999...
+    assert maxi == 3
     assert constraints_manager.check_completude_of_constraints() is True
 
 

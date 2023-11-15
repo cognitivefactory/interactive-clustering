@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.sampling.abstract
 * Description:  The abstract class used to define constraints sampling algorithms.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -12,14 +12,12 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-from abc import ABC, abstractmethod  # To define an abstract class.
-from typing import Dict, List, Optional, Tuple  # To type Python code (mypy).
+from abc import ABC, abstractmethod
+from typing import Dict, List, Optional, Tuple
 
-from scipy.sparse import csr_matrix  # To handle matrix and vectors.
+from scipy.sparse import csr_matrix
 
-from cognitivefactory.interactive_clustering.constraints.abstract import (  # To manage constraints.
-    AbstractConstraintsManager,
-)
+from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
 
 
 # ==============================================================================

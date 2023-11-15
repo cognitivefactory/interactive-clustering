@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.sampling.factory
 * Description:  The factory method used to easily initialize a constraints sampling algorithm.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -12,12 +12,8 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-from cognitivefactory.interactive_clustering.sampling.abstract import (  # To use abstract interface.
-    AbstractConstraintsSampling,
-)
-from cognitivefactory.interactive_clustering.sampling.clusters_based import (  # To use clusters based sampling.
-    ClustersBasedConstraintsSampling,
-)
+from cognitivefactory.interactive_clustering.sampling.abstract import AbstractConstraintsSampling
+from cognitivefactory.interactive_clustering.sampling.clusters_based import ClustersBasedConstraintsSampling
 
 
 # ==============================================================================

@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.constraints.abstract
 * Description:  The abstract class used to define constraints managing algorithms.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL-C License v1.0 (https://cecill.info/licences.fr.html)
 """
@@ -12,8 +12,8 @@
 # IMPORTS :
 # ==============================================================================
 
-from abc import ABC, abstractmethod  # To define an abstract class.
-from typing import List, Optional, Tuple  # To type Python code (mypy).
+from abc import ABC, abstractmethod
+from typing import List, Optional, Tuple
 
 
 # ==============================================================================

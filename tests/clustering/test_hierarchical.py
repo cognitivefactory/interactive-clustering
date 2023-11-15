@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/clustering/test_hierarchical.py
 * Description:  Unittests for the `clustering.hierarchical` module.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -58,7 +58,7 @@ def test_HierarchicalConstrainedClustering_for_correct_settings():
 # ==============================================================================
 def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_constraints_manager():
     """
-    Test that the `clustering.spectral.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints_manager` parameter.
+    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `constraints_manager` parameter.
     """
 
     # Initialize a `HierarchicalConstrainedClustering` instance.
@@ -78,7 +78,7 @@ def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_constraints_
 # ==============================================================================
 def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_vectors():
     """
-    Test that the `clustering.spectral.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `vectors` parameter.
+    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `vectors` parameter.
     """
 
     # Initialize a `HierarchicalConstrainedClustering` instance.
@@ -94,11 +94,31 @@ def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_vectors():
 
 
 # ==============================================================================
-# test_HierarchicalConstrainedClustering_cluster_for_inconsistent_nb_clusters
+# test_HierarchicalConstrainedClustering_cluster_for_inconsistent_nb_clusters_1
 # ==============================================================================
-def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_nb_clusters():
+def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_nb_clusters_1():
     """
-    Test that the `clustering.spectral.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
+    """
+
+    # Initialize a `HierarchicalConstrainedClustering` instance.
+    clustering_model = HierarchicalConstrainedClustering()
+
+    # Check `ValueError` for too small `nb_clusters`.
+    with pytest.raises(ValueError, match="`nb_clusters`"):
+        clustering_model.cluster(
+            constraints_manager=BinaryConstraintsManager(list_of_data_IDs=["first", "second", "third"]),
+            vectors={"first": np.array([1, 2, 3]), "second": np.array([[4, 5, 6]]), "third": csr_matrix([7, 8, 9])},
+            nb_clusters=None,
+        )
+
+
+# ==============================================================================
+# test_HierarchicalConstrainedClustering_cluster_for_inconsistent_nb_clusters_2
+# ==============================================================================
+def test_HierarchicalConstrainedClustering_cluster_for_inconsistent_nb_clusters_2():
+    """
+    Test that the `clustering.hierarchical.HierarchicalConstrainedClustering` clustering raises an `ValueError` for inconsistent `nb_clusters` parameter.
     """
 
     # Initialize a `HierarchicalConstrainedClustering` instance.

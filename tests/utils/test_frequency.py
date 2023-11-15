@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/utils/test_frequency.py
 * Description:  Unittests for the `utils.frequency` module.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """

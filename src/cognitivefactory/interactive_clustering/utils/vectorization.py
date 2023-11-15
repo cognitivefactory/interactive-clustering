@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.utils.vectorization
 * Description:  Utilities methods to apply NLP vectorization.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -12,11 +12,11 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
-from typing import Dict  # To type Python code (mypy).
+from typing import Dict
 
-import spacy  # To apply spacy language models.
-from scipy.sparse import csr_matrix  # To handle matrix and vectors.
-from sklearn.feature_extraction.text import TfidfVectorizer  # To apply TF-IDF vectorisation.
+import spacy
+from scipy.sparse import csr_matrix
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 # ==============================================================================
@@ -62,7 +62,7 @@ def vectorize(
 
         # Apply vectorization.
         dict_of_vectors = vectorize(
-            dict_of_texts=dict_of_texts
+            dict_of_texts=dict_of_texts,
             vectorizer_type="spacy",
             spacy_language_model="fr_core_news_md",
         )

@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering
 * Description:  Python package used to apply NLP interactive clustering methods.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """

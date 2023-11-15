@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/sampling/test_factory_closest_in_different_clusters.py
 * Description:  Unittests for the `sampling.cluster_based` module, `"closest_in_different_clusters"` sampler.
-* Author:       Erwan Schild
+* Author:       Erwan SCHILD
 * Created:      17/03/2021
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
