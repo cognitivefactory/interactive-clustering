@@ -42,7 +42,7 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
         # Define list of data IDs.
         list_of_data_IDs = ["bonjour", "salut", "coucou", "au revoir", "a bientôt",]
 
-        # Define constraints manager (set it to None for no constraints).
+        # Define constraints manager.
         constraints_manager = BinaryConstraintsManager(
             list_of_data_IDs=list_of_data_IDs,
         )
