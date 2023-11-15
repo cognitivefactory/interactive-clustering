@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/clustering/test_dbscan.py
 * Description:  Unittests for the `clustering.dbscan` module.
-* Author:       Marc TRUTT
+* Author:       Marc TRUTT, Esther LENOTRE, David NICOLAZO
 * Created:      31/10/2022
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """

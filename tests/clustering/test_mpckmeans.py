@@ -3,7 +3,7 @@
 """
 * Name:         interactive-clustering/tests/clustering/test_mpckmeans.py
 * Description:  Unittests for the `clustering.mpckmeans` module.
-* Author:       Esther LENOTRE
+* Author:       Esther LENOTRE, David NICOLAZO, Marc TRUTT
 * Created:      02/11/2022
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """

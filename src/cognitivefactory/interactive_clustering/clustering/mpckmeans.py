@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.clustering.mpckmeans
 * Description:  Implementation of constrained mpckmeans clustering algorithms.
-* Author:       Esther LENOTRE
+* Author:       Esther LENOTRE, David NICOLAZO, Marc TRUTT
 * Created:      10/09/2022
 * Licence:      CeCILL-C License v1.0 (https://cecill.info/licences.fr.html)
 """
@@ -11,6 +11,8 @@
 # ==============================================================================
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
+
+import warnings
 
 # import random
 from typing import Dict, List, Optional, Set, Tuple
@@ -62,7 +64,6 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
             "8": csr_matrix([0.00, 0.00, 0.00, 1.00]),
         }
 
-
         # Define constraints manager.
         constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
         constraints_manager.add_constraint(data_ID1="0", data_ID2="1", constraint_type="MUST_LINK")
@@ -83,6 +84,9 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         print("Expected results", ";", {"0": 0, "1": 0, "2": 1, "3": 1, "4": 2, "5": 2, "6": 0, "7": 0, "8": 0,})
         print("Computed results", ":", dict_of_predicted_clusters)
         ```
+
+    Warnings:
+    FutureWarning: `clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.
     """
 
     # ==============================================================================
@@ -106,9 +110,19 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
             random_seed (Optional[int]): The random seed to use to redo the same clustering. Defaults to `None`.
             **kargs (dict): Other parameters that can be used in the instantiation.
 
+        Warnings:
+        FutureWarning: `clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.
+
         Raises:
             ValueError: if some parameters are incorrectly set.
         """
+
+        # Deprecation warnings
+        warnings.warn(
+            "`clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.",
+            FutureWarning,  # DeprecationWarning
+            stacklevel=2,
+        )
 
         # Store `self.`model`.
         if model != "MPC":  # TODO use `not in {"MPC"}`.

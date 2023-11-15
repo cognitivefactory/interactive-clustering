@@ -1,7 +1,7 @@
 """
 * Name:         interactive-clustering/tests/clustering/test_affinity_propagation.py
 * Description:  Unittests for the `clustering.affinity_propagation` module.
-* Author:       David NICOLAZO
+* Author:       David NICOLAZO, Esther LENOTRE, Marc TRUTT
 * Created:      02/11/2022
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """

@@ -1,7 +1,7 @@
 """
 * Name:         interactive-clustering/src/clustering/affinity_propagation.py
 * Description:  Implementation of constrained Affinity Propagation clustering algorithm.
-* Author:       David NICOLAZO
+* Author:       David NICOLAZO, Esther LENOTRE, Marc TRUTT
 * Created:      02/03/2022
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -10,6 +10,7 @@
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
 
+import warnings
 from itertools import combinations, product
 from typing import Dict, List, Optional, Tuple
 
@@ -23,6 +24,222 @@ from cognitivefactory.interactive_clustering.clustering.abstract import (
     rename_clusters_by_order,
 )
 from cognitivefactory.interactive_clustering.constraints.abstract import AbstractConstraintsManager
+
+# ==============================================================================
+# AFFINITY PROPAGATION CONSTRAINED CLUSTERING
+# ==============================================================================
+
+
+class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
+    """
+    This class will implements the Affinity Propagation constrained clustering.
+    It inherits from `AbstractConstrainedClustering`.
+
+    References:
+        - Affinity Propagation Clustering: `Frey, B. J., & Dueck, D. (2007). Clustering by Passing Messages Between Data Points. In Science (Vol. 315, Issue 5814, pp. 972–976). American Association for the Advancement of Science (AAAS). https://doi.org/10.1126/science.1136800`
+        - Constrained Affinity Propagation Clustering: `Givoni, I., & Frey, B. J. (2009). Semi-Supervised Affinity Propagation with Instance-Level Constraints. Proceedings of the Twelth International Conference on Artificial Intelligence and Statistics, PMLR 5:161-168`
+
+    Examples:
+        ```python
+        # Import.
+        from scipy.sparse import csr_matrix
+        from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
+        from cognitivefactory.interactive_clustering.clustering.affinity_propagation import AffinityPropagationConstrainedClustering
+
+        # Create an instance of affinity propagation clustering.
+        clustering_model = AffinityPropagationConstrainedClustering(
+            random_seed=1,
+        )
+
+        # Define vectors.
+        # NB : use cognitivefactory.interactive_clustering.utils to preprocess and vectorize texts.
+        vectors = {
+            "0": csr_matrix([1.00, 0.00, 0.00, 0.00]),
+            "1": csr_matrix([0.95, 0.02, 0.02, 0.01]),
+            "2": csr_matrix([0.98, 0.00, 0.02, 0.00]),
+            "3": csr_matrix([0.99, 0.00, 0.01, 0.00]),
+            "4": csr_matrix([0.60, 0.17, 0.16, 0.07]),
+            "5": csr_matrix([0.60, 0.16, 0.17, 0.07]),
+            "6": csr_matrix([0.01, 0.01, 0.01, 0.97]),
+            "7": csr_matrix([0.00, 0.01, 0.00, 0.99]),
+            "8": csr_matrix([0.00, 0.00, 0.00, 1.00]),
+        }
+
+        # Define constraints manager.
+        constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
+        constraints_manager.add_constraint(data_ID1="0", data_ID2="1", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="2", data_ID2="3", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="4", data_ID2="5", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="7", data_ID2="8", constraint_type="MUST_LINK")
+        constraints_manager.add_constraint(data_ID1="0", data_ID2="4", constraint_type="CANNOT_LINK")
+        constraints_manager.add_constraint(data_ID1="2", data_ID2="4", constraint_type="CANNOT_LINK")
+        constraints_manager.add_constraint(data_ID1="4", data_ID2="7", constraint_type="CANNOT_LINK")
+
+        # Run clustering.
+        dict_of_predicted_clusters = clustering_model.cluster(
+            constraints_manager=constraints_manager,
+            vectors=vectors,
+            ####nb_clusters=None,
+        )
+
+        # Print results.
+        print("Expected results", ";", {"0": 0, "1": 0, "2": 0, "3": 0, "4": 1, "5": 1, "6": 2, "7": 2, "8": 2,})  # TODO:
+        print("Computed results", ":", dict_of_predicted_clusters)
+        ```
+
+    Warnings:
+        FutureWarning: `clustering.affinity_propagation.AffinityPropagationConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.
+    """
+
+    def __init__(
+        self,
+        max_iteration: int = 150,
+        convergence_iteration: int = 10,
+        random_seed: Optional[int] = None,
+        absolute_must_links: bool = True,
+        **kargs,
+    ) -> None:
+        """
+        The constructor for the Affinity Propagation constrained clustering.
+
+        Args:
+            max_iteration (int, optional): The maximum number of iteration for convergence. Defaults to `150`.
+            convergence_iteration (int, optional): The number of iterations with no change to consider a convergence. Default to `15`.
+            absolute_must_links (bool, optional): the option to strictly respect `"MUST_LINK"` type constraints. Defaults to ``True`.
+            random_seed (Optional[int], optional): The random seed to use to redo the same clustering. Defaults to `None`.
+            **kargs (dict): Other parameters that can be used in the instantiation.
+
+        Warnings:
+            FutureWarning: `clustering.affinity_propagation.AffinityPropagationConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.
+
+        Raises:
+            ValueError: if some parameters are incorrectly set.
+        """
+
+        # Deprecation warnings
+        warnings.warn(
+            "`clustering.affinity_propagation.AffinityPropagationConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.",
+            FutureWarning,  # DeprecationWarning
+            stacklevel=2,
+        )
+
+        # Store 'self.max_iteration`.
+        if max_iteration < 1:
+            raise ValueError("The `max_iteration` must be greater than or equal to 1.")
+        self.max_iteration: int = max_iteration
+
+        # Store 'self.convergence_iteration`.
+        if convergence_iteration < 1:
+            raise ValueError("The `convergence_iteration` must be greater than or equal to 1.")
+        self.convergence_iteration: int = convergence_iteration
+
+        # Store 'self.absolute_must_links`.
+        self.absolute_must_links: bool = absolute_must_links
+
+        # Store 'self.random_seed`.
+        self.random_seed: Optional[int] = random_seed
+
+        # Store `self.kargs` for kmeans clustering.
+        self.kargs = kargs
+
+        # Initialize `self.dict_of_predicted_clusters`.
+        self.dict_of_predicted_clusters: Optional[Dict[str, int]] = None
+
+    # ==============================================================================
+    # MAIN - CLUSTER DATA
+    # ==============================================================================
+
+    def cluster(
+        self,
+        constraints_manager: AbstractConstraintsManager,
+        vectors: Dict[str, csr_matrix],
+        nb_clusters: Optional[int] = None,
+        verbose: bool = False,
+        **kargs,
+    ) -> Dict[str, int]:
+        """
+        The main method used to cluster data with the KMeans model.
+
+        Args:
+            constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
+            vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.
+            nb_clusters (Optional[int]): The number of clusters to compute. Here `None`.
+            verbose (bool, optional): Enable verbose output. Defaults to `False`.
+            **kargs (dict): Other parameters that can be used in the clustering.
+
+        Raises:
+            ValueError: if `vectors` and `constraints_manager` are incompatible, or if some parameters are incorrectly set.
+
+        Returns:
+            Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.
+        """
+
+        ###
+        ### GET PARAMETERS
+        ###
+
+        # Store `self.constraints_manager` and `self.list_of_data_IDs`.
+        if not isinstance(constraints_manager, AbstractConstraintsManager):
+            raise ValueError("The `constraints_manager` parameter has to be a `AbstractConstraintsManager` type.")
+        self.constraints_manager: AbstractConstraintsManager = constraints_manager
+        self.list_of_data_IDs: List[str] = self.constraints_manager.get_list_of_managed_data_IDs()
+
+        # Store `self.vectors`.
+        if not isinstance(vectors, dict):
+            raise ValueError("The `vectors` parameter has to be a `dict` type.")
+        self.vectors: Dict[str, csr_matrix] = vectors
+
+        # Store `self.nb_clusters`.
+        if nb_clusters is not None:
+            raise ValueError("The `nb_clusters` should be 'None' for Affinity Propagataion clustering.")
+        self.nb_clusters: Optional[int] = None
+
+        ###
+        ### RUN AFFINITY PROPAGATION CONSTRAINED CLUSTERING
+        ###
+
+        # Initialize `self.dict_of_predicted_clusters`.
+        self.dict_of_predicted_clusters = None
+
+        # Correspondances ID -> index
+        data_ID_to_idx: Dict[str, int] = {v: i for i, v in enumerate(self.list_of_data_IDs)}
+        n_sample: int = len(self.list_of_data_IDs)
+
+        # Compute similarity between data points.
+        S: csr_matrix = -pairwise_distances(vstack(self.vectors[data_ID] for data_ID in self.list_of_data_IDs))
+
+        # Get connected components (closures of MUST_LINK contraints).
+        must_link_closures: List[List[str]] = self.constraints_manager.get_connected_components()
+        must_links: List[List[int]] = [[data_ID_to_idx[ID] for ID in closure] for closure in must_link_closures]
+
+        # Get annotated CANNOT_LINK contraints.
+        cannot_links: List[Tuple[int, int]] = []
+        for data_ID_i1, data_ID_j1 in combinations(range(n_sample), 2):
+            constraint = self.constraints_manager.get_added_constraint(
+                self.list_of_data_IDs[data_ID_i1], self.list_of_data_IDs[data_ID_j1]
+            )
+            if constraint and constraint[0] == "CANNOT_LINK":
+                cannot_links.append((data_ID_i1, data_ID_j1))
+
+        # Run constrained affinity propagation.
+        cluster_labels: List[int] = _affinity_propagation_constrained(
+            S,
+            must_links=must_links,
+            cannot_links=cannot_links,
+            absolute_must_links=self.absolute_must_links,
+            max_iteration=self.max_iteration,
+            convergence_iteration=self.convergence_iteration,
+            random_seed=self.random_seed,
+            verbose=verbose,
+        )
+
+        # Rename cluster IDs by order.
+        self.dict_of_predicted_clusters = rename_clusters_by_order(
+            {self.list_of_data_IDs[i]: l for i, l in enumerate(cluster_labels)}
+        )
+
+        return self.dict_of_predicted_clusters
+
 
 # ==============================================================================
 # AFFINITY PROPAGATION FROM SKLEARN UNDER CONSTRAINTS
@@ -245,206 +462,3 @@ def _affinity_propagation_constrained(
         cluster_centers_indices = []
 
     return labels
-
-
-# ==============================================================================
-# AFFINITY PROPAGATION CONSTRAINED CLUSTERING
-# ==============================================================================
-
-
-class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
-    """
-    This class will implements the Affinity Propagation constrained clustering.
-    It inherits from `AbstractConstrainedClustering`.
-
-    References:
-        - Affinity Propagation Clustering: `Frey, B. J., & Dueck, D. (2007). Clustering by Passing Messages Between Data Points. In Science (Vol. 315, Issue 5814, pp. 972–976). American Association for the Advancement of Science (AAAS). https://doi.org/10.1126/science.1136800`
-        - Constrained Affinity Propagation Clustering: `Givoni, I., & Frey, B. J. (2009). Semi-Supervised Affinity Propagation with Instance-Level Constraints. Proceedings of the Twelth International Conference on Artificial Intelligence and Statistics, PMLR 5:161-168`
-
-    Examples:
-        ```python
-        # Import.
-        from scipy.sparse import csr_matrix
-        from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager
-        from cognitivefactory.interactive_clustering.clustering.affinity_propagation import AffinityPropagationConstrainedClustering
-
-        # Create an instance of affinity propagation clustering.
-        clustering_model = AffinityPropagationConstrainedClustering(
-            random_seed=1,
-        )
-
-        # Define vectors.
-        # NB : use cognitivefactory.interactive_clustering.utils to preprocess and vectorize texts.
-        vectors = {
-            "0": csr_matrix([1.00, 0.00, 0.00, 0.00]),
-            "1": csr_matrix([0.95, 0.02, 0.02, 0.01]),
-            "2": csr_matrix([0.98, 0.00, 0.02, 0.00]),
-            "3": csr_matrix([0.99, 0.00, 0.01, 0.00]),
-            "4": csr_matrix([0.60, 0.17, 0.16, 0.07]),
-            "5": csr_matrix([0.60, 0.16, 0.17, 0.07]),
-            "6": csr_matrix([0.01, 0.01, 0.01, 0.97]),
-            "7": csr_matrix([0.00, 0.01, 0.00, 0.99]),
-            "8": csr_matrix([0.00, 0.00, 0.00, 1.00]),
-        }
-
-        # Define constraints manager.
-        constraints_manager = BinaryConstraintsManager(list_of_data_IDs=list(vectors.keys()))
-        constraints_manager.add_constraint(data_ID1="0", data_ID2="1", constraint_type="MUST_LINK")
-        constraints_manager.add_constraint(data_ID1="2", data_ID2="3", constraint_type="MUST_LINK")
-        constraints_manager.add_constraint(data_ID1="4", data_ID2="5", constraint_type="MUST_LINK")
-        constraints_manager.add_constraint(data_ID1="7", data_ID2="8", constraint_type="MUST_LINK")
-        constraints_manager.add_constraint(data_ID1="0", data_ID2="4", constraint_type="CANNOT_LINK")
-        constraints_manager.add_constraint(data_ID1="2", data_ID2="4", constraint_type="CANNOT_LINK")
-        constraints_manager.add_constraint(data_ID1="4", data_ID2="7", constraint_type="CANNOT_LINK")
-
-        # Run clustering.
-        dict_of_predicted_clusters = clustering_model.cluster(
-            constraints_manager=constraints_manager,
-            vectors=vectors,
-            ####nb_clusters=None,
-        )
-
-        # Print results.
-        print("Expected results", ";", {"0": 0, "1": 0, "2": 0, "3": 0, "4": 1, "5": 1, "6": 2, "7": 2, "8": 2,})  # TODO:
-        print("Computed results", ":", dict_of_predicted_clusters)
-        ```
-    """
-
-    def __init__(
-        self,
-        max_iteration: int = 150,
-        convergence_iteration: int = 10,
-        random_seed: Optional[int] = None,
-        absolute_must_links: bool = True,
-        **kargs,
-    ) -> None:
-        """
-        The constructor for the Affinity Propagation constrained clustering.
-
-        Args:
-            max_iteration (int, optional): The maximum number of iteration for convergence. Defaults to `150`.
-            convergence_iteration (int, optional): The number of iterations with no change to consider a convergence. Default to `15`.
-            absolute_must_links (bool, optional): the option to strictly respect `"MUST_LINK"` type constraints. Defaults to ``True`.
-            random_seed (Optional[int], optional): The random seed to use to redo the same clustering. Defaults to `None`.
-            **kargs (dict): Other parameters that can be used in the instantiation.
-
-        Raises:
-            ValueError: if some parameters are incorrectly set.
-        """
-
-        # Store 'self.max_iteration`.
-        if max_iteration < 1:
-            raise ValueError("The `max_iteration` must be greater than or equal to 1.")
-        self.max_iteration: int = max_iteration
-
-        # Store 'self.convergence_iteration`.
-        if convergence_iteration < 1:
-            raise ValueError("The `convergence_iteration` must be greater than or equal to 1.")
-        self.convergence_iteration: int = convergence_iteration
-
-        # Store 'self.absolute_must_links`.
-        self.absolute_must_links: bool = absolute_must_links
-
-        # Store 'self.random_seed`.
-        self.random_seed: Optional[int] = random_seed
-
-        # Store `self.kargs` for kmeans clustering.
-        self.kargs = kargs
-
-        # Initialize `self.dict_of_predicted_clusters`.
-        self.dict_of_predicted_clusters: Optional[Dict[str, int]] = None
-
-    # ==============================================================================
-    # MAIN - CLUSTER DATA
-    # ==============================================================================
-
-    def cluster(
-        self,
-        constraints_manager: AbstractConstraintsManager,
-        vectors: Dict[str, csr_matrix],
-        nb_clusters: Optional[int] = None,
-        verbose: bool = False,
-        **kargs,
-    ) -> Dict[str, int]:
-        """
-        The main method used to cluster data with the KMeans model.
-
-        Args:
-            constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.
-            vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.
-            nb_clusters (Optional[int]): The number of clusters to compute. Here `None`.
-            verbose (bool, optional): Enable verbose output. Defaults to `False`.
-            **kargs (dict): Other parameters that can be used in the clustering.
-
-        Raises:
-            ValueError: if `vectors` and `constraints_manager` are incompatible, or if some parameters are incorrectly set.
-
-        Returns:
-            Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.
-        """
-
-        ###
-        ### GET PARAMETERS
-        ###
-
-        # Store `self.constraints_manager` and `self.list_of_data_IDs`.
-        if not isinstance(constraints_manager, AbstractConstraintsManager):
-            raise ValueError("The `constraints_manager` parameter has to be a `AbstractConstraintsManager` type.")
-        self.constraints_manager: AbstractConstraintsManager = constraints_manager
-        self.list_of_data_IDs: List[str] = self.constraints_manager.get_list_of_managed_data_IDs()
-
-        # Store `self.vectors`.
-        if not isinstance(vectors, dict):
-            raise ValueError("The `vectors` parameter has to be a `dict` type.")
-        self.vectors: Dict[str, csr_matrix] = vectors
-
-        # Store `self.nb_clusters`.
-        if nb_clusters is not None:
-            raise ValueError("The `nb_clusters` should be 'None' for Affinity Propagataion clustering.")
-        self.nb_clusters: Optional[int] = None
-
-        ###
-        ### RUN AFFINITY PROPAGATION CONSTRAINED CLUSTERING
-        ###
-
-        # Initialize `self.dict_of_predicted_clusters`.
-        self.dict_of_predicted_clusters = None
-
-        # Correspondances ID -> index
-        data_ID_to_idx: Dict[str, int] = {v: i for i, v in enumerate(self.list_of_data_IDs)}
-        n_sample: int = len(self.list_of_data_IDs)
-
-        # Compute similarity between data points.
-        S: csr_matrix = -pairwise_distances(vstack(self.vectors[data_ID] for data_ID in self.list_of_data_IDs))
-
-        # Get connected components (closures of MUST_LINK contraints).
-        must_link_closures: List[List[str]] = self.constraints_manager.get_connected_components()
-        must_links: List[List[int]] = [[data_ID_to_idx[ID] for ID in closure] for closure in must_link_closures]
-
-        # Get annotated CANNOT_LINK contraints.
-        cannot_links: List[Tuple[int, int]] = []
-        for data_ID_i1, data_ID_j1 in combinations(range(n_sample), 2):
-            constraint = self.constraints_manager.get_added_constraint(
-                self.list_of_data_IDs[data_ID_i1], self.list_of_data_IDs[data_ID_j1]
-            )
-            if constraint and constraint[0] == "CANNOT_LINK":
-                cannot_links.append((data_ID_i1, data_ID_j1))
-
-        # Run constrained affinity propagation.
-        cluster_labels: List[int] = _affinity_propagation_constrained(
-            S,
-            must_links=must_links,
-            cannot_links=cannot_links,
-            absolute_must_links=self.absolute_must_links,
-            max_iteration=self.max_iteration,
-            convergence_iteration=self.convergence_iteration,
-            random_seed=self.random_seed,
-            verbose=verbose,
-        )
-
-        # Rename cluster IDs by order.
-        self.dict_of_predicted_clusters = rename_clusters_by_order(
-            {self.list_of_data_IDs[i]: l for i, l in enumerate(cluster_labels)}
-        )
-
-        return self.dict_of_predicted_clusters

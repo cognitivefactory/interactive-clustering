@@ -3,7 +3,7 @@
 """
 * Name:         cognitivefactory.interactive_clustering.clustering.dbscan
 * Description:  Implementation of constrained DBScan clustering algorithms.
-* Author:       Marc TRUTT
+* Author:       Marc TRUTT, Esther LENOTRE, David NICOLAZO
 * Created:      08/05/2022
 * Licence:      CeCILL (https://cecill.info/licences.fr.html)
 """
@@ -11,6 +11,8 @@
 # ==============================================================================
 # IMPORT PYTHON DEPENDENCIES
 # ==============================================================================
+
+import warnings
 
 # import random
 from typing import Dict, List, Optional
@@ -85,6 +87,9 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         print("Expected results", ";", {"0": 0, "1": 0, "2": 1, "3": 1, "4": 2, "5": 2, "6": 0, "7": 0, "8": 0,})
         print("Computed results", ":", dict_of_predicted_clusters)
         ```
+
+    Warnings:
+        FutureWarning: `clustering.dbscan.DBScanConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.
     """
 
     # ==============================================================================
@@ -106,9 +111,19 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
             random_seed (Optional[int]): The random seed to use to redo the same clustering. Defaults to `None`.
             **kargs (dict): Other parameters that can be used in the instantiation.
 
+        Warnings:
+            FutureWarning: `clustering.dbscan.DBScanConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.
+
         Raises:
             ValueError: if some parameters are incorrectly set.
         """
+
+        # Deprecation warnings
+        warnings.warn(
+            "`clustering.dbscan.DBScanConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.",
+            FutureWarning,  # DeprecationWarning
+            stacklevel=2,
+        )
 
         # Store 'self.eps`.
         if eps <= 0:
