@@ -120,6 +120,12 @@ To work on this project or contribute to it, please read:
 		- _Scikit-learn_ _'TfidfVectorizer'_: `https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html`
 
 
+## <a name="Other links"></a> Other links
+
+- Several comparative studies of Interactive Clustering methodology on NLP datasets: `Schild, E. (2021). cognitivefactory/interactive-clustering-comparative-study. Zenodo. https://doi.org/10.5281/zenodo.5648255`
+- A web application designed for NLP data annotation using Interactive Clustering methodology: `Schild, E. (2021). cognitivefactory/interactive-clustering-gui. Zenodo. https://doi.org/10.5281/zenodo.4775270`
+
+
 ## <a name="How to cite"></a> How to cite
 
 `Schild, E. (2021). cognitivefactory/interactive-clustering. Zenodo. https://doi.org/10.5281/zenodo.4775251.`
