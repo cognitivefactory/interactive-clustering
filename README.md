@@ -5,8 +5,8 @@
 [![pypi version](https://img.shields.io/pypi/v/cognitivefactory-interactive-clustering.svg)](https://pypi.org/project/cognitivefactory-interactive-clustering/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4775251.svg)](https://doi.org/10.5281/zenodo.4775251)
 
-
 Python package used to apply NLP interactive clustering methods.
+
 
 ## <a name="Description"></a> Quick description
 
@@ -117,6 +117,7 @@ To work on this project or contribute to it, please read:
         - _NLTK_ _'SnowballStemmer'_: `https://www.nltk.org/api/nltk.stem.html#module-nltk.stem.snowball`
     - _Scikit-learn_: `Pedregosa, F., G. Varoquaux, A. Gramfort, V. Michel, B. Thirion, O. Grisel, M. Blondel, P. Prettenhofer, R.Weiss, V. Dubourg, J. Vanderplas, A. Passos, D. Cournapeau, M. Brucher, M. Perrot, et E. Duchesnay (2011). Scikit-learn : Machine Learning in Python. Journal of Machine Learning Research 12, 2825–2830.`
         - _Scikit-learn_ _'TfidfVectorizer'_: `https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html`
+
 
 ## <a name="How to cite"></a> How to cite	
 
