@@ -43,7 +43,7 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         - KMeans Clustering: `MacQueen, J. (1967). Some methods for classification and analysis of multivariate observations. Proceedings of the fifth Berkeley symposium on mathematical statistics and probability 1(14), 281–297.`
         - Constrained _'MPC'_ KMeans Clustering: `Khan, Md. A., Tamim, I., Ahmed, E., & Awal, M. A. (2012). Multiple Parameter Based Clustering (MPC): Prospective Analysis for Effective Clustering in Wireless Sensor Network (WSN) Using K-Means Algorithm. In Wireless Sensor Network (Vol. 04, Issue 01, pp. 18–24). Scientific Research Publishing, Inc. https://doi.org/10.4236/wsn.2012.41003`
 
-    Examples:
+    Example:
         ```python
         # Import.
         from scipy.sparse import csr_matrix
@@ -86,7 +86,7 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
         ```
 
     Warnings:
-    FutureWarning: `clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.
+        FutureWarning: `clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.
     """
 
     # ==============================================================================
@@ -111,7 +111,7 @@ class MPCKMeansConstrainedClustering(AbstractConstrainedClustering):
             **kargs (dict): Other parameters that can be used in the instantiation.
 
         Warnings:
-        FutureWarning: `clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.
+            FutureWarning: `clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.
 
         Raises:
             ValueError: if some parameters are incorrectly set.

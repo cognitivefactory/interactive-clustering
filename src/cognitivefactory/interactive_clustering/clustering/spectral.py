@@ -37,7 +37,7 @@ class SpectralConstrainedClustering(AbstractConstrainedClustering):
         - Spectral Clustering: `Ng, A. Y., M. I. Jordan, et Y.Weiss (2002). On Spectral Clustering: Analysis and an algorithm. In T. G. Dietterich, S. Becker, et Z. Ghahramani (Eds.), Advances in Neural Information Processing Systems 14. MIT Press.`
         - Constrained _'SPEC'_ Spectral Clustering: `Kamvar, S. D., D. Klein, et C. D. Manning (2003). Spectral Learning. Proceedings of the international joint conference on artificial intelligence, 561–566.`
 
-    Examples:
+    Example:
         ```python
         # Import.
         from scipy.sparse import csr_matrix

@@ -31,7 +31,7 @@ class BinaryConstraintsManager(AbstractConstraintsManager):
     References:
         - Binary constraints in clustering: `Wagstaff, K. et C. Cardie (2000). Clustering with Instance-level Constraints. Proceedings of the Seventeenth International Conference on Machine Learning, 1103–1110.`
 
-    Examples:
+    Example:
         ```python
         # Import.
         from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager

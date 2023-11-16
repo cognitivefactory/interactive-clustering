@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+s# -*- coding: utf-8 -*-
 
 """
 * Name:         cognitivefactory.interactive_clustering.clustering.hierarchical
@@ -37,7 +37,7 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
         - Hierarchical Clustering: `Murtagh, F. et P. Contreras (2012). Algorithms for hierarchical clustering : An overview. Wiley Interdisc. Rew.: Data Mining and Knowledge Discovery 2, 86–97.`
         - Constrained Hierarchical Clustering: `Davidson, I. et S. S. Ravi (2005). Agglomerative Hierarchical Clustering with Constraints : Theoretical and Empirical Results. Springer, Berlin, Heidelberg 3721, 12.`
 
-    Examples:
+    Example:
         ```python
         # Import.
         from scipy.sparse import csr_matrix

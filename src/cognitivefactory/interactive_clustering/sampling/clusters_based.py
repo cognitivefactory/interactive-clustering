@@ -30,7 +30,7 @@ class ClustersBasedConstraintsSampling(AbstractConstraintsSampling):
     This class implements the sampling of data IDs based on clusters information in order to annotate constraints.
     It inherits from `AbstractConstraintsSampling`.
 
-    Examples:
+    Example:
         ```python
         # Import.
         from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager

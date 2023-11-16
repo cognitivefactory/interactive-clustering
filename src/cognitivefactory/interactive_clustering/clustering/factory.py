@@ -31,7 +31,7 @@ def clustering_factory(algorithm: str = "kmeans", **kargs) -> "AbstractConstrain
     A factory to create a new instance of a constrained clustering model.
 
     Args:
-        algorithm (str): The identification of model to instantiate. Can be `"affinity_propagation"`, `"dbscan"`, `"hierarchical"`, `"kmeans"`,  `"mpckmeans"` or `"spectral"`. Defaults to `"kmeans"`.
+        algorithm (str): The identification of model to instantiate. Can be `"affinity_propagation"`, `"dbscan"`, `"hierarchical"`, `"kmeans"`, `"mpckmeans"` or `"spectral"`. Defaults to `"kmeans"`.
         **kargs (dict): Other parameters that can be used in the instantiation.
 
     Warnings:
@@ -43,7 +43,7 @@ def clustering_factory(algorithm: str = "kmeans", **kargs) -> "AbstractConstrain
     Returns:
         AbstractConstraintsClustering: An instance of constrained clustering model.
 
-    Examples:
+    Example:
         ```python
         # Import.
         from cognitivefactory.interactive_clustering.clustering.factory import clustering_factory

@@ -39,7 +39,7 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
         - Affinity Propagation Clustering: `Frey, B. J., & Dueck, D. (2007). Clustering by Passing Messages Between Data Points. In Science (Vol. 315, Issue 5814, pp. 972–976). American Association for the Advancement of Science (AAAS). https://doi.org/10.1126/science.1136800`
         - Constrained Affinity Propagation Clustering: `Givoni, I., & Frey, B. J. (2009). Semi-Supervised Affinity Propagation with Instance-Level Constraints. Proceedings of the Twelth International Conference on Artificial Intelligence and Statistics, PMLR 5:161-168`
 
-    Examples:
+    Example:
         ```python
         # Import.
         from scipy.sparse import csr_matrix

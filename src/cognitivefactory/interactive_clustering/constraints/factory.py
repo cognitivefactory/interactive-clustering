@@ -36,7 +36,7 @@ def managing_factory(list_of_data_IDs: List[str], manager: str = "binary", **kar
     Returns:
         AbstractConstraintsManager : An instance of constraints manager.
 
-    Examples:
+    Example:
         ```python
         # Import.
         from cognitivefactory.interactive_clustering.constraints.factory import managing_factory

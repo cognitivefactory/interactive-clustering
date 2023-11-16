@@ -33,7 +33,7 @@ def sampling_factory(algorithm: str, **kargs) -> "AbstractConstraintsSampling":
     Returns:
         AbstractConstraintsSampling: An instance of constraints sampling model.
 
-    Examples:
+    Example:
         ```python
         # Import.
         from cognitivefactory.interactive_clustering.sampling.factory import sampling_factory

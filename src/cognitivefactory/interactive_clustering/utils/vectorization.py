@@ -48,7 +48,7 @@ def vectorize(
     Returns:
         Dict[str, csr_matrix]: A dictionary that contains the computed vectors.
 
-    Examples:
+    Example:
         ```python
         # Import.
         from cognitivefactory.interactive_clustering.utils.vectorization import vectorize

@@ -37,7 +37,7 @@ class KMeansConstrainedClustering(AbstractConstrainedClustering):
         - KMeans Clustering: `MacQueen, J. (1967). Some methods for classification and analysis of multivariate observations. Proceedings of the fifth Berkeley symposium on mathematical statistics and probability 1(14), 281–297.`
         - Constrained _'COP'_ KMeans Clustering: `Wagstaff, K., C. Cardie, S. Rogers, et S. Schroedl (2001). Constrained K-means Clustering with Background Knowledge. International Conference on Machine Learning`
 
-    Examples:
+    Example:
         ```python
         # Import.
         from scipy.sparse import csr_matrix

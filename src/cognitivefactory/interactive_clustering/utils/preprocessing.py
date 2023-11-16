@@ -54,7 +54,7 @@ def preprocess(
     Returns:
         Dict[str,str]: A dictionary that contains the preprocessed texts.
 
-    Examples:
+    Example:
         ```python
         # Import.
         from cognitivefactory.interactive_clustering.utils.preprocessing import preprocess

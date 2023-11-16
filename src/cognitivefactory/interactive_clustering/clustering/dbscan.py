@@ -40,7 +40,7 @@ class DBScanConstrainedClustering(AbstractConstrainedClustering):
         - DBScan Clustering: `Ester, Martin & Kröger, Peer & Sander, Joerg & Xu, Xiaowei. (1996). A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise. KDD. 96. 226-231`.
         - Constrained DBScan Clustering: `Ruiz, Carlos & Spiliopoulou, Myra & Menasalvas, Ernestina. (2007). C-DBSCAN: Density-Based Clustering with Constraints. 216-223. 10.1007/978-3-540-72530-5_25.`
 
-    Examples:
+    Example:
         ```python
         # Import.
         from scipy.sparse import csr_matrix
