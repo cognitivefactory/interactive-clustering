@@ -1529,8 +1529,9 @@ Modified by Esther LENOTRE <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#10
 <li>Constrained <em>'MPC'</em> KMeans Clustering: <code>Khan, Md. A., Tamim, I., Ahmed, E., &amp; Awal, M. A. (2012). Multiple Parameter Based Clustering (MPC): Prospective Analysis for Effective Clustering in Wireless Sensor Network (WSN) Using K-Means Algorithm. In Wireless Sensor Network (Vol. 04, Issue 01, pp. 18–24). Scientific Research Publishing, Inc. https://doi.org/10.4236/wsn.2012.41003</code></li>
 </ul>
 </details>
-<p><strong>Examples:</strong></p>
-    <div class="highlight"><pre><span></span><code><span class="c1"># Import.</span>
+<details class="example">
+  <summary>Example</summary>
+  <div class="highlight"><pre><span></span><code><span class="c1"># Import.</span>
 <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
 <span class="kn">from</span> <span class="nn">cognitivefactory.interactive_clustering.constraints.binary</span> <span class="kn">import</span> <span class="n">BinaryConstraintsManager</span>
 <span class="kn">from</span> <span class="nn">cognitivefactory.interactive_clustering.clustering.dbscan</span> <span class="kn">import</span> <span class="n">MPCKMeansConstrainedClustering</span>
@@ -1569,9 +1570,11 @@ Modified by Esther LENOTRE <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#10
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected results&quot;</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;8&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Computed results&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">dict_of_predicted_clusters</span><span class="p">)</span>
 </code></pre></div>
-      <p>Warnings:
-FutureWarning: <code>clustering.mpckmeans.MPCKMeansConstrainedClustering</code> is still in development and is not fully tested : it is not ready for production use.</p>
-
+</details>
+<details class="warnings">
+  <summary>Warnings</summary>
+  <p>FutureWarning: <code>clustering.mpckmeans.MPCKMeansConstrainedClustering</code> is still in development and is not fully tested : it is not ready for production use.</p>
+</details>
 
         <details class="quote">
           <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\mpckmeans.py</code></summary>
@@ -2165,7 +2168,7 @@ FutureWarning: <code>clustering.mpckmeans.MPCKMeansConstrainedClustering</code> 
 <span class="sd">        - KMeans Clustering: `MacQueen, J. (1967). Some methods for classification and analysis of multivariate observations. Proceedings of the fifth Berkeley symposium on mathematical statistics and probability 1(14), 281–297.`</span>
 <span class="sd">        - Constrained _&#39;MPC&#39;_ KMeans Clustering: `Khan, Md. A., Tamim, I., Ahmed, E., &amp; Awal, M. A. (2012). Multiple Parameter Based Clustering (MPC): Prospective Analysis for Effective Clustering in Wireless Sensor Network (WSN) Using K-Means Algorithm. In Wireless Sensor Network (Vol. 04, Issue 01, pp. 18–24). Scientific Research Publishing, Inc. https://doi.org/10.4236/wsn.2012.41003`</span>
 
-<span class="sd">    Examples:</span>
+<span class="sd">    Example:</span>
 <span class="sd">        ```python</span>
 <span class="sd">        # Import.</span>
 <span class="sd">        from scipy.sparse import csr_matrix</span>
@@ -2208,7 +2211,7 @@ FutureWarning: <code>clustering.mpckmeans.MPCKMeansConstrainedClustering</code> 
 <span class="sd">        ```</span>
 
 <span class="sd">    Warnings:</span>
-<span class="sd">    FutureWarning: `clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.</span>
+<span class="sd">        FutureWarning: `clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># ==============================================================================</span>
@@ -2233,7 +2236,7 @@ FutureWarning: <code>clustering.mpckmeans.MPCKMeansConstrainedClustering</code> 
 <span class="sd">            **kargs (dict): Other parameters that can be used in the instantiation.</span>
 
 <span class="sd">        Warnings:</span>
-<span class="sd">        FutureWarning: `clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.</span>
+<span class="sd">            FutureWarning: `clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: if some parameters are incorrectly set.</span>
@@ -2824,9 +2827,11 @@ FutureWarning: <code>clustering.mpckmeans.MPCKMeansConstrainedClustering</code> 
         </tr>
     </tbody>
   </table>
-      <p>Warnings:
-FutureWarning: <code>clustering.mpckmeans.MPCKMeansConstrainedClustering</code> is still in development and is not fully tested : it is not ready for production use.</p>
 
+<details class="warnings">
+  <summary>Warnings</summary>
+  <p>FutureWarning: <code>clustering.mpckmeans.MPCKMeansConstrainedClustering</code> is still in development and is not fully tested : it is not ready for production use.</p>
+</details>
   <p><strong>Raises:</strong></p>
   <table>
     <thead>
@@ -2924,7 +2929,7 @@ FutureWarning: <code>clustering.mpckmeans.MPCKMeansConstrainedClustering</code> 
 <span class="sd">        **kargs (dict): Other parameters that can be used in the instantiation.</span>
 
 <span class="sd">    Warnings:</span>
-<span class="sd">    FutureWarning: `clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.</span>
+<span class="sd">        FutureWarning: `clustering.mpckmeans.MPCKMeansConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: if some parameters are incorrectly set.</span>

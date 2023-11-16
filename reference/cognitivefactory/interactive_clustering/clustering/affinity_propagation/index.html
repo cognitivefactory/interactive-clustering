@@ -1485,8 +1485,9 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <li>Constrained Affinity Propagation Clustering: <code>Givoni, I., &amp; Frey, B. J. (2009). Semi-Supervised Affinity Propagation with Instance-Level Constraints. Proceedings of the Twelth International Conference on Artificial Intelligence and Statistics, PMLR 5:161-168</code></li>
 </ul>
 </details>
-<p><strong>Examples:</strong></p>
-    <div class="highlight"><pre><span></span><code><span class="c1"># Import.</span>
+<details class="example">
+  <summary>Example</summary>
+  <div class="highlight"><pre><span></span><code><span class="c1"># Import.</span>
 <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
 <span class="kn">from</span> <span class="nn">cognitivefactory.interactive_clustering.constraints.binary</span> <span class="kn">import</span> <span class="n">BinaryConstraintsManager</span>
 <span class="kn">from</span> <span class="nn">cognitivefactory.interactive_clustering.clustering.affinity_propagation</span> <span class="kn">import</span> <span class="n">AffinityPropagationConstrainedClustering</span>
@@ -1531,7 +1532,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected results&quot;</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;8&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,})</span>  <span class="c1"># TODO:</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Computed results&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">dict_of_predicted_clusters</span><span class="p">)</span>
 </code></pre></div>
-
+</details>
 <details class="warnings">
   <summary>Warnings</summary>
   <p>FutureWarning: <code>clustering.affinity_propagation.AffinityPropagationConstrainedClustering</code> is still in development and is not fully tested : it is not ready for production use.</p>
@@ -1756,7 +1757,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="sd">        - Affinity Propagation Clustering: `Frey, B. J., &amp; Dueck, D. (2007). Clustering by Passing Messages Between Data Points. In Science (Vol. 315, Issue 5814, pp. 972–976). American Association for the Advancement of Science (AAAS). https://doi.org/10.1126/science.1136800`</span>
 <span class="sd">        - Constrained Affinity Propagation Clustering: `Givoni, I., &amp; Frey, B. J. (2009). Semi-Supervised Affinity Propagation with Instance-Level Constraints. Proceedings of the Twelth International Conference on Artificial Intelligence and Statistics, PMLR 5:161-168`</span>
 
-<span class="sd">    Examples:</span>
+<span class="sd">    Example:</span>
 <span class="sd">        ```python</span>
 <span class="sd">        # Import.</span>
 <span class="sd">        from scipy.sparse import csr_matrix</span>
