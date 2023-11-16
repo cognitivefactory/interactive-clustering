@@ -914,7 +914,7 @@
       
         <li class="md-nav__item">
   <a href="#cognitivefactory.interactive_clustering.constraints.abstract" class="md-nav__link">
-    cognitivefactory.interactive_clustering.constraints.abstract
+    abstract
   </a>
   
 </li>
@@ -1452,7 +1452,7 @@
       
         <li class="md-nav__item">
   <a href="#cognitivefactory.interactive_clustering.constraints.abstract" class="md-nav__link">
-    cognitivefactory.interactive_clustering.constraints.abstract
+    abstract
   </a>
   
 </li>
@@ -1577,13 +1577,14 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="cognitivefactory.interactive_clustering.constraints.abstract"></a>
   <div class="doc doc-contents first">
   
       <ul>
 <li>Name:         cognitivefactory.interactive_clustering.constraints.abstract</li>
 <li>Description:  The abstract class used to define constraints managing algorithms.</li>
-<li>Author:       Erwan Schild</li>
+<li>Author:       Erwan SCHILD</li>
 <li>Created:      17/03/2021</li>
 <li>Licence:      CeCILL-C License v1.0 (<a href="https://cecill.info/licences.fr.html">https://cecill.info/licences.fr.html</a>)</li>
 </ul>
@@ -1603,31 +1604,31 @@
 
 
 
+
 <h2 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" class="doc doc-heading">
-        <code>AbstractConstraintsManager</code>
+          <code>AbstractConstraintsManager</code>
 
 
 <a href="#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="abc.ABC">ABC</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="abc.ABC">ABC</span></code></p>
 
   
       <p>Abstract class that is used to define constraints manager.
 The main inherited methods are about data IDs management, constraints management and constraints exploration.</p>
 
-<details class="references">
+<details class="references" open>
   <summary>References</summary>
   <ul>
 <li>Constraints in clustering: <code>Wagstaff, K. et C. Cardie (2000). Clustering with Instance-level Constraints. Proceedings of the Seventeenth International Conference on Machine Learning, 1103–1110.</code></li>
 </ul>
 </details>
-
-        <details class="quote">
-          <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 22</span>
+            <details class="quote">
+              <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 22</span>
 <span class="normal"> 23</span>
 <span class="normal"> 24</span>
 <span class="normal"> 25</span>
@@ -2159,7 +2160,7 @@ The main inherited methods are about data IDs management, constraints management
 <span class="sd">            bool: `True` if the serialization is done.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -2173,12 +2174,14 @@ The main inherited methods are about data IDs management, constraints management
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.add_constraint" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">add_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">constraint_type</span><span class="p">,</span> <span class="n">constraint_value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">add_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">constraint_type</span><span class="p">,</span> <span class="n">constraint_value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -2191,6 +2194,8 @@ The main inherited methods are about data IDs management, constraints management
   
       <p>(ABSTRACT METHOD)
 An abstract method that represents the main method used to add a constraint between two data IDs.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2208,7 +2213,11 @@ An abstract method that represents the main method used to add a constraint betw
           <td>
                 <code>str</code>
           </td>
-          <td><p>The first data ID that is concerned for this constraint addition.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The first data ID that is concerned for this constraint addition.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2218,7 +2227,11 @@ An abstract method that represents the main method used to add a constraint betw
           <td>
                 <code>str</code>
           </td>
-          <td><p>The second data ID that is concerned for this constraint addition.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The second data ID that is concerned for this constraint addition.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2228,7 +2241,11 @@ An abstract method that represents the main method used to add a constraint betw
           <td>
                 <code>str</code>
           </td>
-          <td><p>The type of the constraint to add. The type have to be <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The type of the constraint to add. The type have to be <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2238,13 +2255,19 @@ An abstract method that represents the main method used to add a constraint betw
           <td>
                 <code>float</code>
           </td>
-          <td><p>The value of the constraint to add. The value have to be in range <code>[0.0, 1.0]</code>. Defaults to 1.0.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The value of the constraint to add. The value have to be in range <code>[0.0, 1.0]</code>. Defaults to 1.0.</p>
+            </div>
+          </td>
           <td>
                 <code>1.0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -2259,10 +2282,16 @@ An abstract method that represents the main method used to add a constraint betw
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID1</code>, <code>data_ID2</code>, <code>constraint_type</code> are not managed, or if a conflict is detected with constraints inference.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID1</code>, <code>data_ID2</code>, <code>constraint_type</code> are not managed, or if a conflict is detected with constraints inference.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2277,14 +2306,18 @@ An abstract method that represents the main method used to add a constraint betw
 <td><code>bool</code></td>          <td>
                 <code>bool</code>
           </td>
-          <td><p><code>True</code> if the addition is done, <code>False</code> is the constraint can't be added.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>True</code> if the addition is done, <code>False</code> is the constraint can't be added.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 87</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 87</span>
 <span class="normal"> 88</span>
 <span class="normal"> 89</span>
 <span class="normal"> 90</span>
@@ -2332,17 +2365,19 @@ An abstract method that represents the main method used to add a constraint betw
 <span class="sd">        bool: `True` if the addition is done, `False` is the constraint can&#39;t be added.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.add_data_ID" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">add_data_ID</span><span class="p">(</span><span class="n">data_ID</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">add_data_ID</span><span class="p">(</span><span class="n">data_ID</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -2355,6 +2390,8 @@ An abstract method that represents the main method used to add a constraint betw
   
       <p>(ABSTRACT METHOD)
 An abstract method that represents the main method used to add a new data ID to manage.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2372,13 +2409,19 @@ An abstract method that represents the main method used to add a new data ID to 
           <td>
                 <code>str</code>
           </td>
-          <td><p>The data ID to manage.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The data ID to manage.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -2393,10 +2436,16 @@ An abstract method that represents the main method used to add a new data ID to 
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID</code> is already managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID</code> is already managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2411,14 +2460,18 @@ An abstract method that represents the main method used to add a new data ID to 
 <td><code>bool</code></td>          <td>
                 <code>bool</code>
           </td>
-          <td><p><code>True</code> if the addition is done.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>True</code> if the addition is done.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">34</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
 <span class="normal">37</span>
@@ -2454,17 +2507,19 @@ An abstract method that represents the main method used to add a new data ID to 
 <span class="sd">        bool: `True` if the addition is done.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.check_completude_of_constraints" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">check_completude_of_constraints</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">check_completude_of_constraints</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -2478,6 +2533,8 @@ An abstract method that represents the main method used to add a new data ID to 
       <p>(ABSTRACT METHOD)
 An abstract method that represents the main method used to check if all possible constraints are known (not necessarily annotated because of the transitivity).
 The transitivity is taken into account, and the <code>threshold</code> parameter is used to evaluate the impact of constraints transitivity.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2495,13 +2552,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>float</code>
           </td>
-          <td><p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>1.0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -2516,10 +2579,16 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>threshold</code> is not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>threshold</code> is not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2534,14 +2603,18 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <td><code>bool</code></td>          <td>
                 <code>bool</code>
           </td>
-          <td><p>Return <code>True</code> if all constraints are known, <code>False</code> otherwise.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Return <code>True</code> if all constraints are known, <code>False</code> otherwise.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">203</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">203</span>
 <span class="normal">204</span>
 <span class="normal">205</span>
 <span class="normal">206</span>
@@ -2579,17 +2652,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="sd">        bool: Return `True` if all constraints are known, `False` otherwise.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.delete_constraint" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">delete_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">delete_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -2602,6 +2677,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
   
       <p>(ABSTRACT METHOD)
 An abstract method that represents the main method used to delete the constraint between two data IDs.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2619,7 +2696,11 @@ An abstract method that represents the main method used to delete the constraint
           <td>
                 <code>str</code>
           </td>
-          <td><p>The first data ID that is concerned for this constraint deletion.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The first data ID that is concerned for this constraint deletion.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2629,13 +2710,19 @@ An abstract method that represents the main method used to delete the constraint
           <td>
                 <code>str</code>
           </td>
-          <td><p>The second data ID that is concerned for this constraint deletion.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The second data ID that is concerned for this constraint deletion.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -2650,10 +2737,16 @@ An abstract method that represents the main method used to delete the constraint
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID1</code> or <code>data_ID2</code> are not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID1</code> or <code>data_ID2</code> are not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2668,14 +2761,18 @@ An abstract method that represents the main method used to delete the constraint
 <td><code>bool</code></td>          <td>
                 <code>bool</code>
           </td>
-          <td><p><code>True</code> if the deletion is done.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>True</code> if the deletion is done.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">112</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span>
@@ -2715,17 +2812,19 @@ An abstract method that represents the main method used to delete the constraint
 <span class="sd">        bool: `True` if the deletion is done.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.delete_data_ID" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">delete_data_ID</span><span class="p">(</span><span class="n">data_ID</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">delete_data_ID</span><span class="p">(</span><span class="n">data_ID</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -2738,6 +2837,8 @@ An abstract method that represents the main method used to delete the constraint
   
       <p>(ABSTRACT METHOD)
 An abstract method that represents the main method used to delete a data ID to no longer manage.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2755,13 +2856,19 @@ An abstract method that represents the main method used to delete a data ID to n
           <td>
                 <code>str</code>
           </td>
-          <td><p>The data ID to no longer manage.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The data ID to no longer manage.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -2776,10 +2883,16 @@ An abstract method that represents the main method used to delete a data ID to n
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID</code> is not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID</code> is not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2794,14 +2907,18 @@ An abstract method that represents the main method used to delete a data ID to n
 <td><code>bool</code></td>          <td>
                 <code>bool</code>
           </td>
-          <td><p><code>True</code> if the deletion is done.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>True</code> if the deletion is done.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">53</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">53</span>
 <span class="normal">54</span>
 <span class="normal">55</span>
 <span class="normal">56</span>
@@ -2837,17 +2954,19 @@ An abstract method that represents the main method used to delete a data ID to n
 <span class="sd">        bool: `True` if the deletion is done.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_added_constraint" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_added_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">get_added_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -2861,6 +2980,8 @@ An abstract method that represents the main method used to delete a data ID to n
       <p>(ABSTRACT METHOD)
 An abstract method that represents the main method used to get the constraint added between the two data IDs.
 Do not take into account the constraints transitivity, just look at constraints that are explicitly added.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2878,7 +2999,11 @@ Do not take into account the constraints transitivity, just look at constraints 
           <td>
                 <code>str</code>
           </td>
-          <td><p>The first data ID that is concerned for this constraint.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The first data ID that is concerned for this constraint.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2888,13 +3013,19 @@ Do not take into account the constraints transitivity, just look at constraints 
           <td>
                 <code>str</code>
           </td>
-          <td><p>The second data ID that is concerned for this constraint.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The second data ID that is concerned for this constraint.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -2909,10 +3040,16 @@ Do not take into account the constraints transitivity, just look at constraints 
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID1</code> or <code>data_ID2</code> are not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID1</code> or <code>data_ID2</code> are not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2927,14 +3064,18 @@ Do not take into account the constraints transitivity, just look at constraints 
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Tuple">Tuple</span>[str, float]]</code>
           </td>
-          <td><p>Optional[Tuple[str, float]]: <code>None</code> if no constraint, <code>(constraint_type, constraint_value)</code> otherwise.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional[Tuple[str, float]]: <code>None</code> if no constraint, <code>(constraint_type, constraint_value)</code> otherwise.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">133</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">133</span>
 <span class="normal">134</span>
 <span class="normal">135</span>
 <span class="normal">136</span>
@@ -2976,17 +3117,19 @@ Do not take into account the constraints transitivity, just look at constraints 
 <span class="sd">        Optional[Tuple[str, float]]: `None` if no constraint, `(constraint_type, constraint_value)` otherwise.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_connected_components" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_connected_components</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">get_connected_components</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -3001,6 +3144,8 @@ Do not take into account the constraints transitivity, just look at constraints 
 An abstract method that represents the main method used to get the possible lists of data IDs that are connected by a <code>"MUST_LINK"</code> constraints.
 Each list forms a component of the constraints transitivity graph, and it forms a partition of the managed data IDs.
 The transitivity is taken into account, and the <code>threshold</code> parameter is used to evaluate the impact of constraints transitivity.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3018,13 +3163,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>float</code>
           </td>
-          <td><p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>1.0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -3039,10 +3190,16 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>threshold</code> is not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>threshold</code> is not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -3057,14 +3214,18 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.List">List</span>[str]]</code>
           </td>
-          <td><p>List[List[int]]: The list of lists of data IDs that represent a component of the constraints transitivity graph.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List[List[int]]: The list of lists of data IDs that represent a component of the constraints transitivity graph.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">182</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">182</span>
 <span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span>
@@ -3104,17 +3265,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="sd">        List[List[int]]: The list of lists of data IDs that represent a component of the constraints transitivity graph.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_inferred_constraint" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_inferred_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">get_inferred_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -3128,6 +3291,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
       <p>(ABSTRACT METHOD)
 An abstract method that represents the main method used to check if the constraint inferred by transitivity between the two data IDs.
 The transitivity is taken into account, and the <code>threshold</code> parameter is used to evaluate the impact of constraints transitivity.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3145,7 +3310,11 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>str</code>
           </td>
-          <td><p>The first data ID that is concerned for this constraint.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The first data ID that is concerned for this constraint.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3155,7 +3324,11 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>str</code>
           </td>
-          <td><p>The second data ID that is concerned for this constraint.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The second data ID that is concerned for this constraint.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3165,13 +3338,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>float</code>
           </td>
-          <td><p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>1.0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -3186,10 +3365,16 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID1</code>, <code>data_ID2</code> or <code>threshold</code> are not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID1</code>, <code>data_ID2</code> or <code>threshold</code> are not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -3204,14 +3389,18 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code><span title="typing.Optional">Optional</span>[str]</code>
           </td>
-          <td><p>Optional[str]: The type of the inferred constraint. The type can be <code>None</code>, <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional[str]: The type of the inferred constraint. The type can be <code>None</code>, <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">158</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">158</span>
 <span class="normal">159</span>
 <span class="normal">160</span>
 <span class="normal">161</span>
@@ -3257,17 +3446,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="sd">        Optional[str]: The type of the inferred constraint. The type can be `None`, `&quot;MUST_LINK&quot;` or `&quot;CANNOT_LINK&quot;`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_list_of_involved_data_IDs_in_a_constraint_conflict" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_list_of_involved_data_IDs_in_a_constraint_conflict</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">constraint_type</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">get_list_of_involved_data_IDs_in_a_constraint_conflict</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">constraint_type</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -3280,6 +3471,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
   
       <p>(ABSTRACT METHOD)
 An abstract method that represents the main method used to get all data IDs involved in a constraints conflict.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3297,7 +3490,11 @@ An abstract method that represents the main method used to get all data IDs invo
           <td>
                 <code>str</code>
           </td>
-          <td><p>The first data ID involved in the constraint_conflit.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The first data ID involved in the constraint_conflit.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3307,7 +3504,11 @@ An abstract method that represents the main method used to get all data IDs invo
           <td>
                 <code>str</code>
           </td>
-          <td><p>The second data ID involved in the constraint_conflit.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The second data ID involved in the constraint_conflit.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3317,13 +3518,19 @@ An abstract method that represents the main method used to get all data IDs invo
           <td>
                 <code>str</code>
           </td>
-          <td><p>The constraint that create a conflict. The constraints can be <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The constraint that create a conflict. The constraints can be <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -3338,10 +3545,16 @@ An abstract method that represents the main method used to get all data IDs invo
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID1</code>, <code>data_ID2</code>, <code>constraint_type</code> are not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID1</code>, <code>data_ID2</code>, <code>constraint_type</code> are not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -3356,14 +3569,18 @@ An abstract method that represents the main method used to get all data IDs invo
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[str]]</code>
           </td>
-          <td><p>Optional[List[str]]: The list of data IDs that are involved in the conflict. It matches data IDs from connected components of <code>data_ID1</code> and <code>data_ID2</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional[List[str]]: The list of data IDs that are involved in the conflict. It matches data IDs from connected components of <code>data_ID1</code> and <code>data_ID2</code>.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">247</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">247</span>
 <span class="normal">248</span>
 <span class="normal">249</span>
 <span class="normal">250</span>
@@ -3407,17 +3624,19 @@ An abstract method that represents the main method used to get all data IDs invo
 <span class="sd">        Optional[List[str]]: The list of data IDs that are involved in the conflict. It matches data IDs from connected components of `data_ID1` and `data_ID2`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_list_of_managed_data_IDs" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_list_of_managed_data_IDs</span><span class="p">()</span></code>
+          <code class="highlight language-python"><span class="n">get_list_of_managed_data_IDs</span><span class="p">()</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -3430,6 +3649,8 @@ An abstract method that represents the main method used to get all data IDs invo
   
       <p>(ABSTRACT METHOD)
 An abstract method that represents the main method used to get the list of data IDs that are managed.</p>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -3444,14 +3665,18 @@ An abstract method that represents the main method used to get the list of data 
           <td>
                 <code><span title="typing.List">List</span>[str]</code>
           </td>
-          <td><p>List[str]: The list of data IDs that are managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List[str]: The list of data IDs that are managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">72</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">72</span>
 <span class="normal">73</span>
 <span class="normal">74</span>
 <span class="normal">75</span>
@@ -3473,17 +3698,19 @@ An abstract method that represents the main method used to get the list of data 
 <span class="sd">        List[str]: The list of data IDs that are managed.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.get_min_and_max_number_of_clusters" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_min_and_max_number_of_clusters</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">get_min_and_max_number_of_clusters</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -3497,6 +3724,8 @@ An abstract method that represents the main method used to get the list of data 
       <p>(ABSTRACT METHOD)
 An abstract method that represents the main method used to get determine, for a clustering model that would not violate any constraints, the range of the possible clusters number.
 The transitivity is taken into account, and the <code>threshold</code> parameter is used to evaluate the impact of constraints transitivity.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3514,13 +3743,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>float</code>
           </td>
-          <td><p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>1.0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -3535,10 +3770,16 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>threshold</code> is not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>threshold</code> is not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -3553,14 +3794,18 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code><span title="typing.Tuple">Tuple</span>[int, int]</code>
           </td>
-          <td><p>Tuple[int,int]: The minimum and the maximum possible clusters numbers (for a clustering model that would not violate any constraints).</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Tuple[int,int]: The minimum and the maximum possible clusters numbers (for a clustering model that would not violate any constraints).</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
 <span class="normal">224</span>
 <span class="normal">225</span>
 <span class="normal">226</span>
@@ -3598,17 +3843,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="sd">        Tuple[int,int]: The minimum and the maximum possible clusters numbers (for a clustering model that would not violate any constraints).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager.to_json" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">to_json</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">to_json</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -3621,6 +3868,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
   
       <p>(ABSTRACT METHOD)
 An abstract method that represents the main method used to serialize the constraints manager object into a JSON file.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3638,13 +3887,19 @@ An abstract method that represents the main method used to serialize the constra
           <td>
                 <code>str</code>
           </td>
-          <td><p>The path where to serialize the constraints manager  object.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path where to serialize the constraints manager  object.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -3659,14 +3914,18 @@ An abstract method that represents the main method used to serialize the constra
 <td><code>bool</code></td>          <td>
                 <code>bool</code>
           </td>
-          <td><p><code>True</code> if the serialization is done.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>True</code> if the serialization is done.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">273</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">273</span>
 <span class="normal">274</span>
 <span class="normal">275</span>
 <span class="normal">276</span>
@@ -3696,7 +3955,7 @@ An abstract method that represents the main method used to serialize the constra
 <span class="sd">        bool: `True` if the serialization is done.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

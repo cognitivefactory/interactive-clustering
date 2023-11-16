@@ -702,7 +702,7 @@
       
         <li class="md-nav__item">
   <a href="#cognitivefactory.interactive_clustering.clustering.abstract" class="md-nav__link">
-    cognitivefactory.interactive_clustering.clustering.abstract
+    abstract
   </a>
   
 </li>
@@ -1382,7 +1382,7 @@
       
         <li class="md-nav__item">
   <a href="#cognitivefactory.interactive_clustering.clustering.abstract" class="md-nav__link">
-    cognitivefactory.interactive_clustering.clustering.abstract
+    abstract
   </a>
   
 </li>
@@ -1437,13 +1437,14 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="cognitivefactory.interactive_clustering.clustering.abstract"></a>
   <div class="doc doc-contents first">
   
       <ul>
 <li>Name:         cognitivefactory.interactive_clustering.clustering.abstract</li>
 <li>Description:  The abstract class used to define constrained clustering algorithms.</li>
-<li>Author:       Erwan Schild</li>
+<li>Author:       Erwan SCHILD</li>
 <li>Created:      17/03/2021</li>
 <li>Licence:      CeCILL-C License v1.0 (<a href="https://cecill.info/licences.fr.html">https://cecill.info/licences.fr.html</a>)</li>
 </ul>
@@ -1463,31 +1464,33 @@
 
 
 
+
 <h2 id="cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering" class="doc doc-heading">
-        <code>AbstractConstrainedClustering</code>
+          <code>AbstractConstrainedClustering</code>
 
 
 <a href="#cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><span title="abc.ABC">ABC</span></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="abc.ABC">ABC</span></code></p>
 
   
       <p>Abstract class that is used to define constrained clustering algorithms.
 The main inherited method is <code>cluster</code>.</p>
 
-<details class="references">
+<details class="references" open>
   <summary>References</summary>
   <ul>
 <li>Survey on Constrained Clustering : <code>Lampert, T., T.-B.-H. Dao, B. Lafabregue, N. Serrette, G. Forestier, B. Cremilleux, C. Vrain, et P. Gancarski (2018). Constrained distance based clustering for time-series : a comparative and experimental study. Data Mining and Knowledge Discovery 32(6), 1663–1707.</code></li>
 </ul>
 </details>
-
-        <details class="quote">
-          <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\abstract.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">28</span>
+            <details class="quote">
+              <summary>Source code in <code>src\cognitivefactory\interactive_clustering\clustering\abstract.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
@@ -1522,9 +1525,7 @@ The main inherited method is <code>cluster</code>.</p>
 <span class="normal">60</span>
 <span class="normal">61</span>
 <span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AbstractConstrainedClustering</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AbstractConstrainedClustering</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Abstract class that is used to define constrained clustering algorithms.</span>
 <span class="sd">    The main inherited method is `cluster`.</span>
@@ -1541,7 +1542,7 @@ The main inherited method is <code>cluster</code>.</p>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">constraints_manager</span><span class="p">:</span> <span class="n">AbstractConstraintsManager</span><span class="p">,</span>
         <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">],</span>
-        <span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">nb_clusters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
         <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
@@ -1552,7 +1553,7 @@ The main inherited method is <code>cluster</code>.</p>
 <span class="sd">        Args:</span>
 <span class="sd">            constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.</span>
 <span class="sd">            vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.</span>
-<span class="sd">            nb_clusters (int): The number of clusters to compute. #TODO Set defaults to None with elbow method or other method ?</span>
+<span class="sd">            nb_clusters (Optional[int]): The number of clusters to compute. Can be `None` if this parameters is estimated or if the algorithm doesn&#39;t need it.</span>
 <span class="sd">            verbose (bool, optional): Enable verbose output. Defaults to `False`.</span>
 <span class="sd">            **kargs (dict): Other parameters that can be used in the clustering.</span>
 
@@ -1563,7 +1564,7 @@ The main inherited method is <code>cluster</code>.</p>
 <span class="sd">            Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1577,12 +1578,14 @@ The main inherited method is <code>cluster</code>.</p>
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering.cluster" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">cluster</span><span class="p">(</span><span class="n">constraints_manager</span><span class="p">,</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">nb_clusters</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">cluster</span><span class="p">(</span><span class="n">constraints_manager</span><span class="p">,</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">nb_clusters</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-abstractmethod"><code>abstractmethod</code></small>
@@ -1595,6 +1598,8 @@ The main inherited method is <code>cluster</code>.</p>
   
       <p>(ABSTRACT METHOD)
 An abstract method that represents the main method used to cluster data.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1612,7 +1617,11 @@ An abstract method that represents the main method used to cluster data.</p>
           <td>
                 <code><a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" href="../../constraints/abstract/#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager">AbstractConstraintsManager</a></code>
           </td>
-          <td><p>A constraints manager over data IDs that will force clustering to respect some conditions during computation.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>A constraints manager over data IDs that will force clustering to respect some conditions during computation.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1622,7 +1631,11 @@ An abstract method that represents the main method used to cluster data.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span>[str, <span title="scipy.sparse.csr_matrix">csr_matrix</span>]</code>
           </td>
-          <td><p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code>. The value of the dictionary represent the vector of each data.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code>. The value of the dictionary represent the vector of each data.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1630,9 +1643,13 @@ An abstract method that represents the main method used to cluster data.</p>
         <tr>
           <td><code>nb_clusters</code></td>
           <td>
-                <code>int</code>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
           </td>
-          <td><p>The number of clusters to compute. #TODO Set defaults to None with elbow method or other method ?</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The number of clusters to compute. Can be <code>None</code> if this parameters is estimated or if the algorithm doesn't need it.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1642,7 +1659,11 @@ An abstract method that represents the main method used to cluster data.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Enable verbose output. Defaults to <code>False</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Enable verbose output. Defaults to <code>False</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -1652,13 +1673,19 @@ An abstract method that represents the main method used to cluster data.</p>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Other parameters that can be used in the clustering.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Other parameters that can be used in the clustering.</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -1673,10 +1700,16 @@ An abstract method that represents the main method used to cluster data.</p>
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>vectors</code> and <code>constraints_manager</code> are incompatible, or if some parameters are incorrectly set.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>vectors</code> and <code>constraints_manager</code> are incompatible, or if some parameters are incorrectly set.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1691,14 +1724,20 @@ An abstract method that represents the main method used to cluster data.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span>[str, int]</code>
           </td>
-          <td><p>Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">40</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\clustering\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
@@ -1721,14 +1760,12 @@ An abstract method that represents the main method used to cluster data.</p>
 <span class="normal">60</span>
 <span class="normal">61</span>
 <span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@abstractmethod</span>
 <span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">constraints_manager</span><span class="p">:</span> <span class="n">AbstractConstraintsManager</span><span class="p">,</span>
     <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">],</span>
-    <span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">nb_clusters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
     <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
@@ -1739,7 +1776,7 @@ An abstract method that represents the main method used to cluster data.</p>
 <span class="sd">    Args:</span>
 <span class="sd">        constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.</span>
 <span class="sd">        vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.</span>
-<span class="sd">        nb_clusters (int): The number of clusters to compute. #TODO Set defaults to None with elbow method or other method ?</span>
+<span class="sd">        nb_clusters (Optional[int]): The number of clusters to compute. Can be `None` if this parameters is estimated or if the algorithm doesn&#39;t need it.</span>
 <span class="sd">        verbose (bool, optional): Enable verbose output. Defaults to `False`.</span>
 <span class="sd">        **kargs (dict): Other parameters that can be used in the clustering.</span>
 
@@ -1750,7 +1787,7 @@ An abstract method that represents the main method used to cluster data.</p>
 <span class="sd">        Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1762,14 +1799,16 @@ An abstract method that represents the main method used to cluster data.</p>
   </div>
 
 </div>
+
 
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h2 id="cognitivefactory.interactive_clustering.clustering.abstract.rename_clusters_by_order" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">rename_clusters_by_order</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">rename_clusters_by_order</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.clustering.abstract.rename_clusters_by_order" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -1777,6 +1816,8 @@ An abstract method that represents the main method used to cluster data.</p>
   <div class="doc doc-contents ">
   
       <p>Rename cluster ID to be ordered by data IDs.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1794,13 +1835,19 @@ An abstract method that represents the main method used to cluster data.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span>[str, int]</code>
           </td>
-          <td><p>The dictionary of clusters.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The dictionary of clusters.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1815,14 +1862,20 @@ An abstract method that represents the main method used to cluster data.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span>[str, int]</code>
           </td>
-          <td><p>Dict[str, int]: The sorted dictionary of clusters.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Dict[str, int]: The sorted dictionary of clusters.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\abstract.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 71</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\clustering\abstract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
 <span class="normal"> 72</span>
 <span class="normal"> 73</span>
 <span class="normal"> 74</span>
@@ -1851,9 +1904,7 @@ An abstract method that represents the main method used to cluster data.</p>
 <span class="normal"> 97</span>
 <span class="normal"> 98</span>
 <span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rename_clusters_by_order</span><span class="p">(</span>
+<span class="normal">100</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rename_clusters_by_order</span><span class="p">(</span>
     <span class="n">clusters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1886,7 +1937,7 @@ An abstract method that represents the main method used to cluster data.</p>
     <span class="c1"># Return the new ordered clusters</span>
     <span class="k">return</span> <span class="n">new_clusters</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

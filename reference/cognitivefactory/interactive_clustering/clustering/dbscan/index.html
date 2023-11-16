@@ -742,7 +742,7 @@
       
         <li class="md-nav__item">
   <a href="#cognitivefactory.interactive_clustering.clustering.dbscan" class="md-nav__link">
-    cognitivefactory.interactive_clustering.clustering.dbscan
+    dbscan
   </a>
   
 </li>
@@ -1382,7 +1382,7 @@
       
         <li class="md-nav__item">
   <a href="#cognitivefactory.interactive_clustering.clustering.dbscan" class="md-nav__link">
-    cognitivefactory.interactive_clustering.clustering.dbscan
+    dbscan
   </a>
   
 </li>
@@ -1437,6 +1437,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="cognitivefactory.interactive_clustering.clustering.dbscan"></a>
   <div class="doc doc-contents first">
   
@@ -1463,29 +1464,30 @@
 
 
 
+
 <h2 id="cognitivefactory.interactive_clustering.clustering.dbscan.DBScanConstrainedClustering" class="doc doc-heading">
-        <code>DBScanConstrainedClustering</code>
+          <code>DBScanConstrainedClustering</code>
 
 
 <a href="#cognitivefactory.interactive_clustering.clustering.dbscan.DBScanConstrainedClustering" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering" href="../abstract/#cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering">AbstractConstrainedClustering</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering" href="../abstract/#cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering">AbstractConstrainedClustering</a></code></p>
 
   
       <p>This class implements the DBScan constrained clustering.
 It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
-<details class="references">
+<details class="references" open>
   <summary>References</summary>
   <ul>
 <li>DBScan Clustering: <code>Ester, Martin &amp; Kröger, Peer &amp; Sander, Joerg &amp; Xu, Xiaowei. (1996). A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise. KDD. 96. 226-231</code>.</li>
 <li>Constrained DBScan Clustering: <code>Ruiz, Carlos &amp; Spiliopoulou, Myra &amp; Menasalvas, Ernestina. (2007). C-DBSCAN: Density-Based Clustering with Constraints. 216-223. 10.1007/978-3-540-72530-5_25.</code></li>
 </ul>
 </details>
-<details class="example">
+<details class="example" open>
   <summary>Example</summary>
   <div class="highlight"><pre><span></span><code><span class="c1"># Import.</span>
 <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
@@ -1533,14 +1535,33 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Computed results&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">dict_of_predicted_clusters</span><span class="p">)</span>
 </code></pre></div>
 </details>
-<details class="warnings">
-  <summary>Warnings</summary>
-  <p>FutureWarning: <code>clustering.dbscan.DBScanConstrainedClustering</code> is still in development and is not fully tested : it is not ready for production use.</p>
-</details>
 
-        <details class="quote">
-          <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\dbscan.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 34</span>
+
+  <p><strong>Warns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>FutureWarning</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>clustering.dbscan.DBScanConstrainedClustering</code> is still in development and is not fully tested : it is not ready for production use.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+            <details class="quote">
+              <summary>Source code in <code>src\cognitivefactory\interactive_clustering\clustering\dbscan.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 34</span>
 <span class="normal"> 35</span>
 <span class="normal"> 36</span>
 <span class="normal"> 37</span>
@@ -2114,7 +2135,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="sd">        print(&quot;Computed results&quot;, &quot;:&quot;, dict_of_predicted_clusters)</span>
 <span class="sd">        ```</span>
 
-<span class="sd">    Warnings:</span>
+<span class="sd">    Warns:</span>
 <span class="sd">        FutureWarning: `clustering.dbscan.DBScanConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -2137,7 +2158,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="sd">            random_seed (Optional[int]): The random seed to use to redo the same clustering. Defaults to `None`.</span>
 <span class="sd">            **kargs (dict): Other parameters that can be used in the instantiation.</span>
 
-<span class="sd">        Warnings:</span>
+<span class="sd">        Warns:</span>
 <span class="sd">            FutureWarning: `clustering.dbscan.DBScanConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.</span>
 
 <span class="sd">        Raises:</span>
@@ -2576,7 +2597,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_predicted_clusters</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -2590,12 +2611,14 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.clustering.dbscan.DBScanConstrainedClustering.__init__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.clustering.dbscan.DBScanConstrainedClustering.__init__" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -2603,6 +2626,8 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
   <div class="doc doc-contents ">
   
       <p>The constructor for DBScan Constrainted Clustering class.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2620,7 +2645,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>The maximus radius of a neighborhood around its center. Defaults to <code>0.5</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The maximus radius of a neighborhood around its center. Defaults to <code>0.5</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>0.5</code>
           </td>
@@ -2630,7 +2659,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>The minimum number of points in a neighborhood to consider a center as a core point. Defaults to <code>5</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The minimum number of points in a neighborhood to consider a center as a core point. Defaults to <code>5</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>5</code>
           </td>
@@ -2640,7 +2673,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[int]</code>
           </td>
-          <td><p>The random seed to use to redo the same clustering. Defaults to <code>None</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The random seed to use to redo the same clustering. Defaults to <code>None</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2650,7 +2687,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Other parameters that can be used in the instantiation.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Other parameters that can be used in the instantiation.</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -2658,10 +2699,32 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     </tbody>
   </table>
 
-<details class="warnings">
-  <summary>Warnings</summary>
-  <p>FutureWarning: <code>clustering.dbscan.DBScanConstrainedClustering</code> is still in development and is not fully tested : it is not ready for production use.</p>
-</details>
+
+
+  <p><strong>Warns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>FutureWarning</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>clustering.dbscan.DBScanConstrainedClustering</code> is still in development and is not fully tested : it is not ready for production use.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
   <p><strong>Raises:</strong></p>
   <table>
     <thead>
@@ -2675,14 +2738,18 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if some parameters are incorrectly set.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if some parameters are incorrectly set.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\dbscan.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 98</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\clustering\dbscan.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 98</span>
 <span class="normal"> 99</span>
 <span class="normal">100</span>
 <span class="normal">101</span>
@@ -2750,7 +2817,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="sd">        random_seed (Optional[int]): The random seed to use to redo the same clustering. Defaults to `None`.</span>
 <span class="sd">        **kargs (dict): Other parameters that can be used in the instantiation.</span>
 
-<span class="sd">    Warnings:</span>
+<span class="sd">    Warns:</span>
 <span class="sd">        FutureWarning: `clustering.dbscan.DBScanConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.</span>
 
 <span class="sd">    Raises:</span>
@@ -2788,17 +2855,19 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">number_of_regular_clusters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">number_of_clusters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.clustering.dbscan.DBScanConstrainedClustering.cluster" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">cluster</span><span class="p">(</span><span class="n">constraints_manager</span><span class="p">,</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">nb_clusters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">cluster</span><span class="p">(</span><span class="n">constraints_manager</span><span class="p">,</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">nb_clusters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.clustering.dbscan.DBScanConstrainedClustering.cluster" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -2806,6 +2875,8 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
   <div class="doc doc-contents ">
   
       <p>The main method used to cluster data with the DBScan model.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2823,7 +2894,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code><a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" href="../../constraints/abstract/#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager">AbstractConstraintsManager</a></code>
           </td>
-          <td><p>A constraints manager over data IDs that will force clustering to respect some conditions during computation.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>A constraints manager over data IDs that will force clustering to respect some conditions during computation.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2833,7 +2908,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span>[str, <span title="scipy.sparse.csr_matrix">csr_matrix</span>]</code>
           </td>
-          <td><p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code>. The value of the dictionary represent the vector of each data.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code>. The value of the dictionary represent the vector of each data.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2843,7 +2922,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[int]</code>
           </td>
-          <td><p>The number of clusters to compute. Here <code>None</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The number of clusters to compute. Here <code>None</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2853,7 +2936,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Enable verbose output. Defaults to <code>False</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Enable verbose output. Defaults to <code>False</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -2863,13 +2950,19 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Other parameters that can be used in the clustering.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Other parameters that can be used in the clustering.</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -2884,10 +2977,16 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>vectors</code> and <code>constraints_manager</code> are incompatible, or if some parameters are incorrectly set.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>vectors</code> and <code>constraints_manager</code> are incompatible, or if some parameters are incorrectly set.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2902,14 +3001,18 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span>[str, int]</code>
           </td>
-          <td><p>Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\dbscan.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">155</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\clustering\dbscan.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">155</span>
 <span class="normal">156</span>
 <span class="normal">157</span>
 <span class="normal">158</span>
@@ -3703,7 +3806,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_predicted_clusters</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

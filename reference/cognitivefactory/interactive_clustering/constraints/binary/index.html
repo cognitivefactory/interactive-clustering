@@ -934,7 +934,7 @@
       
         <li class="md-nav__item">
   <a href="#cognitivefactory.interactive_clustering.constraints.binary" class="md-nav__link">
-    cognitivefactory.interactive_clustering.constraints.binary
+    binary
   </a>
   
 </li>
@@ -1466,7 +1466,7 @@
       
         <li class="md-nav__item">
   <a href="#cognitivefactory.interactive_clustering.constraints.binary" class="md-nav__link">
-    cognitivefactory.interactive_clustering.constraints.binary
+    binary
   </a>
   
 </li>
@@ -1605,13 +1605,14 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="cognitivefactory.interactive_clustering.constraints.binary"></a>
   <div class="doc doc-contents first">
   
       <ul>
 <li>Name:         cognitivefactory.interactive_clustering.constraints.binary</li>
 <li>Description:  Implementation of binary constraints manager.</li>
-<li>Author:       Erwan Schild</li>
+<li>Author:       Erwan SCHILD</li>
 <li>Created:      17/03/2021</li>
 <li>Licence:      CeCILL-C License v1.0 (<a href="https://cecill.info/licences.fr.html">https://cecill.info/licences.fr.html</a>)</li>
 </ul>
@@ -1631,29 +1632,31 @@
 
 
 
+
 <h2 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager" class="doc doc-heading">
-        <code>BinaryConstraintsManager</code>
+          <code>BinaryConstraintsManager</code>
 
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" href="../abstract/#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager">AbstractConstraintsManager</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" href="../abstract/#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager">AbstractConstraintsManager</a></code></p>
 
   
       <p>This class implements the binary constraints mangement.
 It inherits from <code>AbstractConstraintsManager</code>, and it takes into account the strong transitivity of constraints.</p>
 
-<details class="references">
+<details class="references" open>
   <summary>References</summary>
   <ul>
 <li>Binary constraints in clustering: <code>Wagstaff, K. et C. Cardie (2000). Clustering with Instance-level Constraints. Proceedings of the Seventeenth International Conference on Machine Learning, 1103–1110.</code></li>
 </ul>
 </details>
-<p><strong>Examples:</strong></p>
-    <div class="highlight"><pre><span></span><code><span class="c1"># Import.</span>
+<details class="example" open>
+  <summary>Example</summary>
+  <div class="highlight"><pre><span></span><code><span class="c1"># Import.</span>
 <span class="kn">from</span> <span class="nn">cognitivefactory.interactive_clustering.constraints.binary</span> <span class="kn">import</span> <span class="n">BinaryConstraintsManager</span>
 
 <span class="c1"># Create an instance of binary constraints manager.</span>
@@ -1671,7 +1674,7 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
 <span class="c1"># Add constraints.</span>
 <span class="n">constraints_manager</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">data_ID2</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">constraint_type</span><span class="o">=</span><span class="s2">&quot;MUST_LINK&quot;</span><span class="p">)</span>
 <span class="n">constraints_manager</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">data_ID2</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="n">constraint_type</span><span class="o">=</span><span class="s2">&quot;MUST_LINK&quot;</span><span class="p">)</span>
-<span class="n">constraints_manager</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="o">=</span><span class="s2">&quot;2, data_ID2=&quot;</span><span class="mi">3</span><span class="s2">&quot;, constraint_type=&quot;</span><span class="n">CANNOT_LINK</span><span class="s2">&quot;)</span>
+<span class="n">constraints_manager</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="n">data_ID2</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="n">constraint_type</span><span class="o">=</span><span class="s2">&quot;CANNOT_LINK&quot;</span><span class="p">)</span>
 
 <span class="c1"># Get added constraint.</span>
 <span class="n">constraints_manager</span><span class="o">.</span><span class="n">get_added_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">data_ID2</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>  <span class="c1"># expected (&quot;MUST_LINK&quot;, 1.0)</span>
@@ -1682,11 +1685,12 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
 <span class="n">constraints_manager</span><span class="o">.</span><span class="n">get_inferred_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">data_ID2</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>  <span class="c1"># expected &quot;CANNOT_LINK&quot;</span>
 <span class="n">constraints_manager</span><span class="o">.</span><span class="n">get_inferred_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">data_ID2</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>  <span class="c1"># expected None</span>
 </code></pre></div>
-
-
-        <details class="quote">
-          <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 28</span>
+</details>
+            <details class="quote">
+              <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
 <span class="normal"> 29</span>
 <span class="normal"> 30</span>
 <span class="normal"> 31</span>
@@ -2448,17 +2452,7 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
 <span class="normal">787</span>
 <span class="normal">788</span>
 <span class="normal">789</span>
-<span class="normal">790</span>
-<span class="normal">791</span>
-<span class="normal">792</span>
-<span class="normal">793</span>
-<span class="normal">794</span>
-<span class="normal">795</span>
-<span class="normal">796</span>
-<span class="normal">797</span>
-<span class="normal">798</span>
-<span class="normal">799</span>
-<span class="normal">800</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">BinaryConstraintsManager</span><span class="p">(</span><span class="n">AbstractConstraintsManager</span><span class="p">):</span>
+<span class="normal">790</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">BinaryConstraintsManager</span><span class="p">(</span><span class="n">AbstractConstraintsManager</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class implements the binary constraints mangement.</span>
 <span class="sd">    It inherits from `AbstractConstraintsManager`, and it takes into account the strong transitivity of constraints.</span>
@@ -2466,7 +2460,7 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
 <span class="sd">    References:</span>
 <span class="sd">        - Binary constraints in clustering: `Wagstaff, K. et C. Cardie (2000). Clustering with Instance-level Constraints. Proceedings of the Seventeenth International Conference on Machine Learning, 1103–1110.`</span>
 
-<span class="sd">    Examples:</span>
+<span class="sd">    Example:</span>
 <span class="sd">        ```python</span>
 <span class="sd">        # Import.</span>
 <span class="sd">        from cognitivefactory.interactive_clustering.constraints.binary import BinaryConstraintsManager</span>
@@ -2486,7 +2480,7 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
 <span class="sd">        # Add constraints.</span>
 <span class="sd">        constraints_manager.add_constraint(data_ID1=&quot;0&quot;, data_ID2=&quot;1&quot;, constraint_type=&quot;MUST_LINK&quot;)</span>
 <span class="sd">        constraints_manager.add_constraint(data_ID1=&quot;1&quot;, data_ID2=&quot;2&quot;, constraint_type=&quot;MUST_LINK&quot;)</span>
-<span class="sd">        constraints_manager.add_constraint(data_ID1=&quot;2, data_ID2=&quot;3&quot;, constraint_type=&quot;CANNOT_LINK&quot;)</span>
+<span class="sd">        constraints_manager.add_constraint(data_ID1=&quot;2&quot;, data_ID2=&quot;3&quot;, constraint_type=&quot;CANNOT_LINK&quot;)</span>
 
 <span class="sd">        # Get added constraint.</span>
 <span class="sd">        constraints_manager.get_added_constraint(data_ID1=&quot;0&quot;, data_ID2=&quot;1&quot;)  # expected (&quot;MUST_LINK&quot;, 1.0)</span>
@@ -2503,7 +2497,6 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
     <span class="c1"># INITIALIZATION</span>
     <span class="c1"># ==============================================================================</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_of_data_IDs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The constructor for Binary Constraints Manager class.</span>
 <span class="sd">        This class use the strong transitivity to infer on constraints, so constraints values are not taken into account.</span>
@@ -2558,7 +2551,6 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">data_ID</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The main method used to add a new data ID to manage.</span>
 
@@ -2890,7 +2882,6 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
 
         <span class="c1"># For each data ID...</span>
         <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-
             <span class="c1"># ... get the list of `&quot;MUST_LINK&quot;` data IDs linked by transitivity with `data_ID` ...</span>
             <span class="n">connected_component_of_a_data_ID</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="p">[</span><span class="n">data_ID</span><span class="p">][</span><span class="s2">&quot;MUST_LINK&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
@@ -2922,13 +2913,11 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
 
         <span class="c1"># For each data ID...</span>
         <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-
             <span class="c1"># ... if some data IDs are not linked by transitivity to this `data_ID` with a `&quot;MUST_LINK&quot;` or `&quot;CANNOT_LINK&quot;` constraints...</span>
             <span class="k">if</span> <span class="p">(</span>
                 <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="p">[</span><span class="n">data_ID</span><span class="p">][</span><span class="s2">&quot;MUST_LINK&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
                 <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="p">[</span><span class="n">data_ID</span><span class="p">][</span><span class="s2">&quot;CANNOT_LINK&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
             <span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-
                 <span class="c1"># ... then return `False`.</span>
                 <span class="k">return</span> <span class="kc">False</span>
 
@@ -3037,7 +3026,6 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
 
         <span class="k">for</span> <span class="n">data_ID1</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constraints_dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">data_ID2</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constraints_dictionary</span><span class="p">[</span><span class="n">data_ID1</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-
                 <span class="c1"># Get the constraint between `data_ID1` and `data_ID2`.</span>
                 <span class="n">constraint</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constraints_dictionary</span><span class="p">[</span><span class="n">data_ID1</span><span class="p">][</span><span class="n">data_ID2</span><span class="p">]</span>
 
@@ -3075,7 +3063,6 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
         <span class="c1">### Case 1 : `constraint_type` is `&quot;MUST_LINK&quot;`.</span>
         <span class="c1">###</span>
         <span class="k">if</span> <span class="n">constraint_type</span> <span class="o">==</span> <span class="s2">&quot;MUST_LINK&quot;</span><span class="p">:</span>
-
             <span class="c1"># Define new common set of `&quot;MUST_LINK&quot;` data IDs,</span>
             <span class="c1"># by merging the sets of `&quot;MUST_LINK&quot;` data IDs for `data_ID1` and `data_ID2`.</span>
             <span class="n">new_MUST_LINK_common_set</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
@@ -3109,7 +3096,6 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
         <span class="c1">### Case 2 : `constraint_type` is `&quot;CANNOT_LINK&quot;`.</span>
         <span class="c1">###</span>
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># if constraint_type == &quot;CANNOT_LINK&quot;:</span>
-
             <span class="c1"># Define new common set of `&quot;CANNOT_LINK&quot;` data IDs for data IDs that are similar to `data_ID1`.</span>
             <span class="n">new_CANNOT_LINK_set_for_data_ID1</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="p">[</span><span class="n">data_ID1</span><span class="p">][</span><span class="s2">&quot;CANNOT_LINK&quot;</span><span class="p">],</span>
@@ -3232,7 +3218,7 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
         <span class="c1"># Return.</span>
         <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -3246,12 +3232,14 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.__init__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">list_of_data_IDs</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">list_of_data_IDs</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.__init__" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -3260,6 +3248,8 @@ It inherits from <code>AbstractConstraintsManager</code>, and it takes into acco
   
       <p>The constructor for Binary Constraints Manager class.
 This class use the strong transitivity to infer on constraints, so constraints values are not taken into account.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3277,7 +3267,11 @@ This class use the strong transitivity to infer on constraints, so constraints v
           <td>
                 <code><span title="typing.List">List</span>[str]</code>
           </td>
-          <td><p>The list of data IDs to manage.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The list of data IDs to manage.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3287,7 +3281,11 @@ This class use the strong transitivity to infer on constraints, so constraints v
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Other parameters that can be used in the instantiation.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Other parameters that can be used in the instantiation.</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
@@ -3295,9 +3293,11 @@ This class use the strong transitivity to infer on constraints, so constraints v
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 72</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
 <span class="normal"> 73</span>
 <span class="normal"> 74</span>
 <span class="normal"> 75</span>
@@ -3341,11 +3341,7 @@ This class use the strong transitivity to infer on constraints, so constraints v
 <span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_of_data_IDs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-
+<span class="normal">116</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_of_data_IDs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The constructor for Binary Constraints Manager class.</span>
 <span class="sd">    This class use the strong transitivity to infer on constraints, so constraints values are not taken into account.</span>
@@ -3393,17 +3389,19 @@ This class use the strong transitivity to infer on constraints, so constraints v
         <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="n">list_of_data_IDs</span>
     <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.add_constraint" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">add_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">constraint_type</span><span class="p">,</span> <span class="n">constraint_value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">add_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">constraint_type</span><span class="p">,</span> <span class="n">constraint_value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.add_constraint" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -3411,6 +3409,8 @@ This class use the strong transitivity to infer on constraints, so constraints v
   <div class="doc doc-contents ">
   
       <p>The main method used to add a constraint between two data IDs.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3428,7 +3428,11 @@ This class use the strong transitivity to infer on constraints, so constraints v
           <td>
                 <code>str</code>
           </td>
-          <td><p>The first data ID that is concerned for this constraint addition.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The first data ID that is concerned for this constraint addition.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3438,7 +3442,11 @@ This class use the strong transitivity to infer on constraints, so constraints v
           <td>
                 <code>str</code>
           </td>
-          <td><p>The second data ID that is concerned for this constraint addition.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The second data ID that is concerned for this constraint addition.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3448,7 +3456,11 @@ This class use the strong transitivity to infer on constraints, so constraints v
           <td>
                 <code>str</code>
           </td>
-          <td><p>The type of the constraint to add. The type have to be <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The type of the constraint to add. The type have to be <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3458,13 +3470,19 @@ This class use the strong transitivity to infer on constraints, so constraints v
           <td>
                 <code>float</code>
           </td>
-          <td><p>The value of the constraint to add. The value have to be in range <code>[0.0, 1.0]</code>. Defaults to <code>1.0</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The value of the constraint to add. The value have to be in range <code>[0.0, 1.0]</code>. Defaults to <code>1.0</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>1.0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -3479,10 +3497,16 @@ This class use the strong transitivity to infer on constraints, so constraints v
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID1</code>, <code>data_ID2</code>, <code>constraint_type</code> are not managed, or if a conflict is detected with constraints inference.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID1</code>, <code>data_ID2</code>, <code>constraint_type</code> are not managed, or if a conflict is detected with constraints inference.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -3497,14 +3521,22 @@ This class use the strong transitivity to infer on constraints, so constraints v
 <td><code>bool</code></td>          <td>
                 <code>bool</code>
           </td>
-          <td><p><code>True</code> if the addition is done, <code>False</code> is the constraint can't be added.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>True</code> if the addition is done, <code>False</code> is the constraint can't be added.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">224</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
 <span class="normal">225</span>
 <span class="normal">226</span>
 <span class="normal">227</span>
@@ -3586,11 +3618,7 @@ This class use the strong transitivity to infer on constraints, so constraints v
 <span class="normal">303</span>
 <span class="normal">304</span>
 <span class="normal">305</span>
-<span class="normal">306</span>
-<span class="normal">307</span>
-<span class="normal">308</span>
-<span class="normal">309</span>
-<span class="normal">310</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_constraint</span><span class="p">(</span>
+<span class="normal">306</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_constraint</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data_ID1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">data_ID2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -3678,17 +3706,19 @@ This class use the strong transitivity to infer on constraints, so constraints v
 
     <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.add_data_ID" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">add_data_ID</span><span class="p">(</span><span class="n">data_ID</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">add_data_ID</span><span class="p">(</span><span class="n">data_ID</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.add_data_ID" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -3696,6 +3726,8 @@ This class use the strong transitivity to infer on constraints, so constraints v
   <div class="doc doc-contents ">
   
       <p>The main method used to add a new data ID to manage.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3713,13 +3745,19 @@ This class use the strong transitivity to infer on constraints, so constraints v
           <td>
                 <code>str</code>
           </td>
-          <td><p>The data ID to manage.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The data ID to manage.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -3734,10 +3772,16 @@ This class use the strong transitivity to infer on constraints, so constraints v
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID</code> is already managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID</code> is already managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -3752,14 +3796,21 @@ This class use the strong transitivity to infer on constraints, so constraints v
 <td><code>bool</code></td>          <td>
                 <code>bool</code>
           </td>
-          <td><p><code>True</code> if the addition is done.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>True</code> if the addition is done.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">124</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span>
@@ -3797,15 +3848,10 @@ This class use the strong transitivity to infer on constraints, so constraints v
 <span class="normal">159</span>
 <span class="normal">160</span>
 <span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_data_ID</span><span class="p">(</span>
+<span class="normal">162</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_data_ID</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data_ID</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The main method used to add a new data ID to manage.</span>
 
@@ -3845,17 +3891,19 @@ This class use the strong transitivity to infer on constraints, so constraints v
     <span class="c1"># Return `True`.</span>
     <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.check_completude_of_constraints" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">check_completude_of_constraints</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">check_completude_of_constraints</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.check_completude_of_constraints" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -3864,6 +3912,8 @@ This class use the strong transitivity to infer on constraints, so constraints v
   
       <p>The main method used to check if all possible constraints are known (not necessarily annotated because of the transitivity).
 The transitivity is taken into account, and the <code>threshold</code> parameters is used if constraints values are used in the constraints transitivity.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3881,13 +3931,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>float</code>
           </td>
-          <td><p>The threshold used to define the transitivity link. Defaults to <code>1.0</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The threshold used to define the transitivity link. Defaults to <code>1.0</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>1.0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -3902,14 +3958,23 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <td><code>bool</code></td>          <td>
                 <code>bool</code>
           </td>
-          <td><p>Return <code>True</code> if all constraints are known, <code>False</code> otherwise.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Return <code>True</code> if all constraints are known, <code>False</code> otherwise.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">475</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
 <span class="normal">476</span>
 <span class="normal">477</span>
 <span class="normal">478</span>
@@ -3930,14 +3995,7 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="normal">493</span>
 <span class="normal">494</span>
 <span class="normal">495</span>
-<span class="normal">496</span>
-<span class="normal">497</span>
-<span class="normal">498</span>
-<span class="normal">499</span>
-<span class="normal">500</span>
-<span class="normal">501</span>
-<span class="normal">502</span>
-<span class="normal">503</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">check_completude_of_constraints</span><span class="p">(</span>
+<span class="normal">496</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">check_completude_of_constraints</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -3954,30 +4012,30 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 
     <span class="c1"># For each data ID...</span>
     <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-
         <span class="c1"># ... if some data IDs are not linked by transitivity to this `data_ID` with a `&quot;MUST_LINK&quot;` or `&quot;CANNOT_LINK&quot;` constraints...</span>
         <span class="k">if</span> <span class="p">(</span>
             <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="p">[</span><span class="n">data_ID</span><span class="p">][</span><span class="s2">&quot;MUST_LINK&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
             <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="p">[</span><span class="n">data_ID</span><span class="p">][</span><span class="s2">&quot;CANNOT_LINK&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-
             <span class="c1"># ... then return `False`.</span>
             <span class="k">return</span> <span class="kc">False</span>
 
     <span class="c1"># Otherwise, return `True`.</span>
     <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.delete_constraint" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">delete_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">delete_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.delete_constraint" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -3985,6 +4043,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
   <div class="doc doc-contents ">
   
       <p>The main method used to delete a constraint between two data IDs.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4002,7 +4062,11 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>str</code>
           </td>
-          <td><p>The first data ID that is concerned for this constraint deletion.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The first data ID that is concerned for this constraint deletion.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4012,13 +4076,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>str</code>
           </td>
-          <td><p>The second data ID that is concerned for this constraint deletion.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The second data ID that is concerned for this constraint deletion.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -4033,10 +4103,16 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID1</code> or <code>data_ID2</code> are not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID1</code> or <code>data_ID2</code> are not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -4051,14 +4127,22 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <td><code>bool</code></td>          <td>
                 <code>bool</code>
           </td>
-          <td><p><code>True</code> if the deletion is done, <code>False</code> if the constraint can't be deleted.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>True</code> if the deletion is done, <code>False</code> if the constraint can't be deleted.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">315</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
 <span class="normal">316</span>
 <span class="normal">317</span>
 <span class="normal">318</span>
@@ -4091,11 +4175,7 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="normal">345</span>
 <span class="normal">346</span>
 <span class="normal">347</span>
-<span class="normal">348</span>
-<span class="normal">349</span>
-<span class="normal">350</span>
-<span class="normal">351</span>
-<span class="normal">352</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">delete_constraint</span><span class="p">(</span>
+<span class="normal">348</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">delete_constraint</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data_ID1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">data_ID2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -4134,17 +4214,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
     <span class="c1"># Return `True`</span>
     <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.delete_data_ID" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">delete_data_ID</span><span class="p">(</span><span class="n">data_ID</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">delete_data_ID</span><span class="p">(</span><span class="n">data_ID</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.delete_data_ID" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -4152,6 +4234,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
   <div class="doc doc-contents ">
   
       <p>The main method used to delete a data ID to no longer manage.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4169,13 +4253,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>str</code>
           </td>
-          <td><p>The data ID to no longer manage.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The data ID to no longer manage.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -4190,10 +4280,16 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID</code> is not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID</code> is not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -4208,14 +4304,22 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <td><code>bool</code></td>          <td>
                 <code>bool</code>
           </td>
-          <td><p><code>True</code> if the deletion is done.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>True</code> if the deletion is done.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">171</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
 <span class="normal">172</span>
 <span class="normal">173</span>
 <span class="normal">174</span>
@@ -4243,11 +4347,7 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">delete_data_ID</span><span class="p">(</span>
+<span class="normal">199</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">delete_data_ID</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data_ID</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -4281,17 +4381,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
     <span class="c1"># Return `True`.</span>
     <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.get_added_constraint" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_added_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">get_added_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.get_added_constraint" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -4300,6 +4402,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
   
       <p>The main method used to get the constraint added between the two data IDs.
 Do not take into account the constraints transitivity, just look at constraints that are explicitly added.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4317,7 +4421,11 @@ Do not take into account the constraints transitivity, just look at constraints 
           <td>
                 <code>str</code>
           </td>
-          <td><p>The first data ID that is concerned for this constraint.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The first data ID that is concerned for this constraint.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4327,13 +4435,19 @@ Do not take into account the constraints transitivity, just look at constraints 
           <td>
                 <code>str</code>
           </td>
-          <td><p>The second data ID that is concerned for this constraint.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The second data ID that is concerned for this constraint.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -4348,10 +4462,16 @@ Do not take into account the constraints transitivity, just look at constraints 
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID1</code> or <code>data_ID2</code> are not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID1</code> or <code>data_ID2</code> are not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -4366,14 +4486,22 @@ Do not take into account the constraints transitivity, just look at constraints 
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.Tuple">Tuple</span>[str, float]]</code>
           </td>
-          <td><p>Optional[Tuple[str, float]]: <code>None</code> if no constraint, <code>(constraint_type, constraint_value)</code> otherwise.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional[Tuple[str, float]]: <code>None</code> if no constraint, <code>(constraint_type, constraint_value)</code> otherwise.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">357</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
 <span class="normal">358</span>
 <span class="normal">359</span>
 <span class="normal">360</span>
@@ -4402,11 +4530,7 @@ Do not take into account the constraints transitivity, just look at constraints 
 <span class="normal">383</span>
 <span class="normal">384</span>
 <span class="normal">385</span>
-<span class="normal">386</span>
-<span class="normal">387</span>
-<span class="normal">388</span>
-<span class="normal">389</span>
-<span class="normal">390</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_added_constraint</span><span class="p">(</span>
+<span class="normal">386</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_added_constraint</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data_ID1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">data_ID2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -4441,17 +4565,19 @@ Do not take into account the constraints transitivity, just look at constraints 
         <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constraints_dictionary</span><span class="p">[</span><span class="n">data_ID2</span><span class="p">][</span><span class="n">data_ID1</span><span class="p">]</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.get_connected_components" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_connected_components</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">get_connected_components</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.get_connected_components" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -4461,6 +4587,8 @@ Do not take into account the constraints transitivity, just look at constraints 
       <p>The main method used to get the possible lists of data IDs that are linked by a <code>"MUST_LINK"</code> constraints.
 Each list forms a component of the constraints transitivity graph, and it forms a partition of the managed data IDs.
 The transitivity is taken into account, and the <code>threshold</code> parameters is used if constraints values are used in the constraints transitivity.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4478,13 +4606,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>float</code>
           </td>
-          <td><p>The threshold used to define the transitivity link. Defaults to <code>1.0</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The threshold used to define the transitivity link. Defaults to <code>1.0</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>1.0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -4499,14 +4633,22 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code><span title="typing.List">List</span>[<span title="typing.List">List</span>[str]]</code>
           </td>
-          <td><p>List[List[int]]: The list of lists of data IDs that represent a component of the constraints transitivity graph.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List[List[int]]: The list of lists of data IDs that represent a component of the constraints transitivity graph.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">439</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
 <span class="normal">440</span>
 <span class="normal">441</span>
 <span class="normal">442</span>
@@ -4532,12 +4674,7 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="normal">462</span>
 <span class="normal">463</span>
 <span class="normal">464</span>
-<span class="normal">465</span>
-<span class="normal">466</span>
-<span class="normal">467</span>
-<span class="normal">468</span>
-<span class="normal">469</span>
-<span class="normal">470</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_connected_components</span><span class="p">(</span>
+<span class="normal">465</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_connected_components</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
@@ -4558,7 +4695,6 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 
     <span class="c1"># For each data ID...</span>
     <span class="k">for</span> <span class="n">data_ID</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-
         <span class="c1"># ... get the list of `&quot;MUST_LINK&quot;` data IDs linked by transitivity with `data_ID` ...</span>
         <span class="n">connected_component_of_a_data_ID</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_constraints_transitivity</span><span class="p">[</span><span class="n">data_ID</span><span class="p">][</span><span class="s2">&quot;MUST_LINK&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
@@ -4570,17 +4706,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
     <span class="c1"># Return the list of connected components.</span>
     <span class="k">return</span> <span class="n">list_of_connected_components</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.get_inferred_constraint" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_inferred_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">get_inferred_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.get_inferred_constraint" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -4589,6 +4727,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
   
       <p>The main method used to check if the constraint inferred by transitivity between the two data IDs.
 The transitivity is taken into account, and the <code>threshold</code> parameter is used to evaluate the impact of constraints transitivity.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4606,7 +4746,11 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>str</code>
           </td>
-          <td><p>The first data ID that is concerned for this constraint.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The first data ID that is concerned for this constraint.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4616,7 +4760,11 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>str</code>
           </td>
-          <td><p>The second data ID that is concerned for this constraint.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The second data ID that is concerned for this constraint.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4626,13 +4774,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>float</code>
           </td>
-          <td><p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The threshold used to evaluate the impact of constraints transitivity link. Defaults to <code>1.0</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>1.0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -4647,10 +4801,16 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID1</code>, <code>data_ID2</code> or <code>threshold</code> are not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID1</code>, <code>data_ID2</code> or <code>threshold</code> are not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -4665,14 +4825,22 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code><span title="typing.Optional">Optional</span>[str]</code>
           </td>
-          <td><p>Optional[str]: The type of the inferred constraint. The type can be <code>None</code>, <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional[str]: The type of the inferred constraint. The type can be <code>None</code>, <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">395</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
 <span class="normal">396</span>
 <span class="normal">397</span>
 <span class="normal">398</span>
@@ -4707,11 +4875,7 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="normal">427</span>
 <span class="normal">428</span>
 <span class="normal">429</span>
-<span class="normal">430</span>
-<span class="normal">431</span>
-<span class="normal">432</span>
-<span class="normal">433</span>
-<span class="normal">434</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_inferred_constraint</span><span class="p">(</span>
+<span class="normal">430</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_inferred_constraint</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data_ID1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">data_ID2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -4752,17 +4916,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
     <span class="c1"># Case of `None`.</span>
     <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.get_list_of_involved_data_IDs_in_a_constraint_conflict" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_list_of_involved_data_IDs_in_a_constraint_conflict</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">constraint_type</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">get_list_of_involved_data_IDs_in_a_constraint_conflict</span><span class="p">(</span><span class="n">data_ID1</span><span class="p">,</span> <span class="n">data_ID2</span><span class="p">,</span> <span class="n">constraint_type</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.get_list_of_involved_data_IDs_in_a_constraint_conflict" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -4770,6 +4936,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
   <div class="doc doc-contents ">
   
       <p>Get all data IDs involved in a constraints conflict.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -4787,7 +4955,11 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>str</code>
           </td>
-          <td><p>The first data ID involved in the constraint_conflit.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The first data ID involved in the constraint_conflit.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4797,7 +4969,11 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>str</code>
           </td>
-          <td><p>The second data ID involved in the constraint_conflit.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The second data ID involved in the constraint_conflit.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4807,13 +4983,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>str</code>
           </td>
-          <td><p>The constraint that create a conflict. The constraints can be <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The constraint that create a conflict. The constraints can be <code>"MUST_LINK"</code> or <code>"CANNOT_LINK"</code>.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -4828,10 +5010,16 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>data_ID1</code>, <code>data_ID2</code>, <code>constraint_type</code> are not managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>data_ID1</code>, <code>data_ID2</code>, <code>constraint_type</code> are not managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -4846,14 +5034,28 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[str]]</code>
           </td>
-          <td><p>Optional[List[str]]: The list of data IDs that are involved in the conflict. It matches data IDs from connected components of <code>data_ID1</code> and <code>data_ID2</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Optional[List[str]]: The list of data IDs that are involved in the conflict. It matches data IDs from connected components of <code>data_ID1</code> and <code>data_ID2</code>.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">708</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">698</span>
+<span class="normal">699</span>
+<span class="normal">700</span>
+<span class="normal">701</span>
+<span class="normal">702</span>
+<span class="normal">703</span>
+<span class="normal">704</span>
+<span class="normal">705</span>
+<span class="normal">706</span>
+<span class="normal">707</span>
+<span class="normal">708</span>
 <span class="normal">709</span>
 <span class="normal">710</span>
 <span class="normal">711</span>
@@ -4894,17 +5096,7 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="normal">746</span>
 <span class="normal">747</span>
 <span class="normal">748</span>
-<span class="normal">749</span>
-<span class="normal">750</span>
-<span class="normal">751</span>
-<span class="normal">752</span>
-<span class="normal">753</span>
-<span class="normal">754</span>
-<span class="normal">755</span>
-<span class="normal">756</span>
-<span class="normal">757</span>
-<span class="normal">758</span>
-<span class="normal">759</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_list_of_involved_data_IDs_in_a_constraint_conflict</span><span class="p">(</span>
+<span class="normal">749</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_list_of_involved_data_IDs_in_a_constraint_conflict</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data_ID1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">data_ID2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -4957,17 +5149,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
     <span class="c1"># Case of no conflict.</span>
     <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.get_list_of_managed_data_IDs" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_list_of_managed_data_IDs</span><span class="p">()</span></code>
+          <code class="highlight language-python"><span class="n">get_list_of_managed_data_IDs</span><span class="p">()</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.get_list_of_managed_data_IDs" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -4975,6 +5169,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
   <div class="doc doc-contents ">
   
       <p>The main method used to get the list of data IDs that are managed.</p>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -4989,25 +5185,29 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code><span title="typing.List">List</span>[str]</code>
           </td>
-          <td><p>List[str]: The list of data IDs that are managed.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List[str]: The list of data IDs that are managed.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">208</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
 <span class="normal">211</span>
 <span class="normal">212</span>
 <span class="normal">213</span>
 <span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_list_of_managed_data_IDs</span><span class="p">(</span>
+<span class="normal">215</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_list_of_managed_data_IDs</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -5020,17 +5220,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
     <span class="c1"># Return the possible keys of `self._constraints_dictionary`.</span>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_constraints_dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.get_min_and_max_number_of_clusters" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_min_and_max_number_of_clusters</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">get_min_and_max_number_of_clusters</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.get_min_and_max_number_of_clusters" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -5041,6 +5243,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 Minimum number of cluster is estimated by the coloration of the <code>"CANNOT_LINK"</code> constraints graph.
 Maximum number of cluster is defined by the number of <code>"MUST_LINK"</code> connected components.
 The transitivity is taken into account, and the <code>threshold</code> parameters is used if constraints values are used in the constraints transitivity.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -5058,13 +5262,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>float</code>
           </td>
-          <td><p>The threshold used to define the transitivity link. Defaults to <code>1.0</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The threshold used to define the transitivity link. Defaults to <code>1.0</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>1.0</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -5079,14 +5289,25 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code><span title="typing.Tuple">Tuple</span>[int, int]</code>
           </td>
-          <td><p>Tuple[int,int]: The minimum and the maximum possible clusters numbers (for a clustering model that would not violate any constraints).</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Tuple[int,int]: The minimum and the maximum possible clusters numbers (for a clustering model that would not violate any constraints).</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">508</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
 <span class="normal">509</span>
 <span class="normal">510</span>
 <span class="normal">511</span>
@@ -5153,14 +5374,7 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="normal">572</span>
 <span class="normal">573</span>
 <span class="normal">574</span>
-<span class="normal">575</span>
-<span class="normal">576</span>
-<span class="normal">577</span>
-<span class="normal">578</span>
-<span class="normal">579</span>
-<span class="normal">580</span>
-<span class="normal">581</span>
-<span class="normal">582</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_min_and_max_number_of_clusters</span><span class="p">(</span>
+<span class="normal">575</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_min_and_max_number_of_clusters</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
@@ -5236,17 +5450,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
     <span class="c1"># Return minimum and maximum.</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">estimation_of_minimum_clusters_number</span><span class="p">,</span> <span class="n">maximum_clusters_number</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.to_json" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">to_json</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;./constraint_manager.json&#39;</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">to_json</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s1">&#39;./constraint_manager.json&#39;</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager.to_json" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -5254,6 +5470,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
   <div class="doc doc-contents ">
   
       <p>The main method used to serialize the constraints manager object into a JSON file.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -5271,13 +5489,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>str</code>
           </td>
-          <td><p>The path where to serialize the constraints manager  object.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path where to serialize the constraints manager  object.</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;./constraint_manager.json&#39;</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -5292,14 +5516,28 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <td><code>bool</code></td>          <td>
                 <code>bool</code>
           </td>
-          <td><p><code>True</code> if the serialization is done.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p><code>True</code> if the serialization is done.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">764</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">754</span>
+<span class="normal">755</span>
+<span class="normal">756</span>
+<span class="normal">757</span>
+<span class="normal">758</span>
+<span class="normal">759</span>
+<span class="normal">760</span>
+<span class="normal">761</span>
+<span class="normal">762</span>
+<span class="normal">763</span>
+<span class="normal">764</span>
 <span class="normal">765</span>
 <span class="normal">766</span>
 <span class="normal">767</span>
@@ -5325,17 +5563,7 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="normal">787</span>
 <span class="normal">788</span>
 <span class="normal">789</span>
-<span class="normal">790</span>
-<span class="normal">791</span>
-<span class="normal">792</span>
-<span class="normal">793</span>
-<span class="normal">794</span>
-<span class="normal">795</span>
-<span class="normal">796</span>
-<span class="normal">797</span>
-<span class="normal">798</span>
-<span class="normal">799</span>
-<span class="normal">800</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span>
+<span class="normal">790</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;./constraint_manager.json&quot;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -5373,7 +5601,7 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
     <span class="c1"># Return.</span>
     <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -5385,14 +5613,16 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
   </div>
 
 </div>
+
 
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h2 id="cognitivefactory.interactive_clustering.constraints.binary.load_constraints_manager_from_json" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">load_constraints_manager_from_json</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">load_constraints_manager_from_json</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.constraints.binary.load_constraints_manager_from_json" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -5400,6 +5630,8 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
   <div class="doc doc-contents ">
   
       <p>The main method used initialize a constraints manager from a deserialized one.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -5417,13 +5649,19 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
           <td>
                 <code>str</code>
           </td>
-          <td><p>The path where is the deserialized constraints manager object.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The path where is the deserialized constraints manager object.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -5438,14 +5676,28 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <td><code>BinaryConstraintsManager</code></td>          <td>
                 <code><a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager" href="#cognitivefactory.interactive_clustering.constraints.binary.BinaryConstraintsManager">BinaryConstraintsManager</a></code>
           </td>
-          <td><p>The deserialized constraints manager.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The deserialized constraints manager.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">806</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\constraints\binary.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">796</span>
+<span class="normal">797</span>
+<span class="normal">798</span>
+<span class="normal">799</span>
+<span class="normal">800</span>
+<span class="normal">801</span>
+<span class="normal">802</span>
+<span class="normal">803</span>
+<span class="normal">804</span>
+<span class="normal">805</span>
+<span class="normal">806</span>
 <span class="normal">807</span>
 <span class="normal">808</span>
 <span class="normal">809</span>
@@ -5469,17 +5721,7 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
 <span class="normal">827</span>
 <span class="normal">828</span>
 <span class="normal">829</span>
-<span class="normal">830</span>
-<span class="normal">831</span>
-<span class="normal">832</span>
-<span class="normal">833</span>
-<span class="normal">834</span>
-<span class="normal">835</span>
-<span class="normal">836</span>
-<span class="normal">837</span>
-<span class="normal">838</span>
-<span class="normal">839</span>
-<span class="normal">840</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load_constraints_manager_from_json</span><span class="p">(</span>
+<span class="normal">830</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load_constraints_manager_from_json</span><span class="p">(</span>
     <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BinaryConstraintsManager</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -5515,7 +5757,7 @@ The transitivity is taken into account, and the <code>threshold</code> parameter
     <span class="c1"># Return the constraints manager.</span>
     <span class="k">return</span> <span class="n">constraints_manager</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

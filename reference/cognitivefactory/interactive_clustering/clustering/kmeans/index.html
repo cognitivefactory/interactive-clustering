@@ -802,7 +802,7 @@
       
         <li class="md-nav__item">
   <a href="#cognitivefactory.interactive_clustering.clustering.kmeans" class="md-nav__link">
-    cognitivefactory.interactive_clustering.clustering.kmeans
+    kmeans
   </a>
   
 </li>
@@ -1396,7 +1396,7 @@
       
         <li class="md-nav__item">
   <a href="#cognitivefactory.interactive_clustering.clustering.kmeans" class="md-nav__link">
-    cognitivefactory.interactive_clustering.clustering.kmeans
+    kmeans
   </a>
   
 </li>
@@ -1465,13 +1465,14 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="cognitivefactory.interactive_clustering.clustering.kmeans"></a>
   <div class="doc doc-contents first">
   
       <ul>
 <li>Name:         cognitivefactory.interactive_clustering.clustering.kmeans</li>
 <li>Description:  Implementation of constrained kmeans clustering algorithms.</li>
-<li>Author:       Erwan Schild</li>
+<li>Author:       Erwan SCHILD</li>
 <li>Created:      17/03/2021</li>
 <li>Licence:      CeCILL-C License v1.0 (<a href="https://cecill.info/licences.fr.html">https://cecill.info/licences.fr.html</a>)</li>
 </ul>
@@ -1491,30 +1492,32 @@
 
 
 
+
 <h2 id="cognitivefactory.interactive_clustering.clustering.kmeans.KMeansConstrainedClustering" class="doc doc-heading">
-        <code>KMeansConstrainedClustering</code>
+          <code>KMeansConstrainedClustering</code>
 
 
 <a href="#cognitivefactory.interactive_clustering.clustering.kmeans.KMeansConstrainedClustering" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering" href="../abstract/#cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering">AbstractConstrainedClustering</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering" href="../abstract/#cognitivefactory.interactive_clustering.clustering.abstract.AbstractConstrainedClustering">AbstractConstrainedClustering</a></code></p>
 
   
-      <p>This class implements the kmeans constrained clustering.
+      <p>This class implements the KMeans constrained clustering.
 It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
-<details class="references">
+<details class="references" open>
   <summary>References</summary>
   <ul>
 <li>KMeans Clustering: <code>MacQueen, J. (1967). Some methods for classification and analysis of multivariate observations. Proceedings of the fifth Berkeley symposium on mathematical statistics and probability 1(14), 281–297.</code></li>
 <li>Constrained <em>'COP'</em> KMeans Clustering: <code>Wagstaff, K., C. Cardie, S. Rogers, et S. Schroedl (2001). Constrained K-means Clustering with Background Knowledge. International Conference on Machine Learning</code></li>
 </ul>
 </details>
-<p><strong>Examples:</strong></p>
-    <div class="highlight"><pre><span></span><code><span class="c1"># Import.</span>
+<details class="example" open>
+  <summary>Example</summary>
+  <div class="highlight"><pre><span></span><code><span class="c1"># Import.</span>
 <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csr_matrix</span>
 <span class="kn">from</span> <span class="nn">cognitivefactory.interactive_clustering.constraints.binary</span> <span class="kn">import</span> <span class="n">BinaryConstraintsManager</span>
 <span class="kn">from</span> <span class="nn">cognitivefactory.interactive_clustering.clustering.kmeans</span> <span class="kn">import</span> <span class="n">KMeansConstrainedClustering</span>
@@ -1549,7 +1552,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="n">constraints_manager</span><span class="o">.</span><span class="n">add_constraint</span><span class="p">(</span><span class="n">data_ID1</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="n">data_ID2</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="n">constraint_type</span><span class="o">=</span><span class="s2">&quot;CANNOT_LINK&quot;</span><span class="p">)</span>
 
 <span class="c1"># Run clustering.</span>
-<span class="n">dict_of_predicted_clusters</span> <span class="o">=</span> <span class="n">clustering_model</span><span class="p">(</span>
+<span class="n">dict_of_predicted_clusters</span> <span class="o">=</span> <span class="n">clustering_model</span><span class="o">.</span><span class="n">cluster</span><span class="p">(</span>
     <span class="n">constraints_manager</span><span class="o">=</span><span class="n">constraints_manager</span><span class="p">,</span>
     <span class="n">vectors</span><span class="o">=</span><span class="n">vectors</span><span class="p">,</span>
     <span class="n">nb_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
@@ -1559,11 +1562,12 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected results&quot;</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;8&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Computed results&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">dict_of_predicted_clusters</span><span class="p">)</span>
 </code></pre></div>
-
-
-        <details class="quote">
-          <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\kmeans.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 33</span>
+</details>
+            <details class="quote">
+              <summary>Source code in <code>src\cognitivefactory\interactive_clustering\clustering\kmeans.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
 <span class="normal"> 34</span>
 <span class="normal"> 35</span>
 <span class="normal"> 36</span>
@@ -1995,25 +1999,16 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="normal">462</span>
 <span class="normal">463</span>
 <span class="normal">464</span>
-<span class="normal">465</span>
-<span class="normal">466</span>
-<span class="normal">467</span>
-<span class="normal">468</span>
-<span class="normal">469</span>
-<span class="normal">470</span>
-<span class="normal">471</span>
-<span class="normal">472</span>
-<span class="normal">473</span>
-<span class="normal">474</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">KMeansConstrainedClustering</span><span class="p">(</span><span class="n">AbstractConstrainedClustering</span><span class="p">):</span>
+<span class="normal">465</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">KMeansConstrainedClustering</span><span class="p">(</span><span class="n">AbstractConstrainedClustering</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This class implements the kmeans constrained clustering.</span>
+<span class="sd">    This class implements the KMeans constrained clustering.</span>
 <span class="sd">    It inherits from `AbstractConstrainedClustering`.</span>
 
 <span class="sd">    References:</span>
 <span class="sd">        - KMeans Clustering: `MacQueen, J. (1967). Some methods for classification and analysis of multivariate observations. Proceedings of the fifth Berkeley symposium on mathematical statistics and probability 1(14), 281–297.`</span>
 <span class="sd">        - Constrained _&#39;COP&#39;_ KMeans Clustering: `Wagstaff, K., C. Cardie, S. Rogers, et S. Schroedl (2001). Constrained K-means Clustering with Background Knowledge. International Conference on Machine Learning`</span>
 
-<span class="sd">    Examples:</span>
+<span class="sd">    Example:</span>
 <span class="sd">        ```python</span>
 <span class="sd">        # Import.</span>
 <span class="sd">        from scipy.sparse import csr_matrix</span>
@@ -2050,7 +2045,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="sd">        constraints_manager.add_constraint(data_ID1=&quot;2&quot;, data_ID2=&quot;4&quot;, constraint_type=&quot;CANNOT_LINK&quot;)</span>
 
 <span class="sd">        # Run clustering.</span>
-<span class="sd">        dict_of_predicted_clusters = clustering_model(</span>
+<span class="sd">        dict_of_predicted_clusters = clustering_model.cluster(</span>
 <span class="sd">            constraints_manager=constraints_manager,</span>
 <span class="sd">            vectors=vectors,</span>
 <span class="sd">            nb_clusters=3,</span>
@@ -2118,7 +2113,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">constraints_manager</span><span class="p">:</span> <span class="n">AbstractConstraintsManager</span><span class="p">,</span>
         <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">],</span>
-        <span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">nb_clusters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
         <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kargs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
@@ -2128,7 +2123,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="sd">        Args:</span>
 <span class="sd">            constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.</span>
 <span class="sd">            vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.</span>
-<span class="sd">            nb_clusters (int): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?</span>
+<span class="sd">            nb_clusters (Optional[int]): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?</span>
 <span class="sd">            verbose (bool, optional): Enable verbose output. Defaults to `False`.</span>
 <span class="sd">            **kargs (dict): Other parameters that can be used in the clustering.</span>
 
@@ -2155,7 +2150,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="n">vectors</span>
 
         <span class="c1"># Store `self.nb_clusters`.</span>
-        <span class="k">if</span> <span class="n">nb_clusters</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nb_clusters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">nb_clusters</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `nb_clusters` &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nb_clusters</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39; must be greater than or equal to 2.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">nb_clusters</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span><span class="p">))</span>
 
@@ -2214,7 +2209,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
         <span class="c1"># While no convergence</span>
         <span class="k">while</span> <span class="p">(</span><span class="ow">not</span> <span class="n">converged</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">current_iteration</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_iteration</span><span class="p">):</span>
-
             <span class="c1"># Increase current iteration number.</span>
             <span class="n">current_iteration</span> <span class="o">+=</span> <span class="mi">1</span>
 
@@ -2250,7 +2244,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
             <span class="c1"># While all data aren&#39;t assigned.</span>
             <span class="k">while</span> <span class="n">list_of_data_IDs_to_assign</span><span class="p">:</span>
-
                 <span class="c1"># Get a data_ID to assign</span>
                 <span class="n">data_ID_to_assign</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">list_of_data_IDs_to_assign</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
 
@@ -2275,7 +2268,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
                 <span class="c1"># If there is no possible cluster...</span>
                 <span class="k">if</span> <span class="n">possible_cluster_IDs</span> <span class="o">==</span> <span class="p">[]:</span>  <span class="c1"># noqa: WPS520</span>
-
                     <span class="c1"># Assign the data ID to a new cluster</span>
                     <span class="n">new_clusters</span><span class="p">[</span><span class="n">data_ID_to_assign</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
                         <span class="nb">max</span><span class="p">([</span><span class="n">cluster_ID</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">cluster_ID</span> <span class="ow">in</span> <span class="n">new_clusters</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span>
@@ -2283,7 +2275,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
                 <span class="c1"># If there is possible clusters...</span>
                 <span class="k">else</span><span class="p">:</span>
-
                     <span class="c1"># Get distance between data ID and all possible centroids.</span>
                     <span class="n">distances_to_cluster_ID</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
                         <span class="n">dict_of_pairwise_distances_between_data_and_clusters</span><span class="p">[</span><span class="n">data_ID_to_assign</span><span class="p">][</span><span class="n">cluster_ID</span><span class="p">]:</span> <span class="n">cluster_ID</span>
@@ -2320,7 +2311,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
             <span class="c1"># Check by centroids difference (with tolerance).</span>
             <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">new_clusters</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
-
                 <span class="c1"># Precompute distance between old and new cluster centroids.</span>
                 <span class="n">matrix_of_pairwise_distances_between_old_and_new_clusters</span><span class="p">:</span> <span class="n">csr_matrix</span> <span class="o">=</span> <span class="n">pairwise_distances</span><span class="p">(</span>
                     <span class="n">X</span><span class="o">=</span><span class="n">vstack</span><span class="p">(</span>  <span class="c1"># Old clusters centroids.</span>
@@ -2343,7 +2333,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
             <span class="c1"># Check if number of clusters have changed.</span>
             <span class="k">else</span><span class="p">:</span>
-
                 <span class="c1"># Uncomparable shift.</span>
                 <span class="n">shift</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;Inf&quot;</span><span class="p">)</span>
 
@@ -2430,7 +2419,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
         <span class="c1"># For all possible cluster ID.</span>
         <span class="k">for</span> <span class="n">cluster_ID</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">clusters</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
-
             <span class="c1"># Compute cluster members.</span>
             <span class="n">members_of_cluster_ID</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">[</span><span class="n">data_ID</span><span class="p">]</span>
@@ -2447,7 +2435,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
         <span class="c1"># Return centroids.</span>
         <span class="k">return</span> <span class="n">centroids</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -2461,12 +2449,14 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.clustering.kmeans.KMeansConstrainedClustering.__init__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;COP&#39;</span><span class="p">,</span> <span class="n">max_iteration</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;COP&#39;</span><span class="p">,</span> <span class="n">max_iteration</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.clustering.kmeans.KMeansConstrainedClustering.__init__" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -2474,6 +2464,8 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
   <div class="doc doc-contents ">
   
       <p>The constructor for KMeans Constrainted Clustering class.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2491,7 +2483,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>The kmeans clustering model to use. Available kmeans models are <code>"COP"</code>. Defaults to <code>"COP"</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The kmeans clustering model to use. Available kmeans models are <code>"COP"</code>. Defaults to <code>"COP"</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;COP&#39;</code>
           </td>
@@ -2501,7 +2497,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>The maximum number of kmeans iteration for convergence. Defaults to <code>150</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The maximum number of kmeans iteration for convergence. Defaults to <code>150</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>150</code>
           </td>
@@ -2511,7 +2511,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>The tolerance for convergence computation. Defaults to <code>1e-4</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The tolerance for convergence computation. Defaults to <code>1e-4</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>0.0001</code>
           </td>
@@ -2521,7 +2525,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code><span title="typing.Optional">Optional</span>[int]</code>
           </td>
-          <td><p>The random seed to use to redo the same clustering. Defaults to <code>None</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The random seed to use to redo the same clustering. Defaults to <code>None</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2531,13 +2539,19 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Other parameters that can be used in the instantiation.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Other parameters that can be used in the instantiation.</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -2552,14 +2566,20 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if some parameters are incorrectly set.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if some parameters are incorrectly set.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\kmeans.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\clustering\kmeans.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
 <span class="normal"> 95</span>
 <span class="normal"> 96</span>
 <span class="normal"> 97</span>
@@ -2601,9 +2621,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="normal">133</span>
 <span class="normal">134</span>
 <span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">136</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;COP&quot;</span><span class="p">,</span>
     <span class="n">max_iteration</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span>
@@ -2649,17 +2667,19 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     <span class="c1"># Initialize `self.dict_of_predicted_clusters`.</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_predicted_clusters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.clustering.kmeans.KMeansConstrainedClustering.cluster" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">cluster</span><span class="p">(</span><span class="n">constraints_manager</span><span class="p">,</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">nb_clusters</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">cluster</span><span class="p">(</span><span class="n">constraints_manager</span><span class="p">,</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">nb_clusters</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.clustering.kmeans.KMeansConstrainedClustering.cluster" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -2667,6 +2687,8 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
   <div class="doc doc-contents ">
   
       <p>The main method used to cluster data with the KMeans model.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2684,7 +2706,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code><a class="autorefs autorefs-internal" title="cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager" href="../../constraints/abstract/#cognitivefactory.interactive_clustering.constraints.abstract.AbstractConstraintsManager">AbstractConstraintsManager</a></code>
           </td>
-          <td><p>A constraints manager over data IDs that will force clustering to respect some conditions during computation.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>A constraints manager over data IDs that will force clustering to respect some conditions during computation.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2694,7 +2720,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span>[str, <span title="scipy.sparse.csr_matrix">csr_matrix</span>]</code>
           </td>
-          <td><p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code>. The value of the dictionary represent the vector of each data.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the <code>constraints_manager</code>. The value of the dictionary represent the vector of each data.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2702,9 +2732,13 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
         <tr>
           <td><code>nb_clusters</code></td>
           <td>
-                <code>int</code>
+                <code><span title="typing.Optional">Optional</span>[int]</code>
           </td>
-          <td><p>The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2714,7 +2748,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Enable verbose output. Defaults to <code>False</code>.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Enable verbose output. Defaults to <code>False</code>.</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -2724,13 +2762,19 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Other parameters that can be used in the clustering.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Other parameters that can be used in the clustering.</p>
+            </div>
+          </td>
           <td>
                 <code>{}</code>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Raises:</strong></p>
   <table>
@@ -2745,10 +2789,16 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code>ValueError</code>
           </td>
-          <td><p>if <code>vectors</code> and <code>constraints_manager</code> are incompatible, or if some parameters are incorrectly set.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if <code>vectors</code> and <code>constraints_manager</code> are incompatible, or if some parameters are incorrectly set.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2763,14 +2813,20 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span>[str, int]</code>
           </td>
-          <td><p>Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Dict[str,int]: A dictionary that contains the predicted cluster for each data ID.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\kmeans.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">143</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\clustering\kmeans.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
 <span class="normal">144</span>
 <span class="normal">145</span>
 <span class="normal">146</span>
@@ -2828,13 +2884,11 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span>
+<span class="normal">201</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">cluster</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">constraints_manager</span><span class="p">:</span> <span class="n">AbstractConstraintsManager</span><span class="p">,</span>
     <span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">],</span>
-    <span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">nb_clusters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
     <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kargs</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
@@ -2844,7 +2898,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="sd">    Args:</span>
 <span class="sd">        constraints_manager (AbstractConstraintsManager): A constraints manager over data IDs that will force clustering to respect some conditions during computation.</span>
 <span class="sd">        vectors (Dict[str, csr_matrix]): The representation of data vectors. The keys of the dictionary represents the data IDs. This keys have to refer to the list of data IDs managed by the `constraints_manager`. The value of the dictionary represent the vector of each data.</span>
-<span class="sd">        nb_clusters (int): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?</span>
+<span class="sd">        nb_clusters (Optional[int]): The number of clusters to compute.  #TODO Set defaults to None with elbow method or other method ?</span>
 <span class="sd">        verbose (bool, optional): Enable verbose output. Defaults to `False`.</span>
 <span class="sd">        **kargs (dict): Other parameters that can be used in the clustering.</span>
 
@@ -2871,7 +2925,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="n">vectors</span>
 
     <span class="c1"># Store `self.nb_clusters`.</span>
-    <span class="k">if</span> <span class="n">nb_clusters</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">nb_clusters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">nb_clusters</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The `nb_clusters` &#39;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nb_clusters</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;&#39; must be greater than or equal to 2.&quot;</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">nb_clusters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">nb_clusters</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_of_data_IDs</span><span class="p">))</span>
 
@@ -2892,17 +2946,19 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict_of_predicted_clusters</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.clustering.kmeans.KMeansConstrainedClustering.compute_centroids" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">compute_centroids</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">compute_centroids</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.clustering.kmeans.KMeansConstrainedClustering.compute_centroids" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -2910,6 +2966,8 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
   <div class="doc doc-contents ">
   
       <p>Compute the centroids of each cluster.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -2927,13 +2985,19 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span>[str, int]</code>
           </td>
-          <td><p>Current clusters assignation.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Current clusters assignation.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -2948,14 +3012,26 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span>[int, <span title="scipy.sparse.csr_matrix">csr_matrix</span>]</code>
           </td>
-          <td><p>Dict[int, csr_matrix]: A dictionary which represent each cluster by a centroid.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Dict[int, csr_matrix]: A dictionary which represent each cluster by a centroid.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\kmeans.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">440</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\clustering\kmeans.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
 <span class="normal">441</span>
 <span class="normal">442</span>
 <span class="normal">443</span>
@@ -2980,16 +3056,7 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 <span class="normal">462</span>
 <span class="normal">463</span>
 <span class="normal">464</span>
-<span class="normal">465</span>
-<span class="normal">466</span>
-<span class="normal">467</span>
-<span class="normal">468</span>
-<span class="normal">469</span>
-<span class="normal">470</span>
-<span class="normal">471</span>
-<span class="normal">472</span>
-<span class="normal">473</span>
-<span class="normal">474</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">compute_centroids</span><span class="p">(</span>
+<span class="normal">465</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">compute_centroids</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">clusters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]:</span>
@@ -3008,7 +3075,6 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
 
     <span class="c1"># For all possible cluster ID.</span>
     <span class="k">for</span> <span class="n">cluster_ID</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">clusters</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
-
         <span class="c1"># Compute cluster members.</span>
         <span class="n">members_of_cluster_ID</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">csr_matrix</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">vectors</span><span class="p">[</span><span class="n">data_ID</span><span class="p">]</span>
@@ -3025,17 +3091,19 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
     <span class="c1"># Return centroids.</span>
     <span class="k">return</span> <span class="n">centroids</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
 
+
 <h3 id="cognitivefactory.interactive_clustering.clustering.kmeans.KMeansConstrainedClustering.initialize_centroids" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">initialize_centroids</span><span class="p">()</span></code>
+          <code class="highlight language-python"><span class="n">initialize_centroids</span><span class="p">()</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.clustering.kmeans.KMeansConstrainedClustering.initialize_centroids" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -3044,6 +3112,8 @@ It inherits from <code>AbstractConstrainedClustering</code>.</p>
   
       <p>Initialize the centroid of each cluster by a vector.
 The choice is based on a random selection among data to cluster.</p>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -3058,14 +3128,26 @@ The choice is based on a random selection among data to cluster.</p>
           <td>
                 <code><span title="typing.Dict">Dict</span>[int, <span title="scipy.sparse.csr_matrix">csr_matrix</span>]</code>
           </td>
-          <td><p>Dict[int, csr_matrix]: A dictionary which represent each cluster by a centroid.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Dict[int, csr_matrix]: A dictionary which represent each cluster by a centroid.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\clustering\kmeans.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">408</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\clustering\kmeans.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
 <span class="normal">409</span>
 <span class="normal">410</span>
 <span class="normal">411</span>
@@ -3084,15 +3166,7 @@ The choice is based on a random selection among data to cluster.</p>
 <span class="normal">424</span>
 <span class="normal">425</span>
 <span class="normal">426</span>
-<span class="normal">427</span>
-<span class="normal">428</span>
-<span class="normal">429</span>
-<span class="normal">430</span>
-<span class="normal">431</span>
-<span class="normal">432</span>
-<span class="normal">433</span>
-<span class="normal">434</span>
-<span class="normal">435</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">initialize_centroids</span><span class="p">(</span>
+<span class="normal">427</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">initialize_centroids</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -3121,7 +3195,7 @@ The choice is based on a random selection among data to cluster.</p>
     <span class="c1"># Return centroids.</span>
     <span class="k">return</span> <span class="n">centroids</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

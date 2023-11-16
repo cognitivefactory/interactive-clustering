@@ -1138,7 +1138,7 @@
       
         <li class="md-nav__item">
   <a href="#cognitivefactory.interactive_clustering.utils.frequency" class="md-nav__link">
-    cognitivefactory.interactive_clustering.utils.frequency
+    frequency
   </a>
   
 </li>
@@ -1362,7 +1362,7 @@
       
         <li class="md-nav__item">
   <a href="#cognitivefactory.interactive_clustering.utils.frequency" class="md-nav__link">
-    cognitivefactory.interactive_clustering.utils.frequency
+    frequency
   </a>
   
 </li>
@@ -1397,13 +1397,14 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="cognitivefactory.interactive_clustering.utils.frequency"></a>
   <div class="doc doc-contents first">
   
       <ul>
 <li>Name:         cognitivefactory.interactive_clustering.utils.frequency</li>
 <li>Description:  Utilities methods for frequency analysis.</li>
-<li>Author:       Erwan Schild</li>
+<li>Author:       Erwan SCHILD</li>
 <li>Created:      17/03/2021</li>
 <li>Licence:      CeCILL (<a href="https://cecill.info/licences.fr.html">https://cecill.info/licences.fr.html</a>)</li>
 </ul>
@@ -1420,12 +1421,14 @@
 
 
 
+
 <div class="doc doc-object doc-function">
 
 
 
+
 <h2 id="cognitivefactory.interactive_clustering.utils.frequency.compute_clusters_frequency" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">compute_clusters_frequency</span><span class="p">(</span><span class="n">clustering_result</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">compute_clusters_frequency</span><span class="p">(</span><span class="n">clustering_result</span><span class="p">)</span></code>
 
 <a href="#cognitivefactory.interactive_clustering.utils.frequency.compute_clusters_frequency" class="headerlink" title="Permanent link">&para;</a></h2>
 
@@ -1433,6 +1436,8 @@
   <div class="doc doc-contents ">
   
       <p>Get the frequency of each cluster present in a clustering result.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1450,13 +1455,19 @@
           <td>
                 <code><span title="typing.Dict">Dict</span>[str, int]</code>
           </td>
-          <td><p>The dictionary that contains the predicted cluster for each data ID.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>The dictionary that contains the predicted cluster for each data ID.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
         </tr>
     </tbody>
   </table>
+
+
 
   <p><strong>Returns:</strong></p>
   <table>
@@ -1471,14 +1482,18 @@
           <td>
                 <code><span title="typing.Dict">Dict</span>[int, float]</code>
           </td>
-          <td><p>Dict[int,float] : Frequency fo each predicted intent.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Dict[int,float] : Frequency fo each predicted intent.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>cognitivefactory\interactive_clustering\utils\frequency.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
+          <details class="quote">
+            <summary>Source code in <code>src\cognitivefactory\interactive_clustering\utils\frequency.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
@@ -1542,7 +1557,7 @@
     <span class="c1"># Return the frequence of clusters.</span>
     <span class="k">return</span> <span class="n">frequence_of_clusters</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
