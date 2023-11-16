@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 <!-- insertion marker -->
+## [1.0.0](https://github.com/cognitivefactory/interactive-clustering/releases/tag/1.0.0) - 2023-11-16
+
+<small>[Compare with 0.6.1](https://github.com/cognitivefactory/interactive-clustering/compare/0.6.1...1.0.0)</small>
+
+### Build
+- prepare production release ([2b6ef71](https://github.com/cognitivefactory/interactive-clustering/commit/2b6ef718f2c5564214949f6f51a657849d068990) by Erwan Schild).
+
+
+
 ## [0.6.1](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.6.1) - 2023-11-16
 
 <small>[Compare with 0.6.0](https://github.com/cognitivefactory/interactive-clustering/compare/0.6.0...0.6.1)</small>
