@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 <!-- insertion marker -->
+## [0.6.1](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.6.1) - 2023-11-16
+
+<small>[Compare with 0.6.0](https://github.com/cognitivefactory/interactive-clustering/compare/0.6.0...0.6.1)</small>
+
+### Bug Fixes
+- update mistakes in documentation ([9c83be3](https://github.com/cognitivefactory/interactive-clustering/commit/9c83be393ada0ff049686bc0a3f2f3398a867b28) by Erwan Schild).
+
+### Code Refactoring
+- make format ([11a9223](https://github.com/cognitivefactory/interactive-clustering/commit/11a922338283eec67f369970f40c50d6609678a5) by Erwan Schild).
+- remove experiments from python package (see sdia2022 branch) ([f004258](https://github.com/cognitivefactory/interactive-clustering/commit/f004258e47995f450b7f8a42493cee6d8791b15f) by Erwan Schild).
+
+
 ## [0.6.0](https://github.com/cognitivefactory/interactive-clustering/releases/tag/0.6.0) - 2023-11-15
 
 <small>[Compare with 0.5.4](https://github.com/cognitivefactory/interactive-clustering/compare/0.5.4...0.6.0)</small>
