@@ -1,4 +1,4 @@
-s# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 """
 * Name:         cognitivefactory.interactive_clustering.clustering.hierarchical
