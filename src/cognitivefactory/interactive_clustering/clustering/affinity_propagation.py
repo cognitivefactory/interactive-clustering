@@ -87,7 +87,7 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
         print("Computed results", ":", dict_of_predicted_clusters)
         ```
 
-    Warnings:
+    Warns:
         FutureWarning: `clustering.affinity_propagation.AffinityPropagationConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.
     """
 
@@ -109,7 +109,7 @@ class AffinityPropagationConstrainedClustering(AbstractConstrainedClustering):
             random_seed (Optional[int], optional): The random seed to use to redo the same clustering. Defaults to `None`.
             **kargs (dict): Other parameters that can be used in the instantiation.
 
-        Warnings:
+        Warns:
             FutureWarning: `clustering.affinity_propagation.AffinityPropagationConstrainedClustering` is still in development and is not fully tested : it is not ready for production use.
 
         Raises:

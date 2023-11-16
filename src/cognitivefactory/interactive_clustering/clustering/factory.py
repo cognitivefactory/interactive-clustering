@@ -34,7 +34,7 @@ def clustering_factory(algorithm: str = "kmeans", **kargs) -> "AbstractConstrain
         algorithm (str): The identification of model to instantiate. Can be `"affinity_propagation"`, `"dbscan"`, `"hierarchical"`, `"kmeans"`, `"mpckmeans"` or `"spectral"`. Defaults to `"kmeans"`.
         **kargs (dict): Other parameters that can be used in the instantiation.
 
-    Warnings:
+    Warns:
         FutureWarning: `clustering.affinity_propagation.AffinityPropagationConstrainedClustering`, `clustering.dbscan.DBScanConstrainedClustering` and `clustering.mpckmeans.MPCKMeansConstrainedClustering` are still in development and are not fully tested : it is not ready for production use.
 
     Raises:
