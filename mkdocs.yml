@@ -29,6 +29,9 @@ nav:
 ####    - clustering.kmeans: reference/clustering/kmeans.md
 ####    - clustering.hierarchical: reference/clustering/hierarchical.md
 ####    - clustering.spectral: reference/clustering/spectral.md
+####    - clustering.affinity_propagation: reference/clustering/affinity_propagation.md
+####    - clustering.dbscan: reference/clustering/dbscan.md
+####    - clustering.mpckmeans: reference/clustering/mpckmeans.md
 ####  - Utility methods:
 ####    - utils.preprocessing: reference/utils/preprocessing.md
 ####    - utils.vectorization: reference/utils/vectorization.md
