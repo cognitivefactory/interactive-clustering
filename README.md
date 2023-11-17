@@ -46,9 +46,10 @@ The process use severals objects :
 
 _NB_ :
 
-- This python library does not contain integration into a graphic interface.
-
 - For more details, read the [Documentation](#Documentation) and the articles in the [References](#References) section.
+
+- This python library does not contain integration into a graphic interface. A web application based on Interactive Clustering Methodologoy is available on GitHub: [cognitivefactory/interactive-clustering-gui](https://github.com/cognitivefactory/interactive-clustering-gui).
+For more details, read its [main documentation](https://cognitivefactory.github.io/interactive-clustering-gui/).
 
 
 ## <a name="Documentation"></a> Documentation
@@ -134,20 +135,24 @@ To work on this project or contribute to it, please read:
 
 ## <a name="Other links"></a> Other links
 
-- A web application designed for NLP data annotation using Interactive Clustering methodology: `Schild, E. (2021). cognitivefactory/interactive-clustering-gui. Zenodo. https://doi.org/10.5281/zenodo.4775270`
+- A web application designed for NLP data annotation using Interactive Clustering methodology: `Schild, E. (2021). cognitivefactory/interactive-clustering-gui. Zenodo. https://doi.org/10.5281/zenodo.4775270`. (GitHub: [cognitivefactory/interactive-clustering-gui](https://github.com/cognitivefactory/interactive-clustering-gui)).
 
 <p align="center">
-	<i style="font-size: smaller; color:grey">Welcome page of Interactive Clustering Web Application.</i>
-	</br>
-	<img src="docs/figures/interactive-clustering-gui-welcome-page.png" alt="Welcome page of Interactive Clustering Web Application." width="75%"/>
+	<a href="https://github.com/cognitivefactory/interactive-clustering-gui">
+		<i style="font-size: smaller; color:grey">Welcome page of Interactive Clustering Web Application.</i>
+		</br>
+		<img src="docs/figures/interactive-clustering-gui-welcome-page.png" alt="Welcome page of Interactive Clustering Web Application." width="75%"/>
+	</a>
 </p>
 
-- Several comparative studies of Interactive Clustering methodology on NLP datasets: `Schild, E. (2021). cognitivefactory/interactive-clustering-comparative-study. Zenodo. https://doi.org/10.5281/zenodo.5648255`
+- Several comparative studies of Interactive Clustering methodology on NLP datasets: `Schild, E. (2021). cognitivefactory/interactive-clustering-comparative-study. Zenodo. https://doi.org/10.5281/zenodo.5648255`. (GitHub: [cognitivefactory/interactive-clustering-comparative-study](https://github.com/cognitivefactory/interactive-clustering-comparative-study)).
 
 <p align="center">
-	<i style="font-size: smaller; color:grey">Organizational diagram of the different Comparative Studies of Interactive Clustering.</i>
-	</br>
-	<img src="docs/figures/interactive-clustering-comparative-study.png" alt="Organizational diagram of the different comparative studies of Interactive Clustering." width="75%"/>
+	<a href="https://github.com/cognitivefactory/interactive-clustering-comparative-study">
+		<i style="font-size: smaller; color:grey">Organizational diagram of the different Comparative Studies of Interactive Clustering.</i>
+		</br>
+		<img src="docs/figures/interactive-clustering-comparative-study.png" alt="Organizational diagram of the different comparative studies of Interactive Clustering." width="75%"/>
+	</a>
 </p>
 
 
