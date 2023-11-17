@@ -76,6 +76,9 @@ editable-backend = "editables"
 develop = [
     "fr-core-news-md @ https://github.com/explosion/spacy-models/releases/download/fr_core_news_md-3.4.0/fr_core_news_md-3.4.0.tar.gz",  # ==3.4.0",
     "en-core-web-md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.4.0/en_core_web_md-3.4.0.tar.gz",  # ==3.4.0",
+
+    # Fix dependencies.
+    "urllib3>=1.26,<2",  # TODO: Project not compatible with urllib3>=2.0
 ]
 duty = [
     "duty>=0.7",
