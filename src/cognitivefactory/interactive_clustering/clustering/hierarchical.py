@@ -579,8 +579,9 @@ class HierarchicalConstrainedClustering(AbstractConstrainedClustering):
                     "cluster_ID1": cluster_ID1,
                     "cluster_ID2": cluster_ID2,
                     "distance": self._get_distance(cluster_IDi=cluster_ID1, cluster_IDj=cluster_ID2),
-                    "merged_size": len(self.clusters_storage[cluster_ID1].members)
-                    + len(self.clusters_storage[cluster_ID2].members)
+                    "merged_size": len(self.clusters_storage[cluster_ID1].members) + len(
+                        self.clusters_storage[cluster_ID2].members
+                    ),
                     # TODO : Choose between "distance then size(count)" and "size_type(boolean) then distance"
                 }
                 for cluster_ID1 in self.current_clusters

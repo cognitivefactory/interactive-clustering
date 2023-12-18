@@ -43,8 +43,9 @@ def compute_clusters_frequency(clustering_result: Dict[str, int]) -> Dict[int, f
 
     # Compute frequency of clusters in `clustering_result`.
     frequence_of_clusters: Dict[int, float] = {
-        cluster_ID: len([data_ID for data_ID in clustering_result if clustering_result[data_ID] == cluster_ID])
-        / nb_of_data_IDs
+        cluster_ID: (
+            len([data_ID for data_ID in clustering_result if clustering_result[data_ID] == cluster_ID]) / nb_of_data_IDs
+        )
         for cluster_ID in list_of_possible_cluster_IDs
     }
 
